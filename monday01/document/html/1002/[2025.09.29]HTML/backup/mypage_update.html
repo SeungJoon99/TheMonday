@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="favicon.png">
+
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="css/tiny-slider.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <title>마이페이지 | Furni</title>
+  </head>
+  <body>
+    <!-- Start Header/Navigation -->
+    <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">The Monday<span>.</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsFurni">
+          <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+            <li><a class="nav-link" href="index.html">메인 홈</a></li>
+            <li><a class="nav-link" href="shop.html">상품 보기</a></li>
+            <li><a class="nav-link" href="about.html">팀소개</a></li>
+            <li><a class="nav-link" href="signup.html">회원가입</a></li>
+            <li><a class="nav-link" href="login.html">로그인</a></li>
+          </ul>
+
+          <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+            <li><a class="nav-link" href="mypage.html"><img src="images/user.svg"></a></li>
+            <li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Header/Navigation -->
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col-lg-5">
+            <div class="intro-excerpt">
+              <h1>마이페이지</h1>
+            </div>
+          </div>
+          <div class="row">
+						<div class="col-lg-7" style="color: #3b5d50;">.</div>
+					</div>
+        </div>
+      </div>
+    </div>
+    <!-- End Hero -->
+
+    <div class="untree_co-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <!-- 회원정보 수정 -->
+          <div class="col-md-6 mb-5 mb-md-0">
+            <h2 class="h3 mb-3 text-black">회원정보 수정</h2>
+            <div class="p-3 p-lg-5 border bg-white">
+              <form action="update-profile.do" method="post">
+                <div class="form-group mb-3">
+                  <label for="name" class="text-black">이름</label>
+                  <input type="text" class="form-control" id="name" name="name" value="홍길동">
+                </div>
+                <div class="form-group mb-3">
+                  <label for="nick" class="text-black">닉네임</label>
+                  <input type="text" class="form-control" id="nick" name="nick" value="닉네에임">
+                </div>
+                <div class="form-group mb-3">
+                   <label for="email" class="text-black">이메일</label>
+                  <div class="input-group">
+									  <input type="text" class="form-control" id="u_email_address" name="u_email_address" value="example@DTeam.com" readonly>
+                </div>
+                <div class="form-group mb-3">
+                  <label for="phone" class="text-black">전화번호</label>
+                  <input type="text" class="form-control" id="phone" name="phone" value="010-1234-5678">
+                </div>
+                <div class="col-md-12 mt-3">
+                  <div class="form-group row">
+                    <div class="signUp-input-area col-md-10">
+                      <label for="sample6_postcode" class="text-black">주소 <span class="text-danger">*</span></label>
+                      <input type="text" name="memberPostcode" placeholder="우편번호" maxlength="6" id="sample6_postcode" class="form-control">
+                    </div>
+                    <div class="signUp-input-area col-md-2 d-flex align-items-end">
+                      <button type="button" class="btn btn-primary btn-sm py-1 px-2 w-100" onclick="sample6_execDaumPostcode()">검색</button>
+                    </div>
+                    <div class="signUp-input-area mt-3">
+                      <input type="text" name="memberAddress" placeholder="도로명/지번 주소" id="sample6_address" class="form-control">
+                    </div>
+                    <div class="signUp-input-area mt-3">
+                      <input type="text" name="memberDetailAddress" placeholder="상세 주소" id="sample6_detailAddress" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group text-end mt-4">
+                  <button type="button" class="btn btn-primary btn-sm" onclick="window.location = 'mypage_update.html'">회원정보수정</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+      <div class="container relative">
+        <div class="sofa-img">
+          <img src="images/sofa.png" alt="Image" class="img-fluid">
+        </div>
+        <!-- 기존 checkout.html footer 동일 -->
+      </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/tiny-slider.js"></script>
+    <script src="js/custom.js"></script>
+  </body>
+</html>

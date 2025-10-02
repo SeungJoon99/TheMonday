@@ -1,0 +1,26 @@
+
+
+
+monday01 : HTML 문서 작업용
+
+monday02 : JSP 변환용 프로젝트 ( INCLUDE 처리)
+
+monday03 : 실제 작업용 프로젝트 
+
+
+웹서버 launch
+index.html
+<script>
+document.location ="./main/index.html";
+</script>
+
+<a href="./main/index.html">일반 사용자</a>
+<br>
+<a href="./main/admin/login.html">관리자</a>
+
+
+
+-------------------------------------------------------------------
+논리 ERD 설계(erdcloude)(db설계와 화면이 맞는지 검토 후 )
+>물리 DB 설계(실제 데이터의 이름, 타입, 키, comment등등)
+>sql

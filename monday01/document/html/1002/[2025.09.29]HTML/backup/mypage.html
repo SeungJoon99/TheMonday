@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="favicon.png">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="css/tiny-slider.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <title>회원 마이페이지</title>
+
+    <style>
+      .mypage{
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Start Header/Navigation -->
+    <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">The Monday<span>.</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsFurni">
+          <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+            <li><a class="nav-link" href="index.html">메인 홈</a></li>
+            <li><a class="nav-link" href="shop.html">상품 보기</a></li>
+            <li><a class="nav-link" href="about.html">팀소개</a></li>
+            <li><a class="nav-link" href="signup.html">회원가입</a></li>
+            <li><a class="nav-link" href="login.html">로그인</a></li>
+          </ul>
+
+          <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+            <li><a class="nav-link" href="mypage.html"><img src="images/user.svg"></a></li>
+            <li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Header/Navigation -->
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col-lg-5">
+            <div class="intro-excerpt">
+              <h1>마이페이지</h1>
+            </div>
+          </div>
+          <div class="row">
+						<div class="col-lg-7" style="color: #3b5d50;">.</div>
+					</div>
+        </div>
+      </div>
+    </div>
+    <!-- End Hero -->
+    <!-- 회원정보 -->
+    <div class="container mypage">
+      <h2>회원 정보</h2>
+      <table class="table table-secondary table-striped-columns table-bordered">
+        <tbody>
+          <tr>
+            <td>이름</td>
+            <td>홍길동</td>
+          </tr>
+          <tr>
+            <td>이메일</td>
+            <td>hong@example.com</td>
+          </tr>
+          <tr>
+            <td>전화번호</td>
+            <td>010-1234-5678</td>
+          </tr>
+          <tr>
+            <td>주소</td>
+            <td>서울특별시 강남구 역삼동</td>
+          </tr>
+        </tbody>
+      <button type="button" class="btn btn-primary btn-sm" onclick="window.location = 'mypage_update.html'">정보수정</button>
+      </table>
+      
+    </div>
+    <!-- 주문내역 -->
+    <div class="container mypage">
+      <h2>최근 주문 내역</h2>
+      <table class="table table-secondary table-striped-columns">
+        <thead class="table-dark">
+          <tr>
+            <th>주문번호</th>
+            <th>상품명</th>
+            <th>금액</th>
+            <th>수량</th>
+            <th>총금액</th>
+            <th>주문일자</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>20230922001</td>
+            <td>원목 식탁 세트</td>
+            <td>150,000</td>
+            <td>3 개</td>
+            <td>450,000원</td>
+            <td>2025-09-29</td>
+          </tr>
+          <tr>
+            <td>20230921012</td>
+            <td>소파 3인용</td>
+            <td>205,000</td>
+            <td>4 개</td>
+            <td>820,000원</td>
+            <td>2025-09-29</td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-sm" style="background-color: red; border: none;">회원 탈퇴</button>
+    </div>
+  </body>
+</html>

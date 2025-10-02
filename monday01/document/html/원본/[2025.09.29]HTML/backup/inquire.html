@@ -1,0 +1,96 @@
+<!-- /*
+* Bootstrap 5
+* Template Name: Furni
+* Template Author: Untree.co
+* Template URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="favicon.png">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="css/tiny-slider.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <title>문의 페이지</title> 
+  </head>
+  <body>
+   <!-- Start Header/Navigation -->
+		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+			<div class="container">
+				<a class="navbar-brand" href="index.html">The Monday<span>.</span></a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarsFurni">
+					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+						<li><a class="nav-link" href="index.html">메인 홈</a></li>
+						<li><a class="nav-link" href="shop.html">상품 보기</a></li>
+						<li><a class="nav-link" href="signup.html">회원가입</a></li>
+						<li><a class="nav-link" href="login.html">로그인</a></li>
+						<li><a class="nav-link" href="adminp_list.html">관리자페이지</a></li>
+						<li><a class="nav-link" href="nmember_login.html">비회원 구매내역조회</a></li>
+						<li class="nav-item active"><a class="nav-link" href="inquire.html">문의하기</a></li>
+						<li><a class="nav-link" href="board.html">문의게시판</a></li>
+					</ul>
+
+					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+						<li><a class="nav-link" href="mypage.html"><img src="images/user.svg"></a></li>
+						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Start Hero Section -->
+		<div class="hero">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="col-lg-5">
+						<div class="intro-excerpt">
+							<h1>문의하기</h1>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-7" style="color: #3b5d50;">.</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Hero Section -->
+    <div class="container bg-white" style="width: 80%; max-width: 1080px;">
+      <form action="#" method="post">
+        
+        제목
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="제목을 입력해주세요" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        </div>
+
+        문의 유형
+        <select class="form-select">
+          <option value="" disabled selected>문의 유형을 선택하세요</option>
+          <option value="return">반품</option>
+          <option value="cancel">취소</option>
+          <option value="question">질문</option>
+          <option value="exchange">교환</option>
+        </select>
+
+        내용
+        <div class="input-group-lg">
+          <textarea class="form-control" aria-label="With textarea" placeholder="자세한 내용을 입력해주세요."></textarea>
+        </div>
+        <button type="button" class="btn btn-primary btn-sm" onclick="window.location = 'mypage_update.html'">문의 보내기</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+		<!-- Start Header/Navigation -->
+		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+			<div class="container">
+				<a class="navbar-brand" href="../index.html">The Monday<span>.</span></a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarsFurni">
+					<div class="col-1"></div>
+					<form class="search-box">
+						<input class="form-control" type="search" placeholder="Search" aria-label="Search">
+						<button class="btn" type="submit">
+						<i class="fas fa-search"></i>
+						</button>
+					</form>
+          
+					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+						<li><a class="nav-link" href="../member/mypage.html">[홍길동]님</a></li>
+						<li class="active" aria-current="page">
+							<a class="nav-link" href="main.html">상품 보기</a>
+						</li>
+						<li><a class="nav-link" href="../login.html">로그인</a></li>
+						<li><a class="nav-link" href="../member/cart.html">장바구니</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Start Hero -->
+		<div class="hero" style="padding-bottom: 0px;">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="col-lg-5">
+						<div class="intro-excerpt">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Start navtap Section -->
+			<div class="row bg-dark" style="border: none;">
+				<div class="col-2"></div>
+				<ul class="col-8 nav nav-tabs bg-dark">
+				<li class="nav-item">
+					<a class="nav-link" href="main.html">침대</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="main.html">소파</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="main.html">옷장</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="main.html">매트리스</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="main.html">다이닝</a>
+				</li>
+					<div class="col-2"></div>
+			</div>
+			<!-- End navtap Section -->
+		</div>
+		<!-- End Hero -->

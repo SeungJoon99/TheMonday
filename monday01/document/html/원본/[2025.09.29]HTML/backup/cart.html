@@ -1,0 +1,291 @@
+<!-- /*
+* Bootstrap 5
+* Template Name: Furni
+* Template Author: Untree.co
+* Template URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="author" content="Untree.co">
+		<link rel="shortcut icon" href="favicon.png">
+
+		<meta name="description" content="" />
+		<meta name="keywords" content="bootstrap, bootstrap4" />
+
+		<!-- Bootstrap CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+		<link href="css/tiny-slider.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<title>장바구니</title>
+		<style>
+			.small-thumb {
+  				width: 120px;
+  				height: auto;
+			}
+			 .content-box {
+				max-height: 200px;   /* 원하는 높이 고정 */
+				overflow-y: auto;    /* 세로 스크롤바 */
+				overflow-x: hidden;  /* 가로 스크롤 숨김 (필요 시 auto 로 변경 가능) */
+  			}
+		</style>
+	</head>
+
+	<body>
+		<!-- Start Header/Navigation -->
+		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+			<div class="container">
+				<a class="navbar-brand" href="index.html">The Monday<span>.</span></a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarsFurni">
+					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+						<li><a class="nav-link" href="index.html">메인 홈</a></li>
+						<li><a class="nav-link" href="shop.html">상품 보기</a></li>
+						<li><a class="nav-link" href="about.html">팀소개</a></li>
+						<li><a class="nav-link" href="signup.html">회원가입</a></li>
+						<li><a class="nav-link" href="login.html">로그인</a></li>
+					</ul>
+
+					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+						<li><a class="nav-link" href="mypage_update.html"><img src="images/user.svg"></a></li>
+						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- End Header/Navigation -->
+
+		<!-- Start Hero Section -->
+		<div class="hero">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="col-lg-5">
+						<div class="intro-excerpt">
+							<h1>장바구니</h1>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-7" style="color: #3b5d50;">.</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Hero Section -->
+		<div class="untree_co-section before-footer-section">
+			<div class="container">
+				<div class="row mb-5">
+					<div class="col-md-12">
+						<div class="border p-4 rounded" role="alert">
+							아이디가 없으시다면? <a href="nmem.html">비회원 구매하기</a>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<!-- 왼쪽: 장바구니 테이블 -->
+					<div class="col-lg-8 content-box">
+						<form method="post">
+							<div class="site-blocks-table">
+								<table class="table">
+									<thead>
+										<tr>
+											<th class="product-thumbnail">이미지</th>
+											<th class="product-name">상품명</th>
+											<th class="product-price">가격</th>
+											<th class="product-quantity">수량</th>
+											<th class="product-total">총 가격</th>
+											<th class="product-remove">제거</th>
+										</tr>
+									</thead>
+									<tbody>
+										<!-- 예시 상품 1 -->
+										<tr>
+											<td class="product-thumbnail">
+												<img src="images/product-1.png" alt="Image" class="img-fluid small-thumb">
+											</td>
+											<td class="product-name">
+												<h2 class="h5 text-black">상품 1</h2>
+											</td>
+											<td>10,000원</td>
+											<td>
+												<div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
+													<button class="btn btn-outline-black decrease" type="button">&minus;</button>
+													<input type="text" class="form-control text-center quantity-amount" value="1">
+													<button class="btn btn-outline-black increase" type="button">&plus;</button>
+												</div>
+											</td>
+											<td>10,000원</td>
+											<td><a href="#" class="btn btn-black btn-sm">X</a></td>
+										</tr>
+
+										<!-- 예시 상품 2 -->
+										<tr>
+											<td class="product-thumbnail">
+												<img src="images/product-2.png" alt="Image" class="img-fluid small-thumb">
+											</td>
+											<td class="product-name">
+												<h2 class="h5 text-black">상품 2</h2>
+											</td>
+											<td>10,000원</td>
+											<td>
+												<div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
+													<button class="btn btn-outline-black decrease" type="button">&minus;</button>
+													<input type="text" class="form-control text-center quantity-amount" value="1">
+													<button class="btn btn-outline-black increase" type="button">&plus;</button>
+												</div>
+											</td>
+											<td>10,000원</td>
+											<td><a href="#" class="btn btn-black btn-sm">X</a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</form>
+					</div>
+
+					<!-- 오른쪽: 카트 토탈 -->
+					<div class="col-lg-4">
+						<div class="cart-totals p-4 bg-light rounded">
+							<h3 class="text-black h4 text-uppercase mb-4">주문내역</h3>
+
+							<!-- Header Row -->
+							<div class="d-flex text-black fw-bold border-bottom pb-2 mb-3">
+								<div style="width: 50%;">상품명</div>
+								<div style="width: 20%; text-align: center;">개수</div>
+								<div style="width: 30%; text-align: right;">가격</div>
+							</div>
+
+							<!-- Item Row 1 -->
+							<div class="d-flex mb-2">
+								<div style="width: 50%;">상품 1</div>
+								<div style="width: 20%; text-align: center;">1개</div>
+								<div style="width: 30%; text-align: right;">10,000원</div>
+							</div>
+
+							<!-- Item Row 2 -->
+							<div class="d-flex mb-2">
+								<div style="width: 50%;">상품 2</div>
+								<div style="width: 20%; text-align: center;">2개</div>
+								<div style="width: 30%; text-align: right;">20,000원</div>
+							</div>
+
+							<!-- 총 가격 -->
+							<div class="d-flex border-top pt-3 mt-3 fw-bold">
+								<div style="width: 50%;">총 가격</div>
+								<div style="width: 20%; text-align: center;"></div>
+								<div style="width: 30%; text-align: right;">30,000원</div>
+								</div>
+								<button class="btn btn-black btn-lg btn-block w-100 mt-4" onclick="window.location='thankyou.html'">Proceed To Checkout</button>
+							</div>
+							<!-- 배송지 입력 섹션 -->
+							<div class="mt-4">
+							<h5 class="text-black mb-3">배송지 변경</h5>
+
+							<div class="mb-3">
+								<label for="delivery-address" class="form-label">배송지 주소</label>
+								<input type="text" class="form-control" id="delivery-address" placeholder="서울특별시 강남구 테헤란로 123">
+							</div>
+
+							<div class="mb-3">
+								<label for="delivery-memo" class="form-label">배송 메모 (선택)</label>
+								<textarea class="form-control" id="delivery-memo" rows="2" placeholder="문 앞에 두고 벨 눌러주세요."></textarea>
+							</div>
+
+							<button class="btn btn-outline-secondary w-100" type="button" onclick="alert('배송지가 저장되었습니다!')">배송지 저장</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+
+		<!-- Start Footer Section -->
+		<!-- <footer class="footer-section">
+			<div class="container relative">
+				<div class="row g-5 mb-5">
+					<div class="col-lg-4">
+						<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Furni<span>.</span></a></div>
+						<p class="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant</p>
+
+						<ul class="list-unstyled custom-social">
+							<li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
+							<li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li>
+							<li><a href="#"><span class="fa fa-brands fa-instagram"></span></a></li>
+							<li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li>
+						</ul>
+					</div>
+
+					<div class="col-lg-8">
+						<div class="row links-wrap">
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="#">About us</a></li>
+									<li><a href="#">Services</a></li>
+									<li><a href="#">Blog</a></li>
+									<li><a href="#">Contact us</a></li>
+								</ul>
+							</div>
+
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="#">Support</a></li>
+									<li><a href="#">Knowledge base</a></li>
+									<li><a href="#">Live chat</a></li>
+								</ul>
+							</div>
+
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="#">Jobs</a></li>
+									<li><a href="#">Our team</a></li>
+									<li><a href="#">Leadership</a></li>
+									<li><a href="#">Privacy Policy</a></li>
+								</ul>
+							</div>
+
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="#">Nordic Chair</a></li>
+									<li><a href="#">Kruzo Aero</a></li>
+									<li><a href="#">Ergonomic Chair</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="border-top copyright">
+					<div class="row pt-4">
+						<div class="col-lg-6">
+							<p class="mb-2 text-center text-lg-start">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> Distributed By <a hreff="https://themewagon.com">ThemeWagon</a>  License information: https://untree.co/license/
+            </p>
+						</div>
+
+						<div class="col-lg-6 text-center text-lg-end">
+							<ul class="list-unstyled d-inline-flex ms-auto">
+								<li class="me-4"><a href="#">Terms &amp; Conditions</a></li>
+								<li><a href="#">Privacy Policy</a></li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</footer> -->
+		<!-- End Footer Section	 -->
+
+
+		<script src="js/bootstrap.bundle.min.js"></script>
+		<script src="js/tiny-slider.js"></script>
+		<script src="js/custom.js"></script>
+	</body>
+
+</html>

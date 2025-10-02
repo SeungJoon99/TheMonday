@@ -1,0 +1,282 @@
+<!-- /*
+* Bootstrap 5
+* Template Name: Furni
+* Template Author: Untree.co
+* Template URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="author" content="Untree.co">
+		<link rel="shortcut icon" href="../favicon.png">
+
+		<meta name="description" content="" />
+		<meta name="keywords" content="bootstrap, bootstrap4" />
+
+		<!-- Bootstrap CSS -->
+		<link href="../../css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+		<link href="../../css/tiny-slider.css" rel="stylesheet">
+		<link href="../../css/style.css" rel="stylesheet">
+		<title>장바구니</title>
+	</head>
+
+	<body>
+		<!-- Start Header/Navigation -->
+		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+			<div class="container">
+				<a class="navbar-brand" href="../index.html">The Monday<span>.</span></a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarsFurni">
+					<div class="col-1"></div>
+					<form class="search-box" action="../shop/search.html">
+						<input class="form-control" type="search" placeholder="Search" aria-label="Search">
+						<button class="btn" type="submit">
+							<i class="fas fa-search"></i>
+						</button>
+					</form>
+          
+					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+                    <li><a class="nav-link" href="../member/mypage.html">[홍길동]님</a></li>
+                    <li><a class="nav-link" href="../shop/main.html">상품 보기</a></li>
+                    <li><a class="nav-link" href="../login.html">로그인</a></li>
+                    <li class="active"><a class="nav-link" href="../member/cart.html">장바구니</a></li>
+                </ul>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Start Hero -->
+		<div class="hero" style="padding-bottom: 0px;">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="col-lg-5">
+						<div class="intro-excerpt">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Start navtap Section -->
+			<div class="row bg-dark" style="border: none;">
+				<div class="col-2"></div>
+				<ul class="col-8 nav nav-tabs bg-dark">
+				<li class="nav-item">
+					<a class="nav-link" href="../shop/main.html">침대</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="../shop/main.html">소파</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="../shop/main.html">옷장</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="../shop/main.html">매트리스</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="../shop/main.html">다이닝</a>
+				</li>
+					<div class="col-2"></div>
+			</div>
+			<!-- End navtap Section -->
+		</div>
+		<!-- End Hero -->
+
+		<div class="untree_co-section before-footer-section">
+			<div class="container">
+				<div class="row">
+					<!-- 왼쪽: 장바구니 테이블 -->
+					<div class="col-lg-8 content-box">
+						<form method="post">
+							<div class="site-blocks-table">
+								<table class="table">
+									<thead>
+										<tr>
+											<th class="product-thumbnail">이미지</th>
+											<th class="product-name">상품명</th>
+											<th class="product-price">가격</th>
+											<th class="product-quantity">수량</th>
+											<th class="product-total">총 가격</th>
+											<th class="product-remove">제거</th>
+										</tr>
+									</thead>
+									<tbody>
+										<!-- 예시 상품 1 -->
+										<tr>
+											<td class="product-thumbnail">
+												<img src="../../images/product-1.png" alt="Image" class="img-fluid small-thumb">
+											</td>
+											<td class="product-name">
+												<h2 class="h5 text-black">
+													<a href="../shop/chair_baige.html">상품 1</a>
+												</h2>
+											</td>
+											<td>10,000원</td>
+											<td>
+												<div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
+													<button class="btn btn-outline-black decrease" type="button">&minus;</button>
+													<input type="text" class="form-control text-center quantity-amount" value="1">
+													<button class="btn btn-outline-black increase" type="button">&plus;</button>
+												</div>
+											</td>
+											<td>10,000원</td>
+											<td><a href="#" class="btn btn-black btn-sm">X</a></td>
+										</tr>
+
+										<!-- 예시 상품 2 -->
+										<tr>
+											<td class="product-thumbnail">
+												<img src="../../images/product-2.png" alt="Image" class="img-fluid small-thumb">
+											</td>
+											<td class="product-name">
+												<h2 class="h5 text-black">
+													<a href="../shop/chair_kruzo.html">상품 2</a>
+												</h2>
+											</td>
+											<td>10,000원</td>
+											<td>
+												<div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
+													<button class="btn btn-outline-black decrease" type="button">&minus;</button>
+													<input type="text" class="form-control text-center quantity-amount" value="1">
+													<button class="btn btn-outline-black increase" type="button">&plus;</button>
+												</div>
+											</td>
+											<td>10,000원</td>
+											<td><a href="#" class="btn btn-black btn-sm">X</a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</form>
+					</div>
+
+					<!-- 오른쪽: 카트 토탈 -->
+					<div class="col-lg-4">
+						<!-- 배송지 입력 섹션 -->
+							<div class="mt-4">
+							<h5 class="text-black mb-3">배송지 변경(선택)</h5>
+							<div class="mb-3">
+								<label for="delivery-address" class="form-label">배송지</label>
+								<input type="text" class="form-control" id="delivery-address" placeholder="서울특별시 강남구 테헤란로 123">
+							</div>
+
+							<div class="mb-3">
+								<label for="delivery-memo" class="form-label">요청사항 (선택)</label>
+								<textarea class="form-control" id="delivery-memo" rows="2" placeholder="문 앞에 두고 벨 눌러주세요."></textarea>
+							</div>
+
+							<button class="btn btn-outline-secondary mb-3 w-100" type="button" onclick="alert('배송지가 저장되었습니다!')">배송지 저장</button>
+						</div>
+						<div class="cart-totals p-4 rounded">
+							<h3 class="text-black h4 text-uppercase mb-4">주문내역</h3>
+
+							<!-- Header Row -->
+							<div class="d-flex text-black fw-bold border-bottom pb-2 mb-3">
+								<div style="width: 50%;">상품명</div>
+								<div style="width: 20%; text-align: center;">개수</div>
+								<div style="width: 30%; text-align: right;">가격</div>
+							</div>
+
+							<!-- Item Row 1 -->
+							<div class="d-flex mb-2">
+								<div style="width: 50%;">상품 1</div>
+								<div style="width: 20%; text-align: center;">1개</div>
+								<div style="width: 30%; text-align: right;">10,000원</div>
+							</div>
+
+							<!-- Item Row 2 -->
+							<div class="d-flex mb-2">
+								<div style="width: 50%;">상품 2</div>
+								<div style="width: 20%; text-align: center;">2개</div>
+								<div style="width: 30%; text-align: right;">20,000원</div>
+							</div>
+
+							<!-- 총 가격 -->
+							<div class="d-flex border-top pt-3 mt-3 fw-bold">
+								<div style="width: 50%;">총 가격</div>
+								<div style="width: 20%; text-align: center;"></div>
+								<div style="width: 30%; text-align: right;">30,000원</div>
+								</div>
+								<button class="btn btn-black btn-lg btn-block w-100 mt-4" onclick="window.location='../thankyou.html'">결제하기</button>
+							</div>
+							
+					</div>
+				</div>
+			</div>
+		</div>
+		
+
+		<!-- Start Footer Section -->
+		<footer class="footer-section">
+			<!-- Start navtap Section -->
+			<div class="row bg-dark">
+				<div class="col-2"></div>
+				<div class="col-10" style="border: none;">
+					<ul class="nav nav-tabs bg-dark">
+						<li class="nav-item">
+							<a class="nav-link" href="about.html">팀 소개</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="board.html">고객센터</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- End navtap Section -->
+			<div class="container relative">
+				<div class="row mb-1">
+					<div class="col-lg-2"></div>
+					<div class="col-lg-2">
+						<div class="row links-wrap">
+							<div class="mt-3 footer-logo-wrap">
+								<a href="#" class="footer-logo">The Monday<span>.</span></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-8">
+						<div class="row links-wrap">
+							<div class="col-8">
+								<p class="">상호명 : 이젠 가구  /  대표 : 이승준  /  전화 : 1111-1111  /  팩스 : 063-111-1111 <br> 주소 : 전북 전주시 덕진구  /  사업자등록번호 : 000-00-00000<br>통신판매업신고 : 2025-ㅁㅁㅁㅁ-1111  / 메일 : ezenDteam@gmail.com</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-2"></div>
+					<div class="col-lg-4">
+						<ul class="list-unstyled custom-social">
+								<li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
+								<li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li>
+								<li><a href="#"><span class="fa fa-brands fa-instagram"></span></a></li>
+								<li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="copyright">
+					<div class="row ">
+						<div class="col-lg-2"></div>
+						<div class="col-lg-6">
+							<p class="mb-2 text-center text-lg-start">&copy;
+								<script>document.write(new Date().getFullYear());</script>. 
+								 이젠 가구 Co. all rights reserved.
+								<!-- License information: https://untree.co/license/ -->
+            				</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- End Footer Section -->	
+
+
+		<script src="../../js/bootstrap.bundle.min.js"></script>
+		<script src="../../js/tiny-slider.js"></script>
+		<script src="../../js/custom.js"></script>
+	</body>
+
+</html>

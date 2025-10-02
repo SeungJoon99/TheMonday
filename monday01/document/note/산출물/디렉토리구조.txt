@@ -1,0 +1,26 @@
+main
+ ㄴ admin
+    ㄴinsert
+    ㄴlist
+    ㄴsales
+    ㄴupdate
+
+ ㄴ help
+    ㄴboard
+    ㄴboard_detail
+    ㄴboard_update
+    ㄴinquire
+
+ ㄴ member
+    ㄴcart
+    ㄴmypage
+    ㄴmypage_update
+
+ ㄴ nmember
+    ㄴcart
+    ㄴlogin
+    ㄴorder
+
+ ㄴ shop
+   ㄴmain
+   ㄴ상품들 
