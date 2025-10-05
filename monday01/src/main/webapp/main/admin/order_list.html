@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Untree.co">
+	<link rel="shortcut icon" href="../favicon.png">
+
+	<meta name="description" content="" />
+	<meta name="keywords" content="bootstrap, bootstrap4" />
+
+	<!-- Bootstrap CSS -->
+	<link href="../../css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+	<link href="../../css/tiny-slider.css" rel="stylesheet">
+	<link href="../../css/style.css" rel="stylesheet">
+    <title>관리자페이지 - 상품조회 </title>
+</head>
+<body>
+    <!-- Hero -->
+    <div class="hero" style="padding: 0px;">
+      <a class="navbar-brand" href="../index.html">The Monday<span>.</span></a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+      <!-- Start navtap Section -->
+      <div class="container">
+        <ul class="nav nav-tabs bg-dark" style="border: none;">
+          <li class="nav-item">
+            <a class="nav-link text-light" href="./list.html">상품 조회</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="./sales.html">매출 조회</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="./insert.html">상품 등록</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="./update.html">상품 수정</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-black" aria-current="page" href="./order_list.html">주문 내역</a>
+          </li>
+          <li class="ms-auto">
+            <select>
+              <option>상품명</option>
+              <option>카테고리</option>
+            </select>
+            <input type="text" placeholder="상품을 검색하세요" style="height: 100%;">
+            <button type="button">검색하기</button>
+          </li>
+        </ul>
+      </div>
+      <!-- End navtap Section -->
+    </div>
+    <!-- End Hero -->
+
+    <div class="container">
+      <div class="row pb-5 box">
+        <table class="table table-hover table-bordered border-dark" style="text-align: right; padding: 0;">
+          <thead>
+            <tr>
+              <th style="width: 6%; text-align: center;">번호</th>
+              <th style="width: 2%; text-align: center;">이미지</th>
+              <th style="width: 8%; text-align: center;">일시</th>
+              <th style="width: 10%; text-align: center;">수량</th>
+              <th style="width: 5%; text-align: center;">금액</th>
+              <th style="width: 8%; text-align: center;">주문상태</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr onclick="window.location.open= popup()" target = "_blank">
+              <th scope="row">1</th>
+              <td><img src="../favicon.png" alt="상품이미지"></a></td>
+              <td>2025.10.14</td>
+              <td>10</td>
+              <td>58000</td>
+              <td>주문중</td>
+            </tr>
+            <tr onclick="window.location.href='index.html'">
+              <th scope="row">2</th>
+              <td><a href="../shop/chair_green.html"><img src="../favicon.png" alt="상품이미지"></a></td>
+              <td>2025.10.14</td>
+              <td>10</td>
+              <td>70000</td>
+              <td>주문중</td>
+            </tr>
+            <tr onclick="window.location.href='index.html'">
+              <th scope="row">3</th>
+              <td><a href="../shop/chair_green.html"><img src="../favicon.png" alt="상품이미지"></a></td>
+              <td>2025.10.14</td>
+              <td>10</td>
+              <td>90000</td>
+              <td>주문중</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script>
+        function popup(){
+            var url = "order_set.html";
+            var name = "order";
+            var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+            window.open(url, name, option);
+        }
+    </script>
+</body>
+</html>
