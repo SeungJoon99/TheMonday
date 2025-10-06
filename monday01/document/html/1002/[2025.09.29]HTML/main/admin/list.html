@@ -45,6 +45,9 @@
           <li class="nav-item">
             <a class="nav-link text-light" href="./update.html">상품 수정</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" aria-current="page" href="./order_list.html">주문 관리</a>
+          </li>
           <li class="ms-auto">
             <select>
               <option>상품명</option>
@@ -64,18 +67,20 @@
         <table class="table table-hover table-bordered border-dark" style="text-align: right; padding: 0;">
           <thead>
             <tr>
-              <th style="width: 6%; text-align: center;">상품번호</th>
+              <th style="width: 3%; text-align: center;"><input type="checkbox"></th>
+              <th style="width: 4%; text-align: center;">상품번호</th>
               <th style="width: 2%; text-align: center;">이미지</th>
               <th style="width: 8%; text-align: center;">상품명</th>
               <th style="width: 10%; text-align: center;">가격</th>
               <th style="width: 5%; text-align: center;">카테고리</th>
               <th style="width: 8%; text-align: center;">등록일</th>
-              <th style="width: 12%; text-align: center;">진열여부</th>
+              <th style="width: 6%; text-align: center;">진열여부</th>
               <th style="width: 10%; text-align: center;"></th>
             </tr>
           </thead>
           <tbody>
             <tr onclick="boardView()">
+              <th><input type="checkbox"></th>
               <th scope="row">1</th>
               <td><a href="../shop/chair_green.html"><img src="../favicon.png" alt="상품이미지"></a></td>
               <td>사과</td>
@@ -84,8 +89,7 @@
               <td>2025-09-29</td>
               <td>
                 <div style="font-size: 20px;">
-                  <label>진열 중<input type="radio" checked name="display1"></label>&nbsp;
-                  <label>진열 중지<input type="radio" name="display1"> </label>
+                  <span>진열 중</span>
                 </div>
               </td>
               <td>
@@ -94,6 +98,7 @@
               </td>
             </tr>
             <tr onclick="boardView()">
+              <th><input type="checkbox"></th>
               <th scope="row">2</th>
               <td><a href="../shop/chair_green.html"><img src="../favicon.png" alt="상품이미지"></a></td>
               <td>바나나</td>
@@ -102,8 +107,7 @@
               <td>2025-09-29</td>
               <td>
                 <div style="font-size: 20px;">
-                  <label>진열 중<input type="radio" checked name="display2"></label>&nbsp;
-                  <label>진열 중지<input type="radio" name="display2"> </label>
+                  <span>진열 중</span>
                 </div>
               </td>
               <td>
@@ -112,6 +116,7 @@
               </td>
             </tr>
             <tr>
+              <th><input type="checkbox"></th>
               <th scope="row">3</th>
               <td><a href="../shop/chair_green.html"><img src="../favicon.png" alt="상품이미지"></a></td>
               <td>참새</td>
@@ -120,8 +125,7 @@
               <td>2025-09-29</td>
               <td>
                 <div style="font-size: 20px;">
-                  <label>진열 중<input type="radio" checked name="display3"></label>&nbsp;
-                  <label>진열 중지<input type="radio" name="display3"> </label>
+                  <span>진열 중</span>
                 </div>
               </td>
               <td>
@@ -130,6 +134,7 @@
               </td>
             </tr>
             <tr>
+              <th><input type="checkbox"></th>
               <th scope="row">4</th>
               <td><a href="../shop/chair_green.html"><img src="../favicon.png" alt="상품이미지"></a></td>
               <td>까마귀</td>
@@ -138,8 +143,7 @@
               <td>2025-09-29</td>
               <td>
                 <div style="font-size: 20px;">
-                  <label>진열 중<input type="radio" checked name="display4"></label>&nbsp;
-                  <label>진열 중지<input type="radio" name="display4"> </label>
+                  <span>진열 중</span>
                 </div>
               </td>
               <td>
@@ -148,6 +152,7 @@
               </td>
             </tr>
             <tr>
+              <th><input type="checkbox"></th>
               <th scope="row">5</th>
               <td><a href="../shop/chair_green.html"><img src="../favicon.png" alt="상품이미지"></a></td>
               <td>코끼리</td>
@@ -156,8 +161,7 @@
               <td>2025-09-29</td>
               <td>
                 <div style="font-size: 20px;">
-                  <label>진열 중<input type="radio" checked name="display5"></label>&nbsp;
-                  <label>진열 중지<input type="radio" name="display5"> </label>
+                  <span>진열 중지</span>
                 </div>
               </td>
               <td>
@@ -166,6 +170,7 @@
               </td>
             </tr>
             <tr>
+              <th><input type="checkbox"></th>
               <th scope="row">6</th>
               <td><a href="../shop/chair_green.html"><img src="../favicon.png" alt="상품이미지"></a></td>
               <td>코끼리</td>
@@ -174,8 +179,7 @@
               <td>2025-09-29</td>
               <td>
                 <div style="font-size: 20px;">
-                  <label>진열 중<input type="radio" checked name="display6"></label>&nbsp;
-                  <label>진열 중지<input type="radio" name="display6"> </label>
+                  <span>진열 중지</span>
                 </div>
               </td>
               <td>
@@ -184,6 +188,7 @@
               </td>
             </tr>
             <tr>
+              <th><input type="checkbox"></th>
               <th scope="row">7</th>
               <td><a href="../shop/chair_green.html"><img src="../favicon.png" alt="상품이미지"></a></td>
               <td>코끼리</td>
@@ -192,8 +197,7 @@
               <td>2025-09-29</td>
               <td>
                 <div style="font-size: 20px;">
-                  <label>진열 중<input type="radio" checked name="display7"></label>&nbsp;
-                  <label>진열 중지<input type="radio" name="display7"> </label>
+                  <span>진열 중지</span>
                 </div>
               </td>
               <td>
@@ -202,6 +206,7 @@
               </td>
             </tr>
             <tr>
+              <th><input type="checkbox"></th>
               <th scope="row">8</th>
               <td><a href="../shop/chair_green.html"><img src="../favicon.png" alt="상품이미지"></a></td>
               <td>코끼리</td>
@@ -210,8 +215,7 @@
               <td>2025-09-29</td>
               <td>
                 <div style="font-size: 20px;">
-                  <label>진열 중<input type="radio" checked name="display8"></label>&nbsp;
-                  <label>진열 중지<input type="radio" name="display8"> </label>
+                  <span>진열 중지</span>
                 </div>
               </td>
               <td>
@@ -220,6 +224,7 @@
               </td>
             </tr>
             <tr>
+              <th><input type="checkbox"></th>
               <th scope="row">9</th>
               <td><a href="../shop/chair_green.html"><img src="../favicon.png" alt="상품이미지"></a></td>
               <td>코끼리</td>
@@ -228,8 +233,7 @@
               <td>2025-09-29</td>
               <td>
                 <div style="font-size: 20px;">
-                  <label>진열 중<input type="radio" checked name="display9"></label>&nbsp;
-                  <label>진열 중지<input type="radio" name="display9"> </label>
+                  <span>진열 중지</span>
                 </div>
               </td>
               <td>
@@ -239,6 +243,10 @@
             </tr>
           </tbody>
         </table>
+        <div class="d-flex justify-content-end">
+          <button type="button" onclick="">일괄진열</button>&nbsp;
+          <button type="button" onclick="">진열중지</button>
+        </div>
       </div>
     </div>
   </body>

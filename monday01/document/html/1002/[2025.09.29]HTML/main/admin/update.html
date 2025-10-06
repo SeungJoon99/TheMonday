@@ -39,6 +39,10 @@
           <li class="nav-item">
             <a class="nav-link active text-black" href="./update.html">상품 수정</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" aria-current="page" href="./order_list.html">주문 관리</a>
+          </li>
+		      <li class="ms-auto">
       </div>
       <!-- End navtap Section -->
     </div>
@@ -46,7 +50,7 @@
     <div class="container">
       <div class="row pb-5">
         <form>
-          <div class="input-group mb-3">
+          <div class="input-group mt-3 mb-3">
             <span class="input-group-text" id="basic-addon1">상품이름</span>
             <input type="text" class="form-control" value="사과" aria-label="Username" aria-describedby="basic-addon1">
           </div>
@@ -65,19 +69,42 @@
               <option>옷장</option>
             </select>
           </div>
-          <div class="input-group">
+
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">색상</span>
+            <select>
+              <option>색상을 선택하세요</option>
+              <option selected>검정색</option>
+              <option>흰색</option>
+              <option>아이보리색</option>
+            </select>
+          </div>
+
+          <div class="input-group mb-3 form-check" style="padding-left: 0px;">
+            <span class="input-group-text" id="basic-addon1">사이즈</span>
+            <select>
+              <option>사이즈를 선택하세요</option>
+              <option selected>3인용</option>
+              <option>4인용</option>
+              <option>5인용</option>
+            </select>
+          </div>
+
+          <div class="input-group mb-3">
             <span class="input-group-text">진열 여부</span>
             <label>진열 중<input type="radio" checked name="display"></label>&nbsp;
             <label>진열 중지<input type="radio" name="display"> </label>
           </div>
-          <div class="input-group">
+          <div class="input-group mb-3">
             <span class="input-group-text">상품설명</span>
             <textarea class="form-control" aria-label="With textarea"></textarea>
           </div>
-          <div class="input-group">
+          <div class="input-group mb-3">
             <span class="input-group-text">사진 첨부하기</span>
             <input type="file" accept="image/*" class="form-control" style="height: 100%;">
           </div>
+          
+          <button type="button" class="btn btn-primary">수정완료</button>
         </form>
       </div>
     </div>
