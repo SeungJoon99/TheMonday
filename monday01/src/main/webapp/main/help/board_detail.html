@@ -144,16 +144,24 @@
         <script>
           function update()
           {
-            document.getElementById("b_title").innerHTML = "<input type='text' value='사이즈를 잘못 시켰어요'> ";
-            document.getElementById("b_note").innerHTML = "<textarea>주문할 때 사이즈를 잘못 선택했는데 교환이 가능한가요 방법을 알려주시면 감사하겠습니다.</textarea>";
+            document.getElementById("b_title").innerHTML = "<input type='text' class='form-control' value='사이즈를 잘못 시켰어요'> ";
+            document.getElementById("b_note").innerHTML = "<textarea class='form-control' rows='10'>주문할 때 사이즈를 잘못 선택했는데 교환이 가능한가요 방법을 알려주시면 감사하겠습니다.</textarea>";
             document.getElementById("btn-update").innerText = "수정완료";
           }
         </script>
         <button class="btn-remove" onclick="remove()">삭제
         </button>
         <button class="btn-list" onclick="location.href='./board.html'">목록</button><br><br>
-        <input type="text">
+        <textarea class='form-control' rows='10'></textarea>
         <button type="button">관리자 답변 등록</button>
+
+        <table border="1" style="width:100%;">
+          <tr>
+            <td width="110px">The Monday.</td>
+            <td style="text-align: left;"><span>관리자의 답변입니다. 관리자의 답변입니다. 관리자의 답변입니다. 관리자의 답변입니다. 관리자의 답변입니다. 관리자의 답변입니다. </span></td>
+            <td width="110px">25.10.09</td>
+          </tr>
+        </table>
       </div> 
     </div>
 
