@@ -192,7 +192,6 @@
           <!-- chart.js -->
           <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
           <script>
-            let money = '매출';
             const ctx = document.getElementById('salesChart').getContext('2d');
 
             // 초기 데이터 (월별)
@@ -228,7 +227,9 @@
 
             // 버튼에 이벤트 추가
             document.getElementById('monthlyBtn').addEventListener('click', function() {
+              //입력받은 연도
               money = document.getElementById('month').value;
+              //월별매출에서 입력받은 연도 무결성 검사
               if( money < minY || money > maxY || money == null || money == "" )
               {
                 alert("연도는 2025년부터 2100년까지만 조회 가능합니다.");
@@ -243,6 +244,7 @@
             document.getElementById('weeklyBtn').addEventListener('click', function() {
               money = document.getElementById('weekend').value;
               money = money.replace('-', '년 ');
+              //주간매출에서 입력받은 연도 무결성 검사
               if( money == null || money == "" )
               {
                 alert("연도와 월을 지정해주세요");
