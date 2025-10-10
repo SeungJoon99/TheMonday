@@ -24,10 +24,10 @@
   <body>
     <!-- Hero -->
     <div class="hero" style="padding: 0px;">
-      <a class="navbar-brand" href="../index.html">The Monday<span>.</span></a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
+      	<a class="navbar-brand" href="../index.html">The Monday<span>.</span></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
       <!-- Start navtap Section -->
       <div class="container">
 
@@ -241,18 +241,48 @@
               salesChart.update();
             });
 
-            document.getElementById('weeklyBtn').addEventListener('click', function() {
-              money = document.getElementById('weekend').value;
-              money = money.replace('-', '년 ');
-              //주간매출에서 입력받은 연도 무결성 검사
-              if( money == null || money == "" )
-              {
+            // "주간매출보기" 버튼 클릭 시
+            document.getElementById('weeklyBtn').addEventListener('click', function () {
+              const selectedMonth = document.getElementById('weekend').value;
+
+              if (!selectedMonth) {
                 alert("연도와 월을 지정해주세요");
                 return;
               }
+
+              const [year, month] = selectedMonth.split('-').map(Number);
+
+              // 해당 월의 첫 일요일 구하기
+              const startDate = new Date(year, month - 1, 1);
+              while (startDate.getDay() !== 0) {
+                startDate.setDate(startDate.getDate() - 1); // 앞선 일요일로 이동
+              }
+
+              const weeklyLabels = [];
+              const weeklyData = [];
+
+              const tempDate = new Date(startDate);
+
+              // 다음 달 1일까지 반복
+              while (tempDate.getMonth() <= month - 1 || (tempDate.getMonth() === month && tempDate.getDate() === 1)) 
+              {
+                const weekStart = new Date(tempDate);
+                const weekEnd = new Date(tempDate);
+                weekEnd.setDate(weekStart.getDate() + 6);
+
+                // 주간 범위 라벨 생성
+                const label = `${weekStart.getMonth() + 1}/${weekStart.getDate()}~${weekEnd.getMonth() + 1}/${weekEnd.getDate()}`;
+                weeklyLabels.push(label);
+
+                // 임의 매출 데이터 생성
+                weeklyData.push(Math.floor(Math.random() * (1800 - 800 + 1)) + 800);
+
+                tempDate.setDate(tempDate.getDate() + 7);
+              }
+
               salesChart.data.labels = weeklyLabels;
               salesChart.data.datasets[0].data = weeklyData;
-              salesChart.options.plugins.title.text = money + '월 주간 매출';
+              salesChart.options.plugins.title.text = `${year}년 ${month}월 주간 매출`;
               salesChart.update();
             });
           </script>
