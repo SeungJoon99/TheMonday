@@ -50,17 +50,111 @@
     </div>
     <!-- End Hero -->
     
-    <div class="container">
-        <table class="table table-bordered border-dark text-end">
+    <div class="container"  style="height: 190px; overflow: auto; border: 1px solid black;">
+      <div class="container">
+        <input type="date">부터
+        <input type="date">까지
+        <input type="number" placeholder="상품번호를 입력해주세요.">
+        <select>
+          <option>전체</option>
+          <option>침대</option>
+          <option>매트리스</option>
+          <option>소파</option>
+          <option>다이닝</option>
+          <option>옷장</option>
+        </select>
+        <input type="text" placeholder="상품명을 입력해주세요.">
+        <button type="button">검색</button>
+      </div>
+      <table class="table table-bordered border-dark text-end">
           <thead>
             <tr>
               <th>날짜</th>
+              <th>카테고리</th>
               <th>상품명</th>
               <th>수량</th>
               <th>총 매출</th>
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <td>2025-09-21</td>
+              <td>침대</td>
+              <td>청바지</td>
+              <td>12</td>
+              <td>240,000원</td>
+            </tr>
+            <tr>
+              <td>2025-09-21</td>
+              <td>침대</td>
+              <td>청바지</td>
+              <td>12</td>
+              <td>240,000원</td>
+            </tr>
+            <tr>
+              <td>2025-09-21</td>
+              <td>침대</td>
+              <td>청바지</td>
+              <td>12</td>
+              <td>240,000원</td>
+            </tr>
+            <tr>
+              <td>2025-09-21</td>
+              <td>침대</td>
+              <td>청바지</td>
+              <td>12</td>
+              <td>240,000원</td>
+            </tr>
+            <tr>
+              <td>2025-09-21</td>
+              <td>침대</td>
+              <td>청바지</td>
+              <td>12</td>
+              <td>240,000원</td>
+            </tr>
+            <tr>
+              <td>2025-09-21</td>
+              <td>침대</td>
+              <td>청바지</td>
+              <td>12</td>
+              <td>240,000원</td>
+            </tr>
+            <tr>
+              <td>2025-09-21</td>
+              <td>청바지</td>
+              <td>12</td>
+              <td>240,000원</td>
+            </tr>
+            <tr>
+              <td>2025-09-21</td>
+              <td>청바지</td>
+              <td>12</td>
+              <td>240,000원</td>
+            </tr>
+            <tr>
+              <td>2025-09-21</td>
+              <td>청바지</td>
+              <td>12</td>
+              <td>240,000원</td>
+            </tr>
+            <tr>
+              <td>2025-09-21</td>
+              <td>청바지</td>
+              <td>12</td>
+              <td>240,000원</td>
+            </tr>
+            <tr>
+              <td>2025-09-21</td>
+              <td>청바지</td>
+              <td>12</td>
+              <td>240,000원</td>
+            </tr>
+            <tr>
+              <td>2025-09-21</td>
+              <td>청바지</td>
+              <td>12</td>
+              <td>240,000원</td>
+            </tr>
             <tr>
               <td>2025-09-21</td>
               <td>청바지</td>
@@ -77,18 +171,104 @@
           </tbody>
         </table>
       </div>
-      <div class="container text-center">
-        <div class="row">
-          <!-- 왼쪽: 선 그래프 -->
-          <div class="col-md-6">
-            <span style="font-weight: bold;">월별 매출액</span>
-            <canvas id="chart-container-line" style="width: 100%; height: 300px;"></canvas>
-          </div>
+      <script>
+            // 매출 기록 시작한 연도
+            let minY = 2025;
 
-          <!-- 오른쪽: 막대 그래프 -->
+            // 매출이 기록되는 최대 연도
+            let maxY = 2125;
+            
+      </script>
+      <div class="container text-center" style="margin-top: 20px;">
+        <div class="row">
+          <!-- 왼쪽: 막대 그래프 -->
           <div class="col-md-6">
-            <span style="font-weight: bold;">상품별 매출액</span>
-            <canvas id="chart-container-bar" style="width: 100%; height: 300px;"></canvas>
+            <input type="number" id="month" style="width: 120px;">
+            <button type="button" id="monthlyBtn">월별매출보기</button><br>
+            <input type="month" id="weekend" style="width:120px;">
+            <button type="button" id="weeklyBtn">주간매출보기</button>
+            <canvas id="salesChart" style="width: 100%; height: 400px;"></canvas>
+          </div>
+          <!-- chart.js -->
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          <script>
+            let money = '매출';
+            const ctx = document.getElementById('salesChart').getContext('2d');
+
+            // 초기 데이터 (월별)
+            const monthlyLabels = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월',];
+            const monthlyData = [1200, 1900, 3000, 2500, 2200, 2700, 1500, 3900, 1800, 2400, 3400, 1600];
+
+            const weeklyLabels = ['1주', '2주', '3주', '4주'];
+            const weeklyData = [500, 700, 600, 800];
+
+            // 차트 초기 생성
+            const salesChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: monthlyLabels,
+                datasets: [{
+                  label: '매출',
+                  data: monthlyData,
+                }]
+              },
+              options: {
+                responsive: false,
+                plugins: {
+                  legend: {
+                    display: false
+                  },
+                  title: {
+                    display: true,
+                    text: '월별 매출'
+                  }
+                }
+              }
+            });
+
+            // 버튼에 이벤트 추가
+            document.getElementById('monthlyBtn').addEventListener('click', function() {
+              money = document.getElementById('month').value;
+              if( money < minY || money > maxY || money == null || money == "" )
+              {
+                alert("연도는 2025년부터 2100년까지만 조회 가능합니다.");
+                return;
+              }
+              salesChart.data.labels = monthlyLabels;
+              salesChart.data.datasets[0].data = monthlyData;
+              salesChart.options.plugins.title.text = money + '년 월별 매출';
+              salesChart.update();
+            });
+
+            document.getElementById('weeklyBtn').addEventListener('click', function() {
+              money = document.getElementById('weekend').value;
+              money = money.replace('-', '년 ');
+              if( money == null || money == "" )
+              {
+                alert("연도와 월을 지정해주세요");
+              }
+              salesChart.data.labels = weeklyLabels;
+              salesChart.data.datasets[0].data = weeklyData;
+              salesChart.options.plugins.title.text = money + '월 주간 매출';
+              salesChart.update();
+            });
+          </script>
+
+
+          <!-- 오른쪽: 파이 그래프 -->
+          <div class="col-md-6">
+            
+            <span style="font-weight: bold;">상품별 매출액</span><br>
+            카테고리선택
+            <select id="category">
+              <option value="bed">침대</option>
+              <option value="sofa">소파</option>
+              <option value="closet">옷장</option>
+              <option value="dining">다이닝</option>
+              <option value="mat">매트리스</option>
+            </select>
+            <button type="button" id="pieBtn">선택</button>
+            <canvas id="chart-container-pie" style="width: 100%; height: 400px;"></canvas>
           </div>
         </div>
       </div>
@@ -96,44 +276,30 @@
 
     <!-- Chart.js 스크립트 -->
     <script>
-      //월별 매출 그래프 - 선 그래프
-      const chartEl1 = document.getElementById('chart-container-line').getContext('2d');
-      const barChart1 = new Chart(chartEl1, {
-          type: 'line',
-          data: {
-              labels: ['1월', '2월', '3월', '4월'],
-              datasets: [{
-                  label: '월별 매출액',
-                  borderWidth: 3,
-                  data: [
-                      5000,
-                      6505,
-                      4054,
-                      4984
-                  ]
-              }]
+       //상품별 매출 그래프 - 파이 그래프
+      const chartPie = document.getElementById('chart-container-pie').getContext('2d');
+      const pieChart = new Chart(chartPie, {
+          type: 'pie',
+          data: 
+          {
+            labels: ['사과', '바나나', '참새', '까마귀', '코끼리'],
+            datasets: 
+            [
+              {
+                label: '상품별 매출액',
+                borderWidth: 3,
+                data: [ 504530, 544567, 167850, 467630, 847863 ]
+              }
+            ]
           },
+          options:
+          {
+            responsive: false
+          }
       });
-      
-      //상품별 매출 그래프 - 막대 그래프
-      const chartEl2 = document.getElementById('chart-container-bar').getContext('2d');
-      const barChart2 = new Chart(chartEl2, {
-          type: 'bar',
-          data: {
-              labels: ['사과', '바나나', '참새', '까마귀', '코끼리'],
-              datasets: [{
-                  label: '상품별 매출액',
-                  borderWidth: 3,
-                  data: [
-                      504530,
-                      544567,
-                      167850,
-                      467630,
-                      847863
-                  ]
-              }]
-          },
-      });
+  
+      $("#pieBtn")
+      $("#category").val
     </script>
     <p class='nota-final'>
       문의사항이 있으시다면<strong> Dteam@gmail.com </strong>이쪽으로 문의해주세요
