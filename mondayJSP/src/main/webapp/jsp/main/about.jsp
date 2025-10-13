@@ -1,40 +1,41 @@
-<!DOCTYPE html>
+<!-- /*
+* Bootstrap 5
+* Template Name: Furni
+* Template Author: Untree.co
+* Template URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="author" content="Untree.co">
-    <link rel="shortcut icon" href="../favicon.png">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="author" content="Untree.co">
+		<link rel="shortcut icon" href="./favicon.png">
 
-    <meta name="description" content="" />
-    <meta name="keywords" content="bootstrap, bootstrap4" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="bootstrap, bootstrap4" />
 
-    <!-- Bootstrap CSS -->
-    <link href="../../css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="../../css/tiny-slider.css" rel="stylesheet">
-    <link href="../../css/style.css" rel="stylesheet">
-    <title>회원 마이페이지</title>
+		<!-- Bootstrap CSS -->
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+		<link href="../css/tiny-slider.css" rel="stylesheet">
+		<link href="../css/style.css" rel="stylesheet">
+		<title>팀원소개 </title>
+	</head>
 
-    <style>
-      .mypage{
-        margin-top: 10px;
-      }
-    </style>
-  </head>
-  <body>
-
-    <!-- Start Header/Navigation -->
+	<body>
+		<!-- Start Header/Navigation -->
 		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 			<div class="container">
-				<a class="navbar-brand" href="../index.html">The Monday<span>.</span></a>
+				<a class="navbar-brand" href="./index.html">The Monday<span>.</span></a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
 				<div class="collapse navbar-collapse" id="navbarsFurni">
 					<div class="col-1"></div>
-					<form class="search-box" action="../shop/search.html">
+					<form class="search-box" action="shop/search.html">
 						<input class="form-control" type="search" placeholder="Search" aria-label="Search">
 						<button class="btn" type="submit">
 							<i class="fas fa-search"></i>
@@ -42,12 +43,10 @@
 					</form>
           
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-						<li class="active" aria-current="page" >
-							<a class="nav-link" href="./mypage.html">[홍길동]님</a>
-						</li>
-						<li><a class="nav-link" href="../shop/main.html">상품 보기</a></li>
-						<li><a class="nav-link" href="../login.html">로그인</a></li>
-						<li><a class="nav-link" href="./cart.html">장바구니</a></li>
+						<li><a class="nav-link" href="./member/mypage.html">[홍길동]님</a></li>
+						<li><a class="nav-link" href="./shop/main.html">상품 보기</a></li>
+						<li><a class="nav-link" href="./login.html">로그인</a></li>
+						<li><a class="nav-link" href="./member/cart.html">장바구니</a></li>
 					</ul>
 				</div>
 			</div>
@@ -63,8 +62,7 @@
 					</div>
 				</div>
 			</div>
-
-			<!-- Start navtap Section -->
+		<!-- Start navtap Section -->
 			<div class="row bg-dark" style="border: none;">
 				<div class="col-2"></div>
 				<ul class="col-8 nav nav-tabs bg-dark">
@@ -89,73 +87,67 @@
 		</div>
 		<!-- End Hero -->
 
-    <!-- 회원정보 -->
-    <div class="container mypage">
-		<h2>회원 정보</h2>
-		<table class="table table-secondary table-striped-columns table-bordered">
-			<tbody>
-			<tr>
-				<td>이름</td>
-				<td>홍길동</td>
-			</tr>
-			<tr>
-				<td>닉네임</td>
-				<td>닉네에임</td>
-			</tr>
-			<tr>
-				<td>이메일</td>
-				<td>hong@example.com</td>
-			</tr>
-			<tr>
-				<td>전화번호</td>
-				<td>010-1234-5678</td>
-			</tr>
-			<tr>
-				<td>주소</td>
-				<td>서울특별시 강남구 역삼동</td>
-			</tr>
-			</tbody>
-		</table>
-	<button type="button" class="btn btn-primary btn-sm" onclick="window.location = './mypage_update.html'">정보 수정</button>
-      
-    </div>
-    <!-- 주문내역 -->
-    <div class="container mypage mb-5">
-      <h2>최근 주문 내역</h2>
-      <input type="date">
-      <button type="button">검색</button>
-      <table class="table table-secondary table-striped-columns">
-        <thead class="table-dark">
-          <tr>
-            <th>주문번호</th>
-            <th>이미지</th>
-            <th>상품요약</th>
-            <th>총금액</th>
-            <th>주문일자</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr onclick = "window.location.open= popup()" target = "_blank">
-			<td>20230922001</td>
-			<td><img src="../favicon.png"></td>
-			<td>사과 외 4개</td>
-			<td>450,000원</td>
-			<td>2025-09-29</td>
-		  </tr>
-		  <script>
-		        function popup(){
-		            var url = "order_detail.html";
-		            var name = "order_detail";
-		            var option = "width = 800, height = 600, top = 100, left = 200, location = no"
-		            window.open(url, name, option);
-		        }
-    	</script>
-		</tbody>
-      </table>
-      <button type="button" class="btn btn-sm" style="background-color: red; border: none;">회원 탈퇴</button>
-    </div>
+		
 
-    <!-- Start Footer Section -->
+		<!-- Start Team Section -->
+		<div class="untree_co-section">
+			<div class="container">
+				<div class="row mb-5">
+					<div class="col-lg-5 mx-auto text-center">
+						<h2 class="section-title">D팀</h2>
+					</div>
+				</div>
+				<div class="row justify-content-between">
+					<div class="col-lg-5">
+						<p class="mb-4">
+							이젠 IT 학원 1차 팀 프로젝트<br>
+							주제 : 스프링 및 차트 라이브러리를 활용한 통계기반 이커머스 웹 서비스
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					
+					<!-- Start Column 1 -->
+					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+						<h3>이승준</h3>
+						<span class="d-block position mb-4">팀장, PM</span>
+						<p>프로젝트 총괄, 업무 분배, 문서 작성, 발표 </p>
+					</div>
+					<!-- End Column 1 -->
+
+					<!-- Start Column 2 -->
+					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+						
+						<h3>최연흠</h3>
+						<span class="d-block position mb-4">팀원, PL</span>
+						<p>기획, DB 설계, 화면 설계 및 편집</p>
+					</div> 
+					<!-- End Column 2 -->
+
+					<!-- Start Column 3 -->
+					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+						
+						<h3>심명보</h3>
+						<span class="d-block position mb-4">팀원, PG</span>
+						<p>프로토타이핑, 문서 작성, 디자인</p>
+					</div> 
+					<!-- End Column 3 -->
+
+					<!-- Start Column 4 -->
+					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+						
+						<h3>유재욱</h3>
+						<span class="d-block position mb-4">팀원, PG</span>
+						<p>화면 초안 및 편집, 프로토타이핑,  DB 설계</p>
+					</div> 
+					<!-- End Column 4 -->
+				</div>
+			</div>
+		</div>
+		<!-- End Team Section -->
+		
+		
+		<!-- Start Footer Section -->
 		<footer class="footer-section">
 			<!-- Start navtap Section -->
 			<div class="row bg-dark">
@@ -163,15 +155,16 @@
 				<div class="col-10" style="border: none;">
 					<ul class="nav nav-tabs bg-dark">
 						<li class="nav-item">
-							<a class="nav-link" href="../about.html">팀 소개</a>
+							<a class="nav-link active" aria-current="page" href="about.html">팀 소개</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="../help/board.html">고객센터</a>
+							<a class="nav-link" href="help/board.html">고객센터</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 			<!-- End navtap Section -->
+
 			<div class="container relative">
 				<div class="row mb-1">
 					<div class="col-lg-2"></div>
@@ -195,7 +188,7 @@
 								<li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
 								<li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li>
 								<li><a href="#"><span class="fa fa-brands fa-instagram"></span></a></li>
-								<li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li>
+								<li><a href="#"><span class="fa fa-brands fa-youtube"></span></a></li>
 						</ul>
 					</div>
 				</div>
@@ -212,10 +205,12 @@
 						</div>
 					</div>
 				</div>
-				
 			</div>
 		</footer>
 		<!-- End Footer Section -->	
 
-  </body>
+		<script src="../js/bootstrap.bundle.min.js"></script>
+		<script src="../js/tiny-slider.js"></script>
+		<script src="../js/custom.js"></script>
+	</body>
 </html>
