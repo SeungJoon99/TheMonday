@@ -135,13 +135,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr onclick = "window.location.open= popup()" target = "_blank">
 			<td>20230922001</td>
 			<td><img src="../favicon.png"></td>
 			<td>사과 외 4개</td>
 			<td>450,000원</td>
 			<td>2025-09-29</td>
 		  </tr>
+		  <script>
+		        function popup(){
+		            var url = "order_detail.html";
+		            var name = "order_detail";
+		            var option = "width = 600, height = 500, top = 100, left = 200, location = no"
+		            window.open(url, name, option);
+		        }
+    	</script>
 		</tbody>
       </table>
       <button type="button" class="btn btn-sm" style="background-color: red; border: none;">회원 탈퇴</button>
