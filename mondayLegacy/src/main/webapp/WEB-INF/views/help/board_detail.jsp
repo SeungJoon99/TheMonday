@@ -1,0 +1,45 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="./include/header.jsp" %>
+
+<div class="post-view">
+  <div class="post-title" id="b_title">사이즈를 잘못 시켰어요</div>
+  <div class="post-meta">작성자: 이승준 | 작성일: 2025-09-25</div>
+  <div class="post-content" id="b_note">
+    주문할 때 사이즈를 잘못 선택했는데 교환이 가능한가요?<br>
+    방법을 알려주시면 감사하겠습니다.
+  </div>
+
+  <div class="post-buttons">
+    <!-- 수정 버튼은 관리자만 누를 수 있게 바꿔야 합니다. -->
+    <button class="btn-edit" id="btn-update" onclick="update()">수정</button>
+    <script>
+      function update() {
+        document.getElementById("b_title").innerHTML = "<input type='text' class='form-control' value='사이즈를 잘못 시켜요'>";
+        document.getElementById("b_note").innerHTML = "<textarea class='form-control' rows='10'>주문할 때 사이즈를 잘못 선택했는데 교환이 가능한가요? 방법을 알려주시면 감사하겠습니다.</textarea>";
+        document.getElementById("btn-update").innerText = "수정완료";
+      }
+    </script>
+
+    <button class="btn-remove" onclick="remove()">삭제</button>
+    <button class="btn-list" onclick="location.href='./board.jsp'">목록</button><br><br>
+
+    <textarea class='form-control' rows='10' placeholder="관리자 답변을 입력하세요"></textarea>
+    <button type="button">관리자 답변 등록</button>
+
+    <table border="1" style="width:100%; margin-top: 20px;">
+      <tr>
+        <td width="110px"><strong>The Monday.</strong></td>
+        <td style="text-align: left;">
+          <span>
+            관리자의 답변입니다. 관리자의 답변입니다. 관리자의 답변입니다.
+            관리자의 답변입니다. 관리자의 답변입니다. 관리자의 답변입니다.
+          </span>
+        </td>
+        <td width="110px">25.10.09</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<%@ include file="./include/footer.jsp" %>
