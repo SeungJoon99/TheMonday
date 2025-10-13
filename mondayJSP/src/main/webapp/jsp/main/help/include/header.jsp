@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,16 +11,65 @@
   <meta name="description" content="" />
   <meta name="keywords" content="bootstrap, bootstrap4" />
 
-  <!-- Bootstrap CSS -->
-  <link href="../../css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <link href="../../css/tiny-slider.css" rel="stylesheet">
-  <link href="../../css/style.css" rel="stylesheet">
-  <title>The Monday</title>
-</head>
-
-<body>
-  <!-- Start Header/Navigation -->
+		<!-- Bootstrap CSS -->
+		<link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="../../css/tiny-slider.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+    <title>The Monday</title>
+	<style>
+    /* ìì¸ë³´ê¸° ì ì© ì¤íì¼ */
+    .post-view {
+      width: 800px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      font-family: Arial, sans-serif;
+    }
+    .post-view .post-title {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .post-view .post-meta {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .post-view .post-content{
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 200px;
+      margin-bottom: 30px;
+    }
+    .post-view .post-buttons {
+      text-align: right;
+    }
+    .post-view .post-buttons button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 5px;
+    }
+    .post-view .btn-edit {
+      background: #4CAF50;
+      color: #fff;
+    }
+    .post-view .btn-list {
+      background: #555;
+      color: #fff;
+    }
+    .btn-remove{
+      background: red;
+      color: #fff;
+    }
+  </style>
+	</head>
+  <body>
+    <!-- Start Header/Navigation -->
   <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
     <div class="container">
       <a class="navbar-brand" href="../index.jsp">The Monday<span>.</span></a>
