@@ -22,7 +22,7 @@
             <tr onclick="boardView()">
               <th><input type="checkbox"></th>
               <th scope="row">1</th>
-              <td><a href="../shop/chair_green.jsp"><img src="resources/images/favicon.png" alt="상품이미지"></a></td>
+              <td><a href="shop/product_detail"><img src="resources/images/favicon.png" alt="상품이미지"></a></td>
               <td>사과</td>
               <td>10000</td>
               <td>사과</td>
@@ -33,14 +33,14 @@
                 </div>
               </td>
               <td>
-                <a href="./update.jsp"><button type="button">수정하기</button></a>
+                <a href="admin/update"><button type="button">수정하기</button></a>
                 <button type="button">삭제하기</button>
               </td>
             </tr>
             <tr onclick="boardView()">
               <th><input type="checkbox"></th>
               <th scope="row">2</th>
-              <td><a href="../shop/chair_green.jsp"><img src="resources/images/favicon.png" alt="상품이미지"></a></td>
+              <td><a href="shop/product_detail"><img src="resources/images/favicon.png" alt="상품이미지"></a></td>
               <td>딸기</td>
               <td>23100</td>
               <td>딸기</td>
@@ -51,14 +51,14 @@
                 </div>
               </td>
               <td>
-                <a href="./update.jsp"><button type="button">수정하기</button></a>
+                <a href="admin/update"><button type="button">수정하기</button></a>
                 <button type="button">삭제하기</button>
               </td>
             </tr>
             <tr>
               <th><input type="checkbox"></th>
               <th scope="row">3</th>
-              <td><a href="../shop/chair_green.jsp"><img src="resources/images/favicon.png" alt="상품이미지"></a></td>
+              <td><a href="shop/product_detail"><img src="resources/images/favicon.png" alt="상품이미지"></a></td>
               <td>귤</td>
               <td>4500</td>
               <td>포도</td>
@@ -69,14 +69,14 @@
                 </div>
               </td>
               <td>
-                <a href="./update.jsp"><button type="button">수정하기</button></a>
+                <a href="admin/update"><button type="button">수정하기</button></a>
                 <button type="button">삭제하기</button>
               </td>
             </tr>
             <tr>
               <th><input type="checkbox"></th>
               <th scope="row">4</th>
-              <td><a href="../shop/chair_green.jsp"><img src="resources/images/favicon.png" alt="상품이미지"></a></td>
+              <td><a href="shop/product_detail"><img src="resources/images/favicon.png" alt="상품이미지"></a></td>
               <td>복숭아</td>
               <td>45000</td>
               <td>블루베리</td>
@@ -87,14 +87,14 @@
                 </div>
               </td>
               <td>
-                <a href="./update.jsp"><button type="button">수정하기</button></a>
+                <a href="admin/update"><button type="button">수정하기</button></a>
                 <button type="button">삭제하기</button>
               </td>
             </tr>
             <tr>
               <th><input type="checkbox"></th>
               <th scope="row">5</th>
-              <td><a href="../shop/chair_green.jsp"><img src="../favicon.png" alt="상품이미지"></a></td>
+              <td><a href="shop/product_detail"><img src="resources/images/favicon.png" alt="상품이미지"></a></td>
               <td>배</td>
               <td>450000</td>
               <td>두리안</td>
@@ -105,14 +105,14 @@
                 </div>
               </td>
               <td>
-                <a href="./update.jsp"><button type="button">수정하기</button></a>
+                <a href="admin/update"><button type="button">수정하기</button></a>
                 <button type="button">삭제하기</button>
               </td>
             </tr>
             <tr>
               <th><input type="checkbox"></th>
               <th scope="row">6</th>
-              <td><a href="../shop/chair_green.jsp"><img src="resources/images/favicon.png" alt="상품이미지"></a></td>
+              <td><a href="shop/product_detail"><img src="resources/images/favicon.png" alt="상품이미지"></a></td>
               <td>배</td>
               <td>450000</td>
               <td>두리안</td>
@@ -123,14 +123,14 @@
                 </div>
               </td>
               <td>
-                <a href="./update.jsp"><button type="button">수정하기</button></a>
+                <a href="admin/update"><button type="button">수정하기</button></a>
                 <button type="button">삭제하기</button>
               </td>
             </tr>
             <tr>
               <th><input type="checkbox"></th>
               <th scope="row">7</th>
-              <td><a href="../shop/chair_green.jsp"><img src="resources/images/favicon.png" alt="상품이미지"></a></td>
+              <td><a href="shop/product_detail"><img src="resources/images/favicon.png" alt="상품이미지"></a></td>
               <td>배</td>
               <td>450000</td>
               <td>두리안</td>
@@ -141,14 +141,14 @@
                 </div>
               </td>
               <td>
-                <a href="./update.jsp"><button type="button">수정하기</button></a>
+                <a href="admin/update"><button type="button">수정하기</button></a>
                 <button type="button">삭제하기</button>
               </td>
             </tr>
             <tr>
               <th><input type="checkbox"></th>
               <th scope="row">8</th>
-              <td><a href="../shop/chair_green.jsp"><img src="resources/images/favicon.png" alt="상품이미지"></a></td>
+              <td><a href="shop/product_detail"><img src="resources/images/favicon.png" alt="상품이미지"></a></td>
               <td>배</td>
               <td>450000</td>
               <td>두리안</td>
@@ -159,14 +159,14 @@
                 </div>
               </td>
               <td>
-                <a href="./update.jsp"><button type="button">수정하기</button></a>
+                <a href="admin/update"><button type="button">수정하기</button></a>
                 <button type="button">삭제하기</button>
               </td>
             </tr>
             <tr>
               <th><input type="checkbox"></th>
               <th scope="row">9</th>
-              <td><a href="../shop/chair_green.jsp"><img src="../favicon.png" alt="상품이미지"></a></td>
+              <td><a href="shop/product_detail"><img src="resources/images/favicon.png" alt="상품이미지"></a></td>
               <td>배</td>
               <td>450000</td>
               <td>두리안</td>
@@ -177,7 +177,7 @@
                 </div>
               </td>
               <td>
-                <a href="./update.jsp"><button type="button">수정하기</button></a>
+                <a href="admin/update"><button type="button">수정하기</button></a>
                 <button type="button">삭제하기</button>
               </td>
             </tr>

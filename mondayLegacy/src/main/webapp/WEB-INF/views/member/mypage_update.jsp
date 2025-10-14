@@ -8,7 +8,7 @@
       <div class="col-md-6 mb-5 mb-md-0">
         <h2 class="h3 mb-3 text-black">회원 정보 수정</h2>
         <div class="p-3 p-lg-5 border bg-white">
-          <form action="update-profile.do" method="post">
+          <form action="member/mypage_update" method="post">
             <div class="form-group mb-3">
               <label for="nick" class="text-black">닉네임</label>
               <input type="text" class="form-control" id="nick" name="nick" value="닉네임">
@@ -49,7 +49,7 @@
               </div>
             </div>
             <div class="form-group text-end mt-4">
-              <button type="button" class="btn btn-black btn-sm" onclick="window.location = 'mypage.jsp'">정보 수정</button>
+              <button type="button" class="btn btn-black btn-sm" onclick="window.location = 'member/mypage'">정보 수정</button>
             </div>
           </form>
         </div>
@@ -59,7 +59,7 @@
       <div class="col-md-6">
         <h2 class="h3 mb-3 text-black">비밀번호 변경</h2>
         <div class="p-3 p-lg-5 border bg-white">
-          <form action="change-password.do" method="post">
+          <form action="member/change-password" method="post">
             <div class="form-group mb-3">
               <label for="currentPw" class="text-black">현재 비밀번호</label>
               <input type="password" class="form-control" id="currentPw" name="currentPw">
@@ -73,7 +73,7 @@
               <input type="password" class="form-control" id="confirmPw" name="confirmPw">
             </div>
             <div class="form-group text-end mt-4">
-              <button type="button" class="btn btn-black btn-sm" onclick="window.location = './mypage_update.jsp'">비밀번호 변경</button>
+              <button type="button" class="btn btn-black btn-sm" onclick="window.location = 'member/mypage_update'">비밀번호 변경</button>
             </div>
           </form>
         </div>

@@ -22,8 +22,8 @@
             </div>
           </div>
           <div class="mt-3 border p-4 rounded" role="alert">
-            <button type="button" class="btn btn-primary btn-sm" onclick="window.location='index.jsp'">로그인하기</button>&nbsp;&nbsp;
-            아이디가 없으시다면? <a href="signup.jsp">회원가입</a>
+            <button type="button" class="btn btn-primary btn-sm" onclick="window.location='index'">로그인하기</button>&nbsp;&nbsp;
+            아이디가 없으시다면? <a href="member/signup">회원가입</a>
           </div>
         </form>
       </div>

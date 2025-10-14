@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Untree.co">
-    <link rel="shortcut icon" href="../favicon.png">
+    <link rel="shortcut icon" href="resources/images/favicon.png">
 
     <meta name="description" content="" />
     <meta name="keywords" content="bootstrap, bootstrap4" />
@@ -21,7 +21,7 @@
   <body>
     <!-- Hero -->
     <div class="hero" style="padding: 0px;">
-      <a class="navbar-brand" href="../index.jsp">The Monday<span>.</span></a>
+      <a class="navbar-brand" href="index">The Monday<span>.</span></a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -29,19 +29,19 @@
       <div class="container">
         <ul class="nav nav-tabs bg-dark" style="border: none;">
 		  <li class="nav-item">
-		    <a class="nav-link text-light" aria-current="page" href="./list.jsp">상품조회</a>
+		    <a class="nav-link text-light" aria-current="page" href="admin/list">상품조회</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link text-light" href="./sales.jsp">매출조회</a>
+		    <a class="nav-link text-light" href="admin/sales">매출조회</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link text-light" href="./insert.jsp">상품등록</a>
+		    <a class="nav-link text-light" href="admin/insert">상품등록</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link text-light" href="./update.jsp">상품수정</a>
+		    <a class="nav-link text-light" href="admin/update">상품수정</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link text-light" aria-current="page" href="./order_list.jsp">주문관리</a>
+		    <a class="nav-link text-light" aria-current="page" href="admin/order_list">주문관리</a>
 		  </li>
 		</ul>
       </div>

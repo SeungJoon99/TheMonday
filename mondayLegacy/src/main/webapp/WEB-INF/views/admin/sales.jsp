@@ -288,7 +288,7 @@
 		</script>
 		<p class='nota-final'>
 		  문의사항이 있으시면 <strong>Dteam@gmail.com</strong> 으로 문의해 주세요.
-		  <a href='../help/inquire.jsp'>문의 페이지</a>.
+		  <a href='help/inquire'>문의 페이지</a>.
 		</p>
 	</body>
 </html>

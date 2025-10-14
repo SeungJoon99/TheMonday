@@ -1,0 +1,35 @@
+1. table 컬럼 > vo
+1.5 url 설계
+2. contorller
+3. mapper(mybatis)
+4. repository(service, dao)
+화면 > 요청 > 컨트롤러 > dao > mybatis
+화면 < 요청 < 컨트롤러 < dao < mybatis
+
+(기존 service > repository / @service > @repository )
+게시판
+
+쓰기
+get화면
+post처리
+
+조회
+get목록 화면
+get단건 화면
+/list.do?search=일정&type=title&page=2
+
+수정
+get화면
+post처리
+
+삭제
+post처리
+
+
+
+url은 자원에 접근
+
+@pathvariable String id
+
+
+help/include/header.jsp 주석

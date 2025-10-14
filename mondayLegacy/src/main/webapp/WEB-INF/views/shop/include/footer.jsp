@@ -9,10 +9,10 @@
 		<div class="col-10" style="border: none;">
 			<ul class="nav nav-tabs bg-dark">
 				<li class="nav-item">
-					<a class="nav-link" href="../about.jsp">회사 소개</a>
+					<a class="nav-link" href="help/about">회사 소개</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="../help/board.jsp">고객센터</a>
+					<a class="nav-link" href="help/board">고객센터</a>
 				</li>
 			</ul>
 		</div>
@@ -66,8 +66,8 @@
 </footer>
 <!-- End Footer Section -->
 
-<script src="../../js/bootstrap.bundle.min.js"></script>
-<script src="../../js/tiny-slider.js"></script>
-<script src="../../js/custom.js"></script>
+<script src="resources/js/bootstrap.bundle.min.js"></script>
+<script src="resources/js/tiny-slider.js"></script>
+<script src="resources/js/custom.js"></script>
 </body>
 </html>

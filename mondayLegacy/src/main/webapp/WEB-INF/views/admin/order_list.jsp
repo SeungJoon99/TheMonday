@@ -17,7 +17,7 @@
       <tbody>
         <tr onclick="popup()" style="cursor:pointer;">
           <th scope="row">1</th>
-          <td><img src="../favicon.png" alt="상품 이미지"></td>
+          <td><img src="resources/images/favicon.png" alt="상품 이미지"></td>
           <td>2025.10.14</td>
           <td>10</td>
           <td>58,000</td>
@@ -25,7 +25,7 @@
         </tr>
         <tr onclick="popup()" style="cursor:pointer;">
           <th scope="row">2</th>
-          <td><a href="../shop/chair_green.jsp"><img src="../favicon.png" alt="상품 이미지"></a></td>
+          <td><a href="shop/product_detail"><img src="resources/images/favicon.png" alt="상품 이미지"></a></td>
           <td>2025.10.14</td>
           <td>10</td>
           <td>70,000</td>
@@ -33,7 +33,7 @@
         </tr>
         <tr onclick="popup()" style="cursor:pointer;">
           <th scope="row">3</th>
-          <td><a href="../shop/chair_green.jsp"><img src="../favicon.png" alt="상품 이미지"></a></td>
+          <td><a href="shop/product_detail"><img src="resources/images/favicon.png" alt="상품 이미지"></a></td>
           <td>2025.10.14</td>
           <td>10</td>
           <td>90,000</td>
@@ -45,7 +45,7 @@
 </div>
 <script>
     function popup(){
-        var url = "order_set.jsp";
+        var url = "admin/order_set";
         var name = "order";
         var option = "width=600,height=500,top=100,left=200,location=no";
         window.open(url, name, option);

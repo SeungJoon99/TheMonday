@@ -29,7 +29,7 @@
       </tr>
     </tbody>
   </table>
-  <button type="button" class="btn btn-primary btn-sm" onclick="window.location = './mypage_update.jsp'">정보 수정</button>
+  <button type="button" class="btn btn-primary btn-sm" onclick="window.location = 'member/mypage_update'">정보 수정</button>
 </div>
 
 <!-- 배송 주문 내역 -->
@@ -50,14 +50,14 @@
     <tbody>
       <tr onclick="popup()" style="cursor:pointer;">
         <td>20230922001</td>
-        <td><img src="../favicon.png" alt="상품 이미지"></td>
+        <td><img src="resources/images/favicon.png" alt="상품 이미지"></td>
         <td>사과 외 4개</td>
         <td>450,000원</td>
         <td>2025-09-29</td>
       </tr>
       <script>
         function popup() {
-          var url = "order_detail.jsp";
+          var url = "member/order_detail";
           var name = "order_detail";
           var option = "width=800,height=600,top=100,left=200,location=no";
           window.open(url, name, option);

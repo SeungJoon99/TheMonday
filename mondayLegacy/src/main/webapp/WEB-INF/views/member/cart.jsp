@@ -24,11 +24,11 @@
                   <!-- 상품 1 -->
                   <tr>
                     <td class="product-thumbnail">
-                      <img src="../../images/product-1.png" alt="Image" class="img-fluid small-thumb">
+                      <img src="resources/images/product-1.png" alt="Image" class="img-fluid small-thumb">
                     </td>
                     <td class="product-name">
                       <h2 class="h5 text-black">
-                        <a href="../shop/chair_baige.jsp">상품 1</a>
+                        <a href="shop/product_detail">상품 1</a>
                       </h2>
                     </td>
                     <td>10,000원</td>
@@ -46,11 +46,11 @@
                   <!-- 상품 2 -->
                   <tr>
                     <td class="product-thumbnail">
-                      <img src="../../images/product-2.png" alt="Image" class="img-fluid small-thumb">
+                      <img src="resources/images/product-2.png" alt="Image" class="img-fluid small-thumb">
                     </td>
                     <td class="product-name">
                       <h2 class="h5 text-black">
-                        <a href="../shop/chair_kruzo.jsp">상품 2</a>
+                        <a href="shop/product_detail">상품 2</a>
                       </h2>
                     </td>
                     <td>10,000원</td>
@@ -118,7 +118,7 @@
 				<div style="width: 20%; text-align: center;"></div>
 				<div style="width: 30%; text-align: right;">30,000원</div>
 				</div>
-				<button class="btn btn-black btn-lg btn-block w-100 mt-4" onclick="window.location='../thankyou.jsp'">결제하기</button>
+				<button class="btn btn-black btn-lg btn-block w-100 mt-4" onclick="window.location='shop/thankyou'">결제하기</button>
 			</div>
 							
 			</div>

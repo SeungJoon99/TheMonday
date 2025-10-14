@@ -9,7 +9,7 @@
     <div class="row mb-5">
       <div class="col-md-12">
         <div class="border p-4 rounded" role="alert">
-          이미 아이디가 있으신가요? <a href="./login.jsp">이곳</a>에서 로그인하세요.
+          이미 아이디가 있으신가요? <a href="member/login">이곳</a>에서 로그인하세요.
         </div>
       </div>
     </div>
@@ -86,7 +86,7 @@
 
           <!-- 가입 버튼 -->
           <div class="form-group py-3">
-            <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='login.jsp'">회원가입</button>
+            <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='member/login'">회원가입</button>
           </div>
 
         </div>
