@@ -18,7 +18,7 @@
     <link href="resources/css/style.css" rel="stylesheet">
     <title>The Monday</title>
 	<style>
-    /* ìì¸ë³´ê¸° ì ì© ì¤íì¼ */
+    /* 상세보기 전용 스타일 */
     .post-view {
       width: 800px;
       margin: 50px auto;
