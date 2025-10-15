@@ -1,4 +1,4 @@
-package com.ezen.vo;
+package com.ezen.main;
 
 import java.util.Date;
 import java.util.Locale;
@@ -27,7 +27,7 @@ public class HomeController
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String Login() 
 	{
-		return "insert";
+		return "login";
 	}
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String Signup() 
