@@ -2,7 +2,7 @@ package com.ezen.vo;
 /*
  *  작성일 : 2025.10.15
  *  작성자 : 유재욱
- *  기능 : 관리자 답변 테이블 VO
+ *  기능 : 관리자 답변 테이블 VO.
  */
 public class AnswerVO 
 {
