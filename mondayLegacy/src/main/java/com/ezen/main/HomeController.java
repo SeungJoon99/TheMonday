@@ -29,11 +29,7 @@ public class HomeController
 	{
 		return "login";
 	}
-	@RequestMapping(value = "/signup", method = RequestMethod.GET)
-	public String Signup() 
-	{
-		return "signup";
-	}
+	
 	@RequestMapping(value = "/thankyou", method = RequestMethod.GET)
 	public String Thankyou() 
 	{
@@ -45,12 +41,12 @@ public class HomeController
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public String Insert() 
 	{
-		return "insert";
+		return "admin/insert";
 	}
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String List() 
 	{
-		return "list";
+		return "admin/list";
 	}
 	@RequestMapping(value = "/adminlogin", method = RequestMethod.GET)
 	public String AdminLogin() 
@@ -60,22 +56,22 @@ public class HomeController
 	@RequestMapping(value = "/order_list", method = RequestMethod.GET)
 	public String OrderList() 
 	{
-		return "order_list";
+		return "admin/order_list";
 	}
 	@RequestMapping(value = "/order_set", method = RequestMethod.GET)
 	public String OrderSet() 
 	{
-		return "order_set";
+		return "admin/order_set";
 	}
 	@RequestMapping(value = "/sales", method = RequestMethod.GET)
 	public String Sales() 
 	{
-		return "sales";
+		return "admin/sales";
 	}
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public String Update() 
 	{
-		return "update";
+		return "admin/update";
 	}
 	// admin ----------------------------------------------------------
 	
@@ -117,6 +113,11 @@ public class HomeController
 	public String OrderDetail() 
 	{
 		return "member/order_detail";
+	}
+	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+	public String Signup() 
+	{
+		return "signup";
 	}
 	// member ----------------------------------------------------------
 

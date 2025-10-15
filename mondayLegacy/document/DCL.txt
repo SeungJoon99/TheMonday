@@ -1,0 +1,65 @@
+DCL(Data Control Language, 데이터 제어어)
+데이터베이스에서 데이터의 접근을 제어하는  sql명령어의 집합
+
+1. 데이터베이스 유저 생성
+문법
+create user '유저이름'@'접속 가능한 IP' identified by '비밀번호';
+
+1 - 1. test라는 아이디에, ezen비밀번호를 가지고 있는 유저 생성
+	(내 PC에서만 접속가능)
+create user 'test'@'localhost' identified by 'ezen';
+
+1 - 2. test 계정으로 mysql 접속
+mysql -u test -p
+
+
+2. GRANT
+특정 유저에게 권한 부여
+문법
+grant 권한1, 권한2, ... on 데이터베이스 이름.테이블 이름 to '아이디'@'IP';
+
+2 - 1. test유저에게 boarddb데이터베이스의 board테이블에 대해 select 권한 부여
+grant select on boarddb.board to 'test'@'localhost';
+
+권한 바로 반영
+flush privileges;
+
+2 - 2. test유저에게 boarddb데이터베이스의 모든 테이블에 대해 update, delete 권한 부여
+grant update, delete on boarddb.* to 'test'@'localhost';
+
+use information_schema;
+use boraddb; 
+show tables;
+
+2 - 3. test유저에게 모든 데이터베이스의 모든 테이블에 모든 권한 부여
+grant all privileges on *.* to 'test'@'localhost';
+flush privileges;
+
+3. revoke 
+특정 유저의 권한 박탈
+문법
+revoke 권한1, 권한2, ... on 데이터베이스 이름.테이블 이름 from '아이디'@'IP';
+
+3 - 1. test 유저가 가진 모든 권한 박탈
+revoke all privileges on *.* from 'test'@'localhost';
+
+4. 팀프로젝트 유저 생성
+create user 'wook'@'%' identified by 'ezen';
+
+5. 팀프로젝트 데이터베이스 생성
+create database project;
+
+6. 팀프로젝트 테이블 생성
+create table ~
+
+7. 권한부여
+grant all privileges on *.* to 'wook'@'%';
+
+(팀원)
+8. 원격 데이터베이스 연결
+mysql -u root ( -h localhost -P 3306 ) -p
+
+mysql -u wook -h 팀장님 ip -p
+
+8 - 1. 강사 컴퓨터 데이터베이스 연결
+mysql -u kbj -h 192.168.0.62 -p
