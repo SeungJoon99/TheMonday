@@ -1,0 +1,161 @@
+상품테이블(product)
+
+create table product(
+ p_no int not null primary key comment '상품번호',
+ p_parentno int auto_increment comment '부모상품번호',
+ p_price int comment '상품가격',
+ p_info text comment '상품설명',
+ p_name varchar(255) not null comment '상품명',
+ p_wdate datetime default now() comment '등록일',
+ p_img varchar(255) comment '이미지',
+ p_display varchar(255) default 'Y' not null comment '진열여부',
+ p_color varchar(255) comment '색상',
+ p_size int comment '사이즈',
+ p_kind varchar(255) not null comment '카테고리명',
+ p_delyn varchar(255) default 'N' comment '상품삭제여부', 
+ foreign key  (p_parentno) references product (p_no)
+) comment = '상품';
+
+
+--------------------------------------------------------------------------
+장바구니 테이블(cart)
+
+
+create table cart(  
+ p_no int not null comment '상품번호',
+ u_no int not null comment '유저번호',
+ c_wdate datetime default now() not null comment '장바구니등록일',
+ c_qty int not null comment '수량',
+ primary key (p_no, u_no)
+) comment = '장바구니';
+
+
+
+
+--------------------------------------------------------------------------
+
+주문상세 테이블(detail) 
+
+create table detail(
+ o_no int not null  comment '주문번호',
+ p_no int not null comment '상품번호',
+ p_img varchar(255) comment '이미지',
+ p_name varchar(255) comment '상품명',
+ d_option varchar(255) comment '상품옵션',
+ d_qty int comment '수량',
+ d_total int comment '상품별 총가격',
+ primary key (o_no, p_no)
+)  comment = '주문상세';
+
+---------------------------------------------------------------------------
+
+
+주문내역 관리 테이블(manage)
+
+create table manage(
+ o_no int not null comment '주문번호',
+ u_no int not null  comment '유저번호',
+ m_memo text comment '관리자메모',
+ m_state varchar(255) default '주문완료' not null comment '주문상태',
+ primary key (o_no, u_no)
+) comment = '주문내역';
+
+
+
+
+-----------------------------------------------------------------------------
+
+
+유저 테이블(user)
+
+create table user(
+ u_no int not null primary key auto_increment comment '유저번호',
+ u_nick varchar(255) comment '유저 닉네임',
+ u_email varchar(255) not null comment '유저이메일',
+ u_pw varchar(255) not null comment '비밀번호',
+ u_hp varchar(255) not null comment '전화번호',
+ u_type varchar(255) default 'U' comment '유저구분번호',              
+ u_postcode varchar(255) not null comment '우편번호',
+ u_old varchar(255) comment '지번',
+ u_addr varchar(255) comment '도로명주소',
+ u_addr2 varchar(255) comment '상세주소',
+ u_name varchar(255) not null comment '이름',
+ u_delyn varchar(255) default 'N' not null comment '탈퇴여부', 
+ u_wdate datetime default now() comment '등록일',
+ u_update datetime comment '수정일',         
+unique key (u_nick)
+) comment = '유저';
+
+
+-------------------------------------------------------------------------
+
+문의 테이블(help)
+
+create table help(
+ h_no int not null primary key auto_increment comment '게시물번호',
+ u_nick varchar(255) not null comment '유저닉네임',    
+ h_kind varchar(255) not null comment '문의종류',
+ h_wdate datetime default now() comment '작성일',
+ h_note text not null comment '내용',
+ h_title varchar(255) not null comment '제목',
+ h_update datetime comment '수정일' 
+) comment = '문의';
+
+---------------------------------------------------------------------------
+
+주문 테이블(orders)
+
+create table orders(
+ o_no int not null primary key auto_icrement comment '주문번호',
+ u_no int not null auto_increment comment '유저번호',
+ u_hp varchar(255) not null comment '전화번호',
+ u_postcode varchar(255) not null comment '우편번호',
+ u_old varchar(255) comment '지번',
+ u_addr varchar(255) comment '도로명주소',
+ u_addr2 varchar(255) comment '상세주소',
+ o_request varchar(255) comment '요청사항',
+ o_date datetime default now() comment '주문일',
+ o_total int not null comment '총 주문가격',
+ foreign key (u_no) references user (u_no)
+) comment = '주문';
+
+--------------------------------------------------------------------------
+
+관리자 답변(answer)
+
+create table answer(
+ h_no int not null auto_increment comment '게시물번호',
+ u_nick varchar(255) not null comment '유저닉네임',
+ a_text varchar(255) comment '내용',
+ a_wdate datetime default now() comment '작성일',
+ foreign key (h_no) references user (h_no)
+) comment = '관리자답변';
+
+----------------------------------------------------------------------------
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
