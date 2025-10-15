@@ -7,16 +7,16 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="author" content="Untree.co">
-		<link rel="shortcut icon" href="../favicon.png">
+		<link rel="shortcut icon" href="resources/images/favicon.png">
 		
 		<meta name="description" content="" />
 		<meta name="keywords" content="bootstrap, bootstrap4" />
 		
 		<!-- Bootstrap CSS -->
-		<link href="../../css/bootstrap.min.css" rel="stylesheet">
+		<link href="resources/css/bootstrap.min.css" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-		<link href="../../css/tiny-slider.css" rel="stylesheet">
-		<link href="../../css/style.css" rel="stylesheet">
+		<link href="resources/css/tiny-slider.css" rel="stylesheet">
+		<link href="resources/css/style.css" rel="stylesheet">
 		<title>주문 상세내역</title>
 	</head>
 	<body>
@@ -59,7 +59,7 @@
 		        </thead>
 		        <tbody>
 		          	<tr>
-						<td><img src="../favicon.png" alt="사과 이미지"></td>
+						<td><img src="resources/images/favicon.png" alt="사과 이미지"></td>
 						<td>사과</td>
 						<td>레드향, 3입</td>
 						<td>4,000원</td>
@@ -67,7 +67,7 @@
 						<td>16,000원</td>
 					</tr>
 		          	<tr>
-						<td><img src="../favicon.png" alt="감귤 이미지"></td>
+						<td><img src="resources/images/favicon.png" alt="감귤 이미지"></td>
 						<td>감귤</td>
 						<td>레드향, 3입</td>
 						<td>4,000원</td>
@@ -75,7 +75,7 @@
 						<td>16,000원</td>
 					</tr>
 		          	<tr>
-						<td><img src="../favicon.png" alt="배 이미지"></td>
+						<td><img src="resources/images/favicon.png" alt="배 이미지"></td>
 						<td>배</td>
 						<td>레드향, 3입</td>
 						<td>4,000원</td>
@@ -83,7 +83,7 @@
 						<td>16,000원</td>
 					</tr>
 		          	<tr>
-						<td><img src="../favicon.png" alt="키위 이미지"></td>
+						<td><img src="resources/images/favicon.png" alt="키위 이미지"></td>
 						<td>키위</td>
 						<td>레드향, 3입</td>
 						<td>4,000원</td>
@@ -91,7 +91,7 @@
 						<td>16,000원</td>
 					</tr>
 		          	<tr>
-						<td><img src="../favicon.png" alt="귤 이미지"></td>
+						<td><img src="resources/images/favicon.png" alt="귤 이미지"></td>
 						<td>귤</td>
 						<td>레드향, 3입</td>
 						<td>4,000원</td>

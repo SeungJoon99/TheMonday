@@ -3,7 +3,7 @@
 
 <%@ include file="./include/product_header.jsp" %>
       <h1>Nordic Chair (Beige)</h1>
-      <img src="../../images/product-1.png" alt="Nordic Chair Beige">
+      <img src="resources/images/product-1.png" alt="Nordic Chair Beige">
       <p>심플하고 부드러운 디자인의 편안한 의자 제품입니다.</p>
       <form method="post">
         <label for="size">사이즈를 선택하세요:</label>

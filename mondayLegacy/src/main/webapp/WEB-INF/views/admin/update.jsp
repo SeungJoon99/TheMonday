@@ -58,7 +58,7 @@
         <input type="file" accept="image/*" class="form-control" style="height: 100%;">
       </div>
       
-      <button type="button" class="btn btn-primary">등록하기</button>
+      <button type="button" class="btn btn-primary">수정완료</button>
     </form>
   </div>
 </div>

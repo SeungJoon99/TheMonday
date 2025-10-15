@@ -3,11 +3,11 @@
 
 
 <div class="buttons">
-    <a href="#"><button>즉시 구매하기</button></a>
-    <a href="../member/cart.jsp"><button>장바구니</button></a>
+    <a href="member/cart"><button>즉시 구매하기</button></a>
+    <a href="#"><button>장바구니</button></a>
 </div>
 
-<a href="./main.jsp">← 목록으로 돌아가기</a>
+<a href="shop/main">← 목록으로 돌아가기</a>
 </div>
 </body>
 </html>

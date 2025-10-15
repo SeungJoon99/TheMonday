@@ -9,7 +9,7 @@
         <div class="p-3 p-lg-5 border bg-white box-border">
           <h2 class="h3 mb-3 text-black">문의 등록</h2>
 
-          <form action="#" method="post">
+          <form action="#" method="post" onclick="confirm('등록하시겠습니까?')">
 
             <!-- 이메일 -->
             <label class="form-label">이메일</label>
@@ -45,7 +45,7 @@
             </div>
 
             <!-- 제출 버튼 -->
-            <button type="button" class="btn btn-primary btn-sm" onclick="window.location = '../help/board_detail.html'">
+            <button type="button" class="btn btn-primary btn-sm" onclick="window.location = 'help/board_detail'">
               문의 보내기
             </button>
 

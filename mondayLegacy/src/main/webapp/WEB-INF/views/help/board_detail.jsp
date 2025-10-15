@@ -17,12 +17,16 @@
       function update() {
         document.getElementById("b_title").innerHTML = "<input type='text' class='form-control' value='사이즈를 잘못 시켜요'>";
         document.getElementById("b_note").innerHTML = "<textarea class='form-control' rows='10'>주문할 때 사이즈를 잘못 선택했는데 교환이 가능한가요? 방법을 알려주시면 감사하겠습니다.</textarea>";
-        document.getElementById("btn-update").innerText = "수정완료";
+        document.getElementById("btn-update").innerText = "<button type='button' class='btn-edit' onclick='updateok()'>수정완료</button>";
+      }
+      function updateok() {
+        alert("등록되었습니다.");
+        document.location = "help/board_detail";
       }
     </script>
 
     <button class="btn-remove" onclick="remove()">삭제</button>
-    <button class="btn-list" onclick="location.href='./board.jsp'">목록</button><br><br>
+    <button class="btn-list" onclick="location.href='help/board'">목록</button><br><br>
 
     <textarea class='form-control' rows='10' placeholder="관리자 답변을 입력하세요"></textarea>
     <button type="button">관리자 답변 등록</button>
