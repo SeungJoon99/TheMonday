@@ -13,4 +13,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HelpController {
 
+	@RequestMapping(value = "/board_detail", method = RequestMethod.GET)
+	public String BoardDetail() 
+	{
+		return "help/board_detail";
+	}
+	@RequestMapping(value = "/board", method = RequestMethod.GET)
+	public String Board() 
+	{
+		return "help/board";
+	}
+	@RequestMapping(value = "/inquire", method = RequestMethod.GET)
+	public String Inquire() 
+	{
+		return "help/inquire";
+	}
+	@RequestMapping(value = "/about", method = RequestMethod.GET)
+	public String About() 
+	{
+		return "about";
+	}
 }
