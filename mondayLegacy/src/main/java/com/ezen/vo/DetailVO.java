@@ -7,29 +7,53 @@
 package com.ezen.vo;
 
 public class DetailVO {
-    private int    o_no;        //주문번호
-    private int    p_no;        //상품번호
-    private String p_img;       //이미지
-    private String p_name;      //상품명
-    private String d_option;    //상품옵션
-    private int    d_qty;       //수량
-    private int    d_total;     //상품 총 가격
-
-    public int getO_no()        {      return o_no;     }
-    public int getP_no()        {      return p_no;     }
-    public String getP_img()    {      return p_img;    }
-    public String getP_name()   {      return p_name;   }
-    public String getD_option() {      return d_option; }
-    public int getD_qty()       {      return d_qty;    }
-    public int getD_total()     {      return d_total;  }
-
-    public void setO_no(int o_no)		      {    this.o_no     = o_no;     }
-    public void setP_no(int p_no)		      {    this.p_no     = p_no;     }
-    public void setP_img(String p_img)		  {    this.p_img    = p_img;    }
-    public void setP_name(String p_name)	  {    this.p_name   = p_name;   }
-    public void setD_option(String d_option)  {    this.d_option = d_option; }
-    public void setD_qty(int d_qty)		      {    this.d_qty    = d_qty;    }
-    public void setD_total(int d_total)       {    this.d_total  = d_total;  }
-    
-    
+    private int    oNo;        //주문번호
+    private int    pNo;        //상품번호
+    private String pImg;       //이미지
+    private String pName;      //상품명
+    private String dOption;    //상품옵션
+    private int    dQty;       //수량
+    private int    dTotal;     //상품 총 가격
+	public int getoNo() {
+		return oNo;
+	}
+	public void setoNo(int oNo) {
+		this.oNo = oNo;
+	}
+	public int getpNo() {
+		return pNo;
+	}
+	public void setpNo(int pNo) {
+		this.pNo = pNo;
+	}
+	public String getpImg() {
+		return pImg;
+	}
+	public void setpImg(String pImg) {
+		this.pImg = pImg;
+	}
+	public String getpName() {
+		return pName;
+	}
+	public void setpName(String pName) {
+		this.pName = pName;
+	}
+	public String getdOption() {
+		return dOption;
+	}
+	public void setdOption(String dOption) {
+		this.dOption = dOption;
+	}
+	public int getdQty() {
+		return dQty;
+	}
+	public void setdQty(int dQty) {
+		this.dQty = dQty;
+	}
+	public int getdTotal() {
+		return dTotal;
+	}
+	public void setdTotal(int dTotal) {
+		this.dTotal = dTotal;
+	}
 }
