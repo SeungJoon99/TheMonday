@@ -13,4 +13,35 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class MemberController {
 
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String Login() 
+	{
+		return "login";
+	}
+	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+	public String Signup() 
+	{
+		return "signup";
+	}
+	
+	@RequestMapping(value = "/cart", method = RequestMethod.GET)
+	public String Cart() 
+	{
+		return "member/cart";
+	}
+	@RequestMapping(value = "/mypage_update", method = RequestMethod.GET)
+	public String MypageUpdate() 
+	{
+		return "member/mypage_update";
+	}
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+	public String Mypage() 
+	{
+		return "member/mypage";
+	}
+	@RequestMapping(value = "/order_detail", method = RequestMethod.GET)
+	public String OrderDetail() 
+	{
+		return "member/order_detail";
+	}
 }

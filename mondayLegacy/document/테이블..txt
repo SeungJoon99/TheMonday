@@ -1,8 +1,13 @@
 상품테이블(product)
 
 create table product(
+<<<<<<< HEAD
  p_no int not null primary key auto_increment comment '상품번호',
  p_parentno int comment '부모상품번호',
+=======
+ p_no int  primary key auto_increment comment '상품번호',
+ p_parentno int  comment '부모상품번호',
+>>>>>>> branch 'main' of https://github.com/SeungJoon99/TheMonday.git
  p_price int comment '상품가격',
  p_info text comment '상품설명',
  p_name varchar(255) not null comment '상품명',
@@ -106,8 +111,8 @@ create table help(
 주문 테이블(orders)
 
 create table orders(
- o_no int not null primary key auto_icrement comment '주문번호',
- u_no int not null auto_increment comment '유저번호',
+ o_no int not null primary key auto_increment comment '주문번호',
+ u_no int not null comment '유저번호',
  u_hp varchar(255) not null comment '전화번호',
  u_postcode varchar(255) not null comment '우편번호',
  u_old varchar(255) comment '지번',
@@ -124,38 +129,12 @@ create table orders(
 관리자 답변(answer)
 
 create table answer(
- h_no int not null auto_increment comment '게시물번호',
+ h_no int not null  comment '게시물번호',
  u_nick varchar(255) not null comment '유저닉네임',
  a_text varchar(255) comment '내용',
  a_wdate datetime default now() comment '작성일',
- foreign key (h_no) references user (h_no)
+ foreign key (h_no) references help (h_no)
 ) comment = '관리자답변';
 
 ----------------------------------------------------------------------------
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

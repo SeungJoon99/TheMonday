@@ -13,115 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController 
 {
-	// main ----------------------------------------------------------
-	@RequestMapping(value = "/about", method = RequestMethod.GET)
-	public String About() 
-	{
-		return "about";
-	}
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String Index() 
 	{
 		return "index";
 	}
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String Login() 
-	{
-		return "login";
-	}
-	@RequestMapping(value = "/signup", method = RequestMethod.GET)
-	public String Signup() 
-	{
-		return "signup";
-	}
-	@RequestMapping(value = "/thankyou", method = RequestMethod.GET)
-	public String Thankyou() 
-	{
-		return "thankyou";
-	}
-	// main ----------------------------------------------------------
 	
-	// admin ----------------------------------------------------------
-	@RequestMapping(value = "/insert", method = RequestMethod.GET)
-	public String Insert() 
-	{
-		return "admin/insert";
-	}
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String List() 
-	{
-		return "admin/list";
-	}
-	@RequestMapping(value = "/adminlogin", method = RequestMethod.GET)
-	public String AdminLogin() 
-	{
-		return "admin/login";
-	}
-	@RequestMapping(value = "/order_list", method = RequestMethod.GET)
-	public String OrderList() 
-	{
-		return "admin/order_list";
-	}
-	@RequestMapping(value = "/order_set", method = RequestMethod.GET)
-	public String OrderSet() 
-	{
-		return "admin/order_set";
-	}
-	@RequestMapping(value = "/sales", method = RequestMethod.GET)
-	public String Sales() 
-	{
-		return "admin/sales";
-	}
-	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public String Update() 
-	{
-		return "admin/update";
-	}
-	// admin ----------------------------------------------------------
-	
-	// help ----------------------------------------------------------
-	@RequestMapping(value = "/board_detail", method = RequestMethod.GET)
-	public String BoardDetail() 
-	{
-		return "help/board_detail";
-	}
-	@RequestMapping(value = "/board", method = RequestMethod.GET)
-	public String Board() 
-	{
-		return "help/board";
-	}
-	@RequestMapping(value = "/inquire", method = RequestMethod.GET)
-	public String Inquire() 
-	{
-		return "help/inquire";
-	}
-	// help ----------------------------------------------------------
-
-	// member ----------------------------------------------------------
-	@RequestMapping(value = "/cart", method = RequestMethod.GET)
-	public String Cart() 
-	{
-		return "member/cart";
-	}
-	@RequestMapping(value = "/mypage_update", method = RequestMethod.GET)
-	public String MypageUpdate() 
-	{
-		return "member/mypage_update";
-	}
-	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public String Mypage() 
-	{
-		return "member/mypage";
-	}
-	@RequestMapping(value = "/order_detail", method = RequestMethod.GET)
-	public String OrderDetail() 
-	{
-		return "member/order_detail";
-	}
-	@RequestMapping(value = "/signup", method = RequestMethod.GET)
-	public String Signup() 
-	{
-		return "signup";
-	}
-	// member ----------------------------------------------------------
 }
