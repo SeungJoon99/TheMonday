@@ -34,11 +34,7 @@ public class HomeController
 	{
 		return "signup";
 	}
-	@RequestMapping(value = "/thankyou", method = RequestMethod.GET)
-	public String Thankyou() 
-	{
-		return "thankyou";
-	}
+
 	// main ----------------------------------------------------------
 	
 	// admin ----------------------------------------------------------
@@ -119,57 +115,4 @@ public class HomeController
 		return "member/order_detail";
 	}
 	// member ----------------------------------------------------------
-
-	// shop ----------------------------------------------------------
-	@RequestMapping(value = "/bed", method = RequestMethod.GET)
-	public String Bed() 
-	{
-		return "shop/bed";
-	}
-	@RequestMapping(value = "/chair_baige", method = RequestMethod.GET)
-	public String ChairBaige() 
-	{
-		return "shop/chair_baige";
-	}
-	@RequestMapping(value = "/chair_green", method = RequestMethod.GET)
-	public String ChairGreen() 
-	{
-		return "shop/chair_baige";
-	}
-	@RequestMapping(value = "/chair_kruzo", method = RequestMethod.GET)
-	public String ChairKruzo() 
-	{
-		return "shop/chair_baige";
-	}
-	@RequestMapping(value = "/closet", method = RequestMethod.GET)
-	public String Closet() 
-	{
-		return "shop/closet";
-	}
-	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public String Main() 
-	{
-		return "shop/main";
-	}
-	@RequestMapping(value = "/mattress", method = RequestMethod.GET)
-	public String Mattress() 
-	{
-		return "shop/mattress";
-	}
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public String Search() 
-	{
-		return "shop/search";
-	}
-	@RequestMapping(value = "/sofa", method = RequestMethod.GET)
-	public String Sofa() 
-	{
-		return "shop/sofa";
-	}
-	@RequestMapping(value = "/table", method = RequestMethod.GET)
-	public String Table() 
-	{
-		return "shop/table";
-	}
-	// shop ----------------------------------------------------------
 }
