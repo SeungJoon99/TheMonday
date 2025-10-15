@@ -6,17 +6,17 @@ package com.ezen.vo;
  */
 public class ProductVO 
 {
-    private int p_no;         //상품번호
-    private int p_parentno;   //부모상품번호
-    private int p_price;      //가격
-    private String p_info;    //상품설명
-    private String p_name;    //상품명
-    private String p_wdate;   //등록일
-    private String p_display; //진열여부
-    private String p_color;   //색상
-    private String p_size;    //사이즈
-    private String p_kind;    //카테고리명
-    private String p_delyn;   //상품삭제여부
+    private int    p_no;       //상품번호
+    private int    p_parentno; //부모상품번호
+    private int    p_price;    //가격
+    private String p_info;     //상품설명
+    private String p_name;     //상품명
+    private String p_wdate;    //등록일
+    private String p_display;  //진열여부
+    private String p_color;    //색상
+    private String p_size;     //사이즈
+    private String p_kind;     //카테고리명
+    private String p_delyn;    //상품삭제여부
 
     public int    getP_no()       { return p_no;       }
     public int    getP_parentno() { return p_parentno; }

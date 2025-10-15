@@ -3,11 +3,5 @@
  
 <!-- Namespace를 통해 JAVA 클래스와 Annotation클래스와 동기 -->
 <mapper namespace="com.ezen.admin">
-	<!-- 상품등록 -->
-	<insert id="insert" parameterType=""></insert>
 	
-	<!-- 상품목록 조회 -->
-	<select id="list" parameterType=""></select>
-	
-	<!--  -->
 </mapper>

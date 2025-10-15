@@ -1,8 +1,8 @@
 상품테이블(product)
 
 create table product(
- p_no int not null primary key comment '상품번호',
- p_parentno int auto_increment comment '부모상품번호',
+ p_no int not null primary key auto_increment comment '상품번호',
+ p_parentno int comment '부모상품번호',
  p_price int comment '상품가격',
  p_info text comment '상품설명',
  p_name varchar(255) not null comment '상품명',
