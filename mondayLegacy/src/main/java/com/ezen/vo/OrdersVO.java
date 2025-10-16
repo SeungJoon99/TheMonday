@@ -6,38 +6,77 @@ package com.ezen.vo;
  */
 public class OrdersVO 
 {
-    private int    o_no;       //주문번호
-    private int    u_no;       //유저번호
-    private String u_hp;       //전화번호
-    private String u_postcode; //우편번호
-    private String u_old;      //유저지번
-    private String u_addr;     //유저도로명주소
-    private String u_addr2;    //유저상세주소
-    private String o_request;  //요청사항
-    private String o_date;     //주문일
-    private int    o_total;    //총 주문가격
-    
-    public int    getO_no()       { return o_no;       }
-    public int    getU_no()       { return u_no;       }
-    public String getU_hp()       { return u_hp;       }
-    public String getU_postcode() { return u_postcode; }
-    public String getU_old()      { return u_old;      }
-    public String getU_addr()     { return u_addr;     }
-    public String getU_addr2()    { return u_addr2;    }
-    public String getO_request()  { return o_request;  }
-    public String getO_date()     { return o_date;     }
-    public int    getO_total()    { return o_total;    }
-
-    public void setO_no(int o_no)                { this.o_no       = o_no;       }
-    public void setU_no(int u_no)                { this.u_no       = u_no;       }
-    public void setU_hp(String u_hp)             { this.u_hp       = u_hp;       }
-    public void setU_postcode(String u_postcode) { this.u_postcode = u_postcode; }
-    public void setU_old(String u_old)           { this.u_old      = u_old;      }
-    public void setU_addr(String u_addr)         { this.u_addr     = u_addr;     }
-    public void setU_addr2(String u_addr2)       { this.u_addr2    = u_addr2;    }
-    public void setO_request(String o_request)   { this.o_request  = o_request;  }
-    public void setO_date(String o_date)         { this.o_date     = o_date;     }
-    public void setO_total(int o_total)          { this.o_total    = o_total;    }
+    private int    oNo;       //주문번호
+    private int    uNo;       //유저번호
+    private String uHp;       //전화번호
+    private String uPostcode; //우편번호
+    private String uOld;      //유저지번
+    private String uAddr;     //유저도로명주소
+    private String uAddr2;    //유저상세주소
+    private String oRequest;  //요청사항
+    private String oDate;     //주문일
+    private int    oTotal;    //총 주문가격
+	public int getoNo() {
+		return oNo;
+	}
+	public void setoNo(int oNo) {
+		this.oNo = oNo;
+	}
+	public int getuNo() {
+		return uNo;
+	}
+	public void setuNo(int uNo) {
+		this.uNo = uNo;
+	}
+	public String getuHp() {
+		return uHp;
+	}
+	public void setuHp(String uHp) {
+		this.uHp = uHp;
+	}
+	public String getuPostcode() {
+		return uPostcode;
+	}
+	public void setuPostcode(String uPostcode) {
+		this.uPostcode = uPostcode;
+	}
+	public String getuOld() {
+		return uOld;
+	}
+	public void setuOld(String uOld) {
+		this.uOld = uOld;
+	}
+	public String getuAddr() {
+		return uAddr;
+	}
+	public void setuAddr(String uAddr) {
+		this.uAddr = uAddr;
+	}
+	public String getuAddr2() {
+		return uAddr2;
+	}
+	public void setuAddr2(String uAddr2) {
+		this.uAddr2 = uAddr2;
+	}
+	public String getoRequest() {
+		return oRequest;
+	}
+	public void setoRequest(String oRequest) {
+		this.oRequest = oRequest;
+	}
+	public String getoDate() {
+		return oDate;
+	}
+	public void setoDate(String oDate) {
+		this.oDate = oDate;
+	}
+	public int getoTotal() {
+		return oTotal;
+	}
+	public void setoTotal(int oTotal) {
+		this.oTotal = oTotal;
+	}
+ 
     
     
 }

@@ -6,41 +6,82 @@ package com.ezen.vo;
  */
 public class ProductVO 
 {
-    private int p_no;         //상품번호
-    private int p_parentno;   //부모상품번호
-    private int p_price;      //가격
-    private String p_info;    //상품설명
-    private String p_name;    //상품명
-    private String p_wdate;   //등록일
-    private String p_display; //진열여부
-    private String p_color;   //색상
-    private String p_size;    //사이즈
-    private String p_kind;    //카테고리명
-    private String p_delyn;   //상품삭제여부
+    private int    pNo;       //상품번호
+    private int    pParentno; //부모상품번호
+    private int    pPrice;    //가격
+    private String pInfo;     //상품설명
+    private String pName;     //상품명
+    private String pWdate;    //등록일
+    private String pDisplay;  //진열여부
+    private String pColor;    //색상
+    private String pSize;     //사이즈
+    private String pKind;     //카테고리명
+    private String pDelyn;    //상품삭제여부
+	public int getpNo() {
+		return pNo;
+	}
+	public void setpNo(int pNo) {
+		this.pNo = pNo;
+	}
+	public int getpParentno() {
+		return pParentno;
+	}
+	public void setpParentno(int pParentno) {
+		this.pParentno = pParentno;
+	}
+	public int getpPrice() {
+		return pPrice;
+	}
+	public void setpPrice(int pPrice) {
+		this.pPrice = pPrice;
+	}
+	public String getpInfo() {
+		return pInfo;
+	}
+	public void setpInfo(String pInfo) {
+		this.pInfo = pInfo;
+	}
+	public String getpName() {
+		return pName;
+	}
+	public void setpName(String pName) {
+		this.pName = pName;
+	}
+	public String getpWdate() {
+		return pWdate;
+	}
+	public void setpWdate(String pWdate) {
+		this.pWdate = pWdate;
+	}
+	public String getpDisplay() {
+		return pDisplay;
+	}
+	public void setpDisplay(String pDisplay) {
+		this.pDisplay = pDisplay;
+	}
+	public String getpColor() {
+		return pColor;
+	}
+	public void setpColor(String pColor) {
+		this.pColor = pColor;
+	}
+	public String getpSize() {
+		return pSize;
+	}
+	public void setpSize(String pSize) {
+		this.pSize = pSize;
+	}
+	public String getpKind() {
+		return pKind;
+	}
+	public void setpKind(String pKind) {
+		this.pKind = pKind;
+	}
+	public String getpDelyn() {
+		return pDelyn;
+	}
+	public void setpDelyn(String pDelyn) {
+		this.pDelyn = pDelyn;
+	}
 
-    public int    getP_no()       { return p_no;       }
-    public int    getP_parentno() { return p_parentno; }
-    public int    getP_price()    { return p_price;    }
-    public String getP_info()     { return p_info;     }
-    public String getP_name()     { return p_name;     }
-    public String getP_wdate()    { return p_wdate;    }
-    public String getP_display()  { return p_display;  }
-    public String getP_color()    { return p_color;    }
-    public String getP_size()     { return p_size;     }
-    public String getP_kind()     { return p_kind;     }
-    public String getP_delyn()    { return p_delyn;    }
-
-    public void setP_no(int p_no)              { this.p_no       = p_no;       }
-    public void setP_parentno(int p_parentno)  { this.p_parentno = p_parentno; }
-    public void setP_price(int p_price)        { this.p_price    = p_price;    }
-    public void setP_info(String p_info)       { this.p_info     = p_info;     }
-    public void setP_name(String p_name)       { this.p_name     = p_name;     }
-    public void setP_wdate(String p_wdate)     { this.p_wdate    = p_wdate;    }
-    public void setP_display(String p_display) { this.p_display  = p_display;  }
-    public void setP_color(String p_color)     { this.p_color    = p_color;    }
-    public void setP_size(String p_size)       { this.p_size     = p_size;     }
-    public void setP_kind(String p_kind)       { this.p_kind     = p_kind;     }
-    public void setP_delyn(String p_delyn)     { this.p_delyn    = p_delyn;    }
-
-    
 }

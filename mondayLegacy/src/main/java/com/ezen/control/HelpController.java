@@ -67,7 +67,7 @@ public class HelpController {
 		List<HelpVO> list = helpservice.GetList(vo);
 		for(HelpVO item : list)
 		{
-			System.out.println("title:" + item.getH_title());
+			System.out.println("title:" + item.gethTitle());
 		}
 		
 		model.addAttribute("total",total);

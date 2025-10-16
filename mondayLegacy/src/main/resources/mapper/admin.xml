@@ -1,13 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
+
 <!-- Namespace를 통해 JAVA 클래스와 Annotation클래스와 동기 -->
 <mapper namespace="com.ezen.admin">
-	<!-- 상품등록 -->
-	<insert id="insert" parameterType=""></insert>
+	<!-- 부모상품번호 검사 -->
+	<select id="pCheck" parameterType="com.ezen.vo.ProductVO"
+		resultType="com.ezen.vo.ProductVO" >
+		select #{pNo} from product where p_parentno is null 
+	</select>
 	
-	<!-- 상품목록 조회 -->
-	<select id="list" parameterType=""></select>
+	<!-- 부모상품 등록 -->
+	<insert id="pInsert" parameterType="com.ezen.vo.ProductVO">
+		insert into product(p_name, p_img, p_price, p_kind)
+		values
+		(
+			#{pName},
+			#{pImg},
+			#{pPrice},
+			#{pKind}
+		)
+	</insert>
 	
-	<!--  -->
+	<!-- 자식상품 등록 -->
+	<insert id="sInsert">
+		insert into product p(p_parentno, p_price, p_info, p_name, p_img, p_color, p_size, p_kind  )
+		values(
+			(select parentno from product where p_name = #{pName}), 
+			#{pPrice}, #{pInfo}, #{pName}, #{pImg}, #{pColor}, #{pSize}, #{pKind}
+		)
+		
+	</insert>
 </mapper>
