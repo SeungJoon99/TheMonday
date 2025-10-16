@@ -6,14 +6,9 @@
 
 	<!-- 상품 목록 조회 -->
     <!-- 검색 쿼리 작성 시 파라미터로 SearchVO 반환객체로 BoardVO -->
-	<select id="main" parameterType="" resultType="">
+	<select id="main" resultType="">
 		select p_parentno ,p_price ,p_name ,p_img ,
-		from product
-		where kind = #{ kind }
-		<if test='keyword != null and !keyword.equals("")'>
-			and title like '%${ keyword }%'
-		</if>
-		order by no desc
-		limit #{offset},10
+		(select sum(d_qty) from detail d where d.p_no = p.p_no) sum
+		from product p
 	</select>
 </mapper>
