@@ -4,42 +4,22 @@
 <div class="container">
   <div class="row pb-5 box">
     <table class="table table-hover table-bordered border-dark" style="text-align: right; padding: 0;">
-      <thead>
-        <tr>
-          <th style="width: 6%; text-align: center;">주문 번호</th>
-          <th style="width: 2%; text-align: center;">이미지</th>
-          <th style="width: 8%; text-align: center;">주문 일시</th>
-          <th style="width: 10%; text-align: center;">수량</th>
-          <th style="width: 5%; text-align: center;">결제 금액</th>
-          <th style="width: 8%; text-align: center;">주문 상태</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr onclick="popup()" style="cursor:pointer;">
-          <th scope="row">1</th>
-          <td><img src="resources/images/favicon.png" alt="상품 이미지"></td>
-          <td>2025.10.14</td>
-          <td>10</td>
-          <td>58,000</td>
-          <td>주문 완료</td>
-        </tr>
-        <tr onclick="popup()" style="cursor:pointer;">
-          <th scope="row">2</th>
-          <td><a href="shop/product_detail"><img src="resources/images/favicon.png" alt="상품 이미지"></a></td>
-          <td>2025.10.14</td>
-          <td>10</td>
-          <td>70,000</td>
-          <td>주문 완료</td>
-        </tr>
-        <tr onclick="popup()" style="cursor:pointer;">
-          <th scope="row">3</th>
-          <td><a href="shop/product_detail"><img src="resources/images/favicon.png" alt="상품 이미지"></a></td>
-          <td>2025.10.14</td>
-          <td>10</td>
-          <td>90,000</td>
-          <td>주문 완료</td>
-        </tr>
-      </tbody>
+      <thead class="table-dark">
+          <tr>
+            <th>주문번호</th>
+            <th>상품요약</th>
+            <th>총금액</th>
+            <th>주문일자</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr onclick = "window.location.open= popup()" target = "_blank">
+			<td>20230922001</td>
+			<td>사과 외 4개</td>
+			<td>450,000원</td>
+			<td>2025-09-29</td>
+		  </tr>
+		</tbody>
     </table>
   </div>
 </div>

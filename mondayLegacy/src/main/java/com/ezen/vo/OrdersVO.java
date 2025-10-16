@@ -16,6 +16,8 @@ public class OrdersVO
     private String orequest;  //요청사항
     private String odate;     //주문일
     private int    ototal;    //총 주문가격
+    
+    
 	public int getOno() {
 		return ono;
 	}

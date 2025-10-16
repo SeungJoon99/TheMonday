@@ -11,7 +11,7 @@ public class DetailVO {
     private int    pno;        //상품번호
     private String pimg;       //이미지
     private String pname;      //상품명
-    private String option;    //상품옵션
+    private String option;     //상품옵션
     private int    dqty;       //수량
     private int    dtotal;     //상품 총 가격
 	public int getOno() {

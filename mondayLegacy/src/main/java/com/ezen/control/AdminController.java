@@ -24,7 +24,7 @@ public class AdminController
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public boolean Insert(ProductVO vo)
 	{
-		session.insert(namespace + ".insert",vo);
+		session.insert(namespace + ".Insert",vo);
 		return true;
 	}	
 	
@@ -32,7 +32,22 @@ public class AdminController
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public List<ProductVO> List(ProductVO vo) 
 	{
-		List<ProductVO> list = session.selectList(namespace + ".list", vo);
+		List<ProductVO> list = session.selectList(namespace + ".List", vo);
+		return list;
+	}
+	
+	//상품 목록 조회
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public List<ProductVO> ListK(ProductVO vo) 
+	{
+		List<ProductVO> list = session.selectList(namespace + ".ListK", vo);
+		return list;
+	}
+	//상품 목록 조회
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public List<ProductVO> ListD(ProductVO vo) 
+	{
+		List<ProductVO> list = session.selectList(namespace + ".ListD", vo);
 		return list;
 	}
 	

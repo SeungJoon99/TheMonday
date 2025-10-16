@@ -4,7 +4,7 @@ use themonday;
 drop table product;
 create table product(
 
- p_no int  primary key auto_increment comment '상품번호',
+ p_no int primary key auto_increment comment '상품번호',
  p_price int default 0 comment '상품가격',
  p_info text comment '상품설명',
  p_name varchar(255) not null comment '상품명',
@@ -12,8 +12,7 @@ create table product(
  p_img varchar(255) comment '이미지',
  p_display varchar(255) default 'Y' comment '진열여부',
  p_kind varchar(255) not null comment '카테고리명',
- p_delyn varchar(255) default 'N' comment '상품삭제여부', 
- foreign key  (p_parentno) references product (p_no)
+ p_delyn varchar(255) default 'N' comment '상품삭제여부'
 ) comment = '상품';
 
 
@@ -23,7 +22,7 @@ create table cart(
  u_no int not null comment '유저번호',
  c_wdate datetime default now() comment '장바구니등록일',
  c_qty int not null comment '수량',
- primary key (p_no, u_no)
+ primary key (p_no, u_no),
  foreign key(p_no) references product (p_no)
 ) comment = '장바구니';
 
@@ -35,7 +34,7 @@ create table detail(
  p_name varchar(255) comment '상품명',
  d_qty int comment '수량',
  d_total int comment '상품별 총가격',
- primary key (o_no, p_no)
+ primary key (o_no, p_no),
  foreign key(p_no) references product (p_no)
 )  comment = '주문상세';
 

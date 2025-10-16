@@ -1,8 +1,3 @@
-/***********************************
- * 클래스 기능 : 게시물 검색 정보 클래스
- * 작성자 : 정정훈
- * 작성일 : 2025.09.12
- **********************************/
 package com.ezen.vo;
 
 public class SearchVO 
@@ -11,7 +6,24 @@ public class SearchVO
 	private int    offset;  //limit 시작번호
 	private String kind;    //게시물 종류
 	private String keyword; //검색 키워드	
+	private String pkind; //검색 키워드	
+	private String pdisplay; //검색 키워드	
 	
+	public String getPkind() {
+		return pkind;
+	}
+	public void setPkind(String pkind) {
+		this.pkind = pkind;
+	}
+	public String getPdisplay() {
+		return pdisplay;
+	}
+	public void setPdisplay(String pdisplay) {
+		this.pdisplay = pdisplay;
+	}
+	public void setOffset(int offset) {
+		this.offset = offset;
+	}
 	public int    getPageno()  { return pageno;  } 
 	public int    getOffset()  { return offset;  }	
 	public String getKind()    { return kind;	 }
