@@ -7,65 +7,61 @@ package com.ezen.vo;
 
 public class HelpVO 
 {
-    private int    hNo;     //게시물번호
-    private String uNick;   //유저닉네임
-    private String hKind;   //문의종류
-    private String hTitle;  //제목
-    private String hNote;   //내용
-    private String hWdate;  //작성일
-    private String hUpdate; //수정일
-    private String uEmail;  //이메일
-    
-	public String getuEmail() {
-		return uEmail;
+    private int    hno;     //게시물번호
+    private String unick;   //유저닉네임
+    private String hkind;   //문의종류
+    private String htitle;  //제목
+    private String hnote;   //내용
+    private String hwdate;  //작성일
+    private String hupdate; //수정일
+    private String uemail;  //이메일
+	public int getHno() {
+		return hno;
 	}
-	public void setuEmail(String uEmail) {
-		this.uEmail = uEmail;
+	public void setHno(int hno) {
+		this.hno = hno;
 	}
-	public int gethNo() {
-		return hNo;
+	public String getUnick() {
+		return unick;
 	}
-	public void sethNo(int hNo) {
-		this.hNo = hNo;
+	public void setUnick(String unick) {
+		this.unick = unick;
 	}
-	public String getuNick() {
-		return uNick;
+	public String getHkind() {
+		return hkind;
 	}
-	public void setuNick(String uNick) {
-		this.uNick = uNick;
+	public void setHkind(String hkind) {
+		this.hkind = hkind;
 	}
-	public String gethKind() {
-		return hKind;
+	public String getHtitle() {
+		return htitle;
 	}
-	public void sethKind(String hKind) {
-		this.hKind = hKind;
+	public void setHtitle(String htitle) {
+		this.htitle = htitle;
 	}
-	public String gethTitle() {
-		return hTitle;
+	public String getHnote() {
+		return hnote;
 	}
-	public void sethTitle(String hTitle) {
-		this.hTitle = hTitle;
+	public void setHnote(String hnote) {
+		this.hnote = hnote;
 	}
-	public String gethNote() {
-		return hNote;
+	public String getHwdate() {
+		return hwdate;
 	}
-	public void sethNote(String hNote) {
-		this.hNote = hNote;
+	public void setHwdate(String hwdate) {
+		this.hwdate = hwdate;
 	}
-	public String gethWdate() {
-		return hWdate;
+	public String getHupdate() {
+		return hupdate;
 	}
-	public void sethWdate(String hWdate) {
-		this.hWdate = hWdate;
+	public void setHupdate(String hupdate) {
+		this.hupdate = hupdate;
 	}
-	public String gethUpdate() {
-		return hUpdate;
+	public String getUemail() {
+		return uemail;
 	}
-	public void sethUpdate(String hUpdate) {
-		this.hUpdate = hUpdate;
+	public void setUemail(String uemail) {
+		this.uemail = uemail;
 	}
-    
-    
-
-    
+      
 }

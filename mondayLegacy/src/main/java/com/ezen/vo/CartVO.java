@@ -6,34 +6,34 @@ package com.ezen.vo;
  */
 public class CartVO 
 {
-    private int    pNo;    //상품번호
-    private int    uNo;    //유저번호
-    private String cWdate; //장바구니 등록일
-    private int    cQty;   //수량
-	public int getpNo() {
-		return pNo;
+    private int    pno;    //상품번호
+    private int    uno;    //유저번호
+    private String cwdate; //장바구니 등록일
+    private int    cqty;   //수량
+	public int getPno() {
+		return pno;
 	}
-	public void setpNo(int pNo) {
-		this.pNo = pNo;
+	public void setPno(int pno) {
+		this.pno = pno;
 	}
-	public int getuNo() {
-		return uNo;
+	public int getUno() {
+		return uno;
 	}
-	public void setuNo(int uNo) {
-		this.uNo = uNo;
+	public void setUno(int uno) {
+		this.uno = uno;
 	}
-	public String getcWdate() {
-		return cWdate;
+	public String getCwdate() {
+		return cwdate;
 	}
-	public void setcWdate(String cWdate) {
-		this.cWdate = cWdate;
+	public void setCwdate(String cwdate) {
+		this.cwdate = cwdate;
 	}
-	public int getcQty() {
-		return cQty;
+	public int getCqty() {
+		return cqty;
 	}
-	public void setcQty(int cQty) {
-		this.cQty = cQty;
+	public void setCqty(int cqty) {
+		this.cqty = cqty;
 	}
-
+	
 }
 

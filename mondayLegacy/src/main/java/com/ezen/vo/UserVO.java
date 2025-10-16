@@ -6,103 +6,104 @@ package com.ezen.vo;
  */
 public class UserVO 
 {
-    private int    uNo;       //유저번호
-    private String uNick;     //유저닉네임
-    private String uEmail;    //유저이메일
-    private String uPw;       //유저비밀번호
-    private String uHp;       //유저전화번호
-    private String uType;     //유저구분번호
-    private String uPostcode; //유저우편번호
-    private String uOld;      //유저지번
-    private String uAddr;     //유저도로명주소
-    private String uAddr2;    //유저상세주소
-    private String uName;     //유저이름
-    private String uDelyn;    //유저탈퇴여부
-    private String uWdate;    //유저등록일
-    private String uUdate;    //유저수정일
-	public int getuNo() {
-		return uNo;
+    private int    uno;       //유저번호
+    private String unick;     //유저닉네임
+    private String uemail;    //유저이메일
+    private String upw;       //유저비밀번호
+    private String uhp;       //유저전화번호
+    private String utype;     //유저구분번호
+    private String upostcode; //유저우편번호
+    private String uold;      //유저지번
+    private String uaddr;     //유저도로명주소
+    private String uaddr2;    //유저상세주소
+    private String uname;     //유저이름
+    private String udelyn;    //유저탈퇴여부
+    private String uwdate;    //유저등록일
+    private String uudate;    //유저수정일
+	public int getUno() {
+		return uno;
 	}
-	public void setuNo(int uNo) {
-		this.uNo = uNo;
+	public void setUno(int uno) {
+		this.uno = uno;
 	}
-	public String getuNick() {
-		return uNick;
+	public String getUnick() {
+		return unick;
 	}
-	public void setuNick(String uNick) {
-		this.uNick = uNick;
+	public void setUnick(String unick) {
+		this.unick = unick;
 	}
-	public String getuEmail() {
-		return uEmail;
+	public String getUemail() {
+		return uemail;
 	}
-	public void setuEmail(String uEmail) {
-		this.uEmail = uEmail;
+	public void setUemail(String uemail) {
+		this.uemail = uemail;
 	}
-	public String getuPw() {
-		return uPw;
+	public String getUpw() {
+		return upw;
 	}
-	public void setuPw(String uPw) {
-		this.uPw = uPw;
+	public void setUpw(String upw) {
+		this.upw = upw;
 	}
-	public String getuHp() {
-		return uHp;
+	public String getUhp() {
+		return uhp;
 	}
-	public void setuHp(String uHp) {
-		this.uHp = uHp;
+	public void setUhp(String uhp) {
+		this.uhp = uhp;
 	}
-	public String getuType() {
-		return uType;
+	public String getUtype() {
+		return utype;
 	}
-	public void setuType(String uType) {
-		this.uType = uType;
+	public void setUtype(String utype) {
+		this.utype = utype;
 	}
-	public String getuPostcode() {
-		return uPostcode;
+	public String getUpostcode() {
+		return upostcode;
 	}
-	public void setuPostcode(String uPostcode) {
-		this.uPostcode = uPostcode;
+	public void setUpostcode(String upostcode) {
+		this.upostcode = upostcode;
 	}
-	public String getuOld() {
-		return uOld;
+	public String getUold() {
+		return uold;
 	}
-	public void setuOld(String uOld) {
-		this.uOld = uOld;
+	public void setUold(String uold) {
+		this.uold = uold;
 	}
-	public String getuAddr() {
-		return uAddr;
+	public String getUaddr() {
+		return uaddr;
 	}
-	public void setuAddr(String uAddr) {
-		this.uAddr = uAddr;
+	public void setUaddr(String uaddr) {
+		this.uaddr = uaddr;
 	}
-	public String getuAddr2() {
-		return uAddr2;
+	public String getUaddr2() {
+		return uaddr2;
 	}
-	public void setuAddr2(String uAddr2) {
-		this.uAddr2 = uAddr2;
+	public void setUaddr2(String uaddr2) {
+		this.uaddr2 = uaddr2;
 	}
-	public String getuName() {
-		return uName;
+	public String getUname() {
+		return uname;
 	}
-	public void setuName(String uName) {
-		this.uName = uName;
+	public void setUname(String uname) {
+		this.uname = uname;
 	}
-	public String getuDelyn() {
-		return uDelyn;
+	public String getUdelyn() {
+		return udelyn;
 	}
-	public void setuDelyn(String uDelyn) {
-		this.uDelyn = uDelyn;
+	public void setUdelyn(String udelyn) {
+		this.udelyn = udelyn;
 	}
-	public String getuWdate() {
-		return uWdate;
+	public String getUwdate() {
+		return uwdate;
 	}
-	public void setuWdate(String uWdate) {
-		this.uWdate = uWdate;
+	public void setUwdate(String uwdate) {
+		this.uwdate = uwdate;
 	}
-	public String getuUdate() {
-		return uUdate;
+	public String getUudate() {
+		return uudate;
 	}
-	public void setuUdate(String uUdate) {
-		this.uUdate = uUdate;
+	public void setUudate(String uudate) {
+		this.uudate = uudate;
 	}
+	
 
 }

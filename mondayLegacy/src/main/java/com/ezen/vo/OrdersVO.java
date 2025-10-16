@@ -6,77 +6,75 @@ package com.ezen.vo;
  */
 public class OrdersVO 
 {
-    private int    oNo;       //주문번호
-    private int    uNo;       //유저번호
-    private String uHp;       //전화번호
-    private String uPostcode; //우편번호
-    private String uOld;      //유저지번
-    private String uAddr;     //유저도로명주소
-    private String uAddr2;    //유저상세주소
-    private String oRequest;  //요청사항
-    private String oDate;     //주문일
-    private int    oTotal;    //총 주문가격
-	public int getoNo() {
-		return oNo;
+    private int    ono;       //주문번호
+    private int    uno;       //유저번호
+    private String uhp;       //전화번호
+    private String upostcode; //우편번호
+    private String uold;      //유저지번
+    private String uaddr;     //유저도로명주소
+    private String uaddr2;    //유저상세주소
+    private String orequest;  //요청사항
+    private String odate;     //주문일
+    private int    ototal;    //총 주문가격
+	public int getOno() {
+		return ono;
 	}
-	public void setoNo(int oNo) {
-		this.oNo = oNo;
+	public void setOno(int ono) {
+		this.ono = ono;
 	}
-	public int getuNo() {
-		return uNo;
+	public int getUno() {
+		return uno;
 	}
-	public void setuNo(int uNo) {
-		this.uNo = uNo;
+	public void setUno(int uno) {
+		this.uno = uno;
 	}
-	public String getuHp() {
-		return uHp;
+	public String getUhp() {
+		return uhp;
 	}
-	public void setuHp(String uHp) {
-		this.uHp = uHp;
+	public void setUhp(String uhp) {
+		this.uhp = uhp;
 	}
-	public String getuPostcode() {
-		return uPostcode;
+	public String getUpostcode() {
+		return upostcode;
 	}
-	public void setuPostcode(String uPostcode) {
-		this.uPostcode = uPostcode;
+	public void setUpostcode(String upostcode) {
+		this.upostcode = upostcode;
 	}
-	public String getuOld() {
-		return uOld;
+	public String getUold() {
+		return uold;
 	}
-	public void setuOld(String uOld) {
-		this.uOld = uOld;
+	public void setUold(String uold) {
+		this.uold = uold;
 	}
-	public String getuAddr() {
-		return uAddr;
+	public String getUaddr() {
+		return uaddr;
 	}
-	public void setuAddr(String uAddr) {
-		this.uAddr = uAddr;
+	public void setUaddr(String uaddr) {
+		this.uaddr = uaddr;
 	}
-	public String getuAddr2() {
-		return uAddr2;
+	public String getUaddr2() {
+		return uaddr2;
 	}
-	public void setuAddr2(String uAddr2) {
-		this.uAddr2 = uAddr2;
+	public void setUaddr2(String uaddr2) {
+		this.uaddr2 = uaddr2;
 	}
-	public String getoRequest() {
-		return oRequest;
+	public String getOrequest() {
+		return orequest;
 	}
-	public void setoRequest(String oRequest) {
-		this.oRequest = oRequest;
+	public void setOrequest(String orequest) {
+		this.orequest = orequest;
 	}
-	public String getoDate() {
-		return oDate;
+	public String getOdate() {
+		return odate;
 	}
-	public void setoDate(String oDate) {
-		this.oDate = oDate;
+	public void setOdate(String odate) {
+		this.odate = odate;
 	}
-	public int getoTotal() {
-		return oTotal;
+	public int getOtotal() {
+		return ototal;
 	}
-	public void setoTotal(int oTotal) {
-		this.oTotal = oTotal;
+	public void setOtotal(int ototal) {
+		this.ototal = ototal;
 	}
- 
-    
-    
+	
 }

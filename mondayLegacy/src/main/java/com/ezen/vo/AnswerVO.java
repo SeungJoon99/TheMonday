@@ -6,17 +6,26 @@ package com.ezen.vo;
  */
 public class AnswerVO 
 {
-    private int    hNo;    //게시물번호
-    private String aText;  //내용
-    private String aWdate; //작성일
+    private int    hno;    //게시물번호
+    private String atext;  //내용
+    private String awdate; //작성일
+	public int getHno() {
+		return hno;
+	}
+	public void setHno(int hno) {
+		this.hno = hno;
+	}
+	public String getAtext() {
+		return atext;
+	}
+	public void setAtext(String atext) {
+		this.atext = atext;
+	}
+	public String getAwdate() {
+		return awdate;
+	}
+	public void setAwdate(String awdate) {
+		this.awdate = awdate;
+	}
     
-	public int gethNo() 		{ return hNo;	 }
-	public String getaText() 	{ return aText;	 }
-	public String getaWdate() 	{ return aWdate; }
-	
-	public void sethNo(int hNo) 			{ this.hNo = hNo;		}
-	public void setaText(String aText) 		{ this.aText = aText;	}
-	public void setaWdate(String aWdate) 	{ this.aWdate = aWdate;	}
-    
-
 }

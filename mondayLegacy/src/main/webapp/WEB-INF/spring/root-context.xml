@@ -21,8 +21,8 @@
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/boardb?serverTimezone=Asia/Seoul&amp;useSSL=false" />
-		<property name="username" value="root" />
+			value="jdbc:mysql://192.168.0.100:3306/themondy?serverTimezone=Asia/Seoul&amp;useSSL=false" />
+		<property name="username" value="유재욱" />
 		<property name="password" value="ezen" />
 	</bean>
 	

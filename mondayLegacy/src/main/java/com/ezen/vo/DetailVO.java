@@ -7,53 +7,54 @@
 package com.ezen.vo;
 
 public class DetailVO {
-    private int    oNo;        //주문번호
-    private int    pNo;        //상품번호
-    private String pImg;       //이미지
-    private String pName;      //상품명
-    private String dOption;    //상품옵션
-    private int    dQty;       //수량
-    private int    dTotal;     //상품 총 가격
-	public int getoNo() {
-		return oNo;
+    private int    ono;        //주문번호
+    private int    pno;        //상품번호
+    private String pimg;       //이미지
+    private String pname;      //상품명
+    private String option;    //상품옵션
+    private int    dqty;       //수량
+    private int    dtotal;     //상품 총 가격
+	public int getOno() {
+		return ono;
 	}
-	public void setoNo(int oNo) {
-		this.oNo = oNo;
+	public void setOno(int ono) {
+		this.ono = ono;
 	}
-	public int getpNo() {
-		return pNo;
+	public int getPno() {
+		return pno;
 	}
-	public void setpNo(int pNo) {
-		this.pNo = pNo;
+	public void setPno(int pno) {
+		this.pno = pno;
 	}
-	public String getpImg() {
-		return pImg;
+	public String getPimg() {
+		return pimg;
 	}
-	public void setpImg(String pImg) {
-		this.pImg = pImg;
+	public void setPimg(String pimg) {
+		this.pimg = pimg;
 	}
-	public String getpName() {
-		return pName;
+	public String getPname() {
+		return pname;
 	}
-	public void setpName(String pName) {
-		this.pName = pName;
+	public void setPname(String pname) {
+		this.pname = pname;
 	}
-	public String getdOption() {
-		return dOption;
+	public String getOption() {
+		return option;
 	}
-	public void setdOption(String dOption) {
-		this.dOption = dOption;
+	public void setOption(String option) {
+		this.option = option;
 	}
-	public int getdQty() {
-		return dQty;
+	public int getDqty() {
+		return dqty;
 	}
-	public void setdQty(int dQty) {
-		this.dQty = dQty;
+	public void setDqty(int dqty) {
+		this.dqty = dqty;
 	}
-	public int getdTotal() {
-		return dTotal;
+	public int getDtotal() {
+		return dtotal;
 	}
-	public void setdTotal(int dTotal) {
-		this.dTotal = dTotal;
+	public void setDtotal(int dtotal) {
+		this.dtotal = dtotal;
 	}
+
 }

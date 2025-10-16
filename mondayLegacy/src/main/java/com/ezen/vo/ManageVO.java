@@ -6,35 +6,35 @@ package com.ezen.vo;
  */
 public class ManageVO 
 {
-    private int    oNo;    //주문번호
-    private int    uNo;    //유저번호
-    private String mMemo;  //관리자메모
-    private String mState; //주문상태
-	public int getoNo() {
-		return oNo;
+    private int    ono;    //주문번호
+    private int    uno;    //유저번호
+    private String mmemo;  //관리자메모
+    private String mstate; //주문상태
+	public int getOno() {
+		return ono;
 	}
-	public void setoNo(int oNo) {
-		this.oNo = oNo;
+	public void setOno(int ono) {
+		this.ono = ono;
 	}
-	public int getuNo() {
-		return uNo;
+	public int getUno() {
+		return uno;
 	}
-	public void setuNo(int uNo) {
-		this.uNo = uNo;
+	public void setUno(int uno) {
+		this.uno = uno;
 	}
-	public String getmMemo() {
-		return mMemo;
+	public String getMmemo() {
+		return mmemo;
 	}
-	public void setmMemo(String mMemo) {
-		this.mMemo = mMemo;
+	public void setMmemo(String mmemo) {
+		this.mmemo = mmemo;
 	}
-	public String getmState() {
-		return mState;
+	public String getMstate() {
+		return mstate;
 	}
-	public void setmState(String mState) {
-		this.mState = mState;
+	public void setMstate(String mstate) {
+		this.mstate = mstate;
 	}
-    
+	
   
 
     

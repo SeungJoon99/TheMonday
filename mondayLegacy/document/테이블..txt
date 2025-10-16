@@ -1,5 +1,6 @@
-상품테이블(product)
-drop data
+drop database themonday;
+create database themonday;
+use themonday;
 drop table product;
 create table product(
 
@@ -26,8 +27,6 @@ create table cart(
  foreign key(p_no) references product (p_no)
 ) comment = '장바구니';
 
-
-
 drop table detail;
 create table detail(
  o_no int not null  comment '주문번호',
@@ -49,7 +48,6 @@ drop table manage;
  primary key (o_no, u_no)
 ) comment = '주문내역';
 
-
 drop table user;
 create table user(
  u_no int primary key auto_increment comment '유저번호',
@@ -69,11 +67,6 @@ create table user(
  unique key (u_nick)
 ) comment = '유저';
 
-
--------------------------------------------------------------------------
-
-문의 테이블(help)
-
 create table help(
  h_no int not null primary key auto_increment comment '게시물번호',
  u_nick varchar(255) not null comment '유저닉네임',    
@@ -83,10 +76,6 @@ create table help(
  h_title varchar(255) not null comment '제목',
  h_update datetime comment '수정일' 
 ) comment = '문의';
-
----------------------------------------------------------------------------
-
-주문 테이블(orders)
 
 create table orders(
  o_no int not null primary key auto_increment comment '주문번호',
@@ -102,10 +91,6 @@ create table orders(
  foreign key (u_no) references user (u_no)
 ) comment = '주문';
 
---------------------------------------------------------------------------
-
-관리자 답변(answer)
-
 create table answer(
  h_no int not null  comment '게시물번호',
  u_nick varchar(255) not null comment '유저닉네임',
@@ -113,6 +98,3 @@ create table answer(
  a_wdate datetime default now() comment '작성일',
  foreign key (h_no) references help (h_no)
 ) comment = '관리자답변';
-
-----------------------------------------------------------------------------
- 
