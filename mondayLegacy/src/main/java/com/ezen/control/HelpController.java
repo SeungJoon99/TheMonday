@@ -18,6 +18,7 @@ import com.ezen.vo.HelpVO;
 import com.ezen.vo.SearchVO;
 
 @Controller
+@RequestMapping(value = "/help")
 public class HelpController {
 	
 	@Autowired
