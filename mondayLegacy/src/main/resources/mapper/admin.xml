@@ -61,16 +61,17 @@
 	<!-- 주문내역 조회 -->
 	<select id="OrderList" resultType="com.ezen.vo.OrdersVO">
 		select o_no, o_date, o_total ,
-		(select p_img from detail where o_no = orders.o_no) as img,
+		<!-- (select p_img from detail where o_no = orders.o_no  limit 0, 1) as img, -->
 		(select m_state from manage where o_no = manage.o_no) as state
 		from orders 
 		order by o_no desc
 	</select>
 	
 	<!-- 주문내역 조회 품명 검색 -->
-	<select id="OrderList" resultType="com.ezen.vo.OrdersVO">
+	<select id="OrderListSearch" resultType="com.ezen.vo.OrdersVO">
 		select o_no, o_date, o_total ,
-		(select p_img from detail where o_no = orders.o_no limit 0, 1) as img,
+		<!-- (select p_img from detail where o_no = orders.o_no limit 0, 1) as img, -->
+		(select from manage where o_no = manage.o_no) as state
 		(select m_state from manage where o_no = manage.o_no) as state
 		from orders 
 		where '%${ keyword }%'

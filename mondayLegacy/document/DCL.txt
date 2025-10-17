@@ -63,3 +63,5 @@ mysql -u wook -h 팀장님 ip -p
 
 8 - 1. 강사 컴퓨터 데이터베이스 연결
 mysql -u kbj -h 192.168.0.62 -p
+
+mysql -u 최연흠 -h 192.168.0.100 -P 3306 -p
