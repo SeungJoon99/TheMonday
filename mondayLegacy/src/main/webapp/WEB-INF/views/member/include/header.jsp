@@ -12,10 +12,10 @@
   <meta name="keywords" content="bootstrap, bootstrap4" />
 
   <!-- Bootstrap CSS -->
-  <link href="resources/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <link href="resources/css/tiny-slider.css" rel="stylesheet">
-  <link href="resources/css/style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/tiny-slider.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
   <title>The Monday</title>
 </head>
 
