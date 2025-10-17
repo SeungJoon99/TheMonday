@@ -51,7 +51,7 @@
 	
 	<!-- 관리자 로그인 -->
 	<select id="AdminLogin" parameterType="com.ezen.vo.UserVO"
-		resultType="com.ezen.vo.UserVO">
+		resultType="java.lang.Integer">
 		select count(*) from user 
 		where 
 		u_email = #{uemail} and

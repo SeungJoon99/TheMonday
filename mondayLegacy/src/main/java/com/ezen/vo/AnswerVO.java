@@ -1,4 +1,7 @@
 package com.ezen.vo;
+
+import org.springframework.beans.factory.annotation.Value;
+
 /*
  *  작성일 : 2025.10.15
  *  작성자 : 유재욱

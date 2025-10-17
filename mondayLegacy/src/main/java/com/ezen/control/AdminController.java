@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
+@RequestMapping("/admin")
 public class AdminController 
 {
 	@Autowired
@@ -37,14 +38,14 @@ public class AdminController
 	}
 	
 	//상품 목록 조회
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/listk", method = RequestMethod.GET)
 	public List<ProductVO> ListK(ProductVO vo) 
 	{
 		List<ProductVO> list = session.selectList(namespace + ".ListK", vo);
 		return list;
 	}
 	//상품 목록 조회
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/listd", method = RequestMethod.GET)
 	public List<ProductVO> ListD(ProductVO vo) 
 	{
 		List<ProductVO> list = session.selectList(namespace + ".ListD", vo);

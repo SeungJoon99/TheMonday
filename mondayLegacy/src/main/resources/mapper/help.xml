@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <!-- Namespace를 통해 JAVA 클래스와 Annotation클래스와 동기 -->
-<mapper namespace="com.ezen.help">
+<mapper namespace="com.ezen.vo.help">
 
 	<!-- 문의게시판 등록 -->
-	<insert id="helpInput" parameterType="com.ezen.HelpVO">
+	<insert id="helpInput" parameterType="com.ezen.vo.HelpVO">
 		insert into help(U_eamil,H_title,H_note,H_kind)
 		values(#{uEmail},#{hTitle}#{hNote},#{hKind})
 	</insert>
