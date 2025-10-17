@@ -36,8 +36,15 @@ public class HelpController {
 		return "help/board_detail";
 	}
 	
-	@RequestMapping(value = "/board", method = RequestMethod.GET)
-	public String Board(@RequestParam String kind, 
+	@RequestMapping(value = "/delete")
+	public String Delete(@RequestParam(required = true)String no)
+	{
+		helpservice.Delete(no);
+		return "redirect:/help/board";
+	}	
+	
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public String Board(@RequestParam(required = false) String kind, 
 			@RequestParam(defaultValue = "1")int page,
 			Model model) 
 	{

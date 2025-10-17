@@ -23,9 +23,18 @@
         alert("등록되었습니다.");
         document.location = "help/board_detail";
       }
+  	function Delete(no)
+	{
+		if(confirm("게시물을 삭제하시겠습니까")==false)
+		{
+			return;	
+		}
+		document.location = "delete?no=" + no;
+	}
     </script>
 
-    <button class="btn-remove" onclick="remove()">삭제</button>
+    <button class="btn-remove" onclick="javascript:Delete(${ item.no });"
+    >삭제</button>
     <button class="btn-list" onclick="location.href='help/board'">목록</button><br><br>
 
     <textarea class='form-control' rows='10' placeholder="관리자 답변을 입력하세요"></textarea>

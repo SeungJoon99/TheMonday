@@ -4,12 +4,13 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.ezen.vo.HelpVO;
 import com.ezen.vo.SearchVO;
 
-@Service
+@Repository
 public class HelpService {
 
 	@Autowired
@@ -50,9 +51,6 @@ public class HelpService {
 	//return true : 삭제 성공, false : 삭제 실패
 	public boolean Delete(String no)
 	{
-		//해당 게시글의 댓글 전체를 삭제
-		session.delete(namespace + ".delete_reply",no);
-		
 		//해당 게시글을 삭제
 		session.delete(namespace + ".delete",no);
 		return true;

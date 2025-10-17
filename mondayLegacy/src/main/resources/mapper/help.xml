@@ -1,13 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
+
 <!-- Namespace를 통해 JAVA 클래스와 Annotation클래스와 동기 -->
-<mapper namespace="com.ezen.vo.help">
+<mapper namespace="com.ezen.help">
 
 	<!-- 문의게시판 등록 -->
 	<insert id="helpInput" parameterType="com.ezen.vo.HelpVO">
-		insert into help(U_eamil,H_title,H_note,H_kind)
-		values(#{uEmail},#{hTitle}#{hNote},#{hKind})
+		insert into
+		help(U_eamil,H_title,H_note,H_kind)
+		values(#{ uemail },#{ htitle },#{ hnote },#{ hkind })
 	</insert>
+
+	<select id="total" parameterType="com.ezen.vo.SearchVO"
+		resultType="java.lang.Integer">
+		select count(*) as total
+		from help
+		where h_kind = #{ hkind }	
+		<if test='keyword != null and !keyword.equals("")'>
+			and title like '%${ keyword }%'
+		</if>
+	</select>
+
+	<select id="list" parameterType="com.ezen.vo.SearchVO"
+		resultType="com.ezen.vo.SearchVO">
+		
+		select h_no, h_kind, h_title, u_nick,
+		 h_wdate , h_delyn from help
+		<!--  select no,title,date(wdate) as wdate,hit,
+		(select name from user where
+		userid = board.userid) as name,
+		(select count(*) from reply where no =
+		board.no) as rcount
+		from board
+		where kind = #{ kind }
+		-->
+		
+		<!--  조회한다 번호와 제목 날짜(wdate)이름으로 조회수
+		(name을 조회한다 user 테이블에서부터 userid는board.userid)name이라는 명칭으로
+		(갯수를 board테이블에서 조회한다 reply테이블에서 번호는 board.no 명칭은 rcount로 )
+		이것들은 board 테이블에서 조회한다
+		kind로 찾기 -->
+		<if test='keyword != null and !keyword.equals("")'>
+			and h_title like '%${ keyword }%'
+		</if>
+		order by  h_no desc
+		limit #{offset},10
+	</select>
 	
+	<delete id="helpdelete" parameterType="com.ezen.vo.HelpVO">
+		delete from help where h_no = #{ hno }
+	</delete>
+
+
+
 </mapper>
