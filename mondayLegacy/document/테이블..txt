@@ -119,5 +119,12 @@ INSERT INTO product
 VALUES(10000, '테스트', '테스트.jpg', '소파');
 
 
-
+select 	o_no,
+	 p_name,
+	 o_total,
+	 o_date, 
+	(select m_state from manage where o_no = manage.o_no) as state
+from orders o inner join detail d on
+o.o_no = d.o_no
+order by o_no desc;
 
