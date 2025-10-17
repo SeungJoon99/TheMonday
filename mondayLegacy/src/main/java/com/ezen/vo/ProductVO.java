@@ -7,14 +7,12 @@ package com.ezen.vo;
 public class ProductVO 
 {
     private int    pno;       //상품번호
-    private int    pparentno; //부모상품번호
     private int    pprice;    //가격
     private String pinfo;     //상품설명
+    private String pimg;      //상품이미지
     private String pname;     //상품명
     private String pwdate;    //등록일
     private String pdisplay;  //진열여부
-    private String pcolor;    //색상
-    private String psize;     //사이즈
     private String pkind;     //카테고리명
     private String pdelyn;    //상품삭제여부
 	public int getPno() {
@@ -23,17 +21,18 @@ public class ProductVO
 	public void setPno(int pno) {
 		this.pno = pno;
 	}
-	public int getPparentno() {
-		return pparentno;
-	}
-	public void setPparentno(int pparentno) {
-		this.pparentno = pparentno;
-	}
 	public int getPprice() {
 		return pprice;
 	}
 	public void setPprice(int pprice) {
 		this.pprice = pprice;
+	}
+	
+	public String getPimg() {
+		return pimg;
+	}
+	public void setPimg(String pimg) {
+		this.pimg = pimg;
 	}
 	public String getPinfo() {
 		return pinfo;
@@ -59,18 +58,7 @@ public class ProductVO
 	public void setPdisplay(String pdisplay) {
 		this.pdisplay = pdisplay;
 	}
-	public String getPcolor() {
-		return pcolor;
-	}
-	public void setPcolor(String pcolor) {
-		this.pcolor = pcolor;
-	}
-	public String getPsize() {
-		return psize;
-	}
-	public void setPsize(String psize) {
-		this.psize = psize;
-	}
+	
 	public String getPkind() {
 		return pkind;
 	}

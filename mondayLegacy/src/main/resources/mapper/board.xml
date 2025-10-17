@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<!-- Namespace를 통해 JAVA 클래스와 Annotation클래스와 동기 -->
+<mapper namespace="com.ezen.vo.board">
+
+	<resultMap type="com.ezen.vo.BoardVO" id="boardWithReplyMap">
+		<id property="bno" column="bno" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<collection property="reply" ofType="com.ezen.vo.ReplyVO">
+			<id property="rno" column="rno" />
+			<result property="content" column="rcontent" />
+			<result property="bno" column="rbno" />
+		</collection>
+	</resultMap>
+
+	<select id="selectBoardList" resultType="com.ezen.vo.BoardVO">
+		select * from board;
+	</select>	
+	
+	<select id="selectBoardWithReply" resultMap="boardWithReplyMap" parameterType="int">
+		select
+			board.*,
+			reply.bno as rbno,
+			reply.content as rcontent 
+		from board left join reply on board.bno = reply.bno
+		where board.bno = #{bno};
+	</select>	
+</mapper>

@@ -2,12 +2,12 @@ package com.ezen.vo;
 
 public class SearchVO 
 {
-	private int    pageno;  //페이지 번호
-	private int    offset;  //limit 시작번호
-	private String kind;    //게시물 종류
-	private String keyword; //검색 키워드	
-	private String pkind; //검색 키워드	
-	private String pdisplay; //검색 키워드	
+	private int    pageno; 	 //페이지 번호
+	private int    offset;   //limit 시작번호
+	private String kind;     //게시물 종류
+	private String keyword;  //검색 키워드	
+	private String pkind; 	 //카테고리
+	private String pdisplay; //진열여부
 	
 	public String getPkind() {
 		return pkind;
