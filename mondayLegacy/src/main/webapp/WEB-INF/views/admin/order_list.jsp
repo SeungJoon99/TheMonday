@@ -10,6 +10,7 @@
             <th>상품요약</th>
             <th>총금액</th>
             <th>주문일자</th>
+            <th>주문상태</th>
           </tr>
         </thead>
         <tbody>
@@ -18,6 +19,7 @@
 			<td>사과 외 4개</td>
 			<td>450,000원</td>
 			<td>2025-09-29</td>
+			<td>주문완료</td>
 		  </tr>
 		</tbody>
     </table>
@@ -25,7 +27,7 @@
 </div>
 <script>
     function popup(){
-        var url = "admin/order_set";
+        var url = "order_set";
         var name = "order";
         var option = "width=600,height=500,top=100,left=200,location=no";
         window.open(url, name, option);

@@ -29,19 +29,19 @@
       <div class="container">
         <ul class="nav nav-tabs bg-dark" style="border: none;">
 		  <li class="nav-item">
-		    <a class="nav-link text-light" aria-current="page" href="admin/list">상품조회</a>
+		    <a class="nav-link text-light" aria-current="page" href="list">상품조회</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link text-light" href="admin/sales">매출조회</a>
+		    <a class="nav-link text-light" href="sales">매출조회</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link text-light" href="admin/insert">상품등록</a>
+		    <a class="nav-link text-light" href="insert">상품등록</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link text-light" href="admin/update">상품수정</a>
+		    <a class="nav-link text-light" href="update">상품수정</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link text-light" aria-current="page" href="admin/order_list">주문관리</a>
+		    <a class="nav-link text-light" aria-current="page" href="order_list">주문관리</a>
 		  </li>
 		</ul>
       </div>
