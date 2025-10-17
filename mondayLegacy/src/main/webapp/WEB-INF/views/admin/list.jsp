@@ -23,7 +23,7 @@
             <tr onclick="boardView()">
               <th><input type="checkbox"></th>
               <th scope="row">1</th>
-              <td><a href="shop/product_detail"><img src="resources/images/favicon.png" alt="상품이미지"></a></td>
+              <td><a href="shop/product_detail"><img src="${pageContext.request.contextPath}/resources/images/favicon.png" alt="상품이미지"></a></td>
               <td>사과</td>
               <td>10000</td>
               <td>사과</td>
@@ -41,7 +41,7 @@
             <tr onclick="boardView()">
               <th><input type="checkbox"></th>
               <th scope="row">2</th>
-              <td><a href="shop/product_detail"><img src="resources/images/favicon.png" alt="상품이미지"></a></td>
+              <td><a href="shop/product_detail"><img src="${pageContext.request.contextPath}/resources/images/favicon.png" alt="상품이미지"></a></td>
               <td>딸기</td>
               <td>23100</td>
               <td>딸기</td>
