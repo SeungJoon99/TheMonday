@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ezen.service.HelpService;
+import com.ezen.repository.HelpService;
 import com.ezen.vo.HelpVO;
 import com.ezen.vo.SearchVO;
 

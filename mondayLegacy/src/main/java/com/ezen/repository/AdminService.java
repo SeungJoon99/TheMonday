@@ -4,7 +4,7 @@
  * 작성일 : 2025.10.15
  **********************************/
 
-package com.ezen.service;
+package com.ezen.repository;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
