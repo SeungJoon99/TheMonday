@@ -17,6 +17,14 @@ public class ProductVO
     private String psize;     //사이즈
     private String pkind;     //카테고리명
     private String pdelyn;    //상품삭제여부
+    private String pimg;   	  //상품사진
+    
+	public String getPimg() {
+		return pimg;
+	}
+	public void setPimg(String pimg) {
+		this.pimg = pimg;
+	}
 	public int getPno() {
 		return pno;
 	}

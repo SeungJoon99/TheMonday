@@ -2,24 +2,9 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="./include/product_header.jsp" %>
-      <h1>Nordic Chair (Beige)</h1>
-      <img src="${pageContext.request.contextPath}/resources/images/product-1.png" alt="Nordic Chair Beige">
-      <p>심플하고 부드러운 디자인의 편안한 의자 제품입니다.</p>
-      <form method="post">
-        <label for="size">사이즈를 선택하세요:</label>
-          <select id="size" name="size">
-            <option value="3">--3인용--</option>
-            <option value="4">--4인용--</option>
-            <option value="5">--5인용--</option>
-          </select>
-
-        <label for="color">색상을 선택하세요:</label>
-          <select id="color" name="color">
-            <option value="B">--베이지--</option>
-            <option value="W">--화이트--</option>
-            <option value="I">--아이보리--</option>
-          </select>
-      </form>
-      <h2>$50.00</h2>
+      <h1>${ProductDetail.pname }</h1>
+      <img src="${pageContext.request.contextPath}/resources/images/${ProductDetail.pimg }" alt="Nordic Chair Beige">
+      <p>${ProductDetail.pinfo }</p>
+      <h2>${ProductDetail.pprice}원</h2>
 
      <%@ include file="./include/product_footer.jsp" %>

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+    
+    
 
 <!doctype html>
 <html>
@@ -24,20 +28,20 @@
 		<!-- Start Header/Navigation -->
 		<nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
 			<div class="container">
-				<a class="navbar-brand" href="">The Monday<span>.</span></a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/">The Monday<span>.</span></a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
 				<div class="collapse navbar-collapse" id="navbarsFurni">
 					<div class="col-1"></div>
-					<form class="search-box" action="shop/search">
-						<input class="form-control" type="search" placeholder="검색" aria-label="Search" name="query">
-						<button class="btn" type="submit">
-							<i class="fas fa-search"></i>
-						</button>
+					<form class="search-box" action="${pageContext.request.contextPath}/shop/search" method="get">
+					  <input class="form-control" id="keyword" type="search" placeholder="검색" aria-label="Search" name="keyword">
+					  <button class="btn" type="submit">
+					    <i class="fas fa-search"></i>
+					  </button>
 					</form>
-          
+
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
 						<li><a class="nav-link" href="member/mypage">[홍길동]홈</a></li>
 						<li class="active" aria-current="page">
@@ -67,19 +71,19 @@
 				<div class="col-2"></div>
 				<ul class="col-8 nav nav-tabs bg-dark">
 					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="main?p_kind=">침대</a>
+						<a class="nav-link" aria-current="page" href="?pkind=침대">침대</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="main?p_kind=">소파</a>
+						<a class="nav-link" href="?pkind=소파">소파</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="main?p_kind=">옷장</a>
+						<a class="nav-link" href="?pkind=옷장">옷장</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="main?p_kind=">매트리스</a>
+						<a class="nav-link" href="?pkind=매트리스">매트리스</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="main?p_kind=">테이블</a>
+						<a class="nav-link" href="?pkind=테이블">테이블</a>
 					</li>
 				</ul>
 				<div class="col-2"></div>

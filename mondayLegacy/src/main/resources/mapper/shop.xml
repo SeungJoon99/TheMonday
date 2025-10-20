@@ -2,13 +2,57 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <!-- Namespace를 통해 JAVA 클래스와 Annotation클래스와 동기 -->
-<mapper namespace="com.ezen.vo.shop">
+<mapper namespace="com.ezen.shop">
 
+	<resultMap type="com.ezen.vo.ProductVO" id="shopItemListMap">
+		<id property="pno" column="p_no" />
+		<result property="pprice" column="p_price" />
+	    <result property="pinfo" column="p_info" />
+	    <result property="pimg" column="p_img" />
+	    <result property="pname" column="p_name" />
+	    <result property="pwdate" column="p_wdate" />
+	    <result property="pdisplay" column="p_display" />
+	    <result property="pkind" column="p_kind" />
+	    <result property="pdelyn" column="p_delyn" />
+	</resultMap>
+	
 	<!-- 상품 목록 조회 -->
-    <!-- 검색 쿼리 작성 시 파라미터로 SearchVO 반환객체로 BoardVO -->
-	<!-- <select id="main" resultType="com.ezen.vo.shopVO">
-		select p_parentno ,p_price ,p_name ,p_img ,
-		(select sum(d_qty) from detail d where d.p_no = p.p_no) sum
+	<select id="Main" parameterType="com.ezen.vo.ProductVO"
+		resultMap="shopItemListMap">
+		select p_no, p_price, p_name, p_img,
+		(select sum(d_qty) from detail d where p_no = p.p_no) sum
 		from product p
-	</select> -->
+		where 
+		p_delyn = 'N' 
+		and p_display = 'Y'
+		<if test="pkind != null and pkind.trim() != ''">
+			and p_kind = #{pkind}
+		</if>
+		order by sum
+		limit 0, 16
+	</select>
+	<!-- 상품 단건 조회 -->
+	<select id="ProductDetail" parameterType="java.lang.Integer" 
+		resultMap="shopItemListMap">
+		select p_price, p_name, p_img, p_info
+		from product p
+		where
+		p_no = #{pno} 
+		and p_delyn = 'N' 
+		and p_display = 'Y' 
+	</select>
+	
+	<!-- 상품 검색 -->
+	<select id="Search" parameterType="com.ezen.vo.SearchVO" 
+		resultMap="shopItemListMap">
+		select p_no, p_price, p_name, p_img
+		from product
+		where
+		p_delyn = 'N' 
+		and p_display = 'Y'
+		<if test="keyword != null and keyword.trim() != ''">
+  			and p_name like concat('%', '${keyword}', '%')
+  		</if>
+	</select>
+	
 </mapper>

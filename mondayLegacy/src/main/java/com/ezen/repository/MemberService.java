@@ -1,4 +1,4 @@
-package com.ezen.service;
+package com.ezen.repository;
 
 import org.springframework.stereotype.Service;
 

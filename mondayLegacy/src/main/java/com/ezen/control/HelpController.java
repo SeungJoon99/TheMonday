@@ -1,11 +1,6 @@
 package com.ezen.control;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ezen.service.HelpService;
+import com.ezen.repository.HelpService;
 import com.ezen.vo.HelpVO;
 import com.ezen.vo.SearchVO;
 
@@ -31,9 +26,13 @@ public class HelpController {
 	}
 	
 	@RequestMapping(value = "/board_detail", method = RequestMethod.GET)
-	public String Board_detail() 
+	public String Board_detail(@RequestParam(defaultValue = "1") String no, Model model)
 	{
-		return "help/board_detail";
+
+	    HelpVO vo = helpservice.Read(String.valueOf(no));
+	    model.addAttribute("item", vo);
+
+	    return "help/board_detail";
 	}
 	
 	@RequestMapping(value = "/delete")
@@ -73,9 +72,12 @@ public class HelpController {
 		
 		//목록 조회 
 		List<HelpVO> list = helpservice.GetList(vo);
-		for(HelpVO item : list)
-		{
-			System.out.println("title:" + item.getHtitle());
+		if (list != null && !list.isEmpty()) {
+		    for(HelpVO item : list) {
+		        System.out.println("title: " + item.getHtitle());
+		    }
+		} else {
+		    System.out.println("⚠ list is null or empty!");
 		}
 		
 		model.addAttribute("total",total);

@@ -14,54 +14,29 @@ public class HelpVO
     private String hnote;   //내용
     private String hwdate;  //작성일
     private String hupdate; //수정일
-    private String uemail;  //이메일
-	public int getHno() {
-		return hno;
-	}
-	public void setHno(int hno) {
-		this.hno = hno;
-	}
-	public String getUnick() {
-		return unick;
-	}
-	public void setUnick(String unick) {
-		this.unick = unick;
-	}
-	public String getHkind() {
-		return hkind;
-	}
-	public void setHkind(String hkind) {
-		this.hkind = hkind;
-	}
-	public String getHtitle() {
-		return htitle;
-	}
-	public void setHtitle(String htitle) {
-		this.htitle = htitle;
-	}
-	public String getHnote() {
-		return hnote;
-	}
-	public void setHnote(String hnote) {
-		this.hnote = hnote;
-	}
-	public String getHwdate() {
-		return hwdate;
-	}
-	public void setHwdate(String hwdate) {
-		this.hwdate = hwdate;
-	}
-	public String getHupdate() {
-		return hupdate;
-	}
-	public void setHupdate(String hupdate) {
-		this.hupdate = hupdate;
-	}
-	public String getUemail() {
-		return uemail;
-	}
-	public void setUemail(String uemail) {
-		this.uemail = uemail;
-	}
-      
+    private String hdelyn; // 삭제여부
+
+    public int getHno() { return hno; }
+    public void setHno(int hno) { this.hno = hno; }
+
+    public String getUnick() { return unick; }
+    public void setUnick(String unick) { this.unick = unick; }
+
+    public String getHkind() { return hkind; }
+    public void setHkind(String hkind) { this.hkind = hkind; }
+
+    public String getHtitle() { return htitle; }
+    public void setHtitle(String htitle) { this.htitle = htitle; }
+
+    public String getHnote() { return hnote; }
+    public void setHnote(String hnote) { this.hnote = hnote; }
+
+    public String getHwdate() { return hwdate; }
+    public void setHwdate(String hwdate) { this.hwdate = hwdate; }
+
+    public String getHupdate() { return hupdate; }
+    public void setHupdate(String hupdate) { this.hupdate = hupdate; }
+
+    public String getHdelyn() { return hdelyn; }
+    public void setHdelyn(String hdelyn) { this.hdelyn = hdelyn; }
 }
