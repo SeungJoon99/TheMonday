@@ -17,31 +17,7 @@
     </p>
     <span>&nbsp;&nbsp;</span>
   </div>
-  <form>
-      <div class="d-flex">
-        <input type="checkbox" id="searchkind1" name="searchCategory">
-        <label class="form-check-label" for="searchkind1">침대</label>|
-        <input type="checkbox" id="searchkind2" name="searchCategory">
-        <label class="form-check-label" for="searchkind2">소파</label>|
-        <input type="checkbox" id="searchkind3" name="searchCategory">
-        <label class="form-check-label" for="searchkind3">옷장</label>|
-        <input type="checkbox" id="searchkind4" name="searchCategory">
-        <label class="form-check-label" for="searchkind4">매트리스</label>|
-        <input type="checkbox" id="searchkind5" name="searchCategory">
-        <label class="form-check-label" for="searchkind5">테이블</label>
-      </div>
-    </form>
-
-    <div class="d-flex justify-content-end">
-      <input class="" type="radio" name="sortOptions" id="sort1" value="option1" checked>
-      <label class="form-check-label" for="sort1">판매순</label> |
-      <input class="" type="radio" name="sortOptions" id="sort2" value="option2">
-      <label class="form-check-label" for="sort2">인기순</label> |
-      <input class="" type="radio" name="sortOptions" id="sort3" value="option3">
-      <label class="form-check-label" for="sort3">리뷰순</label>
-    </div>
-	<div class="row mt-3">
-	
+  <div class="row mt-3">
 		<!-- 상품 출력 -->			
 		<c:forEach var="item" items="${Search}">
 			<div class="col-12 col-md-4 col-lg-3 mb-5">

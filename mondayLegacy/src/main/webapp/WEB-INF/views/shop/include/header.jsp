@@ -43,12 +43,12 @@
 					</form>
 
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-						<li><a class="nav-link" href="member/mypage">[홍길동]홈</a></li>
+						<li><a class="nav-link" href="${pageContext.request.contextPath}/member/mypage">[홍길동]홈</a></li>
 						<li class="active" aria-current="page">
-							<a class="nav-link" href="shop/main">상품 보기</a>
+							<a class="nav-link" href="${pageContext.request.contextPath}/shop">상품 보기</a>
 						</li>
-						<li><a class="nav-link" href="member/login">로그인</a></li>
-						<li><a class="nav-link" href="member/cart">장바구니</a></li>
+						<li><a class="nav-link" href="${pageContext.request.contextPath}/member/login">로그인</a></li>
+						<li><a class="nav-link" href="${pageContext.request.contextPath}/member/cart">장바구니</a></li>
 					</ul>
 				</div>
 			</div>

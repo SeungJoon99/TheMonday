@@ -8,7 +8,7 @@ import org.springframework.stereotype.*;
 import com.ezen.vo.*;
 
 @Repository
-public class ShopService 
+public class ShopRepository 
 {
 	@Autowired
 	private SqlSession session;
@@ -20,6 +20,12 @@ public class ShopService
 	{
 		List<ProductVO> list = session.selectList(namespace + ".Main", vo);
 		return list;
+	}
+	//전체 상품 개수
+	public int GetTotal(SearchVO vo)
+	{
+		int total = session.selectOne(namespace + ".total", vo);
+		return total;
 	}
 	//상품 단건 조회
 	public ProductVO ProductDetail(int pno)
