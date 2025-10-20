@@ -50,9 +50,8 @@
 		where
 		p_delyn = 'N' 
 		and p_display = 'Y'
-		<if test="keyword != null and keyword.trim() != ''">
-  			and p_name like concat('%', '${keyword}', '%')
-  		</if>
+		and p_name like concat('%', '${keyword}', '%')
+  		
 	</select>
 	
 </mapper>
