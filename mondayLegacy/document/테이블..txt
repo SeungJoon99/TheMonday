@@ -78,11 +78,12 @@ drop table status;
  
 drop table manage;
  create table manage(
- o_no int primary key not null comment '주문번호',
+ o_no int not null primary key comment '주문번호',
  s_value int not null default 0 comment '주문상태',
  m_memo text comment '관리자메모',
- foreign key (o_no) references orders (o_no)
-) comment = '주문내역';
+ foreign key (o_no) references orders (o_no),
+ foreign key (s_value) references status (s_value)
+) comment = '주문내역 관리';
 
 create table help(
  h_no int primary key auto_increment comment '게시물번호',

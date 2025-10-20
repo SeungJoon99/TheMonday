@@ -3,16 +3,92 @@
 
 <!-- Namespace를 통해 JAVA 클래스와 Annotation클래스와 동기 -->
 <mapper namespace="com.ezen.admin">
+
+	<!-- 변수 매핑 -->
+	<resultMap type="com.ezen.vo.ProductVO" id="shopItemListMap">
+		<id property="pno" column="p_no" />
+		<result property="pprice" column="p_price" />
+	    <result property="pinfo" column="p_info" />
+	    <result property="pimg" column="p_img" />
+	    <result property="pname" column="p_name" />
+	    <result property="pwdate" column="p_wdate" />
+	    <result property="pdisplay" column="p_display" />
+	    <result property="pkind" column="p_kind" />
+	    <result property="pdelyn" column="p_delyn" />
+	</resultMap>
+	
+	<resultMap type="com.ezen.vo.UserVO" id="shopUserListMap">
+		<id property="uno" column="u_no" />
+	    <result property="unick" column="u_ick" />
+		<result property="uemail" column="u_email" />
+	    <result property="upw" column="u_pw" />
+	    <result property="utype" column="u_type" />
+	</resultMap>
+	<!-- 
+	private int    uno;       //유저번호
+    private String unick;     //유저닉네임
+    private String uemail;    //유저이메일
+    private String upw;       //유저비밀번호
+    private String uhp;       //유저전화번호
+    private String utype;     //유저구분번호
+    private String upostcode; //유저우편번호
+    private String uold;      //유저지번
+    private String uaddr;     //유저도로명주소
+    private String uaddr2;    //유저상세주소
+    private String uname;     //유저이름
+    private String udelyn;    //유저탈퇴여부
+    private String uwdate;    //유저등록일
+    private String uudate;    //유저수정일
+	-->
+	
+	<resultMap type="com.ezen.vo.SearchVO" id="shopItemSearchMap">
+		<id property="pno" column="p_no" />
+			<result property="kind" column="kind" />
+			<result property="pkind" column="p_kind" />
+			<result property="pdisplay" column="p_display" />
+			
+	</resultMap>
+	<!-- 
+	private String kind;    //게시물 종류
+	private String pkind; //검색 키워드	
+	private String pdisplay; //진열 여부
+	-->
+	 
+	<resultMap type="com.ezen.vo.OrdersVO" id="shopOrderListMap">
+		<id property="ono" column="o_no" />
+		<result property="uno" column="u_no" />
+		<result property="uhp" column="u_hp" />
+		<result property="upostcode" column="u_postcode" />
+		<result property="uold" column="u_old" />
+		<result property="uaddr" column="u_addr" />
+		<result property="uaddr2" column="u_addr2" />
+		<result property="orequest" column="o_request" />
+		<result property="odate" column="o_date" />
+		<result property="o_total" column="o_total" />
+	</resultMap>
+	<!--
+	private int    ono;       //주문번호
+    private int    uno;       //유저번호
+    private String uhp;       //전화번호
+    private String upostcode; //우편번호
+    private String uold;      //유저지번
+    private String uaddr;     //유저도로명주소
+    private String uaddr2;    //유저상세주소
+    private String orequest;  //요청사항
+    private String odate;     //주문일
+    private int    ototal;    //총 주문가격
+    -->
+    
 	<!-- 상품 등록 -->
 	<insert id="Insert" parameterType="com.ezen.vo.ProductVO">
-		insert into product p(p_name, p_price, p_kind, p_info,  p_img)
+		insert into product p(p_name, p_price, p_kind, p_info, p_img)
 		values(
 			#{pname}, #{pprice}, #{pkind}, #{pinfo}, #{pimg}
 		)
 	</insert>
 	
 	<!-- 상품목록 조회 -->
-	<select id="List" resultType="com.ezen.vo.ProductVO">
+	<select id="List" resultMap="shopItemListMap">
 		select p_no, p_img, p_name, p_price, p_kind, p_wdate, p_display
 		from product
 		where p_delyn != 'Y'
@@ -20,7 +96,7 @@
 	</select>
 	<!-- 상품목록 조회 카테고리 정렬-->
 	<select id="ListK" parameterType="com.ezen.vo.SearchVO" 
-		resultType="com.ezen.vo.ProductVO">
+		resultMap="shopItemListMap">
 		select p_no, p_img, p_name, p_price, p_kind, p_wdate, p_display
 		from product
 		where p_delyn != 'Y' and
@@ -29,7 +105,7 @@
 	</select>
 	<!-- 상품목록 조회 진열여부별 정렬 -->
 	<select id="ListD" parameterType="com.ezen.vo.SearchVO" 
-		resultType="com.ezen.vo.ProductVO">
+		resultMap="shopItemListMap">
 		select p_no, p_img, p_name, p_price, p_kind, p_wdate, p_display
 		from product
 		where p_delyn != 'Y' and
@@ -40,11 +116,11 @@
 	<!-- 상품수정 -->
 	<update id="Update" parameterType="com.ezen.vo.ProductVO">
 		update set product 
-		p_img = #{pimg}, 
-		p_name = #{pname}, 
-		p_price = #{pprice}, 
-		p_kind = #{pkind}, 
-		p_display = #{pdisplay}
+			p_img = #{pimg}, 
+			p_name = #{pname}, 
+			p_price = #{pprice}, 
+			p_kind = #{pkind}, 
+			p_display = #{pdisplay}
 		where p_no = #{pno} and
 		p_delyn != 'Y'
 	</update>
@@ -59,21 +135,51 @@
 	</select>
 	
 	<!-- 주문내역 조회 -->
-	<select id="OrderList" resultType="com.ezen.vo.OrdersVO">
-		select o_no, o_date, o_total ,
-		<!-- (select p_img from detail where o_no = orders.o_no  limit 0, 1) as img, -->
-		(select m_state from manage where o_no = manage.o_no) as state
-		from orders 
+	<select id="OrderList" resultMap="shopOrderListMap">
+		select o.o_no,
+			case when (select count(d3.p_no) from detail d3 where o.o_no = d3.o_no) > 1
+				then concat(
+					(select p_name from detail d2 
+					join product p2 on d2.p_no = p2.p_no
+					where d2.o_no = o.o_no
+					order by d2.p_no limit 1),' 외 ',
+					(select count(detail.p_no) - 1 from detail where detail.o_no = o.o_no), '개')
+				else (select p_name from detail d2 
+						join product p2 on d2.p_no = p2.p_no
+						where d2.o_no = o.o_no
+						order by d2.p_no limit 1)
+				end as p_name,
+			o_total,
+			o_date,
+			(select s_name from manage m 
+			join status s on m.s_value = s.s_value 
+			where m.o_no = o.o_no) as s_name
+		from orders as o 
 		order by o_no desc
 	</select>
 	
 	<!-- 주문내역 조회 품명 검색 -->
-	<select id="OrderListSearch" resultType="com.ezen.vo.OrdersVO">
-		select o_no, o_date, o_total ,
-		<!-- (select p_img from detail where o_no = orders.o_no limit 0, 1) as img, -->
-		(select from manage where o_no = manage.o_no) as state
-		(select m_state from manage where o_no = manage.o_no) as state
-		from orders 
+	<select id="OrderListSearch" parameterType="com.ezen.vo.SearchVO" 
+		resultMap="shopOrderListMap">
+		select o.o_no,
+			case when (select count(d3.p_no) from detail d3 where o.o_no = d3.o_no) > 1
+				then concat(
+					(select p_name from detail d2 
+					join product p2 on d2.p_no = p2.p_no
+					where d2.o_no = o.o_no
+					order by d2.p_no limit 1),' 외 ',
+					(select count(detail.p_no) - 1 from detail where detail.o_no = o.o_no), '개')
+				else (select p_name from detail d2 
+						join product p2 on d2.p_no = p2.p_no
+						where d2.o_no = o.o_no
+						order by d2.p_no limit 1)
+				end as p_name,
+			o_total,
+			o_date,
+			(select s_name from manage m 
+			join status s on m.s_value = s.s_value 
+			where m.o_no = o.o_no) as s_name
+		from orders  as o 
 		where '%${ keyword }%'
 		order by o_no desc
 	</select>
