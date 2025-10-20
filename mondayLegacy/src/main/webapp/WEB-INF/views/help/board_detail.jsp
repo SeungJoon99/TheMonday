@@ -3,11 +3,10 @@
 <%@ include file="./include/header.jsp" %>
 
 <div class="post-view">
-  <div class="post-title" id="b_title">사이즈를 잘못 시켰어요</div>
-  <div class="post-meta">작성자: 이승준 | 작성일: 2025-09-25</div>
+  <div class="post-title" id="b_title">${item.h_title}</div>
+  <div class="post-meta">작성자: ${item.u_nick} | 작성일: ${item.h_wdate}</div>
   <div class="post-content" id="b_note">
-    주문할 때 사이즈를 잘못 선택했는데 교환이 가능한가요?<br>
-    방법을 알려주시면 감사하겠습니다.
+    ${item.h_note}
   </div>
 
   <div class="post-buttons">
@@ -33,7 +32,7 @@
 	}
     </script>
 
-    <button class="btn-remove" onclick="javascript:Delete(${ item.no });"
+    <button class="btn-remove" onclick="javascript:Delete(${ item.h_no });"
     >삭제</button>
     <button class="btn-list" onclick="location.href='help/board'">목록</button><br><br>
 

@@ -1,12 +1,10 @@
-package com.ezen.repository;
+package com.ezen.service;
 
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
-
 import com.ezen.vo.HelpVO;
 import com.ezen.vo.SearchVO;
 
@@ -28,14 +26,9 @@ public class HelpService {
 	
 	//게시물 정보를 읽는다.	
 	//IsHit = true : 조회수 증가, false : 조회수 증가 안함.
-	public HelpVO Read(String no,boolean IsHit)
+	public HelpVO Read(String no)
 	{
 		HelpVO vo = session.selectOne(namespace + ".view",no);
-		
-		if(IsHit == true)
-		{
-			session.update(namespace + ".hit",no);
-		}
 		return vo;
 	}	
 	

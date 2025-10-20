@@ -6,20 +6,20 @@ public class SearchVO
 	private int    offset;  //limit 시작번호
 	private String kind;    //게시물 종류
 	private String keyword; //검색 키워드	
-	private String pkind; //검색 키워드	
-	private String pdisplay; //검색 키워드	
+	private String hkind; //검색 키워드	
+	private String hdisplay; //검색 키워드	
 	
-	public String getPkind() {
-		return pkind;
+	public String getHkind() {
+		return hkind;
 	}
-	public void setPkind(String pkind) {
-		this.pkind = pkind;
+	public void setHkind(String pkind) {
+		this.hkind = pkind;
 	}
-	public String getPdisplay() {
-		return pdisplay;
+	public String getHdisplay() {
+		return hdisplay;
 	}
-	public void setPdisplay(String pdisplay) {
-		this.pdisplay = pdisplay;
+	public void setHdisplay(String pdisplay) {
+		this.hdisplay = pdisplay;
 	}
 	public void setOffset(int offset) {
 		this.offset = offset;
