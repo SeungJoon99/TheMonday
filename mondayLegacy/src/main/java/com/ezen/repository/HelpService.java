@@ -1,4 +1,4 @@
-package com.ezen.service;
+package com.ezen.repository;
 
 import java.util.List;
 
