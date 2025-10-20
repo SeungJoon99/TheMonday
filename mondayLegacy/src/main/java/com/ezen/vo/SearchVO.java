@@ -6,8 +6,8 @@ public class SearchVO
 	private int    offset;  //limit 시작번호
 	private String kind;    //게시물 종류
 	private String keyword; //검색 키워드	
-	private String hkind; //검색 키워드	
-	private String hdisplay; //검색 키워드	
+	private String hkind;   //게시물종류
+	private String hdisplay; //게시물 표시 여부	
 	
 	public String getHkind() {
 		return hkind;

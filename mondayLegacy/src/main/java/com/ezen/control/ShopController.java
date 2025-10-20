@@ -30,7 +30,7 @@ public class ShopController {
 		
 		List<ProductVO> list = shopservice.Main(vo);
 		
-		model.addAttribute("main",list);
+		model.addAttribute("Main",list);
 		
 		return "shop/main";
 	}

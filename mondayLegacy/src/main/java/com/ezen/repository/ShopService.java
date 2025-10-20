@@ -21,12 +21,6 @@ public class ShopService
 		List<ProductVO> list = session.selectList(namespace + ".Main", vo);
 		return list;
 	}
-	//카테고리별 상품 목록 조회
-	public List<ProductVO> Kind(ProductVO vo)
-	{
-		List<ProductVO> list = session.selectList(namespace + ".Kind", vo.getPkind());
-		return list;
-	}
 	//상품 단건 조회
 	public ProductVO ProductDetail(String pno)
 	{
