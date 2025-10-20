@@ -1,8 +1,7 @@
-<%@page import="com.ezen.vo.ProductVO"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="./include/header.jsp" %>
+
 <div class="untree_co-section product-section before-footer-section">
     <div class="container">
         <div class="">
@@ -18,7 +17,7 @@
             <label class="form-check-label" for="sort3">신뢰순</label>
         </div>
 
-	<div class="row mt-3">
+        <div class="row mt-3">
 	
 		<!-- 상품 출력 -->			
 		<c:forEach var="item" items="${main}">
