@@ -21,7 +21,7 @@
 							</div>
 							<div class="row mt-3 rounded justify-content-center" role="alert">
 								<div class="col-6">
-									<button type="button" class="btn btn-primary btn-sm justify-content-center" onclick="window.location='admin/list'">로그인하기</button>&nbsp;&nbsp;
+									<button type="button" class="btn btn-primary btn-sm justify-content-center" onclick="window.location='login/'">로그인하기</button>&nbsp;&nbsp;
 								</div>
 							</div>
 						</form>
@@ -35,6 +35,9 @@
 		<script src="resources/js/bootstrap.bundle.min.js"></script>
 		<script src="resources/js/tiny-slider.js"></script>
 		<script src="resources/js/custom.js"></script>
+		<script>
+			
+		</script>
 	</body>
 
 </html>

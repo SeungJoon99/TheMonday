@@ -44,14 +44,20 @@
 	<resultMap type="com.ezen.vo.SearchVO" id="shopItemSearchMap">
 		<id property="pno" column="p_no" />
 			<result property="kind" column="kind" />
+			<result property="hkind" column="h_kind" />
 			<result property="pkind" column="p_kind" />
-			<result property="pdisplay" column="p_display" />
+			<result property="hdisplay" column="h_display" />
 			
 	</resultMap>
 	<!-- 
-	private String kind;    //게시물 종류
-	private String pkind; //검색 키워드	
-	private String pdisplay; //진열 여부
+	private int    pageno;   //페이지 번호
+	private int    offset;   //limit 시작번호
+	private String kind;     //게시물 종류
+	private String keyword;  //검색 키워드	
+	private String hkind;    //게시물종류
+	private String pkind;    //상품카테고리
+	private String hdisplay; //게시물 표시 여부	
+	private int    pno; 	 //상품번호	
 	-->
 	 
 	<resultMap type="com.ezen.vo.OrdersVO" id="shopOrderListMap">
