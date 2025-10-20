@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.ezen.vo.HelpVO;
 import com.ezen.vo.SearchVO;
 
@@ -20,15 +22,16 @@ public class HelpService {
 	//return true : 등록 성공, false : 등록 실패
 	public boolean Insert(HelpVO vo)
 	{
+		
 		session.insert(namespace + ".insert",vo);
 		return true;
 	}	
 	
 	//게시물 정보를 읽는다.	
 	//IsHit = true : 조회수 증가, false : 조회수 증가 안함.
-	public HelpVO Read(String no)
+	public HelpVO Read(@RequestParam String h_no)
 	{
-		HelpVO vo = session.selectOne(namespace + ".view",no);
+		HelpVO vo = session.selectOne(namespace + ".view",h_no);
 		return vo;
 	}	
 	
