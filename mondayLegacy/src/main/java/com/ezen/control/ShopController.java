@@ -20,7 +20,7 @@ import com.ezen.vo.*;
 @RequestMapping("/shop")
 public class ShopController {	
 	@Autowired
-	ShopService shopservice;
+	ShopRepository shoprepository;
 	
 	//상품 목록 조회
 	@RequestMapping(value = "", method = RequestMethod.GET)
@@ -28,7 +28,7 @@ public class ShopController {
 	{
 		ProductVO vo = new ProductVO();
 		
-		List<ProductVO> list = shopservice.Main(vo);
+		List<ProductVO> list = shoprepository.Main(vo);
 		
 		model.addAttribute("main",list);
 		
@@ -39,7 +39,7 @@ public class ShopController {
 	public String ProductDetail(@RequestParam(required = true) int pno,
 			 Model model) 
 	{
-		ProductVO vo = shopservice.ProductDetail(pno);
+		ProductVO vo = shoprepository.ProductDetail(pno);
 		
 		model.addAttribute("ProductDetail",vo);
 		
@@ -56,7 +56,7 @@ public class ShopController {
 	    vo.setKeyword(keyword);
 	    vo.setPkind(pkind);
 	    
-	    List<ProductVO> list = shopservice.Search(vo);
+	    List<ProductVO> list = shoprepository.Search(vo);
 
 	    model.addAttribute("Search", list);
 	    model.addAttribute("keyword", keyword);   

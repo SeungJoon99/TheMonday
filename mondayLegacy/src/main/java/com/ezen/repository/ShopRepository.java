@@ -8,7 +8,7 @@ import org.springframework.stereotype.*;
 import com.ezen.vo.*;
 
 @Repository
-public class ShopService 
+public class ShopRepository 
 {
 	@Autowired
 	private SqlSession session;
