@@ -22,7 +22,7 @@
 		<!-- 상품 출력 -->			
 		<c:forEach var="item" items="${main}">
 			<div class="col-12 col-md-4 col-lg-3 mb-5">
-				<a class="product-item" href="product_detail?no=${item.pno}">
+				<a class="product-item" href="${pageContext.request.contextPath}/shop/product_detail?pno=${item.pno}">
 					<img src="${pageContext.request.contextPath}/resources/images/${ item.pimg }" class="img-fluid product-thumbnail">
 					<h3 class="product-title">${item.pname}</h3>
 					<strong class="product-price">${item.pprice}</strong>

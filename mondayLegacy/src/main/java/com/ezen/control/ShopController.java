@@ -30,32 +30,39 @@ public class ShopController {
 		
 		List<ProductVO> list = shopservice.Main(vo);
 		
-		model.addAttribute("Main",list);
+		model.addAttribute("main",list);
 		
 		return "shop/main";
 	}
 	//상품 단건 조회
 	@RequestMapping(value = "/product_detail", method = RequestMethod.GET)
-	public String ProductDetail(@RequestParam(required = false) String pno,
-			ProductVO vo, Model model) 
+	public String ProductDetail(@RequestParam(required = true) int pno,
+			 Model model) 
 	{
-		shopservice.ProductDetail(pno);
+		ProductVO vo = shopservice.ProductDetail(pno);
 		
 		model.addAttribute("ProductDetail",vo);
 		
 		return "shop/product_detail";
 	}
 
-	//상품 검색
+	//상품검색
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public String Search(SearchVO vo, Model model) 
+	public String Search(@RequestParam(required = false) String keyword,
+	                     @RequestParam(required = false) String pkind,
+	                     Model model) 
 	{
-		List<ProductVO> list = shopservice.Search(vo);
-		
-		model.addAttribute("Search", list);
-		
-		return "shop/search";
+	    SearchVO vo = new SearchVO();
+	    vo.setKeyword(keyword);
+	    vo.setPkind(pkind);
+	    
+	    List<ProductVO> list = shopservice.Search(vo);
+
+	    model.addAttribute("Search", list);
+	    model.addAttribute("keyword", keyword);   
+	    return "shop/search";
 	}
+
 	
 	//상품 구매 완료
 	@RequestMapping(value = "/thankyou", method = RequestMethod.GET)

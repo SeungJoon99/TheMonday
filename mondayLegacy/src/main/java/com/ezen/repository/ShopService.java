@@ -22,7 +22,7 @@ public class ShopService
 		return list;
 	}
 	//상품 단건 조회
-	public ProductVO ProductDetail(String pno)
+	public ProductVO ProductDetail(int pno)
 	{
 		ProductVO p = session.selectOne(namespace + ".ProductDetail", pno);
 		return p;

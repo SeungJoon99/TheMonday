@@ -29,11 +29,11 @@
 			and p_kind = #{pkind}
 		</if>
 		order by sum
-		limit 0, 10
+		limit 0, 16
 	</select>
 	<!-- 상품 단건 조회 -->
-	<select id="ProductDetail" parameterType="java.lang.String" 
-		resultType="com.ezen.vo.ProductVO">
+	<select id="ProductDetail" parameterType="java.lang.Integer" 
+		resultMap="shopItemListMap">
 		select p_price, p_name, p_img, p_info
 		from product p
 		where
@@ -44,18 +44,15 @@
 	
 	<!-- 상품 검색 -->
 	<select id="Search" parameterType="com.ezen.vo.SearchVO" 
-		resultType="com.ezen.vo.ProductVO">
-		select p_price, p_name, p_img
-		from product p
+		resultMap="shopItemListMap">
+		select p_no, p_price, p_name, p_img
+		from product
 		where
 		p_delyn = 'N' 
 		and p_display = 'Y'
-		<if test="pkind != null and pkind.trim() != ''">
-			and p_kind = #{pkind}
-		</if>
 		<if test="keyword != null and keyword.trim() != ''">
-			and p_name like '%${keyword}%'
-		</if>
+  			and p_name like concat('%', '${keyword}', '%')
+  		</if>
 	</select>
 	
 </mapper>
