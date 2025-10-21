@@ -44,7 +44,7 @@ public class HelpService {
 		
 	//게시물 정보를 삭제한다.	
 	//return true : 삭제 성공, false : 삭제 실패
-	public boolean Delete(String hno)
+	public boolean Delete(int hno)
 	{
 		//해당 게시글을 삭제
 		session.delete(namespace + ".helpdelete",hno);

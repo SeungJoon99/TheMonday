@@ -41,11 +41,10 @@
 
     <table border="1" style="width:100%; margin-top: 20px;">
       <tr>
-        <td width="110px"><strong>The Monday.</strong></td>
+        <td width="110px"><strong>관리자</strong></td>
         <td style="text-align: left;">
           <span>
-            관리자의 답변입니다. 관리자의 답변입니다. 관리자의 답변입니다.
-            관리자의 답변입니다. 관리자의 답변입니다. 관리자의 답변입니다.
+            
           </span>
         </td>
         <td width="110px">25.10.09</td>

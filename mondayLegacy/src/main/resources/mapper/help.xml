@@ -71,25 +71,26 @@
 		INNER JOIN user u ON h.u_no = u.u_no
 		WHERE h.h_no = #{ hno }
 	</select>
-	<!--  
-		<insert id="reply_insert" parameterType="com.ezen.vo.ReplyVO" 
-			useGeneratedKeys="true" keyProperty="rno">
-		insert into reply (no, userid, rnote)
-		values (#{no}, #{userid}, #{rnote})
+ 
+		<insert id="insertAnswer" parameterType="com.ezen.vo.AnswerVO">
+		INSERT INTO answer (h_no, u_no, a_text)
+		VALUES (#{hno}, #{uno}, #{atext})
 	</insert>	
 		
-	<select id="reply_list" parameterType="java.lang.String" 
+	<select id="selectAnswerByHno" parameterType="java.lang.Integer"
 			resultType="com.ezen.vo.AnswerVO">
-		select rno,userid,rnote,date(rwdate) as rwdate,
-		(select name from user where userid = reply.userid) as name
-		from reply
-		where no = #{no}
-		order by rno desc
+		SELECT 
+            h_no AS hno, 
+            u_no AS uno, 
+            a_text AS atext, 
+            a_wdate AS awdate 
+        FROM answer
+		WHERE h_no = #{hno}
 	</select>		
 	
-	<delete id="reply_delete" parameterType="java.lang.String">
-		delete from reply where rno = #{rno}
+	<delete id="deleteAnswer" parameterType="java.lang.Integer">
+		DELETE FROM answer WHERE h_no = #{hno}
 	</delete>	
-	-->
+
 
 </mapper>

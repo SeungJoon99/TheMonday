@@ -25,6 +25,9 @@ public class HelpController {
 	@Autowired
 	HelpService helpservice;
 	
+	@Autowired
+	AnswerRepository answerrepository;
+	
 	// 팀원 소개 컨트롤러
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
 	public String About() 
@@ -38,15 +41,16 @@ public class HelpController {
 	{
 
 	    HelpVO vo = helpservice.Read(hno);
-	    List<AnswerVO> reply ;
+	    List<AnswerVO> answer =  answerrepository.GetList(hno);
 	    model.addAttribute("item", vo);
+	    model.addAttribute("answerList", answer);
 
 	    return "help/board_detail";
 	}
 	
 	// 문의 삭제 컨트롤러
 	@RequestMapping(value = "/delete")
-	public String Delete(@RequestParam(required = true)String hno)
+	public String Delete(@RequestParam(required = true)int hno)
 	{
 		helpservice.Delete(hno);
 		return "redirect:/help/";
