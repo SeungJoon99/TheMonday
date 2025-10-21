@@ -11,7 +11,7 @@ public class UserVO
     private String uemail;    //유저이메일
     private String upw;       //유저비밀번호
     private String uhp;       //유저전화번호
-    private String utype;     //유저구분번호
+    private int    utype;     //유저타입
     private String upostcode; //유저우편번호
     private String uold;      //유저지번
     private String uaddr;     //유저도로명주소
@@ -50,10 +50,10 @@ public class UserVO
 	public void setUhp(String uhp) {
 		this.uhp = uhp;
 	}
-	public String getUtype() {
+	public int getUtype() {
 		return utype;
 	}
-	public void setUtype(String utype) {
+	public void setUtype(int utype) {
 		this.utype = utype;
 	}
 	public String getUpostcode() {

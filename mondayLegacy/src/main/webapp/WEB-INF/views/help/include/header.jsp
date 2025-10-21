@@ -16,6 +16,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/tiny-slider.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
     <title>The Monday</title>
 	<style>
     /* 상세보기 전용 스타일 */

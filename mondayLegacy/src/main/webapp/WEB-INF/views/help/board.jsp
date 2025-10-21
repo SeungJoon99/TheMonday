@@ -23,19 +23,19 @@
       </tr>
     </thead>
     <tbody>
-      <c:forEach var="item" items="${list}">
+      <c:forEach var="item" items="${list != null ? list : emptyList}">
 	    <tr>
-	      <td>${item.h_no}</td>
-	      <td>${item.h_kind}</td>
-          <td><a href="board_detail?no=${item.h_no}" style="display:block; width:100%; height:100%;">${item.h_title}</a></td>
-	      <td>${item.u_nick}</td>
-	      <td>${item.h_wdate}</td>
+	   		<td>${item.hno}</td>
+			<td>${item.hkind}</td>
+			<td><a href="board_detail?no=${item.hno}">${item.htitle}</a></td>
+			<td>${item.unick}</td>
+			<td>${item.hwdate}</td>
 	    </tr>
 	  </c:forEach>
       <!-- 문의 등록 버튼 -->
       <tr>
         <td colspan="5" style="text-align: left; border: none;">
-          <button type="button" class="btn btn-primary btn-sm" onclick="window.location = 'help/inquire'">문의하기</button>
+          <button type="button" class="btn btn-primary btn-sm" onclick="window.location = 'inquire'">문의하기</button>
         </td>
       </tr>
     </tbody>

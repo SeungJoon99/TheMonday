@@ -34,6 +34,7 @@ create table product(
  p_delyn varchar(255) default 'N' comment '상품삭제여부'
 ) comment = '상품';
 
+drop table orders;
 create table orders(
  o_no int not null primary key auto_increment comment '주문번호',
  u_no int not null comment '유저번호',
@@ -68,7 +69,7 @@ create table detail(
  primary key (o_no, p_no),
  foreign key(o_no) references orders (o_no),
  foreign key(p_no) references product (p_no)
-)  comment = '주문상세';          
+)  comment = '주문상세';
 
 drop table status;
  create table status(
@@ -85,6 +86,7 @@ drop table manage;
  foreign key (s_value) references status (s_value)
 ) comment = '주문내역 관리';
 
+drop table help;
 create table help(
  h_no int primary key auto_increment comment '게시물번호',
  u_no int not null comment '유저번호', 
@@ -97,6 +99,8 @@ create table help(
  foreign key (u_no) references user (u_no)
 ) comment = '문의';
 
+
+drop table answer;
 create table answer(
  h_no int primary key not null  comment '게시물번호',
  u_no int not null comment '유저번호', 
@@ -119,13 +123,13 @@ INSERT INTO product
 (p_price, p_name, p_img, p_kind)
 VALUES(10000, '테스트', '테스트.jpg', '소파');
 
+insert into detail values(4,5, 1, 1)
 
-select 	o_no,
-	 p_name,
-	 o_total,
-	 o_date, 
-	(select m_state from manage where o_no = manage.o_no) as state
-from orders o inner join detail d on
-o.o_no = d.o_no
-order by o_no desc;
+INSERT INTO mondaytest.product
+( p_name, p_price, p_info,  p_img, p_kind, p_display, p_delyn)
+VALUES( '테스트', 20000, NULL, '테스트.jpg', '소파', 'Y', 'N');
+
+INSERT INTO mondaytest.orders
+( u_no, u_hp, u_postcode, u_old, u_addr, u_addr2, o_date, o_total)
+VALUES( 1, '테스트', '00000', NULL, NULL, NULL, NULL, 12345);
 

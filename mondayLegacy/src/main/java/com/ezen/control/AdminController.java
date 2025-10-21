@@ -1,57 +1,54 @@
 package com.ezen.control;
 
 import java.util.*;
+
+import javax.servlet.http.HttpServletRequest;
+
+import com.ezen.repository.*;
 import com.ezen.vo.*;
 
-import org.apache.ibatis.session.SqlSession;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/admin")
 public class AdminController 
-{
+{	
 	@Autowired
-	private SqlSession session;
-	
-	private static final String namespace = "com.ezen.admin";
-	
-	//상품등록
-	@RequestMapping(value = "/insert", method = RequestMethod.GET)
-	public boolean Insert(ProductVO vo)
-	{
-		session.insert(namespace + ".Insert",vo);
-		return true;
-	}	
+	AdminRepository adminrepositoy;
 	
 	//상품 목록 조회
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public List<ProductVO> List(ProductVO vo) 
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public String List(UserVO vo, Model model, HttpServletRequest request)
 	{
-		List<ProductVO> list = session.selectList(namespace + ".List", vo);
-		return list;
+		List<ProductVO> list = adminrepositoy.List();
+		
+		model.addAttribute("list", list);
+		
+		return "admin/list";
 	}
 	
 	//상품 목록 조회
 	@RequestMapping(value = "/listk", method = RequestMethod.GET)
-	public List<ProductVO> ListK(ProductVO vo) 
+	public String ListK(ProductVO vo) 
 	{
-		List<ProductVO> list = session.selectList(namespace + ".ListK", vo);
-		return list;
+		return "";
 	}
 	//상품 목록 조회
 	@RequestMapping(value = "/listd", method = RequestMethod.GET)
-	public List<ProductVO> ListD(ProductVO vo) 
+	public String ListD(ProductVO vo) 
 	{
-		List<ProductVO> list = session.selectList(namespace + ".ListD", vo);
-		return list;
+		return "";
 	}
 	
+	//상품등록
+	@RequestMapping(value = "/insert", method = RequestMethod.GET)
+	public String Insert(ProductVO vo)
+	{
+		return "";
+	}	
+		
 	//상품수정
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public String Update() 
@@ -60,11 +57,26 @@ public class AdminController
 	}
 	
 	//관리자 로그인
-	@RequestMapping(value = "/adminlogin", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String AdminLogin() 
 	{
 		
 		return "admin/login";
+	}
+	
+	//관리자 로그인 처리
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@ResponseBody
+	public String AdminLoginOK(UserVO vo,
+			HttpServletRequest request) {
+		UserVO login = null; //userService.Login(vo);
+		
+		if(login == null) {
+			return "redirect:/admin/login";
+		}else {
+			request.getSession().setAttribute("login", login);
+			return "admin/list";
+		}
 	}
 	
 	//주문 내역 조회
@@ -87,5 +99,12 @@ public class AdminController
 	{
 		return "admin/sales";
 	}
+	
+//	//관리자로그인 검사
+//	@
+//	public boolean adminLoginCheck(HttpServletRequest request) {
+//		UserVO vo = (UserVO)request.
+//		return false;
+//	}
 		
 }

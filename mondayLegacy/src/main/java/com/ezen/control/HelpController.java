@@ -1,6 +1,11 @@
 package com.ezen.control;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ezen.repository.HelpService;
+import com.ezen.repository.*;
 import com.ezen.vo.HelpVO;
 import com.ezen.vo.SearchVO;
 
@@ -19,12 +24,14 @@ public class HelpController {
 	@Autowired
 	HelpService helpservice;
 	
+	// 팀원 소개 컨트롤러
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
 	public String About() 
 	{
 		return "help/about";
 	}
 	
+	// 문의게시판 상세페이지 컨트롤러
 	@RequestMapping(value = "/board_detail", method = RequestMethod.GET)
 	public String Board_detail(@RequestParam(defaultValue = "1") String no, Model model)
 	{
@@ -35,6 +42,7 @@ public class HelpController {
 	    return "help/board_detail";
 	}
 	
+	// 문의 삭제 컨트롤러
 	@RequestMapping(value = "/delete")
 	public String Delete(@RequestParam(required = true)String no)
 	{
@@ -42,6 +50,7 @@ public class HelpController {
 		return "redirect:/help/board";
 	}	
 	
+	// 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String Board(@RequestParam(required = false) String kind, 
 			@RequestParam(defaultValue = "1")int page,
@@ -74,12 +83,14 @@ public class HelpController {
 		List<HelpVO> list = helpservice.GetList(vo);
 		if (list != null && !list.isEmpty()) {
 		    for(HelpVO item : list) {
-		        System.out.println("title: " + item.getHtitle());
+		        if (item != null) { // null 체크 추가
+		            System.out.println("title: " + item.getHtitle());
+		        }
 		    }
-		} else {
+		} else {    
 		    System.out.println("⚠ list is null or empty!");
 		}
-		
+
 		model.addAttribute("total",total);
 		model.addAttribute("maxpage",maxpage);
 		
@@ -88,6 +99,7 @@ public class HelpController {
 		
 		model.addAttribute("search",vo);
 		model.addAttribute("list",list);
+	
 		
 		return "help/board";
 	}
@@ -95,6 +107,27 @@ public class HelpController {
 	@RequestMapping(value = "/inquire", method = RequestMethod.GET)
 	public String Inquire() 
 	{
+		return "help/inquire";
+	}
+	
+	@RequestMapping(value = "/writeok", method = RequestMethod.POST)
+	public String Writeok(HelpVO vo, HttpServletRequest request) 
+	{
+		// HttpServletRequest에서 세션 가져오기
+	    HttpSession session = request.getSession();
+		
+	    // 로그인 세션에서 u_no 가져오기
+	    Integer userNo = (Integer) session.getAttribute("user_no");
+
+	    if(userNo == null) {
+	        // 테스트용 기본값
+	        userNo = 1; 
+	    }
+
+	    vo.setUno(userNo);
+		
+		HelpVO insert = (HelpVO)request.getSession().getAttribute("insert");
+		helpservice.Insert(vo);
 		return "help/inquire";
 	}
 }
