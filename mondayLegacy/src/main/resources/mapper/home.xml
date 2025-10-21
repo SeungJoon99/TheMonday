@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Namespace를 통해 JAVA 클래스와 Annotation클래스와 동기 -->
+<mapper namespace="com.ezen.main">
+	
+	<resultMap type="com.ezen.vo.ProductVO" id="shopItemListMap">
+		<id property="pno" column="p_no" />
+		<result property="pprice" column="p_price" />
+	    <result property="pinfo" column="p_info" />
+	    <result property="pimg" column="p_img" />
+	    <result property="pname" column="p_name" />
+	    <result property="pwdate" column="p_wdate" />
+	    <result property="pdisplay" column="p_display" />
+	    <result property="pkind" column="p_kind" />
+	    <result property="pdelyn" column="p_delyn" />
+	</resultMap>
+	
+	<!-- 상품 목록 조회 -->
+	<select id="ProductList" resultMap="shopItemListMap">
+		select p_no, p_price, p_name, p_img,
+		(select sum(d_qty) from detail d where p_no = p.p_no) sum
+		from product p
+		where 
+		p_delyn = 'N' 
+		and p_display = 'Y'
+		order by sum
+		limit 0, 4
+	</select>
+</mapper>

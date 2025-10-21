@@ -4,10 +4,9 @@
 
 <div class="untree_co-section product-section before-footer-section">
     <div class="container">
-        <div class="">
-            <h2>상품 보기</h2>
-            <span>&nbsp;&nbsp;</span>
-        </div>
+        <div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
+		  <h2 class="mb-4 section-title">상품보기</h2>
+		</div>
         <div class="row mt-3">
 	
 		<!-- 상품 출력 -->			
@@ -25,47 +24,6 @@
 			</div> 
 		</c:forEach>
 	</div>
-	<nav aria-label="Page navigation example">
-	    <ul class="pagination justify-content-center">
-	        <!-- 이전 화살표 -->
-	        <c:if test="${currentPage != 1}">
-	            <c:set var="prevUrl" value="?page=${currentPage - 1}" />
-	            <c:if test="${not empty searchvo.pkind}">
-	                <c:set var="prevUrl" value="${prevUrl}&pkind=${searchvo.pkind}" />
-	            </c:if>
 	
-	            <li class="page-item">
-	                <a class="page-link" href="${prevUrl}" aria-label="Previous">
-	                    <span aria-hidden="true">&laquo;</span>
-	                </a>
-	            </li>
-	        </c:if>
-	
-	        <!-- 페이지 번호 -->
-	        <c:forEach var="page" begin="${startbk}" end="${endbk}">
-	            <c:set var="pageUrl" value="?page=${page}" />
-	            <c:if test="${not empty searchvo.pkind}">
-	                <c:set var="pageUrl" value="${pageUrl}&pkind=${searchvo.pkind}" />
-	            </c:if>
-	
-	            <li class="page-item ${page == currentPage ? 'active' : ''}">
-	                <a class="page-link" href="${pageUrl}">${page}</a>
-	            </li>
-	        </c:forEach>
-	
-	        <!-- 다음 화살표 -->
-	        <c:if test="${currentPage < maxpage}">
-	            <c:set var="nextUrl" value="?page=${currentPage + 1}" />
-	            <c:if test="${not empty searchvo.pkind}">
-	                <c:set var="nextUrl" value="${nextUrl}&pkind=${searchvo.pkind}" />
-	            </c:if>
-	            <li class="page-item">
-	                <a class="page-link" href="${nextUrl}" aria-label="Next">
-	                    <span aria-hidden="true">&raquo;</span>
-	                </a>
-	            </li>
-	        </c:if>
-	    </ul>
-	</nav>
-
+<%@ include file="./include/pagination.jsp" %>
 <%@ include file="./include/footer.jsp" %>

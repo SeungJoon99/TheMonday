@@ -37,14 +37,15 @@
 		resultType="java.lang.Integer">
 		select count(*) as total
 		from product
-		<where> 
-			<if test='pkind != null and !pkind.equals("")'>
-				p_kind = #{ pkind }
-			</if> 
-			<if test='keyword != null and !keyword.equals("")'>
-				and title like CONCAT('%', #{ keyword }, '%')
-			</if>
-		</where>
+		where 
+		p_delyn = 'N' 
+		and p_display = 'Y'
+		<if test='pkind != null and !pkind.equals("")'>
+			and p_kind = #{ pkind }
+		</if> 
+		<if test='keyword != null and !keyword.equals("")'>
+			and p_name like CONCAT('%', #{ keyword }, '%')
+		</if>
 	</select>
 	<!-- 상품 단건 조회 -->
 	<select id="ProductDetail" parameterType="java.lang.Integer" 
@@ -60,13 +61,17 @@
 	<!-- 상품 검색 -->
 	<select id="Search" parameterType="com.ezen.vo.SearchVO" 
 		resultMap="shopItemListMap">
-		select p_no, p_price, p_name, p_img
-		from product
-		where
+		select p_no, p_price, p_name, p_img,
+		(select sum(d_qty) from detail d where p_no = p.p_no) sum
+		from product p
+		where 
 		p_delyn = 'N' 
 		and p_display = 'Y'
-		and p_name like concat('%', '${keyword}', '%')
-  		
+		<if test='keyword != null and !keyword.equals("")'>
+			and p_name like CONCAT('%', #{ keyword }, '%')
+		</if>
+		order by sum
+		limit #{ offset }, 16
 	</select>
 	
 </mapper>
