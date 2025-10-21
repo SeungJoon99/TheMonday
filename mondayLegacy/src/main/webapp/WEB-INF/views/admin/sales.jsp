@@ -7,7 +7,7 @@
 	<input type="date">까지
 	<input type="number" placeholder="상품코드를 입력하세요.">
 	<select>
-		<option>전부</option>
+		<option>전체</option>
 		<option>침대</option>
 		<option>쿠션러쉬</option>
 		<option>소파</option>

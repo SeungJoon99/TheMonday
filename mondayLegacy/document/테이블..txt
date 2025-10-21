@@ -73,14 +73,14 @@ create table detail(
 
 drop table status;
  create table status(
- s_value int primary key comment '주문상태',
- s_name varchar(255) comment '상태이름'
+ s_code int primary key comment '주문상태',
+ s_value varchar(255) comment '상태이름'
  ) comment = '주문상태 종류';
  
 drop table manage;
  create table manage(
  o_no int not null primary key comment '주문번호',
- s_value int not null default 0 comment '주문상태',
+ s_code int not null default 0 comment '주문상태',
  m_memo text comment '관리자메모',
  foreign key (o_no) references orders (o_no),
  foreign key (s_value) references status (s_value)

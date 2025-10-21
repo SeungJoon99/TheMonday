@@ -3,6 +3,10 @@ package com.ezen.vo;
  *  작성일 : 2025.10.15
  *  작성자 : 유재욱
  *  기능 : 주문 테이블 VO
+ *  
+ *  수정일 : 2025.10.21
+ *  수정자 : 최연흠
+ *  내용  : orderList 페이지에서 필요한 필드, get/set 메소드 추가
  */
 public class OrdersVO 
 {
@@ -16,7 +20,11 @@ public class OrdersVO
     private String orequest;  //요청사항
     private String odate;     //주문일
     private int    ototal;    //총 주문가격
-    
+
+	//관리자 주문조회용 필드
+	private String pname;     //상품요약
+	private String svalue;    //주문상태
+	
     
 	public int getOno() {
 		return ono;
@@ -78,5 +86,16 @@ public class OrdersVO
 	public void setOtotal(int ototal) {
 		this.ototal = ototal;
 	}
-	
+	public String getPname() {
+		return pname;
+	}
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
+	public String getSvalue() {
+		return svalue;
+	}
+	public void setSvalue(String svalue) {
+		this.svalue = svalue;
+	}
 }

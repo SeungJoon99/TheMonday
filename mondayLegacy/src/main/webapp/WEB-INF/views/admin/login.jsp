@@ -6,11 +6,11 @@
 			<div class="d-flex row justify-content-center">
 				<div class="col-md-8 col-lg-8 pb-4">
 					<div class="row mb-5">
-						<form id="adminLoginForm" method="post" action="/login" onsubmit="return adminLogin()">	
+						<form id="adminLoginForm" method="post" action="/login" onsubmit="return adminLogin()">
 							<div class="row justify-content-center">
 								<div class="col-6">
 									<label class="text-black" for="fname">아이디</label>
-									<input type="email" class="form-control" id="unick" name="unick">
+									<input type="text" class="form-control" id="unick" name="unick">
 								</div>
 							</div>
 							<div class="row justify-content-center">

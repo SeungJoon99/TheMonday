@@ -24,14 +24,16 @@ public class AdminRepository
 	private static final String namespace = "com.ezen.admin";
 	
 	//상품등록
-	public boolean Insert(ProductVO vo)
+	public boolean insert(ProductVO vo)
 	{
+		System.out.println("err4");
 		session.insert(namespace + ".Insert",vo);
+		System.out.println(session.insert(namespace + ".Insert",vo));
 		return true;
 	}	
 	
 	//상품 목록 조회
-	public List<ProductVO> List() 
+	public List<ProductVO> list() 
 	{
 		List<ProductVO> list = session.selectList(namespace + ".List");
 		
@@ -39,45 +41,60 @@ public class AdminRepository
 	}
 	
 	//상품 목록 조회
-	public List<ProductVO> ListK(ProductVO vo) 
+	public List<ProductVO> listK(ProductVO vo) 
 	{
 		List<ProductVO> list = session.selectList(namespace + ".ListK", vo);
 		return list;
 	}
 	//상품 목록 조회
-	public List<ProductVO> ListD(ProductVO vo) 
+	public List<ProductVO> listD(ProductVO vo) 
 	{
 		List<ProductVO> list = session.selectList(namespace + ".ListD", vo);
 		return list;
 	}
 	
 	//상품수정
-	public String Update() 
+	public String update() 
 	{
 		return "admin/update";
 	}
 	
 	//관리자 로그인
-	public String AdminLogin() 
+	public String adminLogin() 
 	{
 		
 		return "admin/login";
 	}
 	
 	//주문 내역 조회
-	public String OrderList() 
+	public List<OrdersVO> orderList() 
 	{
-		return "admin/order_list";
+		List<OrdersVO> list = session.selectList(namespace + ".OrderList");
+		/*
+		for( OrdersVO v : list ){
+			System.out.println(v.getPname());
+			System.out.println(v.getSvalue());
+		}
+		
+		System.out.println( list.get(0).getPname());
+		for(int i=0;i > 3; i++ ){
+			OrdersVO vo = list.get(i);
+			System.out.println(vo.getPname());
+			System.out.println(vo.getSvalue());
+		}
+		
+		*/
+		return list;
 	}
 	
 	//주문내역 수정
-	public String OrderSet() 
+	public String orderSet() 
 	{
 		return "admin/order_set";
 	}
 	
 	//매출조회
-	public String Sales() 
+	public String sales() 
 	{
 		return "admin/sales";
 	}

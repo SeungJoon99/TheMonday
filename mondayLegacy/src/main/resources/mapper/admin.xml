@@ -70,7 +70,9 @@
 		<result property="uaddr2" column="u_addr2" />
 		<result property="orequest" column="o_request" />
 		<result property="odate" column="o_date" />
-		<result property="o_total" column="o_total" />
+		<result property="ototal" column="o_total" />
+		<result property="pname" column="p_name" />
+		<result property="svalue" column="s_value" />
 	</resultMap>
 	<!--
 	private int    ono;       //주문번호
@@ -83,6 +85,8 @@
     private String orequest;  //요청사항
     private String odate;     //주문일
     private int    ototal;    //총 주문가격
+	private String pname;    //상품요약
+	private String svalue;    //주문상태
     -->
     
 	<!-- 상품 등록 -->
@@ -145,11 +149,11 @@
 		select o.o_no,
 			case when (select count(d3.p_no) from detail d3 where o.o_no = d3.o_no) > 1
 				then concat(
-					(select p_name from detail d2 
-					join product p2 on d2.p_no = p2.p_no
-					where d2.o_no = o.o_no
-					order by d2.p_no limit 1),' 외 ',
-					(select count(detail.p_no) - 1 from detail where detail.o_no = o.o_no), '개')
+				(select p_name from detail d2 
+				join product p2 on d2.p_no = p2.p_no
+				where d2.o_no = o.o_no
+				order by d2.p_no limit 1),' 외 ',
+				(select count(detail.p_no) - 1 from detail where detail.o_no = o.o_no), '개')
 				else (select p_name from detail d2 
 						join product p2 on d2.p_no = p2.p_no
 						where d2.o_no = o.o_no
@@ -157,14 +161,13 @@
 				end as p_name,
 			o_total,
 			o_date,
-			(select s_name from manage m 
-			join status s on m.s_value = s.s_value 
-			where m.o_no = o.o_no) as s_name
-		from orders as o 
-		order by o_no desc
+			(select s_value from manage m 
+				join status s on m.s_code = s.s_code 
+				where m.o_no = o.o_no) as s_value
+			from orders as o order by o_no desc
 	</select>
 	
-	<!-- 주문내역 조회 품명 검색 -->
+	<!-- 주문내역 조회 품명 검색
 	<select id="OrderListSearch" parameterType="com.ezen.vo.SearchVO" 
 		resultMap="shopOrderListMap">
 		select o.o_no,
@@ -182,11 +185,13 @@
 				end as p_name,
 			o_total,
 			o_date,
-			(select s_name from manage m 
-			join status s on m.s_value = s.s_value 
-			where m.o_no = o.o_no) as s_name
-		from orders  as o 
-		where '%${ keyword }%'
-		order by o_no desc
+			(select s_value from manage m 
+				join status s on m.s_code = s.s_code 
+				where m.o_no = o.o_no) as s_value
+			from orders  as o 
+			where '%${ keyword }%'
+			order by o_no desc
 	</select>
+	useGeneratedKeys="true" keyProperty="no"
+	 -->
 </mapper>

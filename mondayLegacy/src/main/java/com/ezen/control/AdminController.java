@@ -1,5 +1,6 @@
 package com.ezen.control;
 
+import java.io.*;
 import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,19 +11,55 @@ import com.ezen.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/admin")
-public class AdminController 
-{	
+public class AdminController
+{
+	private final static String uploadPath = "D:\\YH\\Dhub\\github\\storeproject\\TheMonday\\mondayLegacy\\upload";
 	@Autowired
 	AdminRepository adminrepositoy;
+
+	//상품등록
+	@RequestMapping(value = "/insert", method = RequestMethod.GET)
+	public String insert()
+	{
+		return "admin/insert";
+	}
+
+	//상품등록처리
+	@RequestMapping(value = "/insert", method = RequestMethod.POST)
+	public String insertOK(@ModelAttribute ProductVO vo,
+	@RequestParam(value = "img", required = false)MultipartFile file) throws IllegalStateException, IOException
+	{
+		System.out.println("err");
+		if(file != null) {
+			//업로드된 원본 파일 이름 가져오기
+			//tomcat소유의 임시디렉토리(temp) 서버가 리부팅되면 temp를 비운다
+			String originalFileName = file.getOriginalFilename();
+			
+			//첨부파일 객체 생성
+			File newFile = new File(uploadPath + "\\" + originalFileName);
+			//실제 저장해야하는 폴더로 업로드 된 파일을 옮긴다.
+			//실제 저장 디렉토리로 전송
+			file.transferTo(newFile); //받아온 file을 newFile이 가지고있는 path에 (newFile객체에 담아서??)전송한다
+			
+			vo.setPimg(originalFileName);	//원본파일명
+			System.out.println("err2");
+		}
+		adminrepositoy.insert(vo);
+		System.out.println("err3");
+		return "redirect:/admin";
+	}
 	
 	//상품 목록 조회
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String List(UserVO vo, Model model, HttpServletRequest request)
+	public String list(Model model)
 	{
-		List<ProductVO> list = adminrepositoy.List();
+		List<ProductVO> list = adminrepositoy.list();
 		
 		model.addAttribute("list", list);
 		
@@ -31,43 +68,42 @@ public class AdminController
 	
 	//상품 목록 조회
 	@RequestMapping(value = "/listk", method = RequestMethod.GET)
-	public String ListK(ProductVO vo) 
+	public String listK(ProductVO vo) 
 	{
 		return "";
 	}
 	//상품 목록 조회
 	@RequestMapping(value = "/listd", method = RequestMethod.GET)
-	public String ListD(ProductVO vo) 
+	public String listD(ProductVO vo) 
 	{
 		return "";
 	}
 	
-	//상품등록
-	@RequestMapping(value = "/insert", method = RequestMethod.GET)
-	public String Insert(ProductVO vo)
-	{
-		return "";
-	}	
-		
 	//상품수정
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public String Update() 
+	public String update() 
 	{
 		return "admin/update";
 	}
 	
+	//상품수정
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String updateOK() 
+	{
+		return "redirect:";
+	}
+	
 	//관리자 로그인
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String AdminLogin() 
+	public String adminLogin() 
 	{
-		
 		return "admin/login";
 	}
 	
 	//관리자 로그인 처리
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	@ResponseBody
-	public String AdminLoginOK(UserVO vo,
+	public String adminLoginOK(UserVO vo,
 			HttpServletRequest request) {
 		UserVO login = null; //userService.Login(vo);
 		
@@ -80,22 +116,26 @@ public class AdminController
 	}
 	
 	//주문 내역 조회
-	@RequestMapping(value = "/order_list", method = RequestMethod.GET)
-	public String OrderList() 
-	{
+	@RequestMapping(value = "/orderList", method = RequestMethod.GET)
+	public String orderList(Model model) 
+	{		
+		List<OrdersVO> list = adminrepositoy.orderList();
+		
+		model.addAttribute("list",list);
+		
 		return "admin/order_list";
 	}
 	
 	//주문내역 수정
 	@RequestMapping(value = "/order_set", method = RequestMethod.GET)
-	public String OrderSet() 
+	public String orderSet() 
 	{
 		return "admin/order_set";
 	}
 	
 	//매출조회
 	@RequestMapping(value = "/sales", method = RequestMethod.GET)
-	public String Sales() 
+	public String sales() 
 	{
 		return "admin/sales";
 	}

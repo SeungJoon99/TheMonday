@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Untree.co">
-    <link rel="shortcut icon" href="resources/images/favicon.png">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.png">
 
     <meta name="description" content="" />
     <meta name="keywords" content="bootstrap, bootstrap4" />
@@ -17,8 +19,9 @@
     <link href="${pageContext.request.contextPath}/resources/css/tiny-slider.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
     <title>관리자페이지</title>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
     </head>
-	<script src="resources/js/jquery-3.7.1.min.js"></script>
+	
   <body>
     <!-- Hero -->
     <div class="hero" style="padding: 0px;">
@@ -42,7 +45,7 @@
 		    <a class="nav-link text-light" href="update">상품수정</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link text-light" aria-current="page" href="order_list">주문관리</a>
+		    <a class="nav-link text-light" aria-current="page" href="orderList">주문관리</a>
 		  </li>
 		</ul>
       </div>
