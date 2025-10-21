@@ -16,7 +16,7 @@ public class ShopRepository
 	private static final String namespace = "com.ezen.shop";
 	
 	//상품 목록 조회
-	public List<ProductVO> Main(ProductVO vo)
+	public List<ProductVO> Main(SearchVO vo)
 	{
 		List<ProductVO> list = session.selectList(namespace + ".Main", vo);
 		return list;

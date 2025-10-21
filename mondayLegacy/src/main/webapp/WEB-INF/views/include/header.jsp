@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!doctype html>
 <html>
@@ -39,10 +40,15 @@
 					</form>
           
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-						<li><a class="nav-link" href="member/mypage">[홍길동]홈</a></li>
-						<li><a class="nav-link" href="shop/main">상품 보기</a></li>
-						<li><a class="nav-link" href="member/login">로그인</a></li>
+						<c:if test="${ login != null }">
+							<li><a class="nav-link" href="member/mypage">[${ login.uname }]님</a></li>
+						</c:if>
+						<li><a class="nav-link" href="shop">상품 보기</a></li>
+						<li><a class="nav-link" href="member">로그인</a></li>
 						<li><a class="nav-link" href="member/cart">장바구니</a></li>
+						<c:if test="${ login != null }">
+							<li><a class="nav-link" href="logout">로그아웃</a></li>
+						</c:if>
 					</ul>
 				</div>
 			</div>
@@ -65,19 +71,19 @@
 				<div class="col-2"></div>
 				<ul class="col-8 nav nav-tabs bg-dark">
 					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="main?p_kind=">침대</a>
+						<a class="nav-link" aria-current="page" href="shop?pkind=침대">침대</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="main?p_kind=">소파</a>
+						<a class="nav-link" href="shop?pkind=소파">소파</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="main?p_kind=">옷장</a>
+						<a class="nav-link" href="shop?pkind=옷장">옷장</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="main?p_kind=">매트리스</a>
+						<a class="nav-link" href="shop?pkind=매트리스">매트리스</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="main?p_kind=">테이블</a>
+						<a class="nav-link" href="shop?pkind=테이블">테이블</a>
 					</li>
 				</ul>
 				<div class="col-2"></div>

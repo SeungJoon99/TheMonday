@@ -3,25 +3,67 @@ package com.ezen.control;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.ezen.vo.*;
+import com.ezen.repository.*;
 
 @Controller
+@RequestMapping("/member")
 public class MemberController {
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@Autowired
+	MemberRepository memberrepository;
+	
+	
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String Login() 
 	{
-		return "login";
+		return "member/login";
+	}
+	
+	@RequestMapping(value = "/loginok", method = RequestMethod.POST)
+	@ResponseBody 
+	public String LoginOK(String id, String pw,
+			HttpServletRequest request)
+	{	
+		HttpSession session = request.getSession();
+		
+		UserVO vo = memberrepository.Login(id, pw);
+		
+		if(vo == null)
+		{
+			//로그인 안됨.	
+			session.setAttribute("login", null);
+			return "false";
+		}else
+		{
+			session.setAttribute("login", vo);
+			return "true";
+		}
+	}
+	@RequestMapping(value = "/logout")
+	public String LogOut(HttpServletRequest request)
+	{
+		HttpSession session = request.getSession();
+		//session.invalidate();
+		session.setAttribute("login", null);
+		return "redirect:/";
 	}
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String Signup() 
 	{
-		return "signup";
+		return "member/signup";
 	}
 	
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)

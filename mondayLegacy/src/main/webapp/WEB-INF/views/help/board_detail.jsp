@@ -3,11 +3,11 @@
 <%@ include file="./include/header.jsp" %>
 
 <div class="post-view">
-  <div class="post-title" id="b_title">${item.h_title}</div>
-  <div class="post-meta">작성자: ${item.u_nick} | 작성일: ${item.h_wdate}</div>
+  <div class="post-title" id="b_title">${item.htitle}</div>
+  <div class="post-meta">작성자: ${item.unick} | 작성일: ${item.hwdate}</div>
   <div class="post-content" id="b_note">
-    ${item.h_note}
-  </div>
+    ${item.hnote}
+  </div>	
 
   <div class="post-buttons">
     <!-- 수정 버튼은 관리자만 누를 수 있게 바꿔야 합니다. -->
@@ -32,7 +32,7 @@
 	}
     </script>
 
-    <button class="btn-remove" onclick="javascript:Delete(${ item.h_no });"
+    <button class="btn-remove" onclick="javascript:Delete(${ item.hno });"
     >삭제</button>
     <button class="btn-list" onclick="location.href='help/board'">목록</button><br><br>
 
@@ -41,11 +41,10 @@
 
     <table border="1" style="width:100%; margin-top: 20px;">
       <tr>
-        <td width="110px"><strong>The Monday.</strong></td>
+        <td width="110px"><strong>관리자</strong></td>
         <td style="text-align: left;">
           <span>
-            관리자의 답변입니다. 관리자의 답변입니다. 관리자의 답변입니다.
-            관리자의 답변입니다. 관리자의 답변입니다. 관리자의 답변입니다.
+            
           </span>
         </td>
         <td width="110px">25.10.09</td>

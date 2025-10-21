@@ -4,10 +4,9 @@
 
 <div class="untree_co-section product-section before-footer-section">
     <div class="container">
-        <div class="">
-            <h2>상품 보기</h2>
-            <span>&nbsp;&nbsp;</span>
-        </div>
+        <div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
+		  <h2 class="mb-4 section-title">상품보기</h2>
+		</div>
         <div class="row mt-3">
 	
 		<!-- 상품 출력 -->			
@@ -15,7 +14,7 @@
 			<div class="col-12 col-md-4 col-lg-3 mb-5">
 				<a class="product-item" href="${pageContext.request.contextPath}/shop/product_detail?pno=${item.pno}">
 					<img src="${pageContext.request.contextPath}/resources/images/${ item.pimg }" 
-						class="img-fluid product-thumbnail">
+						class="img-fluid product-thumbnail" style="width:300px; height:400px">
 					<h3 class="product-title">${item.pname}</h3>
 					<strong class="product-price">${item.pprice}</strong>
 					<span class="icon-cross">
@@ -26,30 +25,5 @@
 		</c:forEach>
 	</div>
 	
-	<nav aria-label="Page navigation example">
-	    <ul class="pagination justify-content-center">
-	        <li class="page-item">
-	            <a class="page-link" href="#" aria-label="Previous">
-	            <span aria-hidden="true">&laquo;</span>
-	            </a>
-	        </li>
-	        
-	        <li class="page-item"><a class="page-link" href="#">1</a></li>
-	        <li class="page-item"><a class="page-link" href="#">2</a></li>
-	        <li class="page-item"><a class="page-link" href="#">3</a></li>
-	        <li class="page-item"><a class="page-link" href="#">4</a></li>
-	        <li class="page-item"><a class="page-link" href="#">5</a></li>
-	        <li class="page-item"><a class="page-link" href="#">6</a></li>
-	        <li class="page-item"><a class="page-link" href="#">7</a></li>
-	        <li class="page-item"><a class="page-link" href="#">8</a></li>
-	        <li class="page-item"><a class="page-link" href="#">9</a></li>
-	        <li class="page-item"><a class="page-link" href="#">10</a></li>
-	        <li class="page-item">
-	            <a class="page-link" href="#" aria-label="Next">
-	            <span aria-hidden="true">&raquo;</span>
-	            </a>
-	        </li>
-	    </ul>
-	</nav>
-
+<%@ include file="./include/pagination.jsp" %>
 <%@ include file="./include/footer.jsp" %>

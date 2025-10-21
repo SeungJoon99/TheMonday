@@ -47,7 +47,7 @@
 						<li class="active" aria-current="page">
 							<a class="nav-link" href="${pageContext.request.contextPath}/shop">상품 보기</a>
 						</li>
-						<li><a class="nav-link" href="${pageContext.request.contextPath}/member/login">로그인</a></li>
+						<li><a class="nav-link" href="${pageContext.request.contextPath}/member">로그인</a></li>
 						<li><a class="nav-link" href="${pageContext.request.contextPath}/member/cart">장바구니</a></li>
 					</ul>
 				</div>

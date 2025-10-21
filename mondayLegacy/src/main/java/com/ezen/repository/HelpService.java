@@ -27,11 +27,10 @@ public class HelpService {
 		return true;
 	}	
 	
-	//게시물 정보를 읽는다.	
-	//IsHit = true : 조회수 증가, false : 조회수 증가 안함.
-	public HelpVO Read(@RequestParam String h_no)
+	//게시물 정보를 읽는다.
+	public HelpVO Read(@RequestParam int hno)
 	{
-		HelpVO vo = session.selectOne(namespace + ".view",h_no);
+		HelpVO vo = session.selectOne(namespace + ".view",hno);
 		return vo;
 	}	
 	
@@ -45,10 +44,10 @@ public class HelpService {
 		
 	//게시물 정보를 삭제한다.	
 	//return true : 삭제 성공, false : 삭제 실패
-	public boolean Delete(String no)
+	public boolean Delete(int hno)
 	{
 		//해당 게시글을 삭제
-		session.delete(namespace + ".delete",no);
+		session.delete(namespace + ".helpdelete",hno);
 		return true;
 	}	
 	

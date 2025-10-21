@@ -10,12 +10,15 @@
       <tr>
         <th style="width: 70px;">번호</th>
         <th style="width: 90px;">
-          <select>
-            <option>문의</option>
-            <option>교환</option>
-            <option>환불</option>
-            <option>취소</option>
-          </select>
+	       <form method="get" >   
+	          <select id="kind" name="kind" >
+	            <option value="문의">문의</option>
+	            <option value="교환">교환</option>
+	            <option value="환불">환불</option>
+	            <option value="취소">취소</option>
+	          </select>
+	          <button type="submit">검색</button>
+          </form>
         </th>
         <th>제목</th>
         <th style="width: 120px;">작성자</th>
@@ -27,7 +30,7 @@
 	    <tr>
 	   		<td>${item.hno}</td>
 			<td>${item.hkind}</td>
-			<td><a href="board_detail?no=${item.hno}">${item.htitle}</a></td>
+			<td><a href="/vo/help/board_detail?hno=${item.hno}">${item.htitle}</a></a></td>
 			<td>${item.unick}</td>
 			<td>${item.hwdate}</td>
 	    </tr>
