@@ -12,10 +12,10 @@ public class SessionInterceptor implements HandlerInterceptor{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		if(request.getSession().getAttribute("login") == null) {
-			response.sendRedirect(request.getContextPath() + "/");
-			return false;
-		}
+		/*
+		 * if(request.getSession().getAttribute("login") == null) {
+		 * response.sendRedirect(request.getContextPath() + "/"); return false; }
+		 */
 		return true;
 	}
 

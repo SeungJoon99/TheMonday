@@ -10,7 +10,8 @@ public class SearchVO
 	private String pkind;    //상품카테고리
 	private String hdisplay; //게시물 표시 여부	
 	private int    pno; 	 //상품번호	
-	private int    sizePerPage = 16;
+	
+	private int    sizePerPage = 16; //한 페이지에 나오는 상품 개수
 	
 	public int getPno() {
 		return pno;

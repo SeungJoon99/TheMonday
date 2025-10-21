@@ -11,17 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
+@RequestMapping("/member")
 public class MemberController {
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String Login() 
 	{
-		return "login";
+		return "member/login";
 	}
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String Signup() 
 	{
-		return "signup";
+		return "member/signup";
 	}
 	
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
