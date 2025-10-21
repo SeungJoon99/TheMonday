@@ -3,11 +3,11 @@
 <%@ include file="./include/header.jsp" %>
 
 <div class="post-view">
-  <div class="post-title" id="b_title">${item.h_title}</div>
-  <div class="post-meta">작성자: ${item.u_nick} | 작성일: ${item.h_wdate}</div>
+  <div class="post-title" id="b_title">${item.htitle}</div>
+  <div class="post-meta">작성자: ${item.unick} | 작성일: ${item.hwdate}</div>
   <div class="post-content" id="b_note">
-    ${item.h_note}
-  </div>
+    ${item.hnote}
+  </div>	
 
   <div class="post-buttons">
     <!-- 수정 버튼은 관리자만 누를 수 있게 바꿔야 합니다. -->
@@ -32,7 +32,7 @@
 	}
     </script>
 
-    <button class="btn-remove" onclick="javascript:Delete(${ item.h_no });"
+    <button class="btn-remove" onclick="javascript:Delete(${ item.hno });"
     >삭제</button>
     <button class="btn-list" onclick="location.href='help/board'">목록</button><br><br>
 

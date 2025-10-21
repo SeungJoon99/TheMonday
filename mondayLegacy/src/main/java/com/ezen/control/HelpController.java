@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.repository.*;
+import com.ezen.vo.AnswerVO;
 import com.ezen.vo.HelpVO;
 import com.ezen.vo.SearchVO;
 
@@ -33,10 +34,11 @@ public class HelpController {
 	
 	// 문의게시판 상세페이지 컨트롤러
 	@RequestMapping(value = "/board_detail", method = RequestMethod.GET)
-	public String Board_detail(@RequestParam(defaultValue = "1") String no, Model model)
+	public String Board_detail(@RequestParam(required = true) int hno, Model model)
 	{
 
-	    HelpVO vo = helpservice.Read(String.valueOf(no));
+	    HelpVO vo = helpservice.Read(hno);
+	    List<AnswerVO> reply ;
 	    model.addAttribute("item", vo);
 
 	    return "help/board_detail";
@@ -44,10 +46,10 @@ public class HelpController {
 	
 	// 문의 삭제 컨트롤러
 	@RequestMapping(value = "/delete")
-	public String Delete(@RequestParam(required = true)String no)
+	public String Delete(@RequestParam(required = true)String hno)
 	{
-		helpservice.Delete(no);
-		return "redirect:/help/board";
+		helpservice.Delete(hno);
+		return "redirect:/help/";
 	}	
 	
 	// 

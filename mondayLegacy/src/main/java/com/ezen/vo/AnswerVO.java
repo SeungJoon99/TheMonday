@@ -9,11 +9,20 @@ import org.springframework.beans.factory.annotation.Value;
  */
 public class AnswerVO 
 {
-    private int    hno;    //게시물번호
-    private String atext;  //내용
-    private String awdate; //작성일
+    private int    hno;    // 게시물번호
+    private int    uno;	   //F유저번호
+    private String atext;  // 내용
+    private String awdate; // 작성일
+    
+    
 	public int getHno() {
 		return hno;
+	}
+	public int getUno() {
+		return uno;
+	}
+	public void setUno(int uno) {
+		this.uno = uno;
 	}
 	public void setHno(int hno) {
 		this.hno = hno;
