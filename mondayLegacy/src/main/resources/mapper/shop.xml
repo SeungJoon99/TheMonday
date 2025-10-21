@@ -17,7 +17,7 @@
 	</resultMap>
 	
 	<!-- 상품 목록 조회 -->
-	<select id="Main" parameterType="com.ezen.vo.ProductVO"
+	<select id="Main" parameterType="com.ezen.vo.SearchVO"
 		resultMap="shopItemListMap">
 		select p_no, p_price, p_name, p_img,
 		(select sum(d_qty) from detail d where p_no = p.p_no) sum
@@ -26,10 +26,25 @@
 		p_delyn = 'N' 
 		and p_display = 'Y'
 		<if test="pkind != null and pkind.trim() != ''">
-			and p_kind = #{pkind}
+			and p_kind = #{ pkind }
 		</if>
 		order by sum
-		limit 0, 16
+		limit #{ offset }, 16
+	</select>
+	
+	<!-- 상품 개수  -->
+	<select id="total" parameterType="com.ezen.vo.SearchVO"
+		resultType="java.lang.Integer">
+		select count(*) as total
+		from product
+		<where> 
+			<if test='pkind != null and !pkind.equals("")'>
+				p_kind = #{ pkind }
+			</if> 
+			<if test='keyword != null and !keyword.equals("")'>
+				and title like CONCAT('%', #{ keyword }, '%')
+			</if>
+		</where>
 	</select>
 	<!-- 상품 단건 조회 -->
 	<select id="ProductDetail" parameterType="java.lang.Integer" 
@@ -37,7 +52,7 @@
 		select p_price, p_name, p_img, p_info
 		from product p
 		where
-		p_no = #{pno} 
+		p_no = #{ pno } 
 		and p_delyn = 'N' 
 		and p_display = 'Y' 
 	</select>

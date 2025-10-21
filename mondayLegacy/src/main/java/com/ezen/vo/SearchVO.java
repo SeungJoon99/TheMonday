@@ -10,6 +10,7 @@ public class SearchVO
 	private String pkind;    //상품카테고리
 	private String hdisplay; //게시물 표시 여부	
 	private int    pno; 	 //상품번호	
+	private int    sizePerPage = 16;
 	
 	public int getPno() {
 		return pno;
@@ -47,8 +48,8 @@ public class SearchVO
 	
 	public void setPageno(int pageno) 
 	{ 
-		this.pageno = pageno;
-		this.offset = (this.pageno - 1) * 10; 
+		this.pageno = pageno < 1 ? 1 : pageno;
+		this.offset = (this.pageno - 1) * sizePerPage; 
 	}	
 	public void setKind(String kind)       { this.kind = kind;      }
 	public void setKeyword(String keyword) { this.keyword = keyword;}

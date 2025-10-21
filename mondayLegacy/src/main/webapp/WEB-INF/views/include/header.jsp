@@ -65,19 +65,19 @@
 				<div class="col-2"></div>
 				<ul class="col-8 nav nav-tabs bg-dark">
 					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="main?p_kind=">침대</a>
+						<a class="nav-link" aria-current="page" href="shop?pkind=침대">침대</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="main?p_kind=">소파</a>
+						<a class="nav-link" href="shop?pkind=소파">소파</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="main?p_kind=">옷장</a>
+						<a class="nav-link" href="shop?pkind=옷장">옷장</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="main?p_kind=">매트리스</a>
+						<a class="nav-link" href="shop?pkind=매트리스">매트리스</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="main?p_kind=">테이블</a>
+						<a class="nav-link" href="shop?pkind=테이블">테이블</a>
 					</li>
 				</ul>
 				<div class="col-2"></div>

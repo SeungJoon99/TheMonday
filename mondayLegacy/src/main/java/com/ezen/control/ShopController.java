@@ -24,15 +24,41 @@ public class ShopController {
 	
 	//상품 목록 조회
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String Main(@RequestParam(required = false) String pkind, Model model) 
+	public String Main(@RequestParam(required = false) String pkind, 
+			@RequestParam(defaultValue = "1")int page,
+			Model model) 
 	{
-		ProductVO vo = new ProductVO();
+		SearchVO vo = new SearchVO();
 		vo.setPkind(pkind);
+		vo.setPageno(page);
 		
+		//전체 갯수
+		int total = shoprepository.GetTotal(vo);
+		
+		int sizePerPage = 16;  // 한 페이지에 보여줄 상품 개수
+		int blockSize = 10;    // 한 블럭에 보여줄 페이지 번호 개수
+
+		// 전체 페이지 수
+		int maxpage = total / sizePerPage;
+		if ( total % sizePerPage != 0 ) maxpage++;
+
+		// 블럭 시작/끝 번호 계산
+		int startbk = ((page - 1) / blockSize) * blockSize + 1;
+		int endbk = startbk + blockSize - 1;
+		if ( endbk > maxpage ) endbk = maxpage;
+		
+		//목록 조회 
 		List<ProductVO> list = shoprepository.Main(vo);
 		
-		model.addAttribute("main",list);
+		model.addAttribute("total",total);
+		model.addAttribute("maxpage",maxpage);
+		model.addAttribute("currentPage", page);
 		
+		model.addAttribute("startbk",startbk);
+		model.addAttribute("endbk",endbk);
+		
+		model.addAttribute("searchvo",vo);
+		model.addAttribute("main",list);
 		return "shop/main";
 	}
 	//상품 단건 조회
