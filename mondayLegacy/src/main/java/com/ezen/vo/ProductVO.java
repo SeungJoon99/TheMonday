@@ -6,7 +6,7 @@ package com.ezen.vo;
  * 
  *  수정일 : 2025.10.21
  *  수정자 : 최연흠
- *  내용  : 부모상품번호, 옵션 삭제, html 처리 메소드
+ *  내용  : 부모상품번호, 옵션 삭제, html 처리 메서드, 이미지필드
  */
 public class ProductVO
 {
@@ -15,16 +15,24 @@ public class ProductVO
     private int    pprice;    //가격
     private String pinfo;     //상품설명
     private String pwdate;    //등록일
-    private String pimg;   	  //이미지
+    private String ppimgname; //물리파일명
+    private String pfimgname; //논리파일명
     private String pkind;     //카테고리명
     private String pdisplay;  //진열여부
     private String pdelyn;    //상품삭제여부
     
-	public String getPimg() {
-		return pimg;
+	
+	public String getPpimgname() {
+		return ppimgname;
 	}
-	public void setPimg(String pimg) {
-		this.pimg = pimg;
+	public void setPpimgname(String ppimgname) {
+		this.ppimgname = ppimgname;
+	}
+	public String getPfimgname() {
+		return pfimgname;
+	}
+	public void setPfimgname(String pfimgname) {
+		this.pfimgname = pfimgname;
 	}
 	public int getPno() {
 		return pno;

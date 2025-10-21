@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/admin")
 public class AdminController
 {
-	private final static String uploadPath = "D:\\YH\\Dhub\\github\\storeproject\\TheMonday\\mondayLegacy\\upload";
+	private final static String uploadPath = "D:\\YH\\Dhub\\github\\storeproject\\TheMonday\\mondayLegacy\\src\\main\\webapp\\resources\\images";
 	@Autowired
 	AdminRepository adminrepositoy;
 
@@ -35,20 +35,26 @@ public class AdminController
 	public String insertOK(@ModelAttribute ProductVO vo,
 	@RequestParam(value = "img", required = false)MultipartFile file) throws IllegalStateException, IOException
 	{
-		System.out.println("err");
-		if(file != null) {
+		if(!file.isEmpty()) {
 			//업로드된 원본 파일 이름 가져오기
 			//tomcat소유의 임시디렉토리(temp) 서버가 리부팅되면 temp를 비운다
 			String originalFileName = file.getOriginalFilename();
 			
+			String fileExt = originalFileName.substring(originalFileName.lastIndexOf(".") );
+			
+			//파일 이름이 중복되지 않도록 파일 이름 변경 : 서버에 저장할 이름
+			// UUID 클래스 사용
+			UUID uuid = UUID.randomUUID();
+			String savedFileName = uuid.toString();
+			
 			//첨부파일 객체 생성
-			File newFile = new File(uploadPath + "\\" + originalFileName);
+			File newFile = new File(uploadPath + "\\" + savedFileName + fileExt);
 			//실제 저장해야하는 폴더로 업로드 된 파일을 옮긴다.
 			//실제 저장 디렉토리로 전송
 			file.transferTo(newFile); //받아온 file을 newFile이 가지고있는 path에 (newFile객체에 담아서??)전송한다
 			
-			vo.setPimg(originalFileName);	//원본파일명
-			System.out.println("err2");
+			vo.setPfimgname(originalFileName);			//원본파일명(논리파일)
+			vo.setPpimgname(savedFileName + fileExt);	//저장파일명(물리파일)
 		}
 		adminrepositoy.insert(vo);
 		System.out.println("err3");

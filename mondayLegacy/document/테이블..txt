@@ -28,7 +28,8 @@ create table product(
  p_price int default 0 comment '상품가격',
  p_info text comment '상품설명',
  p_wdate datetime default now() comment '등록일',
- p_img varchar(255) comment '이미지',
+ p_pimg_name varchar(255) comment '물리파일명',
+ p_fimg_name varchar(255) comment '논리파일명',
  p_kind varchar(255) not null comment '카테고리명',
  p_display varchar(255) default 'Y' comment '진열여부',
  p_delyn varchar(255) default 'N' comment '상품삭제여부'
@@ -117,16 +118,16 @@ insert into user(u_nick, u_email, u_pw, u_hp, u_type, u_postcode, u_name)
 	values('test', 'test@gmail.com', 1234, '테스트', 0 , '테스트', '테스트');
 	
 INSERT INTO product
-(p_price, p_name, p_img, p_kind)
+(p_price, p_name, p_pimg_name, p_kind)
 VALUES(10000, '테스트', '테스트.jpg', '침대');
 INSERT INTO product
-(p_price, p_name, p_img, p_kind)
+(p_price, p_name, p_pimg_name, p_kind)
 VALUES(10000, '테스트', '테스트.jpg', '소파');
 
 insert into detail values(4,5, 1, 1)
 
 INSERT INTO mondaytest.product
-( p_name, p_price, p_info,  p_img, p_kind, p_display, p_delyn)
+( p_name, p_price, p_info,  p_pimg_name, p_kind, p_display, p_delyn)
 VALUES( '테스트', 20000, NULL, '테스트.jpg', '소파', 'Y', 'N');
 
 INSERT INTO mondaytest.orders

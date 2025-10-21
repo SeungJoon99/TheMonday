@@ -26,9 +26,7 @@ public class AdminRepository
 	//상품등록
 	public boolean insert(ProductVO vo)
 	{
-		System.out.println("err4");
 		session.insert(namespace + ".Insert",vo);
-		System.out.println(session.insert(namespace + ".Insert",vo));
 		return true;
 	}	
 	

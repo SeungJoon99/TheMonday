@@ -8,7 +8,7 @@
 		<id property="pno" column="p_no" />
 		<result property="pprice" column="p_price" />
 	    <result property="pinfo" column="p_info" />
-	    <result property="pimg" column="p_img" />
+	    <result property="ppimgname" column="p_pimg_name" />
 	    <result property="pname" column="p_name" />
 	    <result property="pwdate" column="p_wdate" />
 	    <result property="pdisplay" column="p_display" />
@@ -18,7 +18,7 @@
 	
 	<!-- 상품 목록 조회 -->
 	<select id="ProductList" resultMap="shopItemListMap">
-		select p_no, p_price, p_name, p_img,
+		select p_no, p_price, p_name, p_pimg_name,
 		(select sum(d_qty) from detail d where p_no = p.p_no) sum
 		from product p
 		where 
