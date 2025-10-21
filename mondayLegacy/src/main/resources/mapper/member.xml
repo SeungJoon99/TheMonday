@@ -3,6 +3,29 @@
  
 <!-- Namespace를 통해 JAVA 클래스와 Annotation클래스와 동기 -->
 <mapper namespace="com.ezen.member">
-
+	<resultMap type="com.ezen.vo.UserVO" id="userMap">
+		<id property="uno" column="u_no" />
+		<result property="unick" column="u_nick" />
+	    <result property="uemail" column="u_email" />
+	    <result property="upw" column="u_pw" />
+	    <result property="uhp" column="u_hp" />
+	    <result property="utype" column="u_type" />
+	    <result property="upostcode" column="u_postcode" />
+	    <result property="uold" column="u_old" />
+	    <result property="uaddr" column="u_addr" />
+	    <result property="uaddr2" column="u_addr2" />
+	    <result property="uname" column="u_name" />
+	    <result property="udelyn" column="u_delyn" />
+	    <result property="uwdate" column="u_wdate" />
+	    <result property="uudate" column="u_udate" />
+	</resultMap>
+	<select id="login" parameterType="com.ezen.vo.UserVO"
+		resultMap="userMap">
+		select * 
+		from user
+		where
+		u_email = #{ uemail }
+		and u_pw = md5(#{ upw }) 
+	</select>
 	
 </mapper>

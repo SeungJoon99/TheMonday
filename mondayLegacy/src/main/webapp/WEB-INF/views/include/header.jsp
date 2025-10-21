@@ -40,10 +40,15 @@
 					</form>
           
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-						<li><a class="nav-link" href="member/mypage">[홍길동]홈</a></li>
+						<c:if test="${ login != null }">
+							<li><a class="nav-link" href="member/mypage">[${ login.uname }]님</a></li>
+						</c:if>
 						<li><a class="nav-link" href="shop">상품 보기</a></li>
 						<li><a class="nav-link" href="member">로그인</a></li>
 						<li><a class="nav-link" href="member/cart">장바구니</a></li>
+						<c:if test="${ login != null }">
+							<li><a class="nav-link" href="logout">로그아웃</a></li>
+						</c:if>
 					</ul>
 				</div>
 			</div>
