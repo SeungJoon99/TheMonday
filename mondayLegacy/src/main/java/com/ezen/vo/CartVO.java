@@ -6,10 +6,26 @@ package com.ezen.vo;
  */
 public class CartVO 
 {
-    private int    pno;    //상품번호
-    private int    uno;    //유저번호
-    private String cwdate; //장바구니 등록일
-    private int    cqty;   //수량
+    private int       pno;     //상품번호
+    private int       uno;     //유저번호
+    private String    cwdate;  //장바구니 등록일
+    private int       cqty;    //수량
+    private ProductVO product; //join 용 상품객체
+    private int       ototal;  //장바구니 전체 총 가격
+    
+
+	public int getOtotal() {
+		return ototal;
+	}
+	public void setOtotal(int ototal) {
+		this.ototal = ototal;
+	}
+	public ProductVO getProduct() {
+		return product;
+	}
+	public void setProduct(ProductVO product) {
+		this.product = product;
+	}
 	public int getPno() {
 		return pno;
 	}

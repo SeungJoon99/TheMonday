@@ -1,6 +1,7 @@
 package com.ezen.control;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -52,7 +53,7 @@ public class MemberController {
 			return "true";
 		}
 	}
-	@RequestMapping(value = "/logout")
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String LogOut(HttpServletRequest request)
 	{
 		HttpSession session = request.getSession();
@@ -67,10 +68,40 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
-	public String Cart() 
+	public String Cart(HttpServletRequest request, Model model) 
 	{
+		HttpSession session = request.getSession();
+		UserVO vo = (UserVO)session.getAttribute("login");
+		
+		if(vo == null)
+		{
+			//로그인 안됨.	
+			session.setAttribute("login", null);
+			return "";
+		}
+		
+		List<CartVO> list = memberrepository.Cart(vo);
+		int cartTotal = memberrepository.CartTotal(vo);
+		
+		model.addAttribute("cartList", list);
+		model.addAttribute("cartTotal", cartTotal);
+		
+		session.setAttribute("cartList", list);
 		return "member/cart";
 	}
+	
+	@RequestMapping(value = "Pay", method = RequestMethod.POST)
+	public String Pay(HttpServletRequest request, Model model) 
+	{
+		HttpSession session = request.getSession();
+		UserVO vo = (UserVO)session.getAttribute("login");
+		
+		OrdersVO ordersvo = memberrepository.Pay(vo);
+		
+		
+		return "redirect:/";
+	}
+	
 	@RequestMapping(value = "/mypage_update", method = RequestMethod.GET)
 	public String MypageUpdate() 
 	{

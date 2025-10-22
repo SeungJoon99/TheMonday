@@ -4,6 +4,7 @@
 <!-- Namespace를 통해 JAVA 클래스와 Annotation클래스와 동기 -->
 <mapper namespace="com.ezen.shop">
 
+	<!-- ProductVO resultMap -->
 	<resultMap type="com.ezen.vo.ProductVO" id="shopItemListMap">
 		<id property="pno" column="p_no" />
 		<result property="pprice" column="p_price" />
@@ -14,6 +15,14 @@
 	    <result property="pdisplay" column="p_display" />
 	    <result property="pkind" column="p_kind" />
 	    <result property="pdelyn" column="p_delyn" />
+	</resultMap>
+	
+	<!-- CartVO resultMap -->
+	<resultMap type="com.ezen.vo.CartVO" id="shopCart">
+		<id property="uno" column="u_no" />
+		<id property="pno" column="p_no" />
+		<result property="cqty" column="c_qty" />
+		<result property="cwdate" column="c_wdate" />
 	</resultMap>
 	
 	<!-- 상품 목록 조회 -->
@@ -74,4 +83,23 @@
 		limit #{ offset }, 16
 	</select>
 	
+	<!-- 해당 상품이 있는 지 확인 -->
+	<select id="CheckCart" parameterType="com.ezen.vo.CartVO" resultType="int">
+    SELECT count(*)
+    FROM cart
+    WHERE u_no = #{uno} AND p_no = #{pno}
+	</select>
+	
+	<!-- 해당 상품이 이미 있을 경우 -->
+	<update id="UpdateCart" parameterType="com.ezen.vo.CartVO">
+    UPDATE cart
+    SET c_qty = c_qty + 1
+    WHERE u_no = #{uno} AND p_no = #{pno}
+	</update>
+
+	<!-- 장바구니 담기 -->
+	<insert id="AddCart" parameterType="com.ezen.vo.CartVO">
+		insert into cart(u_no, p_no)
+		value(#{ uno }, #{ pno })
+	</insert>
 </mapper>
