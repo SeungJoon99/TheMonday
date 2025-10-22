@@ -3,6 +3,8 @@
  
 <!-- Namespace를 통해 JAVA 클래스와 Annotation클래스와 동기 -->
 <mapper namespace="com.ezen.member">
+
+	<!-- UserVO resultMap -->
 	<resultMap type="com.ezen.vo.UserVO" id="userMap">
 		<id property="uno" column="u_no" />
 		<result property="unick" column="u_nick" />
@@ -19,6 +21,22 @@
 	    <result property="uwdate" column="u_wdate" />
 	    <result property="uudate" column="u_udate" />
 	</resultMap>
+	
+	<!-- CartVO join ProductVO resultMap -->
+	<resultMap type="com.ezen.vo.CartVO" id="memberCart">
+	    <id property="uno" column="u_no" />
+	    <id property="pno" column="p_no" />
+	    <result property="cqty" column="c_qty" />
+	    <result property="cwdate" column="c_wdate" />
+	
+	    <association property="product" javaType="com.ezen.vo.ProductVO">
+	        <result property="pno" column="p_no" /> 
+	        <result property="ppimgname" column="p_pimg_name" />
+	        <result property="pname" column="p_name" />
+	        <result property="pprice" column="p_price" />
+        </association>
+	</resultMap>
+	
 	<select id="login" parameterType="com.ezen.vo.UserVO"
 		resultMap="userMap">
 		select * 
@@ -27,5 +45,40 @@
 		u_email = #{ uemail }
 		and u_pw = md5(#{ upw }) 
 	</select>
+	
+	<select id="Cart" parameterType="com.ezen.vo.UserVO"
+		resultMap="memberCart">
+		select
+		    c.*,                 
+		    p.p_pimg_name,       
+		    p.p_name,           
+		    p.p_price
+		from
+		    cart c                                     
+		inner join
+		    product p on c.p_no = p.p_no               
+		where
+    	c.u_no = #{ uno }
+	</select>
+	
+	<select id="cartTotal" parameterType="com.ezen.vo.UserVO" resultType="java.lang.Integer">
+		select
+		sum(p.p_price * c.c_qty) carttotal
+		from cart c
+		inner join product p
+		on p.p_no = c.p_no
+		where 
+		u_no = #{ uno }
+	</select>
+	
+	<insert id="insertIntoOrders" parameterType="com.ezen.vo.CartVO">
+		insert into orders(u_no, u_hp, u_postcode, u_total)
+		values(#{ uno }, #{ uhp }, #{ upostcode }, #{ utotal })
+	</insert>
+	
+	<delete id="deleteCart">
+		delete from cart
+	</delete>
+	
 	
 </mapper>

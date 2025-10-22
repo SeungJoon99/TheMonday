@@ -25,7 +25,7 @@
   <!-- Start Header/Navigation -->
   <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
     <div class="container">
-      <a class="navbar-brand" href="index">The Monday<span>.</span></a>
+      <a class="navbar-brand" href="${pageContext.request.contextPath}">The Monday<span>.</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -39,17 +39,17 @@
           </button>
         </form>
 
-        <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-          <c:if test="${ login != null }">
-			<li><a class="nav-link" href="member/mypage">[${ login.uname }]님</a></li>
+		<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+			<li><a class="nav-link" href="${pageContext.request.contextPath}/shop">상품 보기</a></li>
+			<c:if test="${ login == null }">
+				<li><a class="nav-link" href="${pageContext.request.contextPath}/member">로그인</a></li>
 			</c:if>
-          <li><a class="nav-link" href="${pageContext.request.contextPath}/shop">상품 보기</a></li>
-          <li><a class="nav-link" href="${pageContext.request.contextPath}/member">로그인</a></li>
-          <li><a class="nav-link" href="${pageContext.request.contextPath}/member/cart">장바구니</a></li>
-          <c:if test="${ login != null }">
-			<li><a class="nav-link" href="logout">로그아웃</a></li>
-		</c:if>
-        </ul>
+			<c:if test="${ login != null }">
+				<li><a class="nav-link" href="member/mypage">[${ login.uname }]님</a></li>
+				<li><a class="nav-link" href="${pageContext.request.contextPath}/member/cart">장바구니</a></li>
+				<li><a class="nav-link" href="logout">로그아웃</a></li>
+			</c:if>
+		</ul>
       </div>
     </div>
   </nav>

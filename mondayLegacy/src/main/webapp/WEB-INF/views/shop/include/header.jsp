@@ -37,23 +37,21 @@
 				<div class="collapse navbar-collapse" id="navbarsFurni">
 					<div class="col-1"></div>
 					<form class="search-box" action="${pageContext.request.contextPath}/shop/search" method="get">
-					  <input class="form-control" id="keyword" type="search" placeholder="검색" aria-label="Search" name="keyword">
+					  <input class="form-control" id="keyword" type="search" placeholder="검색" value="${keyword}" aria-label="Search" name="keyword">
 					  <button class="btn" type="submit">
 					    <i class="fas fa-search"></i>
 					  </button>
 					</form>
 
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-						<c:if test="${ login != null }">
-							<li><a class="nav-link" href="member/mypage">[${ login.uname }]님</a></li>
-						</c:if>
 						<li><a class="nav-link" href="${pageContext.request.contextPath}/shop">상품 보기</a></li>
 						<c:if test="${ login == null }">
 							<li><a class="nav-link" href="${pageContext.request.contextPath}/member">로그인</a></li>
 						</c:if>
-						<li><a class="nav-link" href="${pageContext.request.contextPath}/member/cart">장바구니</a></li>
 						<c:if test="${ login != null }">
-							<li><a class="nav-link" href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
+							<li><a class="nav-link" href="member/mypage">[${ login.uname }]님</a></li>
+							<li><a class="nav-link" href="${pageContext.request.contextPath}/member/cart">장바구니</a></li>
+							<li><a class="nav-link" href="logout">로그아웃</a></li>
 						</c:if>
 					</ul>
 				</div>

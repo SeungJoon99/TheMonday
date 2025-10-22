@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file="./include/header.jsp" %>
 
+
+
   <div class="untree_co-section before-footer-section">
     <div class="container">
       <div class="row">
@@ -21,50 +23,31 @@
                   </tr>
                 </thead>
                 <tbody>
+                
                   <!-- 상품 1 -->
+                  <c:forEach var="item" items="${ cartList }">
                   <tr>
-                    <td class="product-thumbnail">
-                      <img src="resources/images/product-1.png" alt="Image" class="img-fluid small-thumb">
-                    </td>
-                    <td class="product-name">
-                      <h2 class="h5 text-black">
-                        <a href="shop/product_detail">상품 1</a>
-                      </h2>
-                    </td>
-                    <td>10,000원</td>
-                    <td>
-                      <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-                        <button class="btn btn-outline-black decrease" type="button">&minus;</button>
-                        <input type="text" class="form-control text-center quantity-amount" value="1">
-                        <button class="btn btn-outline-black increase" type="button">&plus;</button>
-                      </div>
-                    </td>
-                    <td>10,000원</td>
-                    <td><a href="#" class="btn btn-black btn-sm">X</a></td>
-                  </tr>
-
-                  <!-- 상품 2 -->
-                  <tr>
-                    <td class="product-thumbnail">
-                      <img src="resources/images/product-2.png" alt="Image" class="img-fluid small-thumb">
-                    </td>
-                    <td class="product-name">
-                      <h2 class="h5 text-black">
-                        <a href="shop/product_detail">상품 2</a>
-                      </h2>
-                    </td>
-                    <td>10,000원</td>
-                    <td>
-                      <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-                        <button class="btn btn-outline-black decrease" type="button">&minus;</button>
-                        <input type="text" class="form-control text-center quantity-amount" value="1">
-                        <button class="btn btn-outline-black increase" type="button">&plus;</button>
-                      </div>
-                    </td>
-                    <td>10,000원</td>
-                    <td><a href="#" class="btn btn-black btn-sm">X</a></td>
-                  </tr>
-                </tbody>
+				        <td class="product-thumbnail">
+				            <img src="${pageContext.request.contextPath}/resources/images/${ item.product.ppimgname }" alt="Image" class="img-fluid small-thumb" style="width:120px;height:150px;">
+				        </td>
+				        <td class="product-name">
+				            <h2 class="h5 text-black">
+				                <a href="${pageContext.request.contextPath}/shop/product_detail?pno=${item.pno}">${ item.product.pname }</a>
+				            </h2>
+				        </td>
+				        <td>${ item.product.pprice }원</td>
+				        <td>
+				            <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
+				                <button class="btn btn-outline-black decrease" id="qtyMinus" type="button">&minus;</button>
+			                	<input type="text" id="qty" class="form-control text-center quantity-amount" value="${ item.cqty }">
+				                <button class="btn btn-outline-black increase" id="qtyPlus" type="button">&plus;</button>
+				            </div>
+				        </td>
+				        <td>${ item.product.pprice * item.cqty }</td>
+				        <td><a href="#" class="btn btn-black btn-sm" id="delFromCart">X</a></td>
+				    	</tr>
+					</c:forEach>
+				</tbody>
               </table>
             </div>
           </form>
@@ -77,15 +60,15 @@
             <h5 class="text-black mb-3">배송지 입력 (실제)</h5>
             <div class="mb-3">
               <label for="delivery-address" class="form-label">배송지</label>
-              <input type="text" class="form-control" id="delivery-address" placeholder="서울특별시 강남구 테헤란로 123">
+              <input type="text" class="form-control" id="deliveryAddress" placeholder="서울특별시 강남구 테헤란로 123">
             </div>
 
             <div class="mb-3">
               <label for="delivery-memo" class="form-label">메모사항 (실제)</label>
-              <textarea class="form-control" id="delivery-memo" rows="2" placeholder="문 앞에 놔 두고 벨 누르지 말아주세요."></textarea>
+              <textarea class="form-control" id="deliveryMemo" rows="2" placeholder="문 앞에 놔 두고 벨 누르지 말아주세요."></textarea>
             </div>
 
-            <button class="btn btn-outline-secondary mb-3 w-100" type="button" onclick="alert('배송지가 저장되었습니다!')">배송지 저장</button>
+            <button class="btn btn-outline-secondary mb-3 w-100" type="button" onclick="deliverySave()">배송지 저장</button>
           </div>
 
           <div class="cart-totals p-4 rounded">
@@ -97,28 +80,24 @@
               <div style="width: 20%; text-align: center;">개수</div>
               <div style="width: 30%; text-align: right;">가격</div>
             </div>
-
-            <!-- Item Row 1 -->
-            <div class="d-flex mb-2">
-              <div style="width: 50%;">상품 1</div>
-              <div style="width: 20%; text-align: center;">1개</div>
-              <div style="width: 30%; text-align: right;">10,000원</div>
-            </div>
-
-             <!-- Item Row 1 -->
-            <div class="d-flex mb-2">
-              <div style="width: 50%;">상품 2</div>
-              <div style="width: 20%; text-align: center;">1개</div>
-              <div style="width: 30%; text-align: right;">20,000원</div>
-            </div>
-
-			<!-- Item Row 3 -->
+			
+            <!-- 상품 -->
+            <c:forEach var="item" items="${ cartList }">
+	            <div class="d-flex mb-2">
+	              <div style="width: 50%;">${ item.product.pname }</div>
+	              <div style="width: 20%; text-align: center;">${ item.cqty }</div>
+	              <div style="width: 30%; text-align: right;">${ item.product.pprice * item.cqty }</div>
+	            </div>
+	            
+			</c:forEach>
+			
+			<!-- 요약 -->
 			<div class="d-flex border-top pt-3 mt-3 fw-bold">
 				<div style="width: 50%;">총 가격</div>
 				<div style="width: 20%; text-align: center;"></div>
-				<div style="width: 30%; text-align: right;">30,000원</div>
+				<div style="width: 30%; text-align: right;">${ cartTotal }</div>
 				</div>
-				<button class="btn btn-black btn-lg btn-block w-100 mt-4" onclick="window.location='shop/thankyou'">결제하기</button>
+				<button class="btn btn-black btn-lg btn-block w-100 mt-4" onclick="pay()">결제하기</button>
 			</div>
 							
 			</div>
