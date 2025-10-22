@@ -33,19 +33,19 @@ public class AdminController
                     }
 
 	 */
+	@Autowired
+	ServletContext context;
 	
-	private final static String uploadPath = "D:\\YH\\Dhub\\github\\storeproject\\TheMonday\\mondayLegacy\\src\\main\\webapp\\resources\\images";
 	@Autowired
 	AdminRepository adminrepositoy;
 	
-	@Autowired
-	ServletContext context;
+	//경로구분자
+	String separator = File.separator;
 
 	//상품등록
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public String insert()
 	{
-		context.getRealPath("/resources/images");
 		return "admin/insert";
 	}
 
@@ -55,6 +55,7 @@ public class AdminController
 	@RequestParam(value = "img", required = false)MultipartFile file) throws IllegalStateException, IOException
 	{
 		if(!file.isEmpty()) {
+			
 			//업로드된 원본 파일 이름 가져오기
 			//tomcat소유의 임시디렉토리(temp) 서버가 리부팅되면 temp를 비운다
 			String originalFileName = file.getOriginalFilename();
@@ -67,7 +68,8 @@ public class AdminController
 			String savedFileName = uuid.toString();
 			
 			//첨부파일 객체 생성
-			File newFile = new File(uploadPath + "\\" + savedFileName + fileExt);
+			File newFile = new File(
+					context.getRealPath("/resources/images") + separator + savedFileName + fileExt);
 			//실제 저장해야하는 폴더로 업로드 된 파일을 옮긴다.
 			//실제 저장 디렉토리로 전송
 			file.transferTo(newFile); //받아온 file을 newFile이 가지고있는 path에 (newFile객체에 담아서??)전송한다
