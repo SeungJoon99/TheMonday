@@ -121,4 +121,11 @@ public class ShopController {
 	{
 		return "shop/thankyou";
 	}
+	
+	//상품 장바구니 담기 / 즉시구매
+	@RequestMapping(value = "/thankyou", method = RequestMethod.GET)
+	public String CartBuy() 
+	{
+		return "shop/thankyou";
+	}
 }

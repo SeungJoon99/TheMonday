@@ -3,6 +3,7 @@ package com.ezen.control;
 import java.io.*;
 import java.util.*;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import com.ezen.repository.*;
@@ -19,14 +20,32 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/admin")
 public class AdminController
 {
+	/* 파일 경로/ 없으면 폴더생성
+	 * @ResponseBody
+        ResponseEntity handleFileUpload(@RequestParam("file") MultipartFile file) {
+            if (!file.isEmpty()) {
+                try {
+                    String uploadsDir = "/uploads/";
+                    String realPathtoUploads =  request.getServletContext().getRealPath(uploadsDir);
+                    if(! new File(realPathtoUploads).exists())
+                    {
+                        new File(realPathtoUploads).mkdir();
+                    }
+
+	 */
+	
 	private final static String uploadPath = "D:\\YH\\Dhub\\github\\storeproject\\TheMonday\\mondayLegacy\\src\\main\\webapp\\resources\\images";
 	@Autowired
 	AdminRepository adminrepositoy;
+	
+	@Autowired
+	ServletContext context;
 
 	//상품등록
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public String insert()
 	{
+		context.getRealPath("/resources/images");
 		return "admin/insert";
 	}
 

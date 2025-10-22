@@ -50,7 +50,7 @@
 	<!-- 상품 단건 조회 -->
 	<select id="ProductDetail" parameterType="java.lang.Integer" 
 		resultMap="shopItemListMap">
-		select p_price, p_name, p_pimg_name, p_info
+		select p_no, p_price, p_name, p_pimg_name, p_info
 		from product p
 		where
 		p_no = #{ pno } 

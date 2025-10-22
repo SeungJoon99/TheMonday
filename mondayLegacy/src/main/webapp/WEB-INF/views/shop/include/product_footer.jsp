@@ -3,8 +3,8 @@
 
 
 <div class="buttons">
-    <a href="${pageContext.request.contextPath}/member/cart"><button>즉시 구매하기</button></a>
-    <a href="#"><button>장바구니</button></a>
+    <a href="${pageContext.request.contextPath}/member/cart"><button onclick="BuyNow()">즉시 구매하기</button></a>
+    <button onclick="AddCart()">장바구니</button>
 </div>
 
 <a href="${pageContext.request.contextPath}/shop">← 목록으로 돌아가기</a>
