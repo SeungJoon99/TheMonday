@@ -86,36 +86,34 @@ public class AdminController
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String productList(@RequestParam(defaultValue = "1")int page, Model model)
 	{
-//		SearchVO vo = new SearchVO();
-////		vo.setPkind(pkind);
-//		vo.setPageno(page);
-//		
-//		//전체 갯수
-//		int total = adminrepositoy.GetTotal(vo);
-//		
-//		int sizePerPage = 16;  // 한 페이지에 보여줄 상품 개수
-//		int blockSize = 10;    // 한 블럭에 보여줄 페이지 번호 개수
-//
-//		// 전체 페이지 수
-//		int maxpage = total / sizePerPage;
-//		if ( total % sizePerPage != 0 ) maxpage++;
-//
-//		// 블럭 시작/끝 번호 계산
-//		int startbk = ((page - 1) / blockSize) * blockSize + 1;
-//		int endbk = startbk + blockSize - 1;
-//		if ( endbk > maxpage ) endbk = maxpage;
-//		
-//		List<ProductVO> list = adminrepositoy.productList();
-//
-//		model.addAttribute("total",total);
-//		model.addAttribute("maxpage",maxpage);
-//		model.addAttribute("currentPage", page);
-//		
-//		model.addAttribute("startbk",startbk);
-//		model.addAttribute("endbk",endbk);
-//		
-//		model.addAttribute("searchvo",vo);
-//		model.addAttribute("items",list);
+		int blockSize = 10;    // 한 블럭에 보여줄 페이지 번호 개수
+		int sizePerPage = 15;  // 한 페이지에 보여줄 상품 개수
+		SearchVO vo = new SearchVO();
+//		vo.setPkind(pkind);
+		vo.setPageno(page, sizePerPage);
+		//전체 갯수
+		int total = adminrepositoy.GetTotal(vo);
+		
+		// 전체 페이지 수
+		int maxpage = total / sizePerPage;
+		if ( total % sizePerPage != 0 ) maxpage++;
+
+		// 블럭 시작/끝 번호 계산
+		int startbk = ((page - 1) / blockSize) * blockSize + 1;
+		int endbk = startbk + blockSize - 1;
+		if ( endbk > maxpage ) endbk = maxpage;
+		
+		List<ProductVO> list = adminrepositoy.productList(vo);
+
+		model.addAttribute("total",total);
+		model.addAttribute("maxpage",maxpage);
+		model.addAttribute("currentPage", page);
+		
+		model.addAttribute("startbk",startbk);
+		model.addAttribute("endbk",endbk);
+		
+		model.addAttribute("searchvo",vo);
+		model.addAttribute("items",list);
 		
 		return "admin/list";
 	}
@@ -141,7 +139,7 @@ public class AdminController
 		if (pno == null || pno == 0) {
 	        return "redirect:/admin"; 
 	    }
-		
+//		System.out.println(pno);
 //		System.out.println("err");
 		ProductVO vo = adminrepositoy.productRead(pno);
 
@@ -149,10 +147,10 @@ public class AdminController
 		if (vo == null) {
 	        return "redirect:/admin"; 
 	    }
-
-//		System.out.println("err2");
+//		System.out.println(vo.getPno());
+//		System.out.println(vo.getPname());
 		model.addAttribute("item", vo);
-		return "admin/update?pno=" + pno;
+		return "admin/update";
 	}
 	
 	//상품수정 처리

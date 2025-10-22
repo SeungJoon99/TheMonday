@@ -108,20 +108,53 @@
 			</if>)
 	</insert>
 	
-	<!-- 상품목록 조회 -->
-	<select id="productList" resultMap="shopItemListMap">
-		select  p_no, p_name, p_price, date(p_wdate) as p_wdate, p_pimg_name, p_kind, p_display
+	<!-- 총 등록상품 개수  -->
+	<select id="total" parameterType="com.ezen.vo.SearchVO"
+		resultType="java.lang.Integer">
+		select count(*) as total
 		from product
+		where 
+		p_delyn = 'N'
+		<if test='pkind != null and !pkind.equals("")'>
+			and p_kind = #{ pkind }
+		</if> 
+		<if test='keyword != null and !keyword.equals("")'>
+			and p_name like CONCAT('%', #{ keyword }, '%')
+		</if>
+	</select>
+	
+	<!-- 상품 검색 -->
+	<select id="Search" parameterType="com.ezen.vo.SearchVO" 
+		resultMap="shopItemListMap">
+		select p_no, p_price, p_name, p_pimg_name,
+		from product p
+		<if test='keyword != null and !keyword.equals("")'>
+			and p_name like CONCAT('%', #{ keyword }, '%')
+		</if>
 		order by p_no desc
+		limit #{ offset }, 15
+	</select>
+	
+	<!-- 상품목록 조회 -->
+	<select id="productList" parameterType="com.ezen.vo.SearchVO"
+		resultMap="shopItemListMap">
+		select p_no, p_name, p_price, date(p_wdate) as p_wdate, p_pimg_name, p_kind, p_display
+		from product
+		where p_delyn = 'N'
+		order by p_no desc
+		limit #{ offset }, 15
 	</select>
 	<!-- 상품목록 조회 카테고리 정렬-->
 	<select id="productListK" parameterType="com.ezen.vo.SearchVO" 
 		resultMap="shopItemListMap">
-		select p_no, p_pimg_name, p_name, p_price, p_kind, p_wdate, p_display
+		select p_no, p_name, p_price, date(p_wdate) as p_wdate, p_pimg_name, p_kind, p_display
 		from product
-		where p_delyn != 'Y' and
-		p_kind = #{pkind}
-		order by p_no desc
+		where p_delyn != 'Y'
+		<if test='pkind != null and !pkind.equals("")'>
+			and p_kind = #{pkind}
+		</if>
+		order by p_kind desc
+		limit #{ offset }, 15
 	</select>
 	<!-- 상품목록 조회 진열여부별 정렬 -->
 	<select id="productListD" parameterType="com.ezen.vo.SearchVO" 
@@ -133,7 +166,7 @@
 		order by p_price desc
 	</select>
 	
-	<!-- 상품 조회 -->
+	<!-- 상품 단건 조회 -->
 	<select id="productRead" parameterType="Integer" 
 		resultMap="shopItemListMap">
 		select p_no, p_name, p_price, p_info, p_pimg_name, p_fimg_name, p_kind, p_wdate, p_display

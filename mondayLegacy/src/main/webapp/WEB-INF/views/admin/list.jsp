@@ -82,8 +82,8 @@
 	              
 	              <!-- U/D 버튼 -->
 	              <td>
-	                <a href="<c:url value="/admin/update?pno=${item.pno}" />"><button type="button">수정하기</button></a>
-	                <button type="button">삭제하기</button>
+	                <a href="<c:url value="/admin/update?pno=${item.pno}" />"><button type="button" class="btn-sm btn-primary" style="border: none;">수정하기</button></a>
+	                <button type="button" id="deleteButton" class="btn-sm btn-danger" onclick="productDelete(${ item.pno });">삭제하기</button>
 	              </td>
 	              
 	            </tr>
@@ -148,3 +148,42 @@
     <!-- main section end-->
   </body>
 </html>
+<script>
+	const contextPath = '${pageContext.request.contextPath}';
+	function productDelete(pno){
+		if(!confirm("상품을 삭제하시겠습니까?")){
+			return;	
+		}
+		
+		$.ajax({
+			url : contextPath + "/admin/delete?pno=" + pno,
+			type: "POST",
+			dataType: "html",
+			success : function(res){
+				res = res.trim();
+				if (res == "") {
+                } else if (res == "FAIL") {
+                    alert("상품 삭제에 실패했습니다. 다시 시도해 주세요.");
+                } else {
+                    alert("알 수 없는 응답: " + res);
+                }
+				document.location.reload();
+			},
+			
+			error : function(xhr, status, error){
+				alert("서버 통신 오류가 발생했습니다: " + error);
+                console.error("AJAX Error:", status, error);
+			},
+			
+			beforeSend: function() {
+                // 삭제 요청 전에 버튼 비활성화 등의 처리로 사용자 대기 상태 유도
+                $('#deleteButton').prop('disabled', true).text('삭제하기');
+            },
+            complete: function() {
+                // 요청 완료 후 버튼 상태 복구
+                $('#deleteButton').prop('disabled', false).text('삭제하기');
+            }
+		
+		});	
+	};
+</script>

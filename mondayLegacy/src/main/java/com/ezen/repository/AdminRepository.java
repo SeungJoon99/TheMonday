@@ -29,11 +29,18 @@ public class AdminRepository
 		session.insert(namespace + ".productInsert",vo);
 		return true;
 	}	
-	
-	//상품 목록 조회
-	public List<ProductVO> productList() 
+
+	//전체 상품 개수
+	public int GetTotal(SearchVO vo)
 	{
-		List<ProductVO> list = session.selectList(namespace + ".productList");
+		int total = session.selectOne(namespace + ".total", vo);
+		return total;
+	}
+		
+	//상품 목록 조회
+	public List<ProductVO> productList(SearchVO vo) 
+	{
+		List<ProductVO> list = session.selectList(namespace + ".productList", vo);
 		
 		return list;
 	}

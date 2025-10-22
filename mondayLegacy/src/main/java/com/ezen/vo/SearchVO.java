@@ -51,6 +51,12 @@ public class SearchVO
 	{ 
 		this.pageno = pageno < 1 ? 1 : pageno;
 		this.offset = (this.pageno - 1) * sizePerPage; 
+	}
+	
+	public void setPageno(int pageno, int sizePerPage) 
+	{ 
+		this.pageno = pageno < 1 ? 1 : pageno;
+		this.offset = (this.pageno - 1) * sizePerPage; 
 	}	
 	public void setKind(String kind)       { this.kind = kind;      }
 	public void setKeyword(String keyword) { this.keyword = keyword;}
