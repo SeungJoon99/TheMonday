@@ -42,7 +42,7 @@ public class AdminController
 	//경로구분자
 	String separator = File.separator;
 
-	//상품등록
+	//상품등록 페이지
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public String productInsert()
 	{
@@ -82,7 +82,7 @@ public class AdminController
 		return "redirect:/admin";
 	}
 	
-	//상품 목록 조회
+	//상품 목록 조회 페이지
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String productList(@RequestParam(defaultValue = "1")int page, Model model)
 	{
@@ -136,17 +136,13 @@ public class AdminController
 	public String productUpdate(@RequestParam(required = false) Integer pno, Model model) 
 	{
         // 예외 처리
-		if (pno == null || pno == 0) {
-	        return "redirect:/admin"; 
-	    }
+		if (pno == null || pno == 0) return "redirect:/admin"; 
 //		System.out.println(pno);
 //		System.out.println("err");
 		ProductVO vo = adminrepositoy.productRead(pno);
 
 		// 상품을 찾을 수 없을 경우 예외 처리
-		if (vo == null) {
-	        return "redirect:/admin"; 
-	    }
+		if (vo == null) return "redirect:/admin"; 
 //		System.out.println(vo.getPno());
 //		System.out.println(vo.getPname());
 		model.addAttribute("item", vo);
@@ -190,8 +186,22 @@ public class AdminController
 //		System.out.println("uok6");
 		return "redirect:/admin";
 	}
+
+	//상품 삭제여부 처리
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	@ResponseBody
+	public String productDelete(@RequestParam(required = false) Integer pno) 
+	{
+        // 예외 처리
+		if (pno == null || pno == 0) return "잘못된 접근입니다."; 
+
+		int result = adminrepositoy.productDelete(pno);
+		if (result == 0) return "fail";
+
+		return "ok";
+	}
 	
-	//관리자 로그인
+	//관리자 로그인 페이지
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String adminLogin() 
 	{
@@ -213,7 +223,7 @@ public class AdminController
 		}
 	}
 	
-	//주문 내역 조회
+	//주문목록 조회 페이지
 	@RequestMapping(value = "/orderList", method = RequestMethod.GET)
 	public String orderList(@RequestParam(defaultValue = "1")int page, Model model) 
 	{		
@@ -224,11 +234,28 @@ public class AdminController
 		return "admin/order_list";
 	}
 	
-	//주문내역 수정
-	@RequestMapping(value = "/order_set", method = RequestMethod.GET)
-	public String orderSet() 
+	//주문내역 수정 페이지
+	@RequestMapping(value = "/orderSet", method = RequestMethod.GET)
+	public String orderSet(Integer ono, Model model) 
 	{
+		ManageVO vo = adminrepositoy.orderSelect(ono);
+
+		model.addAttribute("item", vo );
+		
 		return "admin/order_set";
+	}
+
+	//주문내역 수청 처리
+	@RequestMapping(value = "/orderSet", method = RequestMethod.POST)
+	public String orderSetOK(ManageVO vo) 
+	{
+        // 예외 처리
+		if (vo == null || vo.equals("")) return "redirect:/admin/order_list"; 
+
+		int result = adminrepositoy.orderSet(vo);
+		if (result == 0) return "fail";
+
+		return "ok";
 	}
 	
 	//매출조회
