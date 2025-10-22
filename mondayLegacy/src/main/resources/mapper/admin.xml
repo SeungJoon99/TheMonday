@@ -96,7 +96,7 @@
     -->
     
 	<!-- 상품 등록 -->
-	<insert id="Insert" parameterType="com.ezen.vo.ProductVO">
+	<insert id="productInsert" parameterType="com.ezen.vo.ProductVO">
 		insert into product (p_name, p_price, p_kind, p_info, p_pimg_name, p_fimg_name)
 		values(
 			#{pname}, #{pprice}, #{pkind}, #{pinfo},
@@ -109,14 +109,13 @@
 	</insert>
 	
 	<!-- 상품목록 조회 -->
-	<select id="List" resultMap="shopItemListMap">
-		select p_no, p_pimg_name, p_name, p_price, p_kind, p_wdate, p_display
+	<select id="productList" resultMap="shopItemListMap">
+		select  p_no, p_name, p_price, date(p_wdate) as p_wdate, p_pimg_name, p_kind, p_display
 		from product
-		where p_delyn != 'Y'
 		order by p_no desc
 	</select>
 	<!-- 상품목록 조회 카테고리 정렬-->
-	<select id="ListK" parameterType="com.ezen.vo.SearchVO" 
+	<select id="productListK" parameterType="com.ezen.vo.SearchVO" 
 		resultMap="shopItemListMap">
 		select p_no, p_pimg_name, p_name, p_price, p_kind, p_wdate, p_display
 		from product
@@ -125,7 +124,7 @@
 		order by p_no desc
 	</select>
 	<!-- 상품목록 조회 진열여부별 정렬 -->
-	<select id="ListD" parameterType="com.ezen.vo.SearchVO" 
+	<select id="productListD" parameterType="com.ezen.vo.SearchVO" 
 		resultMap="shopItemListMap">
 		select p_no, p_pimg_name, p_name, p_price, p_kind, p_wdate, p_display
 		from product
@@ -134,17 +133,25 @@
 		order by p_price desc
 	</select>
 	
-	<!-- 상품수정 -->
-	<update id="Update" parameterType="com.ezen.vo.ProductVO">
-		update set product 
-			p_fimg_name = #{pfimgname}, 
-			p_pimg_name = #{ppimgname}, 
+	<!-- 상품 조회 -->
+	<select id="productRead" parameterType="Integer" 
+		resultMap="shopItemListMap">
+		select p_no, p_name, p_price, p_info, p_pimg_name, p_fimg_name, p_kind, p_wdate, p_display
+		from product
+		where p_no = #{pno}
+	</select>
+	
+	<!-- 상품 수정 -->
+	<update id="productUpdate" parameterType="com.ezen.vo.ProductVO">
+		update product set
 			p_name = #{pname}, 
-			p_price = #{pprice}, 
+			p_price = #{pprice},
 			p_kind = #{pkind}, 
+			p_info = #{pinfo},  
+			p_fimg_name = #{pfimgname}, 
+			p_pimg_name = #{ppimgname},
 			p_display = #{pdisplay}
-		where p_no = #{pno} and
-		p_delyn != 'Y'
+		where p_no = #{pno}
 	</update>
 	
 	<!-- 관리자 로그인 -->

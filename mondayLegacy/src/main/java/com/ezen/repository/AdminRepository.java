@@ -24,37 +24,51 @@ public class AdminRepository
 	private static final String namespace = "com.ezen.admin";
 	
 	//상품등록
-	public boolean insert(ProductVO vo)
+	public boolean productInsert(ProductVO vo)
 	{
-		session.insert(namespace + ".Insert",vo);
+		session.insert(namespace + ".productInsert",vo);
 		return true;
 	}	
 	
 	//상품 목록 조회
-	public List<ProductVO> list() 
+	public List<ProductVO> productList() 
 	{
-		List<ProductVO> list = session.selectList(namespace + ".List");
+		List<ProductVO> list = session.selectList(namespace + ".productList");
 		
 		return list;
 	}
 	
 	//상품 목록 조회
-	public List<ProductVO> listK(ProductVO vo) 
+	public List<ProductVO> productListK(ProductVO vo) 
 	{
-		List<ProductVO> list = session.selectList(namespace + ".ListK", vo);
+		List<ProductVO> list = session.selectList(namespace + ".productListK", vo);
 		return list;
 	}
 	//상품 목록 조회
-	public List<ProductVO> listD(ProductVO vo) 
+	public List<ProductVO> productListD(ProductVO vo) 
 	{
-		List<ProductVO> list = session.selectList(namespace + ".ListD", vo);
+		List<ProductVO> list = session.selectList(namespace + ".productListD", vo);
 		return list;
 	}
 	
-	//상품수정
-	public String update() 
+	//상품조회
+	public ProductVO productRead(Integer pno) 
 	{
-		return "admin/update";
+//		System.out.println("err3");
+		ProductVO vo = session.selectOne(namespace + ".productRead",pno);
+//		System.out.println(vo.getPno());
+//		System.out.println(vo.getPname());
+//		System.out.println("err4");
+		return vo;
+	}
+	
+	//상품수정
+	public boolean productUpdate(ProductVO vo) 
+	{
+//		System.out.println("uok4");
+		session.selectOne(namespace + ".productUpdate",vo);
+//		System.out.println("uok5");
+		return true;
 	}
 	
 	//관리자 로그인

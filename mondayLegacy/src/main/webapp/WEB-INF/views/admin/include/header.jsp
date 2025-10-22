@@ -42,9 +42,6 @@
 		    <a class="nav-link text-light" href="${pageContext.request.contextPath}/admin/insert">상품등록</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link text-light" href="${pageContext.request.contextPath}/admin/update">상품수정</a>
-		  </li>
-		  <li class="nav-item">
 		    <a class="nav-link text-light" aria-current="page" href="${pageContext.request.contextPath}/admin/orderList">주문관리</a>
 		  </li>
 		</ul>
