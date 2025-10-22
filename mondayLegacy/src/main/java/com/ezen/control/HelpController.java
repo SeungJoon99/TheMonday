@@ -23,7 +23,7 @@ import com.ezen.vo.SearchVO;
 public class HelpController {
 	
 	@Autowired
-	HelpService helpservice;
+	HelpRepository helprepository;
 	
 	@Autowired
 	AnswerRepository answerrepository;
@@ -40,7 +40,7 @@ public class HelpController {
 	public String Board_detail(@RequestParam(required = true) int hno, Model model)
 	{
 
-	    HelpVO vo = helpservice.Read(hno);
+	    HelpVO vo = helprepository.Read(hno);
 	    List<AnswerVO> answer =  answerrepository.GetList(hno);
 	    model.addAttribute("item", vo);
 	    model.addAttribute("answerList", answer);
@@ -52,7 +52,7 @@ public class HelpController {
 	@RequestMapping(value = "/delete")
 	public String Delete(@RequestParam(required = true)int hno)
 	{
-		helpservice.Delete(hno);
+		helprepository.Delete(hno);
 		return "redirect:/help/";
 	}	
 	
@@ -67,7 +67,7 @@ public class HelpController {
 		vo.setPageno(page);
 		
 		//전체 갯수
-		int total = helpservice.GetTotal(vo);
+		int total = helprepository.GetTotal(vo);
 		
 		//최대 페이지 갯수
 		int maxpage = total / 10;
@@ -86,7 +86,7 @@ public class HelpController {
 		}			
 		
 		//목록 조회 
-		List<HelpVO> list = helpservice.GetList(vo);
+		List<HelpVO> list = helprepository.GetList(vo);
 		if (list != null && !list.isEmpty()) {
 		    for(HelpVO item : list) {
 		        if (item != null) { // null 체크 추가
@@ -133,7 +133,7 @@ public class HelpController {
 	    vo.setUno(userNo);
 		
 		HelpVO insert = (HelpVO)request.getSession().getAttribute("insert");
-		helpservice.Insert(vo);
+		helprepository.Insert(vo);
 		return "help/inquire";
 	}
 }

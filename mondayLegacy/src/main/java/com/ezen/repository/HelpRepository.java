@@ -11,7 +11,7 @@ import com.ezen.vo.HelpVO;
 import com.ezen.vo.SearchVO;
 
 @Repository
-public class HelpService {
+public class HelpRepository {
 
 	@Autowired
 	private SqlSession session;

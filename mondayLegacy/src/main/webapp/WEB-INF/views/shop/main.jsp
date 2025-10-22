@@ -13,7 +13,7 @@
 		<c:forEach var="item" items="${main}">
 			<div class="col-12 col-md-4 col-lg-3 mb-5">
 				<a class="product-item" href="${pageContext.request.contextPath}/shop/product_detail?pno=${item.pno}">
-					<img src="${pageContext.request.contextPath}/resources/images/${ item.pimg }" 
+					<img src="${pageContext.request.contextPath}/resources/images/${ item.ppimgname }" 
 						class="img-fluid product-thumbnail" style="width:300px; height:400px">
 					<h3 class="product-title">${item.pname}</h3>
 					<strong class="product-price">${item.pprice}</strong>
