@@ -39,4 +39,14 @@ public class ShopRepository
 		List<ProductVO> list = session.selectList(namespace + ".Search", vo);
 		return list;
 	}
+	//장바구니 담기
+	public void AddCart(CartVO vo)
+	{
+		//이미 장바구니에 있는지 확인
+	    int count = session.selectOne(namespace + ".CheckCart", vo);
+
+	    //이미 있다면 update
+	    if ( count > 0 ) session.update(namespace + ".UpdateCart", vo); 
+	    else session.insert(namespace + ".AddCart", vo); 
+	}
 }

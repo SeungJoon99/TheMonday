@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezen.repository.*;
 import com.ezen.vo.*;
@@ -123,9 +124,21 @@ public class ShopController {
 	}
 	
 	//상품 장바구니 담기 / 즉시구매
-	@RequestMapping(value = "/thankyou", method = RequestMethod.GET)
-	public String CartBuy() 
+	@RequestMapping(value = "/CartBuy", 
+					method = RequestMethod.POST,
+					produces = "text/html; charset=UTF-8")
+	@ResponseBody
+	public String CartBuy(@RequestParam(required = true) int pno,
+			@RequestParam(required = false) int uno,
+			Model model) 
 	{
-		return "shop/thankyou";
+		CartVO vo = new CartVO();
+		vo.setUno(uno);
+		vo.setPno(pno);
+		
+		shoprepository.AddCart(vo);
+		model.addAttribute("cart", vo); 
+		
+		return "장바구니에 추가되었습니다.";
 	}
 }

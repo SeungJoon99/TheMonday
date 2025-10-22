@@ -52,7 +52,7 @@ public class MemberController {
 			return "true";
 		}
 	}
-	@RequestMapping(value = "/logout")
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String LogOut(HttpServletRequest request)
 	{
 		HttpSession session = request.getSession();
