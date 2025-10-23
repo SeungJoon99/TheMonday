@@ -42,7 +42,7 @@
 	<select id="list" parameterType="com.ezen.vo.SearchVO"
 		resultMap="helplist">
 		SELECT
-		h_no, h_kind, h_title, h_note, h_wdate, h_delyn, help.u_no,
+		h_no, h_kind, h_title, h_note, date(h_wdate) as h_wdate, h_delyn, help.u_no,
 		user.u_nick
 		FROM
 		help

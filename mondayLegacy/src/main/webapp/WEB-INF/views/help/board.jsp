@@ -48,7 +48,7 @@
  <nav aria-label="Page navigation example">
 	    <ul class="pagination justify-content-center">
 	        <!-- 이전 화살표 -->
-	        <c:if test="${currentPage != 1}">
+	        <c:if test="${currentPage > 1}">
 	            <c:set var="prevUrl" value="?page=${currentPage - 1}" />
 	            <c:if test="${not empty searchvo.hkind}">
 	                <c:set var="prevUrl" value="${prevUrl}&pkind=${searchvo.hkind}" />
@@ -76,7 +76,7 @@
 	        <!-- 다음 화살표 -->
 	        <c:if test="${currentPage < maxpage}">
 	            <c:set var="nextUrl" value="?page=${currentPage + 1}" />
-	            <c:if test="${not empty searchvo.pkind}">
+	            <c:if test="${not empty searchvo.hkind}">
 	                <c:set var="nextUrl" value="${nextUrl}&pkind=${searchvo.hkind}" />
 	            </c:if>
 	            <li class="page-item">

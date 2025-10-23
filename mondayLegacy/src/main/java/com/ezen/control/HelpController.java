@@ -74,7 +74,7 @@ public class HelpController {
 	
 	// 문의 목록 조회
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String Board(@RequestParam(required = false) String kind, 
+	public String Board(@RequestParam(required = false) String hkind, 
 	        @RequestParam(defaultValue = "1")int page,
 	        Model model) 
 	{
@@ -86,7 +86,7 @@ public class HelpController {
 	    
 	    // 2. 게시물 종류 설정:
 	    //    -> SearchVO의 setHkind 메서드 (파라미터 이름이 pkind이더라도)를 사용하여 hkind 필드를 설정합니다.
-	    vo.setHkind(kind);
+	    vo.setHkind(hkind);
 	    
 	    // 3. 페이지당 개수 (sizePerPage)를 VO에서 가져옵니다. (VO를 수정하지 않기 때문에 16을 사용합니다)
 	    int sizePerPage = 16; 
