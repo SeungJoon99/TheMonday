@@ -9,11 +9,12 @@ package com.ezen.vo;
 public class DetailVO {
     private int    ono;        //주문번호
     private int    pno;        //상품번호
-    private String pimg;       //이미지
+    private String ppimgname;  //이미지
     private String pname;      //상품명
     private String option;     //상품옵션
     private int    dqty;       //수량
-    private int    dtotal;     //상품 총 가격
+    private int    dtotal;     //상품별 총 가격
+    
 	public int getOno() {
 		return ono;
 	}
@@ -26,11 +27,12 @@ public class DetailVO {
 	public void setPno(int pno) {
 		this.pno = pno;
 	}
-	public String getPimg() {
-		return pimg;
+
+	public String getPpimgname() {
+		return ppimgname;
 	}
-	public void setPimg(String pimg) {
-		this.pimg = pimg;
+	public void setPpimgname(String ppimgname) {
+		this.ppimgname = ppimgname;
 	}
 	public String getPname() {
 		return pname;

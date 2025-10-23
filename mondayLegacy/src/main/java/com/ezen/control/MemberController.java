@@ -1,5 +1,6 @@
 package com.ezen.control;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -131,6 +132,8 @@ public class MemberController {
 		}
 		
 		List<CartVO> list = memberrepository.Cart(vo);
+		if (list == null) list = new ArrayList<>();
+	   
 		int cartTotal = memberrepository.CartTotal(vo);
 		
 		model.addAttribute("cartList", list);
@@ -164,15 +167,15 @@ public class MemberController {
 		
 		UserVO vo = (UserVO)session.getAttribute("login");
 		
+		int uno = vo.getUno();
+		
 		vo = memberrepository.UserMypage(vo);
 		
+		List<OrdersVO> list = memberrepository.MypageOrderDetail(uno);
+		
 		model.addAttribute("mypage", vo);
+		model.addAttribute("mypageOrderList", list);
 		return "member/mypage";
 	}
-	
-	@RequestMapping(value = "/order_detail", method = RequestMethod.GET)
-	public String OrderDetail() 
-	{
-		return "member/order_detail";
-	}
+
 }

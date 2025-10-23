@@ -46,8 +46,8 @@
 						</c:if>
 						<c:if test="${ login != null }">
 							<li><a class="nav-link" href="${pageContext.request.contextPath}/member/mypage">[${ login.uname }]님</a></li>
-							<li><a class="nav-link" href="${pageContext.request.contextPath}/member/cart">장바구니</a></li>
-							<li><a class="nav-link" href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
+							<li><a class="nav-link" href="${pageContext.request.contextPath}/cart">장바구니</a></li>
+							<li><a class="nav-link" href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
 						</c:if>
 					</ul>
 				</div>

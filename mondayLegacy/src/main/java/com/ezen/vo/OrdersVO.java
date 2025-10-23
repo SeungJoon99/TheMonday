@@ -25,7 +25,23 @@ public class OrdersVO
 	private String pname;     //상품요약
 	private String svalue;    //주문상태
 	
+	//회원 마이페이지용
+	private int    pno;       //상품번호
+	private String ppimgname; //상품 이미지 물리명
+	
     
+	public int getPno() {
+		return pno;
+	}
+	public void setPno(int pno) {
+		this.pno = pno;
+	}
+	public String getPpimgname() {
+		return ppimgname;
+	}
+	public void setPpimgname(String ppimgname) {
+		this.ppimgname = ppimgname;
+	}
 	public int getOno() {
 		return ono;
 	}

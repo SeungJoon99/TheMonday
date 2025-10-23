@@ -42,10 +42,10 @@
 		<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
 			<li><a class="nav-link" href="${pageContext.request.contextPath}/shop">상품 보기</a></li>
 			<c:if test="${ login == null }">
-				<li><a class="nav-link" href="${pageContext.request.contextPath}/member">로그인</a></li>
+				<li><a class="nav-link" href="${pageContext.request.contextPath}">로그인</a></li>
 			</c:if>
 			<c:if test="${ login != null }">
-				<li><a class="nav-link" href="member/mypage">[${ login.uname }]님</a></li>
+				<li><a class="nav-link" href="${pageContext.request.contextPath}/member/mypage">[${ login.uname }]님</a></li>
 				<li><a class="nav-link" href="${pageContext.request.contextPath}/member/cart">장바구니</a></li>
 				<li><a class="nav-link" href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
 			</c:if>
