@@ -3,27 +3,29 @@
     pageEncoding="UTF-8"%>
     
     <!-- 검색/필터링 section -->
-    <form name="searchForm" action="<c:url value='/admin' />" onsubmit="return searchSubmit()">
+    <!-- <form name="searchForm" action="<c:url value='/admin' />" onsubmit="return searchSubmit()"> -->
 	    <div class="container">
-			<input type="date" id="beginDate" name="begindate" >부터
-			<input type="date" id="endDate" name="enddate" >까지
+			<input type="date" id="beginDate" name="begindate" value="${ not empty searchvo.begindate ? searchvo.begindate : '2025-10-01' }">부터
+			<input type="date" id="endDate" name="enddate" value="${ not empty searchvo.enddate ? searchvo.enddate : '2026-12-31' }">까지
+			<c:set var="toggledisplay" value="${ searchvo.toggledisplay }" />
 			<select id="toggleDisplay" name="toggledisplay">
-				<option value="">전체</option>
-				<option value="Y">진열중</option>
-				<option value="N">진열중지</option>
+				<option value="" <c:if test="${ empty toggledisplay }">selected</c:if>>전체</option>
+				<option value="Y" <c:if test="${ toggledisplay == 'Y' }">selected</c:if>>진열중</option>
+				<option value="N" <c:if test="${ toggledisplay == 'N' }">selected</c:if>>진열중지</option>
 			</select>
+			<c:set var="pkind" value="${ searchvo.pkind }" />
 			<select id="pkind" name="pkind">
-				<option value="">전체</option>
-				<option value="침대">침대</option>
-				<option value="소파">소파</option>
-				<option value="옷장">옷장</option>
-				<option value="매트리스">매트리스</option>
-				<option value="테이블">테이블</option>
+				<option value="" <c:if test="${ empty pkind }">selected</c:if>>전체</option>
+				<option value="침대" <c:if test="${ pkind eq '침대' }">selected</c:if>>침대</option>
+				<option value="소파" <c:if test="${ pkind eq '소파' }">selected</c:if>>소파</option>
+				<option value="옷장" <c:if test="${ pkind eq '옷장' }">selected</c:if>>옷장</option>
+				<option value="매트리스" <c:if test="${ pkind eq '매트리스' }">selected</c:if>>매트리스</option>
+				<option value="테이블" <c:if test="${ pkind eq '테이블' }">selected</c:if>>테이블</option>
 			</select>
-			<input type="text" placeholder="상품명을 입력하세요." id="keyword" name="keyword">
-			<button type="submit" id="productSearchBtn">검색</button>
+			<input type="text" placeholder="상품명을 입력하세요." id="keyword" name="keyword" value="${ searchvo.keyword }">
+			<button type="button" id="productSearchBtn">검색</button>
 		</div>
-	</form>
+	<!-- </form> -->
 	<!-- 검색/필터링 section end -->
 	
 	<!-- main section -->
@@ -177,7 +179,15 @@
 				$("#selectAll").prop("checked",false);
 			}
 		});
+		
+		
 	}
+	
+	$(function() {
+	    $("#productSearchBtn").on("click", function() {
+	        searchSubmit();
+	    });
+	});
 
 	//AJAX 상품 삭제 함수
 	function productDelete(pno){
@@ -259,7 +269,7 @@
 		});
 	}
 	
-	function searchSubmit(){
+	/* function searchSubmit(){
 		if ( $('#begindate').val() == '' ){
 			$('#begindate').val('2025-10-01');
 		}
@@ -267,5 +277,41 @@
 			$('#enddate').val('2026-12-31');
 		}
 		return true;
+	} */
+	
+	// 빈 값일 시 문자열 ""  return
+	function f_strNullCheck(str){
+	    var newStr = str;
+	 
+	    if(newStr == null || newStr == "" || newStr == undefined || newStr == "undefined") {
+	        newStr = "";
+	    }
+	 
+	    return newStr;
 	}
+	
+	function searchSubmit() {
+		if ( f_strNullCheck($('#beginDate').val()) == '' ){
+			$('#beginDate').val('2025-10-01');
+		}
+		if ( f_strNullCheck($('#endDate').val()) == '' ){
+			$('#endDate').val('2026-12-31');
+		}
+	    let beginDate = $('#beginDate').val() || '2025-10-01';
+	    let endDate = $('#endDate').val() || '2026-12-31';
+	    let toggledisplay = $('#toggleDisplay').val();
+	    let pkind = $('#pkind').val();
+	    let keyword = $('#keyword').val();
+
+	    // 파라미터 조립
+	    let params = $.param({
+	        begindate: beginDate,
+	        enddate: endDate,
+	        toggledisplay: toggledisplay,
+	        pkind: pkind,
+	        keyword: keyword
+	    });
+	    	// location.href로 이동 (즉, form 없이 GET 요청)
+	    	location.href = contextPath + '/admin?' + params;
+	 }
 </script>

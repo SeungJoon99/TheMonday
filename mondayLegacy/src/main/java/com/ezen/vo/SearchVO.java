@@ -13,6 +13,10 @@ public class SearchVO
 	private String begindate;//시작일	
 	private String enddate;	 //종료일
 	private String toggledisplay;	//진열키워드
+	private String scode;	//주문상태
+	
+
+	private int    sizePerPage = 16; //한 페이지에 나오는 상품 개수
 	
 	public String getBegindate() {
 		return begindate;
@@ -32,8 +36,12 @@ public class SearchVO
 	public void setToggledisplay(String toggledisplay) {
 		this.toggledisplay = toggledisplay;
 	}
-	private int    sizePerPage = 16; //한 페이지에 나오는 상품 개수
-	
+	public String getScode() {
+		return scode;
+	}
+	public void setScode(String scode) {
+		this.scode = scode;
+	}
 	public int getPno() {
 		return pno;
 	}

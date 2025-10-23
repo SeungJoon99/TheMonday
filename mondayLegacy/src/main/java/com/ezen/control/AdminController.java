@@ -3,6 +3,7 @@ package com.ezen.control;
 import java.io.*;
 import java.util.*;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
@@ -84,16 +85,31 @@ public class AdminController
 	
 	//상품 목록 조회 페이지
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String productList(@RequestParam(defaultValue = "1")int page, SearchVO vo, Model model)
+	public String productList(
+			@RequestParam(defaultValue = "1")int page,
+			@ModelAttribute SearchVO vo,
+//			HttpServletRequest request,
+			Model model)
 	{
 		int blockSize = 10;    // 한 블럭에 보여줄 페이지 번호 개수
 		int sizePerPage = 15;  // 한 페이지에 보여줄 상품 개수
 //		vo.setPkind(pkind);
+//		System.out.println("QueryString: " + request.getQueryString());
+//		System.out.println("begindate param: " + request.getParameter("begindate"));
+//		System.out.println("enddate param: " + request.getParameter("enddate"));
+//		System.out.println("vo.getBegindate(): " + vo.getBegindate());
 		System.out.println(vo.getBegindate());
 		System.out.println(vo.getEnddate());
 		System.out.println(vo.getKeyword());
 		System.out.println(vo.getPkind());
 		vo.setPageno(page, sizePerPage);
+		
+		if (vo.getBegindate() == null || vo.getBegindate().isEmpty()) {
+	        vo.setBegindate("2025-10-01");
+	    }
+	    if (vo.getEnddate() == null || vo.getEnddate().isEmpty()) {
+	        vo.setEnddate("2026-12-31");
+	    }
 		//전체 갯수
 		int total = adminrepository.GetTotal(vo);
 		
@@ -228,13 +244,22 @@ public class AdminController
 	
 	//주문목록 조회 페이지
 	@RequestMapping(value = "/orderList", method = RequestMethod.GET)
-	public String orderList(@RequestParam(defaultValue = "1")int page, Model model) 
+	public String orderList(@RequestParam(defaultValue = "1")int page,
+			@ModelAttribute SearchVO vo,
+			Model model) 
 	{	
 		int blockSize = 10;    // 한 블럭에 보여줄 페이지 번호 개수
 		int sizePerPage = 15;  // 한 페이지에 보여줄 상품 개수
-		SearchVO vo = new SearchVO();
 //		vo.setPkind(pkind);
 		vo.setPageno(page, sizePerPage);
+		
+
+		if (vo.getBegindate() == null || vo.getBegindate().isEmpty()) {
+	        vo.setBegindate("2025-10-01");
+	    }
+	    if (vo.getEnddate() == null || vo.getEnddate().isEmpty()) {
+	        vo.setEnddate("2026-12-31");
+	    }
 		//전체 갯수
 		int total = adminrepository.GetTotal(vo);
 		
@@ -247,7 +272,7 @@ public class AdminController
 		int endbk = startbk + blockSize - 1;
 		if ( endbk > maxpage ) endbk = maxpage;
 
-		List<OrdersVO> list = adminrepository.orderList();
+		List<OrdersVO> list = adminrepository.orderList(vo);
 
 		model.addAttribute("total",total);
 		model.addAttribute("maxpage",maxpage);

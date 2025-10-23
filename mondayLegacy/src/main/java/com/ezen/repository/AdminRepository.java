@@ -94,9 +94,9 @@ public class AdminRepository
 	}
 	
 	//주문 내역 조회
-	public List<OrdersVO> orderList(){
+	public List<OrdersVO> orderList(SearchVO vo){
 
-		List<OrdersVO> list = session.selectList(namespace + ".orderList");
+		List<OrdersVO> list = session.selectList(namespace + ".orderList", vo);
 		/*
 		for( OrdersVO v : list ){
 			System.out.println(v.getPname());

@@ -125,21 +125,30 @@
 	
 	<!-- 총 등록상품 개수  -->
 	<select id="total" parameterType="com.ezen.vo.SearchVO"
-		resultType="java.lang.Integer">
-		select count(*) as total
-		from product
-		where
-		p_delyn = 'N'
-		<if test='pkind != null and !pkind.equals("")'>
-			and p_kind = #{pkind}
-		</if>
-		<if test='toggledisplay != null and !toggledisplay.equals("")'>
-			and p_display = #{toggledisplay}
-		</if>
-		<if test='keyword != null and !keyword.equals("")'>
-			and p_name like concat('%', #{ keyword }, '%')
-		</if>
-		and p_wdate between #{ begindate } and #{ enddate }
+	    resultType="java.lang.Integer">
+	    select count(distinct o.o_no) as total
+	    from orders o
+	    left join detail d on o.o_no = d.o_no
+	    left join product p on d.p_no = p.p_no
+	    left join manage m on o.o_no = m.o_no
+	    left join status s on m.s_code = s.s_code
+	    where 1=1
+	    <if test="pkind != null and pkind != ''">
+	        and p.p_kind = #{pkind}
+	    </if>
+	    <if test="toggledisplay != null and toggledisplay != ''">
+	        and p.p_display = #{toggledisplay}
+	    </if>
+	    <if test="keyword != null and keyword != ''">
+	        and p.p_name like concat('%', #{keyword}, '%')
+	    </if>
+	    <if test="pno != null and pno != 0">
+	        and p.p_no = #{pno}
+	    </if>
+	    <if test="scode != null and scode != 0">
+	        and m.s_code = #{scode}
+	    </if>
+	    and o.o_date between #{begindate} and #{enddate}
 	</select>
 	
 	<!-- 상품 검색 -->
@@ -253,29 +262,68 @@
 	
 	<!-- 주문내역 조회 -->
 	<select id="orderList" parameterType="com.ezen.vo.SearchVO"
-		resultMap="shopOrderListMap">
-		select o.o_no,
-			case when (select count(d3.p_no) from detail d3 where o.o_no = d3.o_no) &gt; 1
-				then concat(
-				(select p_name from detail d2
-				join product p2 on d2.p_no = p2.p_no
-				where d2.o_no = o.o_no
-				order by d2.p_no limit 1),' 외 ',
-				(select count(detail.p_no) - 1 from detail where detail.o_no = o.o_no), '개')
-				else (select p_name from detail d2
-						join product p2 on d2.p_no = p2.p_no
-						where d2.o_no = o.o_no
-						order by d2.p_no limit 1)
-				end as p_name,
-			o_total,
-			o_date,
-			(select s_value from manage m
-				join status s on m.s_code = s.s_code
-				where m.o_no = o.o_no) as s_value
-			from orders as o 
-			order by o_no desc
-			limit #{ offset }, 15
+	    resultMap="shopOrderListMap">
+	    select 
+	        o.o_no,
+	        -- 상품명 처리: 1개면 그대로, 2개 이상이면 '첫번째 상품명 외 n개' 형식
+	        case 
+	            when count(d.p_no) &gt; 1 then concat(min(p.p_name), ' 외 ', count(d.p_no)-1, '개')
+	            else min(p.p_name)
+	        end as p_name,
+	        o.o_total,
+	        o.o_date,
+	        s.s_value
+	    from orders o
+	    left join detail d on o.o_no = d.o_no
+	    left join product p on d.p_no = p.p_no
+	    left join manage m on o.o_no = m.o_no
+	    left join status s on m.s_code = s.s_code
+	    where 1=1
+	    <if test="pkind != null and pkind != ''">
+	        and p.p_kind = #{ pkind }
+	    </if>
+	    <if test="toggledisplay != null and toggledisplay != ''">
+	        and p.p_display = #{ toggledisplay }
+	    </if>
+	    <if test="keyword != null and keyword != ''">
+	        and p.p_name like concat('%', #{ keyword }, '%')
+	    </if>
+	    <if test="pno != null and pno != 0">
+	        and p.p_no = #{ pno }
+	    </if>
+	    <if test="scode != null and scode != 0">
+	        and m.s_code = #{ scode }
+	    </if>
+	    and o.o_date between #{ begindate } and #{ enddate }
+	    group by o.o_no, o.o_total, o.o_date, s.s_value
+	    order by o.o_no desc
+	    limit #{ offset }, 15
 	</select>
+	
+	<!-- select id="orderList" parameterType="com.ezen.vo.SearchVO"
+	resultMap="shopOrderListMap">
+	select o.o_no,
+		case when (select count(d3.p_no) from detail d3 where o.o_no = d3.o_no) &gt; 1
+			then concat(
+			(select p_name from detail d2
+			join product p2 on d2.p_no = p2.p_no
+			where d2.o_no = o.o_no
+			order by d2.p_no limit 1),' 외 ',
+			(select count(detail.p_no) - 1 from detail where detail.o_no = o.o_no), '개')
+			else (select p_name from detail d2
+					join product p2 on d2.p_no = p2.p_no
+					where d2.o_no = o.o_no
+					order by d2.p_no limit 1)
+			end as p_name,
+		o_total,
+		o_date,
+		(select s_value from manage m
+			join status s on m.s_code = s.s_code
+			where m.o_no = o.o_no) as s_value
+		from orders as o 
+		order by o_no desc
+		limit #{ offset }, 15
+	</select> -->
 
 	<!-- 주문내역 단건 조회 -->
 	<select id="orderSelect" parameterType="Integer"
