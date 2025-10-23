@@ -2,8 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ include file="./include/header.jsp" %>
 <script>
+	
+
 	window.onload = function()
 	{
+		$("#uemail").val("1111");
+		$("#upw").val("1111");
+		
 		$("#uemail").focus();
 		
 		$("#btnLogin").click(function(){

@@ -38,7 +38,7 @@
 	</resultMap>
 	
 	<!-- OrdersVO, ProductVO, DetailVO join resultMap -->
-	<resultMap type="com.ezen.vo.OrdersVo" id="mypageOrdersList">
+	<resultMap type="com.ezen.vo.OrdersVO" id="mypageOrdersList">
 		<id property="ono" column="o_no" />
 		<result property="uno" column="u_no" />
 		<result property="pname" column="p_name" />
@@ -93,7 +93,8 @@
 		select * 
 		from user
 		where
-		u_email = #{ uemail }
+		u_delyn = 'N'
+		and u_email = #{ uemail }
 		and u_pw = md5(#{ upw }) 
 	</select>
 	
@@ -127,10 +128,6 @@
 		values(#{ uno }, #{ uhp }, #{ upostcode }, #{ ototal }, #{ uold }, #{ uaddr }, #{ uaddr2 }, #{ orequest })
 	</insert>
 	
-	<select id="selectFromOrders">
-		
-	</select>
-	
 	<delete id="deleteCart">
 		delete from cart
 	</delete>
@@ -143,17 +140,12 @@
 		u_no = #{ uno }	
 	</select>
 	
-	<select id="selectFromOrders" parameterType="java.lang.Integer"
-		resultType="">
-		SELECT
-		    o.*,                               
-		    d.p_no,                            
-		    p.p_pimg_name                    
-		FROM
-		    orders o                           
-		JOIN
-		    detail d ON o.o_no = d.o_no       
-		WHERE
-		    o.u_no = 1	
-	</select>
+	<update id="deleteUser" parameterType="java.lang.Integer">
+		update user
+		set
+		u_delyn = 'Y'
+		where
+		u_no = #{ uno }
+	</update>
+	
 </mapper>

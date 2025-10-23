@@ -97,7 +97,7 @@
 				<div style="width: 20%; text-align: center;"></div>
 				<div style="width: 30%; text-align: right;">${ cartTotal }</div>
 				</div>
-				<button class="btn btn-black btn-lg btn-block w-100 mt-4" onclick="pay()">결제하기</button>
+				<button class="btn btn-black btn-lg btn-block w-100 mt-4" onclick="window.location = '${pageContext.request.contextPath}/shop/thankyou'">결제하기</button>
 			</div>
 							
 			</div>

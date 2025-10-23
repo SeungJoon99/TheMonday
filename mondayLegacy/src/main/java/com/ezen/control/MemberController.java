@@ -155,8 +155,15 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/mypage_update", method = RequestMethod.GET)
-	public String MypageUpdate() 
+	public String MypageUpdate(HttpServletRequest request, Model model) 
 	{
+		HttpSession session = request.getSession();
+		
+		UserVO vo = (UserVO)session.getAttribute("login");
+		
+		vo = memberrepository.UserMypage(vo);
+		
+		model.addAttribute("mypage", vo);
 		return "member/mypage_update";
 	}
 	
@@ -167,15 +174,21 @@ public class MemberController {
 		
 		UserVO vo = (UserVO)session.getAttribute("login");
 		
-		int uno = vo.getUno();
-		
 		vo = memberrepository.UserMypage(vo);
 		
-		List<OrdersVO> list = memberrepository.MypageOrderDetail(uno);
-		
 		model.addAttribute("mypage", vo);
-		model.addAttribute("mypageOrderList", list);
+		model.addAttribute("uno", vo.getUno());
+		
 		return "member/mypage";
+	}
+	
+	@RequestMapping(value = "/userdelete",  produces = "text/plain; charset=UTF-8")
+	@ResponseBody
+	public String UserDelete(int uno)
+	{
+		memberrepository.UserDelete(uno);
+		
+		return("탈퇴처리 되었습니다.");
 	}
 
 }

@@ -78,7 +78,7 @@ public class MemberRepository
 		
 	}
 
-	//마이페이지
+	//마이페이지 회원정보
 	public UserVO UserMypage(UserVO vo)
 	{
 		UserVO mypage = session.selectOne(namespace + ".selectFromUser", vo);
@@ -86,11 +86,9 @@ public class MemberRepository
 		return mypage;
 	}
 	
-	//마이페이지 주문내역
-	public List<OrdersVO> MypageOrderDetail(int uno)
+	//회원 탈퇴
+	public void UserDelete(int uno)
 	{
-		List<OrdersVO> list = session.selectList(namespace + ".selectFromOrders", uno);
-		
-		return list;
+		session.update(namespace + ".deleteUser", uno);
 	}
 }
