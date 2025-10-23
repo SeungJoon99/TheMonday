@@ -49,10 +49,10 @@
 	
 	<resultMap type="com.ezen.vo.SearchVO" id="shopItemSearchMap">
 		<id property="pno" column="p_no" />
-			<result property="kind" column="kind" />
-			<result property="hkind" column="h_kind" />
-			<result property="pkind" column="p_kind" />
-			<result property="hdisplay" column="h_display" />
+		<result property="kind" column="kind" />
+		<result property="hkind" column="h_kind" />
+		<result property="pkind" column="p_kind" />
+		<result property="hdisplay" column="h_display" />
 			
 	</resultMap>
 	<!-- 
@@ -79,6 +79,7 @@
 		<result property="ototal" column="o_total" />
 		<result property="pname" column="p_name" />
 		<result property="svalue" column="s_value" />
+		<result property="unick" column="u_nick" />
 	</resultMap>
 	<!--
 	private int    ono;       //주문번호
@@ -91,10 +92,27 @@
     private String orequest;  //요청사항
     private String odate;     //주문일
     private int    ototal;    //총 주문가격
-	private String pname;    //상품요약
+	private String pname;     //상품요약
 	private String svalue;    //주문상태
+	private String unick;     //유저닉네임
     -->
-    
+
+	<resultMap type="com.ezen.vo.ManageVO" id="shopManageSelectMap">
+		<id property="ono" column="o_no" />
+		<result property="scode" column="s_code" />
+		<result property="mmemo" column="m_memo" />
+		<result property="uno" column="u_no" />
+		<result property="unick" column="u_nick" />
+	</resultMap>
+	<!--
+	private int    ono;    //주문번호
+    private String scode;  //주문상태
+    private String mmemo;  //관리자메모
+
+    private int    uno;    //유저번호
+	private String unick;  //전화번호
+    -->
+
 	<!-- 상품 등록 -->
 	<insert id="productInsert" parameterType="com.ezen.vo.ProductVO">
 		insert into product (p_name, p_price, p_kind, p_info, p_pimg_name, p_fimg_name)
@@ -174,7 +192,7 @@
 		where p_no = #{pno}
 	</select>
 	
-	<!-- 상품 수정 -->
+	<!-- 상품 내용 업데이트-->
 	<update id="productUpdate" parameterType="com.ezen.vo.ProductVO">
 		update product set
 			p_name = #{pname}, 
@@ -187,8 +205,15 @@
 		where p_no = #{pno}
 	</update>
 	
+	<!-- 상품 삭제여부 업데이트-->
+	<update id="productDelete" parameterType="Integer">
+		update product set
+			p_delyn = 'Y'
+		where p_no = #{pno}
+	</update>
+
 	<!-- 관리자 로그인 -->
-	<select id="AdminLogin" parameterType="com.ezen.vo.UserVO"
+	<select id="adminLogin" parameterType="com.ezen.vo.UserVO"
 		resultType="java.lang.Integer">
 		select count(*) from user 
 		where 
@@ -197,7 +222,7 @@
 	</select>
 	
 	<!-- 주문내역 조회 -->
-	<select id="OrderList" resultMap="shopOrderListMap">
+	<select id="orderList" resultMap="shopOrderListMap">
 		select o.o_no,
 			case when (select count(d3.p_no) from detail d3 where o.o_no = d3.o_no) > 1
 				then concat(
@@ -218,7 +243,25 @@
 				where m.o_no = o.o_no) as s_value
 			from orders as o order by o_no desc
 	</select>
+
+	<!-- 주문내역 단건 조회 -->
+	<select id="orderSelect" parameterType="Integer"
+		resultMap="shopManageSelectMap">
+		select m.o_no o_no, u.u_no u_no, u.u_nick u_nick, m.s_code s_code, m.m_memo m_memo
+		from manage m 
+		left join orders o on m.o_no = o.o_no 
+		left join user u  on o.u_no = u.u_no
+		where m.o_no = #{ono}
+	</select>
 	
+	<!-- 주문내역 상태 및 메모 수정 -->
+	<update id="orderUpdate" parameterType="com.ezen.vo.ManageVO">
+		update manage set
+			s_code = #{scode},
+			m_memo = #{mmemo}
+		where o_no = #{ono}
+	</update>
+
 	<!-- 주문내역 조회 품명 검색
 	<select id="OrderListSearch" parameterType="com.ezen.vo.SearchVO" 
 		resultMap="shopOrderListMap">

@@ -37,7 +37,7 @@
 				<input type="file" accept="image/*" id="pimg" name="img" class="form-control" style="height: 100%;">
 			</div>
 			
-			<button type="submit" class="btn btn-primary">등록하기</button>
+			<button type="submit" class="btn btn-primary mb-3" style="border-radius: 3px; border: none;" >등록하기</button>
 		</form>
 	</div>
 </body>
