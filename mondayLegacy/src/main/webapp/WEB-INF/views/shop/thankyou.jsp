@@ -15,7 +15,7 @@
         </span>
         <h2 class="display-3 text-black">구매해주셔서 감사합니다!</h2>
         <p class="lead mb-5">결제가 모두 완료되었습니다.</p>
-        <p><a href="shop/main" class="btn btn-sm btn-outline-black">상품 더 둘러보기</a></p>
+        <p><a href="${pageContext.request.contextPath}/shop" class="btn btn-sm btn-outline-black">상품 더 둘러보기</a></p>
       </div>
     </div>
   </div>

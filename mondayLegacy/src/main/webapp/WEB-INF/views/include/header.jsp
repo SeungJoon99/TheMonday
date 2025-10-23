@@ -8,7 +8,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="author" content="Untree.co">
-		<link rel="shortcut icon" href="resources/images/favicon.png">
+		<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.png">
 
 		<meta name="description" content="" />
 		<meta name="keywords" content="bootstrap, bootstrap4" />
@@ -45,9 +45,9 @@
 							<li><a class="nav-link" href="${pageContext.request.contextPath}/member">로그인</a></li>
 						</c:if>
 						<c:if test="${ login != null }">
-							<li><a class="nav-link" href="member/mypage">[${ login.uname }]님</a></li>
+							<li><a class="nav-link" href="${pageContext.request.contextPath}/member/mypage">[${ login.uname }]님</a></li>
 							<li><a class="nav-link" href="${pageContext.request.contextPath}/member/cart">장바구니</a></li>
-							<li><a class="nav-link" href="logout">로그아웃</a></li>
+							<li><a class="nav-link" href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
 						</c:if>
 					</ul>
 				</div>

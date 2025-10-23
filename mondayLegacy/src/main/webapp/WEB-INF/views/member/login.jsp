@@ -2,10 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ include file="./include/header.jsp" %>
 <script>
+	
+
 	window.onload = function()
 	{
-		$("#uemail").val("유재욱@naver.com");
-		$("#upw").val("ezen");
+		$("#uemail").val("1111");
+		$("#upw").val("1111");
 		
 		$("#uemail").focus();
 		

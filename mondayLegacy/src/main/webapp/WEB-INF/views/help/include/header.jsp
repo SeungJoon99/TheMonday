@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,7 +74,7 @@
     <!-- Start Header/Navigation -->
   <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
     <div class="container">
-      <a class="navbar-brand" href="index">The Monday<span>.</span></a>
+      <a class="navbar-brand" href="${pageContext.request.contextPath}">The Monday<span>.</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -87,12 +88,17 @@
           </button>
         </form>
 
-        <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-          <li><a class="nav-link" href="member/mypage">[홍길동]님</a></li>
-          <li><a class="nav-link" href="shop/main">상품 보기</a></li>
-          <li><a class="nav-link" href="member/login">로그인</a></li>
-          <li><a class="nav-link" href="member/cart">장바구니</a></li>
-        </ul>
+       <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+			<li><a class="nav-link" href="${pageContext.request.contextPath}/shop">상품 보기</a></li>
+			<c:if test="${ login == null }">
+				<li><a class="nav-link" href="${pageContext.request.contextPath}/member">로그인</a></li>
+			</c:if>
+			<c:if test="${ login != null }">
+				<li><a class="nav-link" href="${pageContext.request.contextPath}/member/mypage">[${ login.uname }]님</a></li>
+				<li><a class="nav-link" href="${pageContext.request.contextPath}/member/cart">장바구니</a></li>
+				<li><a class="nav-link" href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
+			</c:if>
+		</ul>
       </div>
     </div>
   </nav>
@@ -108,28 +114,29 @@
       </div>
     </div>
 
-    <!-- Start navtap Section -->
-    <div class="row bg-dark" style="border: none;">
-      <div class="col-2"></div>
-      <ul class="col-8 nav nav-tabs bg-dark">
-        <li class="nav-item">
-          <a class="nav-link" href="main?p_kind=">침대</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="main?p_kind=">소파</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="main?p_kind=">옷장</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="main?p_kind=">매트리스</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="main?p_kind=">테이블</a>
-        </li>
-      </ul>
-      <div class="col-2"></div>
-    </div>
-    <!-- End navtap Section -->
+  	<!-- Start navtab Section -->
+	<div class="row bg-dark" style="border: none;">
+		<div class="col-2"></div>
+		<ul class="col-8 nav nav-tabs bg-dark">
+			<li class="nav-item">
+				<a class="nav-link" aria-current="page" href="?pkind=침대">침대</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="${pageContext.request.contextPath}/shop?pkind=소파">소파</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="${pageContext.request.contextPath}/shop?pkind=옷장">옷장</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="${pageContext.request.contextPath}/shop?pkind=매트리스">매트리스</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="${pageContext.request.contextPath}/shop?pkind=테이블">테이블</a>
+			</li>
+		</ul>
+		<div class="col-2"></div>
+	</div>
+	<!-- End navtab Section -->
+
   </div>
   <!-- End Hero -->
