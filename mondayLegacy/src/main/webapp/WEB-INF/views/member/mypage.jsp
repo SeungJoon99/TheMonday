@@ -9,23 +9,23 @@
     <tbody>
       <tr>
         <td>이름</td>
-        <td>홍길동</td>
+        <td>${ mypage.uname }</td>
       </tr>
       <tr>
         <td>닉네임</td>
-        <td>닉네임</td>
+        <td>${ mypage.unick }</td>
       </tr>
       <tr>
         <td>이메일</td>
-        <td>hong@example.com</td>
+        <td>${ mypage.uemail }</td>
       </tr>
       <tr>
         <td>전화번호</td>
-        <td>010-1234-5678</td>
+        <td>${ mypage.uhp }</td>
       </tr>
       <tr>
         <td>주소</td>
-        <td>서울특별시 강남구 역삼동</td>
+        <td>${ mypage.uaddr }</td>
       </tr>
     </tbody>
   </table>
