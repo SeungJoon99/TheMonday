@@ -11,7 +11,7 @@
 	          <a class="nav-link" href="member/about">회사 소개</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="member/board">고객센터</a>
+	          <a class="nav-link" href="${pageContext.request.contextPath}/help">고객센터</a>
 	        </li>
 	      </ul>
 	    </div>
