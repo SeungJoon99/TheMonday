@@ -3,21 +3,27 @@
     pageEncoding="UTF-8"%>
     
     <!-- 검색/필터링 section -->
-    <div class="container">
-		<input type="date">부터
-		<input type="date">까지
-		<input type="number" placeholder="상품코드를 입력하세요.">
-		<select>
-			<option>전체</option>
-			<option>침대</option>
-			<option>쿠션러쉬</option>
-			<option>소파</option>
-			<option>다이닝</option>
-			<option>의류</option>
-		</select>
-		<input type="text" placeholder="상품명을 입력하세요.">
-		<button type="button">검색</button>
-	</div>
+    <form name="searchForm" action="<c:url value='/admin' />" onsubmit="return searchSubmit()">
+	    <div class="container">
+			<input type="date" id="beginDate" name="begindate" >부터
+			<input type="date" id="endDate" name="enddate" >까지
+			<select id="toggleDisplay" name="toggledisplay">
+				<option value="">전체</option>
+				<option value="Y">진열중</option>
+				<option value="N">진열중지</option>
+			</select>
+			<select id="pkind" name="pkind">
+				<option value="">전체</option>
+				<option value="침대">침대</option>
+				<option value="소파">소파</option>
+				<option value="옷장">옷장</option>
+				<option value="매트리스">매트리스</option>
+				<option value="테이블">테이블</option>
+			</select>
+			<input type="text" placeholder="상품명을 입력하세요." id="keyword" name="keyword">
+			<button type="submit" id="productSearchBtn">검색</button>
+		</div>
+	</form>
 	<!-- 검색/필터링 section end -->
 	
 	<!-- main section -->
@@ -41,7 +47,7 @@
           <!-- 상품 목록 표시 -->
           <tbody>
           	<c:forEach var="item" items="${ items }">
-	            <tr onclick="boardView()">
+	            <tr>
 	            
 	              <!-- 진열 체크박스 -->
 	              <th><input type="checkbox" id="${ item.pno }" name="check"></th>
@@ -251,5 +257,15 @@
 				alert("오류가 발생했습니다: " + error);
 			}
 		});
+	}
+	
+	function searchSubmit(){
+		if ( $('#begindate').val() == '' ){
+			$('#begindate').val('2025-10-01');
+		}
+		if ( $('#enddate').val() == '' ){
+			$('#enddate').val('2026-12-31');
+		}
+		return true;
 	}
 </script>
