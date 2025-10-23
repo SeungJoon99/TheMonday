@@ -4,9 +4,6 @@
 <script>
 	window.onload = function()
 	{
-		$("#uemail").val("유재욱@naver.com");
-		$("#upw").val("ezen");
-		
 		$("#uemail").focus();
 		
 		$("#btnLogin").click(function(){

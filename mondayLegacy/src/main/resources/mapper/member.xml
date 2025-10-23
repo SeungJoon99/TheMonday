@@ -37,6 +37,28 @@
         </association>
 	</resultMap>
 	
+	<select id="UnickCheck" parameterType="java.lang.String"
+			resultType="java.lang.Integer">
+		select count(*) 
+		from user
+		where
+		u_nick = #{ u }		
+	</select>
+	
+	<insert id="Signup" parameterType="com.ezen.vo.UserVO">
+		insert into user(u_nick, u_email, u_pw, u_hp, u_postcode, u_addr, u_addr2, u_name)
+		values(
+		#{ unick }, 
+		#{ uemail }, 
+		md5(#{ upw }), 
+		#{ uhp }, 
+		#{ upostcode }, 
+		#{ uaddr }, 
+		#{ uaddr2 }, 
+		#{ uname } 
+		)
+	</insert>
+	
 	<select id="login" parameterType="com.ezen.vo.UserVO"
 		resultMap="userMap">
 		select * 
@@ -71,14 +93,25 @@
 		u_no = #{ uno }
 	</select>
 	
-	<insert id="insertIntoOrders" parameterType="com.ezen.vo.CartVO">
-		insert into orders(u_no, u_hp, u_postcode, u_total)
-		values(#{ uno }, #{ uhp }, #{ upostcode }, #{ utotal })
+	<insert id="insertIntoOrders" parameterType="com.ezen.vo.UserVO">
+		insert into orders(u_no, u_hp, u_postcode, o_total, u_old, u_addr, u_addr2, o_request)
+		values(#{ uno }, #{ uhp }, #{ upostcode }, #{ ototal })
 	</insert>
+	
+	<select id="selectFromOrders">
+		
+	</select>
 	
 	<delete id="deleteCart">
 		delete from cart
 	</delete>
 	
+	<select id="selectFromUser" parameterType="com.ezen.vo.UserVO"
+		resultMap="userMap">
+		select * 
+		from user
+		where
+		u_no = #{ uno }	
+	</select>
 	
 </mapper>

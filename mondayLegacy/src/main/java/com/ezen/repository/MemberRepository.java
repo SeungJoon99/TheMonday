@@ -26,6 +26,27 @@ public class MemberRepository
 		vo = session.selectOne(namespace + ".login",vo);
 		return vo;
 	}
+	
+	//회원가입
+	public boolean Signup(UserVO vo)
+	{
+		
+		
+		if( UnickCheck(vo.getUnick()) == true ) return false;
+		
+		session.insert(namespace + ".Signup",vo);
+		
+		return true;
+	}
+	
+	//닉네임 중복 체크
+	public boolean UnickCheck(String u)
+	{
+		int total = session.selectOne(namespace + ".UnickCheck", u);
+		
+		if( total > 0 )	return true;
+		return false;
+	}
 
 	//장바구니
 	public List<CartVO> Cart(UserVO vo)
@@ -38,21 +59,29 @@ public class MemberRepository
 	//장바구니 총 합계
 	public int CartTotal(UserVO vo)
 	{
-		int cartTotal = session.selectOne(namespace + ".cartTotal", vo);
+		if( vo != null )
+		{ 
+			int cartTotal = session.selectOne(namespace + ".cartTotal", vo);
+			return cartTotal;
+		}
 		
-		return cartTotal;
+		return 0;
 	}
 	
 	//결제
-	public OrdersVO Pay(UserVO vo)
+	public void Pay(UserVO vo)
 	{
-		OrdersVO ordersvo = session.selectOne(namespace + ".order", vo);
-				
 		session.insert(namespace + ".insertIntoOrders", vo);
 		
-		session.delete(namespace + ".deleteFromCart");
+		session.delete(namespace + ".deleteCart");
 		
-		return ordersvo;
+	}
+
+	//마이페이지
+	public UserVO UserMypage(UserVO vo)
+	{
+		UserVO mypage = session.selectOne(namespace + ".selectFromUser", vo);
 		
+		return mypage;
 	}
 }
