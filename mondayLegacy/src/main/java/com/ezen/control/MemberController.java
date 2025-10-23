@@ -1,5 +1,6 @@
 package com.ezen.control;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -131,6 +132,8 @@ public class MemberController {
 		}
 		
 		List<CartVO> list = memberrepository.Cart(vo);
+		if (list == null) list = new ArrayList<>();
+	   
 		int cartTotal = memberrepository.CartTotal(vo);
 		
 		model.addAttribute("cartList", list);
@@ -152,8 +155,15 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/mypage_update", method = RequestMethod.GET)
-	public String MypageUpdate() 
+	public String MypageUpdate(HttpServletRequest request, Model model) 
 	{
+		HttpSession session = request.getSession();
+		
+		UserVO vo = (UserVO)session.getAttribute("login");
+		
+		vo = memberrepository.UserMypage(vo);
+		
+		model.addAttribute("mypage", vo);
 		return "member/mypage_update";
 	}
 	
@@ -167,12 +177,18 @@ public class MemberController {
 		vo = memberrepository.UserMypage(vo);
 		
 		model.addAttribute("mypage", vo);
+		model.addAttribute("uno", vo.getUno());
+		
 		return "member/mypage";
 	}
 	
-	@RequestMapping(value = "/order_detail", method = RequestMethod.GET)
-	public String OrderDetail() 
+	@RequestMapping(value = "/userdelete",  produces = "text/plain; charset=UTF-8")
+	@ResponseBody
+	public String UserDelete(int uno)
 	{
-		return "member/order_detail";
+		memberrepository.UserDelete(uno);
+		
+		return("탈퇴처리 되었습니다.");
 	}
+
 }

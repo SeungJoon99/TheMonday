@@ -1,5 +1,6 @@
 package com.ezen.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -53,17 +54,17 @@ public class MemberRepository
 	{
 		List<CartVO> list = session.selectList(namespace + ".Cart", vo);
 		
+		if( list == null ) return new ArrayList<>();
+		
 		return list;
 	}
 	
 	//장바구니 총 합계
 	public int CartTotal(UserVO vo)
 	{
-		if( vo != null )
-		{ 
-			int cartTotal = session.selectOne(namespace + ".cartTotal", vo);
-			return cartTotal;
-		}
+		Integer cartTotal = session.selectOne(namespace + ".cartTotal", vo);
+		
+		if( cartTotal != null ) return cartTotal;
 		
 		return 0;
 	}
@@ -77,11 +78,17 @@ public class MemberRepository
 		
 	}
 
-	//마이페이지
+	//마이페이지 회원정보
 	public UserVO UserMypage(UserVO vo)
 	{
 		UserVO mypage = session.selectOne(namespace + ".selectFromUser", vo);
 		
 		return mypage;
+	}
+	
+	//회원 탈퇴
+	public void UserDelete(int uno)
+	{
+		session.update(namespace + ".deleteUser", uno);
 	}
 }

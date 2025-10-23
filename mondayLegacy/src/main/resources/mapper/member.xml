@@ -37,6 +37,35 @@
         </association>
 	</resultMap>
 	
+	<!-- OrdersVO, ProductVO, DetailVO join resultMap -->
+	<resultMap type="com.ezen.vo.OrdersVO" id="mypageOrdersList">
+		<id property="ono" column="o_no" />
+		<result property="uno" column="u_no" />
+		<result property="pname" column="p_name" />
+		<result property="ototal" column="o_total" />
+		<association property="detail" javaType="com.ezen.vo.DetailVO">
+	        <id property="pno" column="p_no" /> 
+	        <id property="ono" column="o_no" />
+	    </association>
+	</resultMap>
+	
+	<!-- OrdersVO resultMap -->
+	<resultMap type="com.ezen.vo.OrdersVO" id="shopOrderListMap">
+		<id property="ono" column="o_no" />
+		<result property="uno" column="u_no" />
+		<result property="uhp" column="u_hp" />
+		<result property="upostcode" column="u_postcode" />
+		<result property="uold" column="u_old" />
+		<result property="uaddr" column="u_addr" />
+		<result property="uaddr2" column="u_addr2" />
+		<result property="orequest" column="o_request" />
+		<result property="odate" column="o_date" />
+		<result property="ototal" column="o_total" />
+		<result property="pname" column="p_name" />
+		<result property="svalue" column="s_value" />
+		<result property="unick" column="u_nick" />
+	</resultMap>
+	
 	<select id="UnickCheck" parameterType="java.lang.String"
 			resultType="java.lang.Integer">
 		select count(*) 
@@ -64,7 +93,8 @@
 		select * 
 		from user
 		where
-		u_email = #{ uemail }
+		u_delyn = 'N'
+		and u_email = #{ uemail }
 		and u_pw = md5(#{ upw }) 
 	</select>
 	
@@ -95,12 +125,8 @@
 	
 	<insert id="insertIntoOrders" parameterType="com.ezen.vo.UserVO">
 		insert into orders(u_no, u_hp, u_postcode, o_total, u_old, u_addr, u_addr2, o_request)
-		values(#{ uno }, #{ uhp }, #{ upostcode }, #{ ototal })
+		values(#{ uno }, #{ uhp }, #{ upostcode }, #{ ototal }, #{ uold }, #{ uaddr }, #{ uaddr2 }, #{ orequest })
 	</insert>
-	
-	<select id="selectFromOrders">
-		
-	</select>
 	
 	<delete id="deleteCart">
 		delete from cart
@@ -113,5 +139,13 @@
 		where
 		u_no = #{ uno }	
 	</select>
+	
+	<update id="deleteUser" parameterType="java.lang.Integer">
+		update user
+		set
+		u_delyn = 'Y'
+		where
+		u_no = #{ uno }
+	</update>
 	
 </mapper>

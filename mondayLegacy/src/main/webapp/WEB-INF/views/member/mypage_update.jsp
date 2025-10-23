@@ -11,12 +11,12 @@
           <form action="member/mypage_update" method="post">
             <div class="form-group mb-3">
               <label for="nick" class="text-black">닉네임</label>
-              <input type="text" class="form-control" id="nick" name="nick" value="닉네임">
+              <input type="text" class="form-control" id="nick" name="nick" value="${ mypage.unick }">
             </div>
             <div class="form-group mb-3">
               <label for="email" class="text-black">이메일</label>
               <div class="input-group">
-                <input type="email" class="form-control" id="email" name="email" value="test@dteam.com">
+                <input type="email" class="form-control" id="email" name="email" value="${ mypage.uemail }">
                 <button type="button" class="btn btn-primary btn-sm px-3" onclick="send_email()">메일발송</button>
               </div>
             </div>
@@ -28,7 +28,7 @@
             </div>
             <div class="form-group mb-3">
               <label for="phone" class="text-black">전화번호</label>
-              <input type="text" class="form-control" id="phone" name="phone" value="010-1234-5678">
+              <input type="text" class="form-control" id="phone" name="phone" value="${ mypage.uhp }">
             </div>
 
             <div class="col-md-12 mt-3">
@@ -36,20 +36,20 @@
                 <div class="signUp-input-area">
                   <label for="u_address" class="text-black">주소</label>
                   <div class="input-group">
-                    <input type="text" name="memberPostcode" placeholder="우편번호" maxlength="6" id="memberPostcode" class="form-control">
+                    <input type="text" name="memberPostcode" value="${ mypage.upostcode }" placeholder="우편번호" maxlength="6" id="memberPostcode" class="form-control">
                     <button type="button" class="btn btn-primary btn-sm" onclick="member_execDaumPostcode()">검색</button>
                   </div>
                 </div>
                 <div class="signUp-input-area mt-3">
-                  <input type="text" name="memberAddress" placeholder="도로명/지번 주소" id="memberAddress" class="form-control">
+                  <input type="text" name="memberAddress" value="${ mypage.uaddr }" placeholder="도로명/지번 주소" id="memberAddress" class="form-control">
                 </div>
                 <div class="signUp-input-area mt-3">
-                  <input type="text" name="memberDetailAddress" placeholder="상세 주소" id="memberDetailAddress" class="form-control">
+                  <input type="text" name="memberDetailAddress" value="${ mypage.uaddr2 }" placeholder="상세 주소" id="memberDetailAddress" class="form-control">
                 </div>
               </div>
             </div>
             <div class="form-group text-end mt-4">
-              <button type="button" class="btn btn-black btn-sm" onclick="window.location = 'member/mypage'">정보 수정</button>
+              <button type="button" class="btn btn-black btn-sm" onclick="mypageUpdate()">정보 수정</button>
             </div>
           </form>
         </div>
@@ -73,7 +73,7 @@
               <input type="password" class="form-control" id="confirmPw" name="confirmPw">
             </div>
             <div class="form-group text-end mt-4">
-              <button type="button" class="btn btn-black btn-sm" onclick="window.location = 'member/mypage_update'">비밀번호 변경</button>
+              <button type="button" class="btn btn-black btn-sm" onclick="updatePw()">비밀번호 변경</button>
             </div>
           </form>
         </div>

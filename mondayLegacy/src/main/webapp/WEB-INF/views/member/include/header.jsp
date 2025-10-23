@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Untree.co">
-  <link rel="shortcut icon" href="resources/images/favicon.png">
+  <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.png">
 
   <meta name="description" content="" />
   <meta name="keywords" content="bootstrap, bootstrap4" />
@@ -45,7 +45,7 @@
 				<li><a class="nav-link" href="${pageContext.request.contextPath}/member">로그인</a></li>
 			</c:if>
 			<c:if test="${ login != null }">
-				<li><a class="nav-link" href="member/mypage">[${ login.uname }]님</a></li>
+				<li><a class="nav-link" href="${pageContext.request.contextPath}/member/mypage">[${ login.uname }]님</a></li>
 				<li><a class="nav-link" href="${pageContext.request.contextPath}/member/cart">장바구니</a></li>
 				<li><a class="nav-link" href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
 			</c:if>
@@ -65,28 +65,28 @@
       </div>
     </div>
 
-    <!-- Start navtap Section -->
-    <div class="row bg-dark" style="border: none;">
-      <div class="col-2"></div>
-      <ul class="col-8 nav nav-tabs bg-dark">
-        <li class="nav-item">
-          <a class="nav-link" href="main?p_kind=">침대</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="main?p_kind=">소파</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="main?p_kind=">옷장</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="main?p_kind=">매트리스</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="main?p_kind=">테이블</a>
-        </li>
-      </ul>
-      <div class="col-2"></div>
-    </div>
-    <!-- End navtap Section -->
+    <!-- Start navtab Section -->
+			<div class="row bg-dark" style="border: none;">
+				<div class="col-2"></div>
+				<ul class="col-8 nav nav-tabs bg-dark">
+					<li class="nav-item">
+						<a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/shop?pkind=침대">침대</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="${pageContext.request.contextPath}/shop?pkind=소파">소파</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="${pageContext.request.contextPath}/shop?pkind=옷장">옷장</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="${pageContext.request.contextPath}/shop?pkind=매트리스">매트리스</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="${pageContext.request.contextPath}/shop?pkind=테이블">테이블</a>
+					</li>
+				</ul>
+				<div class="col-2"></div>
+			</div>
+			<!-- End navtab Section -->
   </div>
   <!-- End Hero -->
