@@ -26,7 +26,7 @@
         <table class="table table-hover table-bordered border-dark" style="text-align: right; padding: 0;">
           <thead>
             <tr>
-              <th style="width: 3%; text-align: center;"><input type="checkbox" ></th>
+              <th style="width: 3%; text-align: center;"><input type="checkbox" id="selectAll"></th>
               <th style="width: 4%; text-align: center;">상품번호</th>
               <th style="width: 2%; text-align: center;">이미지</th>
               <th style="width: 8%; text-align: center;">상품명</th>
@@ -44,14 +44,14 @@
 	            <tr onclick="boardView()">
 	            
 	              <!-- 진열 체크박스 -->
-	              <th><input type="checkbox"></th>
+	              <th><input type="checkbox" id="${ item.pno }" name="check"></th>
 	              
 	              <!-- 번호 -->
 	              <th scope="row">${ item.pno }</th>
 	              
 	              <!-- 이미지 -->
 	              <td><a href="<c:url value="/shop/product_detail?pno=${item.pno}" />">
-	              		<img src="<c:url value="/resources/images/${item.ppimgname}" />" alt="상품이미지" style="height: 30px;">
+	              		<img src="<c:url value="/resources/images/${item.ppimgname}" />" alt="이미지" style="height: 30px;">
 	              	  </a>
 	              </td>
 	              <!-- 품명 -->
@@ -82,7 +82,7 @@
 	              
 	              <!-- U/D 버튼 -->
 	              <td>
-	                <a href="<c:url value="/admin/update?pno=${item.pno}" />"><button type="button" class="btn-sm btn-primary" style="border: none;">수정하기</button></a>
+	                <a href="<c:url value='/admin/update?pno=${item.pno}' />"><button type="button" class="btn-sm btn-primary" style="border: none;">수정하기</button></a>
 	                <button type="button" id="deleteButton" class="btn-sm btn-danger" onclick="productDelete(${ item.pno });">삭제하기</button>
 	              </td>
 	              
@@ -94,8 +94,8 @@
         </table>
         
         <div class="d-flex justify-content-end">
-          <button type="button" onclick="">일괄진열</button>&nbsp;
-          <button type="button" onclick="">판매중지</button>
+          <button type="button" onclick="settingProducts('display')">일괄진열</button>&nbsp;
+          <button type="button" onclick="settingProducts('stop')">판매중지</button>
         </div>
         
         <!-- pagination -->
@@ -149,7 +149,31 @@
   </body>
 </html>
 <script>
+
+	//최상위루트
 	const contextPath = '${pageContext.request.contextPath}';
+	
+	// 'selectAll' 체크박스 클릭 시 모든 체크박스를 선택/해제
+	window.onload = function(){
+		// #selectAll == 헤더박스
+		$("#selectAll").click(function() {
+			// .prop("checked")는 체크여부를 boolean으로 반환
+			let isChecked = $(this).prop("checked");  // 체크 여부 변수에 저장
+			// 모든 체크박스에 체크상태 대입
+			$("input[name='check']").prop("checked", isChecked);
+		});
+		
+		//전체 체크박스 중 체크박스 하나를 풀었을때 "전체" 체크해제
+		$("input[name='check']").click(function(){
+			if($("input[name='check']:checked").length == $("input[name='check']").length){
+				$("#selectAll").prop("checked",true);
+			}else{
+				$("#selectAll").prop("checked",false);
+			}
+		});
+	}
+
+	//AJAX 상품 삭제 함수
 	function productDelete(pno){
 		if(!confirm("상품을 삭제하시겠습니까?")){
 			return;	
@@ -161,22 +185,22 @@
 			dataType: "html",
 			success : function(res){
 				res = res.trim();
-				if (res == "") {
-                } else if (res == "FAIL") {
+				if (res == "ok") {
+					document.location.reload();
+                } else if (res == "fail") {
                     alert("상품 삭제에 실패했습니다. 다시 시도해 주세요.");
                 } else {
                     alert("알 수 없는 응답: " + res);
                 }
-				document.location.reload();
 			},
 			
 			error : function(xhr, status, error){
-				alert("서버 통신 오류가 발생했습니다: " + error);
+				alert("오류가 발생했습니다: " + error);
                 console.error("AJAX Error:", status, error);
 			},
 			
 			beforeSend: function() {
-                // 삭제 요청 전에 버튼 비활성화 등의 처리로 사용자 대기 상태 유도
+                // 삭제 요청 전에 버튼 비활성화 처리
                 $('#deleteButton').prop('disabled', true).text('삭제하기');
             },
             complete: function() {
@@ -185,5 +209,47 @@
             }
 		
 		});	
-	};
+	}
+	
+	// 체크된 상품 배열로 변환
+	function getCheckedPnos() {
+		let checkedPnos = [];
+		$("input[name='check']:checked").each(function() {
+			checkedPnos.push($(this).attr("id"));  // 체크된 체크박스의 pno 배열에 추가
+		});
+		return checkedPnos;
+	}
+
+	// 일괄 진열/판매중지 함수
+	function settingProducts() {
+		let checkedPnos = getCheckedPnos();
+		
+		if (checkedPnos.length == 0) {
+			alert("선택된 상품이 없습니다.");
+			return;
+		}
+		// consol.log(checkedPnos.join(", "));
+
+		// AJAX 요청으로 일괄 진열/판매중지 처리
+		$.ajax({
+			url: contextPath + '/admin/bulkAction',
+			type: 'POST',
+			data: {
+				pnos: checkedPnos,	// pno 배열을 전송
+				action: action      // 작업 유형('display' 또는 'stop')을 전송
+			 },
+			dataType: 'json',
+			success: function(res) {
+				if (res.status == '#') {
+					alert("일괄 처리되었습니다.");
+					document.location.reload();
+				} else {
+					alert("작업 실패: " + res.message);
+				}
+			},
+			error: function(xhr, status, error) {
+				alert("오류가 발생했습니다: " + error);
+			}
+		});
+	}
 </script>
