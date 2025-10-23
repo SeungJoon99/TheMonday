@@ -48,15 +48,31 @@ public class HelpController {
 	    return "help/board_detail";
 	}
 	
-	// 문의 삭제 컨트롤러
-	@RequestMapping(value = "/delete")
-	public String Delete(@RequestParam(required = true)int hno)
+	// 문의 삭제여부 변경 컨트롤러
+	@RequestMapping(value = "/deletedelynchange", method = RequestMethod.POST)
+	public String Deletedelynchange(@RequestParam(required = true)int hno)
 	{
-		helprepository.Delete(hno);
-		return "redirect:/help/";
+		
+		
+	    helprepository.Deletedelynchange(hno);
+	    System.out.println("게시글 삭제여부 변경");
+		return "redirect:/help";
 	}	
 	
-	// 
+	
+	// 관리자 답변 삭제
+	@RequestMapping(value = "/answerdelete", method = RequestMethod.POST)
+	public String Answerdelete(@RequestParam(required = true)int hno)
+	{
+		
+		System.out.println(hno);
+	    answerrepository.Delete(hno); // AnswerRepository 사용 
+	    System.out.println("관리자 답변 삭제");
+	 
+	    return "redirect:/help/board_detail?hno=" + hno;
+	}
+	
+	// 문의 목록 조회
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String Board(@RequestParam(required = false) String kind, 
 			@RequestParam(defaultValue = "1")int page,
@@ -119,21 +135,56 @@ public class HelpController {
 	@RequestMapping(value = "/writeok", method = RequestMethod.POST)
 	public String Writeok(HelpVO vo, HttpServletRequest request) 
 	{
-		// HttpServletRequest에서 세션 가져오기
 	    HttpSession session = request.getSession();
-		
-	    // 로그인 세션에서 u_no 가져오기
 	    Integer userNo = (Integer) session.getAttribute("user_no");
 
 	    if(userNo == null) {
-	        // 테스트용 기본값
 	        userNo = 1; 
 	    }
-
+	    
 	    vo.setUno(userNo);
-		
-		HelpVO insert = (HelpVO)request.getSession().getAttribute("insert");
-		helprepository.Insert(vo);
-		return "help/inquire";
+	    
+	    helprepository.Insert(vo);
+
+	    int hno = vo.getHno();
+	    
+	    return "redirect:/help/board_detail?hno=" + hno;
 	}
+	
+	@RequestMapping(value = "/helpupdate", method = RequestMethod.POST)
+	public String Helpupdate(HelpVO vo, HttpServletRequest request) 
+	{
+		HttpSession session = request.getSession();
+		Integer userNo = (Integer) session.getAttribute("user_no");
+		
+		if(userNo == null) {
+			userNo = 1; 
+		}
+		
+		vo.setUno(userNo);
+		
+		helprepository.Update(vo);
+		
+		int hno = vo.getHno();
+		
+		return "redirect:/help/board_detail?hno=" + hno;
+	}
+	
+	// 관리자 답변 등록 컨트롤러
+		@RequestMapping(value = "/answerok", method = RequestMethod.POST)
+		public String Answerok(AnswerVO vo, HttpServletRequest request)
+		{
+		    HttpSession session = request.getSession();
+		    Integer managerNo = (Integer) session.getAttribute("manager_no");
+		    
+		    if(managerNo == null) {
+		        managerNo = 1; // 예시: 임시 관리자 번호
+		    }
+
+		    vo.setUno(managerNo);
+		    
+		    answerrepository.Insert(vo);
+
+		    return "redirect:/help/board_detail?hno=" + vo.getHno();
+		}
 }

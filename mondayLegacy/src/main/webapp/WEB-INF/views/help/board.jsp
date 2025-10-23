@@ -12,6 +12,7 @@
         <th style="width: 90px;">
 	       <form method="get" >   
 	          <select id="kind" name="kind" >
+	            <option value="" >전체</option>
 	            <option value="문의">문의</option>
 	            <option value="교환">교환</option>
 	            <option value="환불">환불</option>
@@ -30,7 +31,7 @@
 	    <tr>
 	   		<td>${item.hno}</td>
 			<td>${item.hkind}</td>
-			<td><a href="/vo/help/board_detail?hno=${item.hno}">${item.htitle}</a></a></td>
+			<td><a href="${pageContext.request.contextPath}/help/board_detail?hno=${item.hno}">${item.htitle}</a></td>
 			<td>${item.unick}</td>
 			<td>${item.hwdate}</td>
 	    </tr>
@@ -38,7 +39,7 @@
       <!-- 문의 등록 버튼 -->
       <tr>
         <td colspan="5" style="text-align: left; border: none;">
-          <button type="button" class="btn btn-primary btn-sm" onclick="window.location = 'inquire'">문의하기</button>
+          <button type="button" class="btn btn-primary btn-sm" onclick="window.location = '${pageContext.request.contextPath}/help/inquire'">문의하기</button>
         </td>
       </tr>
     </tbody>
