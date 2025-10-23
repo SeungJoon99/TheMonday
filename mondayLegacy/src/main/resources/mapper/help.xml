@@ -29,10 +29,13 @@
 	
 	<select id="total" parameterType="com.ezen.vo.SearchVO"
 		resultType="java.lang.Integer">
-		SELECT COUNT(*) FROM help WHERE h_kind = #{ hkind }
-		<if test='keyword != null and !keyword.equals("")'>
-			AND h_title LIKE CONCAT('%', #{keyword}, '%')
-		</if>
+		select count(*) as total
+		from help
+		where 
+		h_delyn = 'N' 
+		<if test='hkind != null and !hkind.equals("")'>
+			and h_kind = #{ hkind }
+		</if> 
 	</select>
 
 	<!-- 목록 조회 -->
