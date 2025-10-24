@@ -144,14 +144,50 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/pay", method = RequestMethod.POST)
-	public String Pay(HttpServletRequest request, Model model) 
+	public String Pay(HttpServletRequest request, Model model, OrdersVO ovo) {
+
+	    HttpSession session = request.getSession();
+	    UserVO vo = (UserVO) session.getAttribute("login");
+
+	    if (vo == null) return "redirect:/member";
+
+	    // OrdersVO에 유저정보 세팅
+	    ovo.setUno(vo.getUno());
+	    ovo.setUhp(vo.getUhp());
+	    ovo.setUpostcode(vo.getUpostcode());
+	    ovo.setUold(vo.getUold());
+	    ovo.setUaddr(vo.getUaddr());
+	    ovo.setUaddr2(vo.getUaddr2());
+
+	    // 장바구니 목록 불러오기
+	    List<CartVO> cartList = memberrepository.Cart(vo);
+
+	    // 결제 처리: Orders insert, Detail insert, Cart 삭제
+	    memberrepository.Pay(ovo, cartList);
+
+	    // 결제 후 바로 마이페이지로 이동
+	    return "redirect:/shop/thankyou";
+	}
+	
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+	public String Mypage(HttpServletRequest request, Model model) 
 	{
 		HttpSession session = request.getSession();
-		UserVO vo = (UserVO)session.getAttribute("login");
-
-		memberrepository.Pay(vo);
 		
-		return "/shop/thankyou";
+		UserVO vo = (UserVO)session.getAttribute("login");
+		
+		if (vo == null) return "redirect:/member";
+		
+		vo = memberrepository.UserMypage(vo);
+		List<RecordVO> rvo = memberrepository.Orderrecordlist(vo);
+		System.out.println("주문내역: " + rvo);
+		
+		model.addAttribute("mypage", vo);
+		model.addAttribute("uno", vo.getUno());
+		
+		model.addAttribute("mypageOrderList", rvo);
+		model.addAttribute("uno", vo.getUno());
+		return "member/mypage";
 	}
 	
 	@RequestMapping(value = "/mypage_update", method = RequestMethod.GET)
@@ -167,23 +203,7 @@ public class MemberController {
 		return "member/mypage_update";
 	}
 	
-	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public String Mypage(HttpServletRequest request, Model model) 
-	{
-		HttpSession session = request.getSession();
-		
-		UserVO vo = (UserVO)session.getAttribute("login");
-		
-		vo = memberrepository.UserMypage(vo);
-		List<RecordVO> rvo = memberrepository.Orderrecordlist(vo);
-		
-		model.addAttribute("mypage", vo);
-		model.addAttribute("uno", vo.getUno());
-		
-		model.addAttribute("mypageOrderList", rvo);
-		model.addAttribute("uno", vo.getUno());
-		return "member/mypage";
-	}
+	
 	
 	@RequestMapping(value = "/userdelete",  produces = "text/plain; charset=UTF-8")
 	@ResponseBody

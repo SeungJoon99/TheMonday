@@ -56,11 +56,25 @@
         <!-- 우측: 주문 쿠폰 -->
         <div class="col-lg-4">
           <!-- 배송지 입력 폼 -->
+          <form method="post" name="payForm" action="${pageContext.request.contextPath}/member/pay">
+          <!-- 총 결제금액 -->
+		    <input type="hidden" name="ototal" value="${ cartTotal }">
+		
+		    <!-- 주문 요청사항 -->
+		    <input type="text" name="orequest" id="orequest" placeholder="배송 요청사항">
+		
+		    <!-- 세션 기반 주소, 전화번호 등 필요시 hidden input -->
+		    <input type="hidden" name="uhp" value="${ login.uhp }">
+		    <input type="hidden" name="upostcode" value="${ login.upostcode }">
+		    <input type="hidden" name="uold" value="${ login.uold }">
+		    <input type="hidden" name="uaddr" value="${ login.uaddr }">
+		    <input type="hidden" name="uaddr2" value="${ login.uaddr2 }">
+		    <input type="hidden" name="uno" value="${ login.uno }">
           <div class="mt-4">
             <h5 class="text-black mb-3">배송지 입력 (실제)</h5>
             <div class="mb-3">
               <label for="delivery-address" class="form-label">배송지</label>
-              <input type="text" class="form-control" id="deliveryAddress" placeholder="서울특별시 강남구 테헤란로 123">
+              <input name="orequest" id="orequest" type="text" class="form-control" id="deliveryAddress" placeholder="서울특별시 강남구 테헤란로 123">
             </div>
 
             <div class="mb-3">
@@ -98,7 +112,8 @@
 				<div style="width: 30%; text-align: right;">${ cartTotal }</div>
 				</div>
 				
-				<button class="btn btn-black btn-lg btn-block w-100 mt-4" onclick= pay()>결제하기</button>
+					<button class="btn btn-black btn-lg btn-block w-100 mt-4" onclick= pay()>결제하기</button>
+				</form>
 			</div>
 							
 			</div>
@@ -107,9 +122,8 @@
 </div>
 <script>
 	function pay(){
-		window.location =
-		 "${pageContext.request.contextPath}/shop/pay"
-		
+	    // 폼을 제출하여 POST 요청을 보냅니다.
+	    document.getElementById("payForm").submit();
 	}
 </script>
 <%@ include file="./include/footer.jsp" %>

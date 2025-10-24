@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ezen.vo.*;
 
@@ -69,14 +70,36 @@ public class MemberRepository
 		return 0;
 	}
 	
-	//결제
-	public void Pay(UserVO vo)
-	{
-		//session.insert(namespace + ".insertIntoOrders", vo);
-		
-		session.delete(namespace + ".deleteCart");
-		
+	@Transactional
+	public void Pay(OrdersVO ovo, List<CartVO> cartList) {
+	    // 1. Orders insert
+	    session.insert(namespace + ".insertIntoOrders", ovo);
+
+	    // 2. Detail insert
+	    for(CartVO c : cartList) {
+	        DetailVO d = new DetailVO();
+	        d.setOno(ovo.getOno());
+	        d.setPno(c.getPno());
+	        d.setDqty(c.getCqty());
+	        d.setDtotal(c.getProduct().getPprice() * c.getCqty());
+	        d.setPname(c.getProduct().getPname());
+	        d.setPpimgname(c.getProduct().getPpimgname());
+	        session.insert(namespace + ".insertIntoDetail", d);
+	    }
+
+	    // 3. Cart 삭제
+	    session.delete(namespace + ".deleteCart", ovo.getUno());
 	}
+	
+	
+//	//결제
+//	public void Pay(OrdersVO ovo)
+//	{
+//		session.insert(namespace + ".insertIntoOrders", ovo);
+//		System.out.println(ovo.getUno());
+//		session.delete(namespace + ".deleteCart",ovo.getUno());
+//		
+//	}
 
 	//마이페이지 회원정보
 	public UserVO UserMypage(UserVO vo)
@@ -89,9 +112,9 @@ public class MemberRepository
 	//주문내역 조회
 	public List<RecordVO> Orderrecordlist(UserVO vo)
 	{
-		List<RecordVO> list = session.selectList(namespace + ".orderrecordlist", vo);
+		List<RecordVO> orderlist = session.selectList(namespace + ".orderrecordlist", vo);
 		
-		return list;
+		return orderlist;
 	}
 	
 	

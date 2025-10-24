@@ -131,13 +131,11 @@
 		u_no = #{ uno }
 	</select>
 	
-	<insert id="insertIntoOrders" parameterType="com.ezen.vo.UserVO">
-		insert into orders(u_no, u_hp, u_postcode, o_total, u_old, u_addr, u_addr2, o_request)
-		values(#{ uno }, #{ uhp }, #{ upostcode }, #{ ototal }, #{ uold }, #{ uaddr }, #{ uaddr2 }, #{ orequest })
-	</insert>
 	
-	<delete id="deleteCart" parameterType="com.ezen.vo.UserVO">
-		delete from cart where cart c c.u_no = #{ uno }
+	
+		<!-- Cart 삭제 -->
+	<delete id="deleteCart" parameterType="java.lang.Integer">
+	    DELETE FROM cart WHERE u_no = #{uno}
 	</delete>
 	
 	<select id="selectFromUser" parameterType="com.ezen.vo.UserVO"
@@ -156,12 +154,25 @@
 		u_no = #{ uno }
 	</update>
 	
-	<select id="orderrecordlist" parameterType="java.lang.Integer"
-		resultMap="orderrecordlist">
-		SELECT o.o_no, p.p_pimg_name, p.p_name, o.o_total, o.o_date from orders o
-		join detail d on d.o_no = o.o_no
-		join product p on d.p_no = p.p_no
-		where o.u_no = #{ uno }
-	</select>
+	<!-- Detail insert -->
+	<insert id="insertIntoDetail" parameterType="com.ezen.vo.DetailVO">
+	    INSERT INTO detail(o_no, p_no, d_qty, d_total)
+	    VALUES(#{ono}, #{pno}, #{dqty}, #{dtotal})
+	</insert>
 	
+	<!-- Orders insert -->
+	<insert id="insertIntoOrders" parameterType="com.ezen.vo.OrdersVO" useGeneratedKeys="true" keyProperty="ono">
+	    INSERT INTO orders(u_no, u_hp, u_postcode, u_old, u_addr, u_addr2, o_request, o_total)
+	    VALUES(#{uno}, #{uhp}, #{upostcode}, #{uold}, #{uaddr}, #{uaddr2}, #{orequest}, #{ototal})
+	</insert>
+	
+	<select id="orderrecordlist" parameterType="com.ezen.vo.UserVO" resultMap="orderrecordlist">
+    SELECT o.o_no AS ono, p.p_pimg_name AS ppimgname, p.p_name AS pname,
+           o.o_total AS ototal, o.o_date AS odate
+    FROM orders o
+    JOIN detail d ON d.o_no = o.o_no
+    JOIN product p ON d.p_no = p.p_no
+    WHERE o.u_no = #{uno}
+</select>
+
 </mapper>
