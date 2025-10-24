@@ -72,7 +72,7 @@ public class MemberRepository
 	//결제
 	public void Pay(UserVO vo)
 	{
-		session.insert(namespace + ".insertIntoOrders", vo);
+		//session.insert(namespace + ".insertIntoOrders", vo);
 		
 		session.delete(namespace + ".deleteCart");
 		
@@ -85,6 +85,15 @@ public class MemberRepository
 		
 		return mypage;
 	}
+	
+	//주문내역 조회
+	public List<RecordVO> Orderrecordlist(UserVO vo)
+	{
+		List<RecordVO> list = session.selectList(namespace + ".orderrecordlist", vo);
+		
+		return list;
+	}
+	
 	
 	//회원 탈퇴
 	public void UserDelete(int uno)

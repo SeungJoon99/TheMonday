@@ -148,10 +148,10 @@ public class MemberController {
 	{
 		HttpSession session = request.getSession();
 		UserVO vo = (UserVO)session.getAttribute("login");
-		
+
 		memberrepository.Pay(vo);
 		
-		return "redirect:/";
+		return "/shop/thankyou";
 	}
 	
 	@RequestMapping(value = "/mypage_update", method = RequestMethod.GET)
@@ -175,10 +175,13 @@ public class MemberController {
 		UserVO vo = (UserVO)session.getAttribute("login");
 		
 		vo = memberrepository.UserMypage(vo);
+		List<RecordVO> rvo = memberrepository.Orderrecordlist(vo);
 		
 		model.addAttribute("mypage", vo);
 		model.addAttribute("uno", vo.getUno());
 		
+		model.addAttribute("mypageOrderList", rvo);
+		model.addAttribute("uno", vo.getUno());
 		return "member/mypage";
 	}
 	

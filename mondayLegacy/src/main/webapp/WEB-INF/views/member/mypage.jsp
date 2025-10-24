@@ -87,10 +87,10 @@
     	<c:forEach var="item" items="${ mypageOrderList }">
 	      <tr onclick="popup('${ item.uno }')" style="cursor:pointer;">
 	        <td>${ item.ono }</td>
-	        <td><img src="resources/images/favicon.png" alt="상품 이미지"></td>
-	        <td>사과 외 4개</td>
-	        <td>450,000원</td>
-	        <td>2025-09-29</td>
+	        <td><img src="resources/images/${ item.ppimgname }" alt="상품 이미지"></td>
+	        <td>${ item.pname }</td>
+	        <td>${ item.ototal }</td>
+	        <td>${ item.odate }</td>
 	      </tr>
 
       </c:forEach>
