@@ -130,9 +130,11 @@ public class AdminRepository
 	}
 	
 	//매출조회
-	public String sales(){
+	public List<SalesVO> salesDateProduct(SearchVO vo){
+		
+		List<SalesVO> list = session.selectList(namespace + ".salesForDateProduct", vo);
 
-		return "admin/sales";
+		return list;
 	}
 		
 }

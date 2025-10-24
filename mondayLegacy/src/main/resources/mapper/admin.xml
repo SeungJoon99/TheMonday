@@ -109,6 +109,22 @@
     private int    uno;    //유저번호
 	private String unick;  //유저닉네임
     -->
+    
+    <resultMap type="com.ezen.vo.SalesVO" id="shopSalesListMap">
+		<result property="sdate" column="s_date" />
+		<result property="pno" column="p_no" />
+		<result property="pname" column="p_name" />
+		<result property="dqty" column="d_qty" />
+		<result property="dtotal" column="d_total" />
+	</resultMap>
+	
+	<!-- 
+	private String sdate;
+	private int    pno;
+	private String pname;
+	private int    dqty;
+	private int    dtotal;
+	 -->
 
 	<!-- 상품 등록 -->
 	<insert id="productInsert" parameterType="com.ezen.vo.ProductVO">
@@ -298,6 +314,16 @@
 	    group by o.o_no, o.o_total, o.o_date, s.s_value
 	    order by o.o_no desc
 	    limit #{ offset }, 15
+	</select>
+	
+	
+	<select id="salesForDateProduct" parameterType="com.ezen.vo.SearchVO"
+	    resultMap="shopSalesListMap">
+		select date(o.o_date) s_date, p.p_no p_no, min(p.p_name) p_name, sum(d.d_qty) d_qty, sum(d.d_total) d_total from orders o
+		left join detail d on o.o_no = d.o_no
+		left join product p on d.p_no = p.p_no
+		group by date(o.o_date), p.p_no
+		ORDER BY s_date DESC, p_no ASC;
 	</select>
 	
 	<!-- select id="orderList" parameterType="com.ezen.vo.SearchVO"

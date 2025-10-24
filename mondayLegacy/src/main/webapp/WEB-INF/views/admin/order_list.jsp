@@ -4,7 +4,7 @@
 <div class="container">
   	<input type="date" id="beginDate" name="begindate" value="${ not empty searchvo.begindate ? searchvo.begindate : '2025-10-01' }">부터
 	<input type="date" id="endDate" name="enddate" value="${ not empty searchvo.enddate ? searchvo.enddate : '2026-12-31' }">까지
-	<input type="number" id="pno" name="pno"  value="${ searchvo.pno }" placeholder="상품코드를 입력하세요.">
+	<input type="number" id="pno" name="pno" <c:if test="${ searchvo.pno != null}">value="${ searchvo.pno }"</c:if> placeholder="상품코드를 입력하세요.">
 	<c:set var="scode" value="${ searchvo.scode }" />
 	<select id="scode" name="scode">
 		<option value="" <c:if test="${ empty scode }">selected</c:if>>전체</option>
@@ -143,7 +143,7 @@
 		let params = $.param(paramsObj);	  
 
 	 	// location.href로 이동 (즉, form 없이 GET 요청)
-	 	location.href = contextPath + '/orderList?' + params;
+	 	location.href = contextPath + '/admin/orderList?' + params;
 	    
 	}
 </script>
