@@ -66,6 +66,14 @@
 		<result property="unick" column="u_nick" />
 	</resultMap>
 	
+	<resultMap type="com.ezen.vo.RecordVO" id="orderrecordlist">
+		<id property="ono" column="o_no" />
+		<result property="ppimgname" column="p_pimg_name" />
+		<result property="pname" column="p_name" />
+		<result property="ototal" column="o_total" />
+		<result property="odate" column="o_date" />
+	</resultMap>
+	
 	<select id="UnickCheck" parameterType="java.lang.String"
 			resultType="java.lang.Integer">
 		select count(*) 
@@ -128,8 +136,8 @@
 		values(#{ uno }, #{ uhp }, #{ upostcode }, #{ ototal }, #{ uold }, #{ uaddr }, #{ uaddr2 }, #{ orequest })
 	</insert>
 	
-	<delete id="deleteCart">
-		delete from cart
+	<delete id="deleteCart" parameterType="com.ezen.vo.UserVO">
+		delete from cart where cart c c.u_no = #{ uno }
 	</delete>
 	
 	<select id="selectFromUser" parameterType="com.ezen.vo.UserVO"
@@ -147,5 +155,13 @@
 		where
 		u_no = #{ uno }
 	</update>
+	
+	<select id="orderrecordlist" parameterType="java.lang.Integer"
+		resultMap="orderrecordlist">
+		SELECT o.o_no, p.p_pimg_name, p.p_name, o.o_total, o.o_date from orders o
+		join detail d on d.o_no = o.o_no
+		join product p on d.p_no = p.p_no
+		where o.u_no = #{ uno }
+	</select>
 	
 </mapper>
