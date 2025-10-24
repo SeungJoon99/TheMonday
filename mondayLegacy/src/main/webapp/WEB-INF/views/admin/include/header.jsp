@@ -25,7 +25,7 @@
   <body>
     <!-- Hero -->
     <div class="hero" style="padding: 0px;">
-      <a class="navbar-brand" href="../">The Monday<span>.</span></a>
+      <a class="navbar-brand" href="${pageContext.request.contextPath}/">The Monday<span>.</span></a>
 	  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	  </button>
@@ -33,7 +33,7 @@
       <div class="container">
         <ul class="nav nav-tabs bg-dark" style="border: none;">
 		  <li class="nav-item">
-		    <a class="nav-link text-light" aria-current="page" href="./">상품조회</a>
+		    <a class="nav-link text-light" aria-current="page" href="${pageContext.request.contextPath}/admin">상품조회</a>
 		  </li>
 		  <li class="nav-item">
 		    <a class="nav-link text-light" href="${pageContext.request.contextPath}/admin/sales">매출조회</a>

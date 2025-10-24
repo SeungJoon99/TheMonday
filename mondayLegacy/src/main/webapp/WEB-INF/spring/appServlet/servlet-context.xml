@@ -29,25 +29,31 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.ezen.*" />
-	<!--
-	<interceptors>
+	<!-- <interceptors>
+
 		<interceptor>
 			<mapping path="/**"/>
 			<exclude-mapping path="/"/>
 			<exclude-mapping path="/login"/>
 			<exclude-mapping path="/shop"/>
+			<exclude-mapping path="/shop/search"/>
+			<exclude-mapping path="/shop/product_detail"/>
 			<exclude-mapping path="/help"/>
+			<exclude-mapping path="/member"/>
+			<exclude-mapping path="/member/unickcheck"/>
+			<exclude-mapping path="/member/signup"/>
+			<exclude-mapping path="/member/signupok"/>
 			<exclude-mapping path="/member"/>
 			<exclude-mapping path="/main"/>
 			<exclude-mapping path="/admin/**"/>
 			<beans:bean class="com.ezen.interceptor.SessionInterceptor" />
 		</interceptor>
+		
 		<interceptor>
 			<mapping path="/admin/**"/>
 			<exclude-mapping path="/admin/login"/>
 			<beans:bean class="com.ezen.interceptor.AdminInterceptor" />
 		</interceptor>
 		
-	</interceptors>
-	-->
+	</interceptors> -->
 </beans:beans>

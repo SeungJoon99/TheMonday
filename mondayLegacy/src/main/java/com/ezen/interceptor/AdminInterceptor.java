@@ -17,12 +17,12 @@ public class AdminInterceptor implements HandlerInterceptor{
 		UserVO user = (UserVO)request.getSession().getAttribute("login");
 		
 		if(user == null) {
-			response.sendRedirect(request.getContextPath() + "admin/login");
+			response.sendRedirect(request.getContextPath() + "/admin/login");
 			return false;
 		}
 		
 		if(user.getUtype() != 0) {
-			response.sendRedirect(request.getContextPath() + "admin/login");
+			response.sendRedirect(request.getContextPath() + "/admin/login");
 			return false;
 		}
 		return true;

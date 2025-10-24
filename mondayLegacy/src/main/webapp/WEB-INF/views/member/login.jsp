@@ -6,8 +6,8 @@
 
 	window.onload = function()
 	{
-		$("#uemail").val("1111");
-		$("#upw").val("1111");
+		/* $("#uemail").val("1111");
+		$("#upw").val("1111"); */
 		
 		$("#uemail").focus();
 		
