@@ -12,8 +12,24 @@ public class ManageVO
 
 	//관리자 주문조회용 필드
     private int    uno;    //유저번호
-	private String unick;  //전화번호
+	private String unick;  //유저닉네임
 	
+	// 응답용
+    private boolean success;
+    private String message;
+	
+	public boolean isSuccess() {
+		return success;
+	}
+	public void setSuccess(boolean success) {
+		this.success = success;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
 	public int getOno() {
 		return ono;
 	}

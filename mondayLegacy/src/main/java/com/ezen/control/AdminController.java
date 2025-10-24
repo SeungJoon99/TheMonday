@@ -3,6 +3,7 @@ package com.ezen.control;
 import java.io.*;
 import java.util.*;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
@@ -37,7 +38,7 @@ public class AdminController
 	ServletContext context;
 	
 	@Autowired
-	AdminRepository adminrepositoy;
+	AdminRepository adminrepository;
 	
 	//경로구분자
 	String separator = File.separator;
@@ -77,22 +78,40 @@ public class AdminController
 			vo.setPfimgname(originalFileName);			//원본파일명(논리파일)
 			vo.setPpimgname(savedFileName + fileExt);	//저장파일명(물리파일)
 		}
-		adminrepositoy.productInsert(vo);
+		adminrepository.productInsert(vo);
 //		System.out.println("err3");
 		return "redirect:/admin";
 	}
 	
 	//상품 목록 조회 페이지
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String productList(@RequestParam(defaultValue = "1")int page, Model model)
+	public String productList(
+			@RequestParam(defaultValue = "1")int page,
+			@ModelAttribute SearchVO vo,
+//			HttpServletRequest request,
+			Model model)
 	{
 		int blockSize = 10;    // 한 블럭에 보여줄 페이지 번호 개수
 		int sizePerPage = 15;  // 한 페이지에 보여줄 상품 개수
-		SearchVO vo = new SearchVO();
 //		vo.setPkind(pkind);
+//		System.out.println("QueryString: " + request.getQueryString());
+//		System.out.println("begindate param: " + request.getParameter("begindate"));
+//		System.out.println("enddate param: " + request.getParameter("enddate"));
+//		System.out.println("vo.getBegindate(): " + vo.getBegindate());
+		System.out.println(vo.getBegindate());
+		System.out.println(vo.getEnddate());
+		System.out.println(vo.getKeyword());
+		System.out.println(vo.getPkind());
 		vo.setPageno(page, sizePerPage);
+		
+		if (vo.getBegindate() == null || vo.getBegindate().isEmpty()) {
+	        vo.setBegindate("2025-10-01");
+	    }
+	    if (vo.getEnddate() == null || vo.getEnddate().isEmpty()) {
+	        vo.setEnddate("2026-12-31");
+	    }
 		//전체 갯수
-		int total = adminrepositoy.GetTotal(vo);
+		int total = adminrepository.GetTotal(vo);
 		
 		// 전체 페이지 수
 		int maxpage = total / sizePerPage;
@@ -103,7 +122,7 @@ public class AdminController
 		int endbk = startbk + blockSize - 1;
 		if ( endbk > maxpage ) endbk = maxpage;
 		
-		List<ProductVO> list = adminrepositoy.productList(vo);
+		List<ProductVO> list = adminrepository.productList(vo);
 
 		model.addAttribute("total",total);
 		model.addAttribute("maxpage",maxpage);
@@ -139,7 +158,7 @@ public class AdminController
 		if (pno == null || pno == 0) return "redirect:/admin"; 
 //		System.out.println(pno);
 //		System.out.println("err");
-		ProductVO vo = adminrepositoy.productRead(pno);
+		ProductVO vo = adminrepository.productRead(pno);
 
 		// 상품을 찾을 수 없을 경우 예외 처리
 		if (vo == null) return "redirect:/admin"; 
@@ -179,7 +198,7 @@ public class AdminController
 			vo.setPpimgname(savedFileName + fileExt);	//저장파일명(물리파일)
 		}
 //		System.out.println("uok3");
-		adminrepositoy.productUpdate(vo);
+		adminrepository.productUpdate(vo);
 //		System.out.println(vo.getPno());
 //		System.out.println(vo.getPfimgname());
 //		System.out.println(vo.getPpimgname());
@@ -195,7 +214,7 @@ public class AdminController
         // 예외 처리
 		if (pno == null || pno == 0) return "잘못된 접근입니다."; 
 
-		int result = adminrepositoy.productDelete(pno);
+		int result = adminrepository.productDelete(pno);
 		if (result == 0) return "fail";
 
 		return "ok";
@@ -225,9 +244,44 @@ public class AdminController
 	
 	//주문목록 조회 페이지
 	@RequestMapping(value = "/orderList", method = RequestMethod.GET)
-	public String orderList(@RequestParam(defaultValue = "1")int page, Model model) 
-	{		
-		List<OrdersVO> list = adminrepositoy.orderList();
+	public String orderList(@RequestParam(defaultValue = "1")int page,
+			@ModelAttribute SearchVO vo,
+			Model model) 
+	{	
+		int blockSize = 10;    // 한 블럭에 보여줄 페이지 번호 개수
+		int sizePerPage = 15;  // 한 페이지에 보여줄 상품 개수
+//		vo.setPkind(pkind);
+		vo.setPageno(page, sizePerPage);
+		
+
+		if (vo.getBegindate() == null || vo.getBegindate().isEmpty()) {
+	        vo.setBegindate("2025-10-01");
+	    }
+	    if (vo.getEnddate() == null || vo.getEnddate().isEmpty()) {
+	        vo.setEnddate("2026-12-31");
+	    }
+		//전체 갯수
+		int total = adminrepository.GetTotal(vo);
+		
+		// 전체 페이지 수
+		int maxpage = total / sizePerPage;
+		if ( total % sizePerPage != 0 ) maxpage++;
+
+		// 블럭 시작/끝 번호 계산
+		int startbk = ((page - 1) / blockSize) * blockSize + 1;
+		int endbk = startbk + blockSize - 1;
+		if ( endbk > maxpage ) endbk = maxpage;
+
+		List<OrdersVO> list = adminrepository.orderList(vo);
+
+		model.addAttribute("total",total);
+		model.addAttribute("maxpage",maxpage);
+		model.addAttribute("currentPage", page);
+		
+		model.addAttribute("startbk",startbk);
+		model.addAttribute("endbk",endbk);
+		
+		model.addAttribute("searchvo",vo);
 		
 		model.addAttribute("list",list);
 		
@@ -238,29 +292,38 @@ public class AdminController
 	@RequestMapping(value = "/orderSet", method = RequestMethod.GET)
 	public String orderSet(Integer ono, Model model) 
 	{
-		ManageVO vo = adminrepositoy.orderSelect(ono);
+		System.out.println("err3");
+		// 예외 처리
+		if (ono == null || ono.equals("")) return "redirect:/admin/order_list";
 
+//		System.out.println(ono);
+		ManageVO vo = adminrepository.orderSelect(ono);
+		// System.out.println(vo.getUno());
+//		 System.out.println(vo.getScode());
+//		 System.out.println(vo.getUnick());
+		if (vo == null ) return "redirect:/admin/order_list";
+//		System.out.println("err1");
 		model.addAttribute("item", vo );
-		
+//		System.out.println("err2");
 		return "admin/order_set";
 	}
 
 	//주문내역 수청 처리
 	@RequestMapping(value = "/orderSet", method = RequestMethod.POST)
-	public String orderSetOK(ManageVO vo) 
+	@ResponseBody
+	public String orderSetOK(ManageVO vo)
 	{
-        // 예외 처리
-		if (vo == null || vo.equals("")) return "redirect:/admin/order_list"; 
-
-		int result = adminrepositoy.orderSet(vo);
+	    // 예외 처리
+		if ( vo == null ) return "잘못된 요청입니다.";
+	
+		int result = adminrepository.orderSet(vo);
 		if (result == 0) return "fail";
-
 		return "ok";
 	}
 	
 	//매출조회
 	@RequestMapping(value = "/sales", method = RequestMethod.GET)
-	public String sales() 
+	public String sales()
 	{
 		return "admin/sales";
 	}

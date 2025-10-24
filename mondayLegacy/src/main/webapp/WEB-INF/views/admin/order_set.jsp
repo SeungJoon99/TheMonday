@@ -55,33 +55,82 @@
 </head>
 <body>
 
+<form name="orderSet" method="post" action="<c:url value='/admin/orderSet' />" onsubmit="return orderUpdate()">
   <div class="popup-container">
     <div class="popup-header">
-      <h5>"2025100501" 주문 처리</h5>
+      <h5>"${ item.ono }" 주문 처리</h5>
+      <input type="hidden" name="ono" value="${ item.ono }">
       <div>
         <label class="form-label small mb-1">회원구분, ID</label>
-        <input type="text" class="form-control form-control-sm" value="ex) A12345" readonly>
+        <input type="text" class="form-control form-control-sm" value="${ item.uno }, ${ item.unick }" readonly>
       </div>
     </div>
 
+    <c:set var="scode" value="${ item.scode }" />
     <div class="mb-3">
       <label class="form-label">주문 상태 변경</label>
-      <select class="form-select">
-        <option>주문 접수</option>
-        <option>배송 대기중</option>
-        <option>배송 중</option>
-        <option>배송 완료</option>
-        <option>주문 취소</option>
+      <select class="form-select" id="scode" name="scode">
+        <option value="0" <c:if test="${ scode eq '0' }">selected</c:if>>주문 접수</option>
+        <option value="1" <c:if test="${ scode eq '1' }">selected</c:if>>주문 취소</option>
+        <option value="2" <c:if test="${ scode eq '2' }">selected</c:if>>배송 대기중</option>
+        <option value="3" <c:if test="${ scode eq '3' }">selected</c:if>>배송 중</option>
+        <option value="4" <c:if test="${ scode eq '4' }">selected</c:if>>배송 완료</option>
+        <option value="5" <c:if test="${ scode eq '5' }">selected</c:if>>환불</option>
       </select>
     </div>
 
     <div class="mb-3">
       <label class="form-label">회원구분 메모</label>
-      <textarea class="form-control" rows="5" placeholder="회원구분 메모를 입력하세요"></textarea>
+      <textarea class="form-control" id="mmemo"name="mmemo" rows="5" placeholder="회원구분 메모를 입력하세요">${ item.mmemo }</textarea>
     </div>
 
     <button class="btn btn-primary btn-update">저장하기</button>
   </div>
+</form>
 
 </body>
 </html>
+
+<script>
+  window.onload = function(){
+		// 포커스
+		$("#mmemo").focus();
+  }
+
+  function orderUpdate(){
+		if(!confirm("수정하시겠습니까?")){
+			return;	
+		}
+		
+		let ono = $("#ono").val();
+		let status = $("#status").val();
+		let mmemo = $("#mmemo").val();
+		  
+		$.ajax({
+			url : contextPath + "/admin/orderSet",
+			type: "POST",
+			data: { ono: ono, status: status, mmemo: mmemo },
+			dataType: "json",
+			success : function(res){
+				res = res.trim();
+				if (res.success) {
+					// 부모창 새로고침
+			        if (window.opener && !window.opener.closed) {
+			          window.opener.location.reload();
+			        }
+			        // 현재 팝업창 닫기
+			        window.close();
+	            } else if (res == "fail") {
+	                alert("주문 상태 업데이트에 실패했습니다.");
+	            } else {
+	                alert("알 수 없는 응답: " + res);
+	            }
+			},
+			
+			error : function(xhr, status, error){
+				alert("오류가 발생했습니다: " + error);
+                console.error("AJAX Error:", status, error);
+			}
+		});
+	}
+</script>

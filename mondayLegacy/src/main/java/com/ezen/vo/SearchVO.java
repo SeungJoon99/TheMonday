@@ -10,9 +10,38 @@ public class SearchVO
 	private String pkind;    //상품카테고리
 	private String hdisplay; //게시물 표시 여부	
 	private int    pno; 	 //상품번호	
+	private String begindate;//시작일	
+	private String enddate;	 //종료일
+	private String toggledisplay;	//진열키워드
+	private String scode;	//주문상태
 	
+
 	private int    sizePerPage = 16; //한 페이지에 나오는 상품 개수
 	
+	public String getBegindate() {
+		return begindate;
+	}
+	public void setBegindate(String begindate) {
+		this.begindate = begindate;
+	}
+	public String getEnddate() {
+		return enddate;
+	}
+	public void setEnddate(String enddate) {
+		this.enddate = enddate;
+	}
+	public String getToggledisplay() {
+		return toggledisplay;
+	}
+	public void setToggledisplay(String toggledisplay) {
+		this.toggledisplay = toggledisplay;
+	}
+	public String getScode() {
+		return scode;
+	}
+	public void setScode(String scode) {
+		this.scode = scode;
+	}
 	public int getPno() {
 		return pno;
 	}
@@ -53,6 +82,7 @@ public class SearchVO
 		this.offset = (this.pageno - 1) * sizePerPage; 
 	}
 	
+	//sizePerPage setter+
 	public void setPageno(int pageno, int sizePerPage) 
 	{ 
 		this.pageno = pageno < 1 ? 1 : pageno;

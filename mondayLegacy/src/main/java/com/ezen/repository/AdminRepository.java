@@ -94,9 +94,9 @@ public class AdminRepository
 	}
 	
 	//주문 내역 조회
-	public List<OrdersVO> orderList(){
+	public List<OrdersVO> orderList(SearchVO vo){
 
-		List<OrdersVO> list = session.selectList(namespace + ".orderList");
+		List<OrdersVO> list = session.selectList(namespace + ".orderList", vo);
 		/*
 		for( OrdersVO v : list ){
 			System.out.println(v.getPname());
@@ -115,16 +115,16 @@ public class AdminRepository
 	}
 	//주문내역 단건 조회
 	public ManageVO orderSelect(Integer ono){
-
-		ManageVO vo = session.selectOne(namespace, ono);
-
+		
+		ManageVO vo = session.selectOne(namespace + ".orderSelect", ono);
+		
 		return vo;
 	}
 
 	//주문상태 및 관리자메모 업데이트
 	public int orderSet(ManageVO vo){
 
-		int result = session.update(namespace, vo);
+		int result = session.update(namespace + ".orderUpdate", vo);
 
 		return result;
 	}
