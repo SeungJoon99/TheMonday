@@ -252,14 +252,14 @@ public class AdminController
 		int blockSize = 10;    // 한 블럭에 보여줄 페이지 번호 개수
 		int sizePerPage = 15;  // 한 페이지에 보여줄 상품 개수
 //		vo.setPkind(pkind);
-		System.out.println("QueryString: " + request.getQueryString());
-		System.out.println("begindate param: " + request.getParameter("begindate"));
-		System.out.println("enddate param: " + request.getParameter("enddate"));
-		System.out.println("vo.getBegindate(): " + vo.getBegindate());
-		System.out.println(vo.getBegindate());
-		System.out.println(vo.getEnddate());
-		System.out.println(vo.getKeyword());
-		System.out.println(vo.getPkind());
+//		System.out.println("QueryString: " + request.getQueryString());
+//		System.out.println("begindate param: " + request.getParameter("begindate"));
+//		System.out.println("enddate param: " + request.getParameter("enddate"));
+//		System.out.println("vo.getBegindate(): " + vo.getBegindate());
+//		System.out.println(vo.getBegindate());
+//		System.out.println(vo.getEnddate());
+//		System.out.println(vo.getKeyword());
+//		System.out.println(vo.getPkind());
 		vo.setPageno(page, sizePerPage);
 		
 

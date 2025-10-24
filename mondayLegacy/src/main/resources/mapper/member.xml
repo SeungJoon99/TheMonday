@@ -162,8 +162,18 @@
 	
 	<!-- Orders insert -->
 	<insert id="insertIntoOrders" parameterType="com.ezen.vo.OrdersVO" useGeneratedKeys="true" keyProperty="ono">
+	
+		<selectKey resultType="int" keyProperty="ono" order="AFTER">
+			SELECT LAST_INSERT_ID()	
+		</selectKey>
+
 	    INSERT INTO orders(u_no, u_hp, u_postcode, u_old, u_addr, u_addr2, o_request, o_total)
 	    VALUES(#{uno}, #{uhp}, #{upostcode}, #{uold}, #{uaddr}, #{uaddr2}, #{orequest}, #{ototal})
+	</insert>
+	
+	<insert id="setManage" parameterType="int">
+		insert into manage(o_no)
+		values(#{_parameter})
 	</insert>
 	
 	<select id="orderrecordlist" parameterType="com.ezen.vo.UserVO" resultMap="orderrecordlist">

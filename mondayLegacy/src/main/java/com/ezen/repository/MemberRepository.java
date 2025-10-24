@@ -74,6 +74,9 @@ public class MemberRepository
 	public void Pay(OrdersVO ovo, List<CartVO> cartList) {
 	    // 1. Orders insert
 	    session.insert(namespace + ".insertIntoOrders", ovo);
+	    
+	    int ono = ovo.getOno();
+	    session.insert(namespace + ".setManage", ono);
 
 	    // 2. Detail insert
 	    for(CartVO c : cartList) {
