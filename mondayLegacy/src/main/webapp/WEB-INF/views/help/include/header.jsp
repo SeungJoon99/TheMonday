@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Untree.co">
-  <link rel="shortcut icon" href="resources/images/favicon.png">
+  <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.png">
 
   <meta name="description" content="" />
   <meta name="keywords" content="bootstrap, bootstrap4" />
@@ -82,7 +82,7 @@
       <div class="collapse navbar-collapse" id="navbarsFurni">
         <div class="col-1"></div>
         <form class="search-box" action="shop/search">
-          <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control" type="search" placeholder="검색" aria-label="Search">
           <button class="btn" type="submit">
             <i class="fas fa-search"></i>
           </button>
@@ -96,7 +96,7 @@
 			<c:if test="${ login != null }">
 				<li><a class="nav-link" href="${pageContext.request.contextPath}/member/mypage">[${ login.uname }]님</a></li>
 				<li><a class="nav-link" href="${pageContext.request.contextPath}/member/cart">장바구니</a></li>
-				<li><a class="nav-link" href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
+				<li><a class="nav-link" href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
 			</c:if>
 		</ul>
       </div>

@@ -2,7 +2,31 @@
     pageEncoding="UTF-8"%>
 <%@ include file="./include/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script>
+	//세션에 저장된 객체 꺼내기
+	const storedUser = JSON.parse(sessionStorage.getItem("login"));
 
+	//문의하기 버튼
+	function inquireBtn()
+	{
+		$.ajax({
+			url : "${pageContext.request.contextPath}/help/loginCheck",
+			method : "POST",
+			data : {
+				uno : parseInt($(".uno").first().val())
+			},
+			success: function(res) 
+			{
+				if( res == "TRUE" ) window.location = "${pageContext.request.contextPath}/help/inquire";
+				else alert("로그인 후 사용 가능한 서비스입니다.");
+			},
+			error: function(err) {
+	            console.error("요청 실패:", err);
+	            alert("서버 요청 중 오류가 발생했습니다.");
+	        }
+		});
+	}
+</script>
 <!-- 문의 게시판 -->
 <div class="container">
   <table class="table" style="text-align: center; width: 90%; margin-left: 5%;">
@@ -28,6 +52,7 @@
     </thead>
     <tbody>
       <c:forEach var="item" items="${list != null ? list : emptyList}">
+      	<input type="hidden" value="${ item.uno }" class="uno">
 	    <tr>
 	   		<td>${item.hno}</td>
 			<td>${item.hkind}</td>
@@ -39,7 +64,7 @@
       <!-- 문의 등록 버튼 -->
       <tr>
         <td colspan="5" style="text-align: left; border: none;">
-          <button type="button" class="btn btn-primary btn-sm" onclick="window.location = '${pageContext.request.contextPath}/help/inquire'">문의하기</button>
+          <button type="button" class="btn btn-primary btn-sm" onclick="inquireBtn()">문의하기</button>
         </td>
       </tr>
     </tbody>

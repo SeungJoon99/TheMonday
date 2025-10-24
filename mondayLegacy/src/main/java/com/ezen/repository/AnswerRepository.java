@@ -31,10 +31,9 @@ public class AnswerRepository {
 	}
 	
 	//댓글을 삭제한다.
-	public boolean Delete(int hno)
+	public void Answerdelete(int hno)
 	{
-		session.delete(namespace + ".deleteAnswer",hno);
-		return true;
+		session.delete(namespace + ".Answerdelete",hno);
 	}	
 }
 

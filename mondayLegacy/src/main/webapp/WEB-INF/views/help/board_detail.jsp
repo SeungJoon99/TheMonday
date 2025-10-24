@@ -3,47 +3,43 @@
 <%@ include file="./include/header.jsp" %>
 
 <div class="post-view">
-  <div class="post-title" id="htitle">${item.htitle}</div>
-  <div class="post-meta">작성자: ${item.unick} | 작성일: ${item.hwdate}</div>
-  <div class="post-content" id="hnote">
-    ${item.hnote}
-  </div>	
-
-  <div class="post-buttons">
-    <!-- 수정 버튼은 관리자만 누를 수 있게 바꿔야 합니다. -->
-    <button class="btn-edit" id="help-update" onclick="update()">수정</button>
-    
-    
-    
-    
-    
-
-
-
-    <button class="btn-remove" onclick="Delete()">삭제</button>
-    <button class="btn-list" onclick="location.href='/help'">목록</button><br><br>
-
-	<!-- 관리자 답변란 -->
-	<form id="answerForm" action="${pageContext.request.contextPath}/help/answerok" method="post">
-    <input type="hidden" name="hno" value="${item.hno}">
-    <textarea id="atxt" name="atext" class='form-control' rows='10' placeholder="관리자 답변 작성"></textarea>
-    </form>
-    <button type="button" onclick="Answerdelete()">관리자 답변 삭제</button>
-    <button type="button" onclick="Answerok()">관리자 답변 등록</button>
-
-    <table border="1" style="width:100%; margin-top: 20px;">
-      <tr>
-        <td width="110px"><strong>관리자</strong></td>
-        <td style="text-align: left;">
-          <span id ="txt" name="txt"></span>
-        </td>
-        <td width="110px">
-        	<c:if test="${!empty answerList}">
-           		 ${answerList[0].awdate} 
-       		</c:if></td>
-      </tr>
-    </table>
-  </div>
+	<div class="post-title" id="htitle">${item.htitle}</div>
+	<div class="post-meta">작성자: ${item.unick} | 작성일: ${item.hwdate}</div>
+	<div class="post-content" id="hnote">${item.hnote}</div>	
+	
+	<div class="post-buttons">
+		<c:if test="${ item.unick == login.unick || login.utype == 0 }">
+			<button class="btn-edit" id="help-update" onclick="update()">수정</button>
+			<button class="btn-remove" onclick="Delete()">삭제</button>
+		</c:if>
+		<button class="btn-list" onclick="location.href='${pageContext.request.contextPath}/help'">목록</button>
+		<br>
+		<br>
+		
+		<c:if test="${ login.utype == 0 }">
+			<!-- 관리자 답변란 -->
+			<form id="answerForm" action="${pageContext.request.contextPath}/help/answerok" method="post">
+				<input type="hidden" id="hno" name="hno" value="${item.hno}">
+				<input type="hidden" id="uno" name="uno" value="${item.uno}">
+				<textarea id="atxt" name="atext" class='form-control' rows='10' placeholder="관리자 답변 작성"></textarea>
+				<button type="button" id="answerDelete" onclick="Answerdelete()">관리자 답변 삭제</button>
+				<button type="button" id="answerOk" onclick="Answerok()">관리자 답변 등록</button>
+			</form>
+			<table border="1" style="width:100%; margin-top: 20px;">
+				<tr>
+					<td width="110px"><strong>관리자</strong></td>
+					<td style="text-align: left;">
+						<span id ="txt" name="txt"></span>
+					</td>
+					<td width="110px">
+						<c:if test="${!empty answerList}">
+							${answerList[0].awdate} 
+						</c:if>
+					</td>
+				</tr>
+			</table>
+		</c:if>
+	</div>
 </div>
 
 <script>
@@ -54,7 +50,7 @@ function update() {
     document.getElementById("hnote").innerHTML =
         "<textarea id='edit_hnote' name='hnote' class='form-control' rows='10'>${item.hnote}</textarea>";
     document.getElementById("help-update").innerHTML =
-        "<button type='button' class='btn-edit' onclick='updateok()'>수정완료</button>";
+        "<button class='btn-edit' id='help-update' onclick='updateok()'>수정완료</button>";
 }
 
 function updateok() {
