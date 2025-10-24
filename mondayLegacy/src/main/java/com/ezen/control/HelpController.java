@@ -12,11 +12,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezen.repository.*;
 import com.ezen.vo.AnswerVO;
 import com.ezen.vo.HelpVO;
 import com.ezen.vo.SearchVO;
+import com.ezen.vo.UserVO;
 
 @Controller
 @RequestMapping(value = "/help")
@@ -66,7 +68,7 @@ public class HelpController {
 	{
 		
 		System.out.println(hno);
-	    answerrepository.Delete(hno); // AnswerRepository 사용 
+		answerrepository.Answerdelete(hno); // AnswerRepository 사용 
 	    System.out.println("관리자 답변 삭제");
 	 
 	    return "redirect:/help/board_detail?hno=" + hno;
@@ -121,6 +123,18 @@ public class HelpController {
 		return "help/board";
 	}
 	
+	//문의 버튼 작동 시 로그인 확인
+	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public String LoginCheck(HttpServletRequest request)
+	{
+		HttpSession session = request.getSession();
+		UserVO vo = (UserVO) session.getAttribute("login");
+		
+		if( vo == null  ) return "FALSE";
+		return "TRUE";
+	}
+	
 	// 문의 작성 페이지 이동
 	@RequestMapping(value = "/inquire", method = RequestMethod.GET)
 	public String Inquire() 
@@ -132,13 +146,12 @@ public class HelpController {
 	public String Writeok(HelpVO vo, HttpServletRequest request) 
 	{
 	    HttpSession session = request.getSession();
-	    Integer userNo = (Integer) session.getAttribute("user_no");
-
-	    if(userNo == null) {
-	        userNo = 2; 
-	    }
 	    
-	    vo.setUno(userNo);
+	    UserVO uvo = (UserVO)session.getAttribute("login");
+	    
+	    int uno = uvo.getUno();
+	    
+	    vo.setUno(uno);
 	    
 	    helprepository.Insert(vo);
 
@@ -152,13 +165,12 @@ public class HelpController {
 	public String Helpupdate(HelpVO vo, HttpServletRequest request) 
 	{
 		HttpSession session = request.getSession();
-		Integer userNo = (Integer) session.getAttribute("user_no");
 		
-		if(userNo == null) {
-			userNo = 2; 
-		}
-		
-		vo.setUno(userNo);
+		UserVO uvo = (UserVO)session.getAttribute("login");
+	    
+	    int uno = uvo.getUno();
+	    
+	    vo.setUno(uno);
 		
 		helprepository.Update(vo);
 		
@@ -168,21 +180,16 @@ public class HelpController {
 	}
 	
 	// 관리자 답변 등록 컨트롤러
-		@RequestMapping(value = "/answerok", method = RequestMethod.POST)
-		public String Answerok(AnswerVO vo, HttpServletRequest request)
-		{
-		    HttpSession session = request.getSession();
-		    Integer managerNo = (Integer) session.getAttribute("manager_no");
-		    
-		    // 관리자 검사
-		    if(managerNo == null) {
-		        managerNo = 1; // 예시: 임시 관리자 번호
-		    }
-
-		    vo.setUno(managerNo);
-		    
-		    answerrepository.Insert(vo);
-
-		    return "redirect:/help/board_detail?hno=" + vo.getHno();
-		}
+	@RequestMapping(value = "/answerok", method = RequestMethod.POST)
+	public String Answerok(AnswerVO vo, HttpServletRequest request)
+	{
+	    HttpSession session = request.getSession();
+	    UserVO uvo = (UserVO)session.getAttribute("login");
+	    
+	    int utype = uvo.getUtype();
+	    
+	    if( utype == 0 ) answerrepository.Insert(vo);
+	    
+	    return "redirect:/help/board_detail?hno=" + vo.getHno();
+	}
 }

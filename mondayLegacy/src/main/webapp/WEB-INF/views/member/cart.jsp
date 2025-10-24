@@ -56,16 +56,27 @@
         <!-- 우측: 주문 쿠폰 -->
         <div class="col-lg-4">
           <!-- 배송지 입력 폼 -->
+          <form method="post" name="payForm" action="${pageContext.request.contextPath}/member/pay">
+          <!-- 총 결제금액 -->
+		    <input type="hidden" name="ototal" value="${ cartTotal }">
+		
+		    <!-- 세션 기반 주소, 전화번호 등 필요시 hidden input -->
+		    <input type="hidden" name="uhp" value="${ login.uhp }">
+		    <input type="hidden" name="upostcode" value="${ login.upostcode }">
+		    <input type="hidden" name="uold" value="${ login.uold }">
+		    <input type="hidden" name="uaddr" value="${ login.uaddr }">
+		    <input type="hidden" name="uaddr2" value="${ login.uaddr2 }">
+		    <input type="hidden" name="uno" value="${ login.uno }">
           <div class="mt-4">
             <h5 class="text-black mb-3">배송지 입력 (실제)</h5>
             <div class="mb-3">
               <label for="delivery-address" class="form-label">배송지</label>
-              <input type="text" class="form-control" id="deliveryAddress" placeholder="서울특별시 강남구 테헤란로 123">
+              <input name="orequest" id="orequest" type="text" class="form-control" id="deliveryAddress" placeholder="서울특별시 강남구 테헤란로 123">
             </div>
 
             <div class="mb-3">
               <label for="delivery-memo" class="form-label">메모사항 (실제)</label>
-              <textarea class="form-control" id="deliveryMemo" rows="2" placeholder="문 앞에 놔 두고 벨 누르지 말아주세요."></textarea>
+              <textarea class="form-control" name="orequest" id="orequest" rows="2" placeholder="문 앞에 놔 두고 벨 누르지 말아주세요."></textarea>
             </div>
 
             <button class="btn btn-outline-secondary mb-3 w-100" type="button" onclick="deliverySave()">배송지 저장</button>
@@ -97,13 +108,20 @@
 				<div style="width: 20%; text-align: center;"></div>
 				<div style="width: 30%; text-align: right;">${ cartTotal }</div>
 				</div>
-				<button class="btn btn-black btn-lg btn-block w-100 mt-4" onclick="window.location = '${pageContext.request.contextPath}/shop/thankyou'">결제하기</button>
+				
+					<button class="btn btn-black btn-lg btn-block w-100 mt-4" onclick= pay()>결제하기</button>
+				</form>
 			</div>
 							
 			</div>
 		</div>
 	</div>
 </div>
-		
+<script>
+	function pay(){
+	    // 폼을 제출하여 POST 요청을 보냅니다.
+	    document.getElementById("payForm").submit();
+	}
+</script>
 <%@ include file="./include/footer.jsp" %>
 		

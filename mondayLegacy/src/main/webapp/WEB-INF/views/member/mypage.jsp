@@ -84,16 +84,17 @@
       </tr>
     </thead>
     <tbody>
-    	<c:forEach var="item" items="${ mypageOrderList }">
-	      <tr onclick="popup('${ item.uno }')" style="cursor:pointer;">
-	        <td>${ item.ono }</td>
-	        <td><img src="resources/images/favicon.png" alt="상품 이미지"></td>
-	        <td>사과 외 4개</td>
-	        <td>450,000원</td>
-	        <td>2025-09-29</td>
-	      </tr>
-
-      </c:forEach>
+    	<c:if test="${not empty mypageOrderList}">
+		  <c:forEach var="item" items="${ mypageOrderList }">
+		    <tr onclick="popup('${ item.ono }')" style="cursor:pointer;">
+		      <td>${ item.ono }</td>
+		      <td><img src="${pageContext.request.contextPath}/resources/images/${item.ppimgname}" style="width:45px; height:50px" alt="상품 이미지"></td>
+		      <td>${ item.pname }</td>
+		      <td>${ item.ototal }</td>
+		      <td>${ item.odate }</td>
+		    </tr>
+		  </c:forEach>
+		</c:if>
     </tbody>
   </table>
   <button type="button" class="btn btn-sm" onclick="Delete()" style="background-color: red; border: none;">회원 탈퇴</button>

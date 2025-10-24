@@ -66,6 +66,14 @@
 		<result property="unick" column="u_nick" />
 	</resultMap>
 	
+	<resultMap type="com.ezen.vo.RecordVO" id="orderrecordlist">
+		<id property="ono" column="o_no" />
+		<result property="ppimgname" column="p_pimg_name" />
+		<result property="pname" column="p_name" />
+		<result property="ototal" column="o_total" />
+		<result property="odate" column="o_date" />
+	</resultMap>
+	
 	<select id="UnickCheck" parameterType="java.lang.String"
 			resultType="java.lang.Integer">
 		select count(*) 
@@ -123,13 +131,11 @@
 		u_no = #{ uno }
 	</select>
 	
-	<insert id="insertIntoOrders" parameterType="com.ezen.vo.UserVO">
-		insert into orders(u_no, u_hp, u_postcode, o_total, u_old, u_addr, u_addr2, o_request)
-		values(#{ uno }, #{ uhp }, #{ upostcode }, #{ ototal }, #{ uold }, #{ uaddr }, #{ uaddr2 }, #{ orequest })
-	</insert>
 	
-	<delete id="deleteCart">
-		delete from cart
+	
+		<!-- Cart 삭제 -->
+	<delete id="deleteCart" parameterType="java.lang.Integer">
+	    DELETE FROM cart WHERE u_no = #{uno}
 	</delete>
 	
 	<select id="selectFromUser" parameterType="com.ezen.vo.UserVO"
@@ -148,4 +154,25 @@
 		u_no = #{ uno }
 	</update>
 	
+	<!-- Detail insert -->
+	<insert id="insertIntoDetail" parameterType="com.ezen.vo.DetailVO">
+	    INSERT INTO detail(o_no, p_no, d_qty, d_total)
+	    VALUES(#{ono}, #{pno}, #{dqty}, #{dtotal})
+	</insert>
+	
+	<!-- Orders insert -->
+	<insert id="insertIntoOrders" parameterType="com.ezen.vo.OrdersVO" useGeneratedKeys="true" keyProperty="ono">
+	    INSERT INTO orders(u_no, u_hp, u_postcode, u_old, u_addr, u_addr2, o_request, o_total)
+	    VALUES(#{uno}, #{uhp}, #{upostcode}, #{uold}, #{uaddr}, #{uaddr2}, #{orequest}, #{ototal})
+	</insert>
+	
+	<select id="orderrecordlist" parameterType="com.ezen.vo.UserVO" resultMap="orderrecordlist">
+    SELECT o.o_no AS ono, p.p_pimg_name AS ppimgname, p.p_name AS pname,
+           o.o_total AS ototal, o.o_date AS odate
+    FROM orders o
+    JOIN detail d ON d.o_no = o.o_no
+    JOIN product p ON d.p_no = p.p_no
+    WHERE o.u_no = #{uno}
+</select>
+
 </mapper>
