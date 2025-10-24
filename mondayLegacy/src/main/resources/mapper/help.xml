@@ -100,8 +100,10 @@
 		WHERE h_no = #{hno}
 	</select>
 
-	<delete id="deleteAnswer" parameterType="java.lang.Integer">
-		DELETE FROM answer WHERE
+	<delete id="Answerdelete" parameterType="java.lang.Integer">
+		DELETE 
+		FROM answer
+		WHERE
 		h_no = #{hno}
 	</delete>
 
