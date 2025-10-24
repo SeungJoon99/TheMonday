@@ -60,9 +60,6 @@
           <!-- 총 결제금액 -->
 		    <input type="hidden" name="ototal" value="${ cartTotal }">
 		
-		    <!-- 주문 요청사항 -->
-		    <input type="text" name="orequest" id="orequest" placeholder="배송 요청사항">
-		
 		    <!-- 세션 기반 주소, 전화번호 등 필요시 hidden input -->
 		    <input type="hidden" name="uhp" value="${ login.uhp }">
 		    <input type="hidden" name="upostcode" value="${ login.upostcode }">
@@ -79,7 +76,7 @@
 
             <div class="mb-3">
               <label for="delivery-memo" class="form-label">메모사항 (실제)</label>
-              <textarea class="form-control" id="deliveryMemo" rows="2" placeholder="문 앞에 놔 두고 벨 누르지 말아주세요."></textarea>
+              <textarea class="form-control" name="orequest" id="orequest" rows="2" placeholder="문 앞에 놔 두고 벨 누르지 말아주세요."></textarea>
             </div>
 
             <button class="btn btn-outline-secondary mb-3 w-100" type="button" onclick="deliverySave()">배송지 저장</button>
